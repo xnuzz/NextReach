@@ -1,16 +1,45 @@
-# NextReach - Advertising Agency Website
+# NextReach - Secure Digital Marketing Agency Website
 
-A modern, responsive website for NextReach advertising agency built with HTML5, CSS3, and JavaScript.
+A professional digital marketing agency website with AI-powered chat integration, built with security best practices for production deployment.
 
-## Features
+## 🔒 Security Features
 
-- **Responsive Design**: Mobile-first approach that looks great on all devices
-- **Modern UI/UX**: Clean, professional design with smooth animations
-- **Interactive Portfolio**: Filterable portfolio showcase with hover effects
-- **Contact Form**: Functional contact form with validation
-- **Testimonials Slider**: Auto-playing testimonials carousel
-- **Performance Optimized**: Fast loading with modern web standards
-- **Accessibility**: Keyboard navigation and screen reader friendly
+- **API Key Protection**: No sensitive data exposed on client-side
+- **Rate Limiting**: Prevents abuse and API quota exhaustion
+- **Input Validation**: Sanitizes user inputs and prevents XSS
+- **CORS Protection**: Restricts access to authorized domains
+- **Security Headers**: Comprehensive security headers via Helmet.js
+- **Content Security Policy**: Prevents malicious script injection
+- **Environment Variables**: Secure configuration management
+
+## 🚀 Quick Start
+
+### 1. Install Dependencies
+```bash
+npm install
+```
+
+### 2. Configure Environment
+```bash
+# Copy the example environment file
+copy .env.example .env
+
+# Edit .env and add your DeepSeek API key
+# DEEPSEEK_API_KEY=your_actual_api_key_here
+```
+
+### 3. Start the Server
+```bash
+# Development mode (with auto-restart)
+npm run dev
+
+# Production mode
+npm start
+```
+
+### 4. Access Your Website
+- Local: http://localhost:3000
+- The AI chat will work securely through the proxy
 
 ## Sections
 

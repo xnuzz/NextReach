@@ -1057,9 +1057,9 @@ class AIChat {
         this.chatSend = document.getElementById('chatSend');
         this.chatMessages = document.getElementById('chatMessages');
         
-        // DeepSeek API configuration - ACTIVATED
-        this.apiKey = 'sk-f150e52d606e46d5820a5cc4391345d3';
-        this.apiUrl = 'https://api.deepseek.com/v1/chat/completions';
+        // DeepSeek API configuration - SECURE
+        this.apiKey = null; // Will be set securely
+        this.apiUrl = '/api/chat'; // Proxy endpoint for security
         this.maxRetries = 1;
         this.timeout = 10000;
         
@@ -1259,7 +1259,6 @@ Remember: You're a general AI assistant first, but with deep NextReach expertise
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${this.apiKey}`,
                 'Accept': 'application/json'
             },
             body: JSON.stringify(requestBody),
