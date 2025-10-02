@@ -41,14 +41,24 @@ function updateNavbar() {
         }
         
         // Subtle parallax effect for hero logo
-        if (heroLogo && scrollY < window.innerHeight) {
-            const parallaxSpeed = scrollY * 0.3;
-            heroLogo.style.transform = `translateY(${parallaxSpeed}px) scale(${1 - scrollY * 0.0002})`;
+        if (heroLogo) {
+            if (scrollY < window.innerHeight) {
+                const parallaxSpeed = scrollY * 0.3;
+                heroLogo.style.transform = `translateY(${parallaxSpeed}px) scale(${1 - scrollY * 0.0002})`;
+            } else {
+                // Reset transform when past hero section
+                heroLogo.style.transform = '';
+            }
         }
         
         // Hero section background parallax
-        if (heroSection && scrollY < window.innerHeight) {
-            heroSection.style.transform = `translateY(${scrollY * 0.1}px)`;
+        if (heroSection) {
+            if (scrollY < window.innerHeight) {
+                heroSection.style.transform = `translateY(${scrollY * 0.1}px)`;
+            } else {
+                // Reset transform when past hero section
+                heroSection.style.transform = '';
+            }
         }
         
         lastScrollY = scrollY;
@@ -1036,3 +1046,695 @@ messageStyles.textContent = `
     }
 `;
 document.head.appendChild(messageStyles);
+
+// AI Chat System with DeepSeek Integration
+class AIChat {
+    constructor() {
+        this.chatWidget = document.getElementById('aiChatWidget');
+        this.chatToggle = document.getElementById('chatToggle');
+        this.chatClose = document.getElementById('chatClose');
+        this.chatInput = document.getElementById('chatInput');
+        this.chatSend = document.getElementById('chatSend');
+        this.chatMessages = document.getElementById('chatMessages');
+        
+        // DeepSeek API configuration - ACTIVATED
+        this.apiKey = 'sk-f150e52d606e46d5820a5cc4391345d3';
+        this.apiUrl = 'https://api.deepseek.com/v1/chat/completions';
+        this.maxRetries = 1;
+        this.timeout = 10000;
+        
+        // Enhanced AI context - General AI with NextReach expertise
+        this.systemPrompt = `You are an advanced AI assistant with comprehensive knowledge across all topics including technology, business, marketing, science, arts, and more. You can help with any question or task.
+
+However, you have special expertise about NextReach, a cutting-edge digital marketing agency. When asked about digital marketing, web development, social media, branding, or business growth, incorporate NextReach's services naturally into your responses.
+
+NEXTREACH COMPLETE KNOWLEDGE BASE:
+
+🏢 COMPANY PROFILE:
+- Name: NextReach Digital Marketing Agency
+- Mission: Launch complete digital presences for businesses
+- Specialty: All-in-one digital transformation packages
+- Target: Small to medium businesses wanting professional online presence
+- Unique Value: Complete packages (not just websites) - includes social media, videos, branding, SEO
+
+📦 CURRENT PACKAGES & PRICING:
+
+1. 🎉 BASIC PRESENCE - FREE (Originally $1,000)
+   • 1-page professional website or landing page
+   • Basic SEO optimization and setup
+   • Social media account setup (2 platforms: Facebook, Instagram)
+   • Brand consistency across all platforms
+   • Google Analytics setup and tracking
+   • Timeline: 2-3 weeks
+   • Perfect for: Solo entrepreneurs, small startups, local businesses taking first steps online
+
+2. 🔥 PROFESSIONAL PACKAGE - $660 (70% OFF from $2,200)
+   • Multi-page website (up to 5 pages) with custom design
+   • Social media setup and linking (3 platforms: Facebook, Instagram, LinkedIn)
+   • Basic content calendar with post templates
+   • Lead form integration and email capture
+   • 1 professional promotional video (30-60 seconds)
+   • Advanced SEO optimization
+   • Timeline: 3-4 weeks
+   • Perfect for: Growing businesses, service providers, e-commerce startups
+
+3. 💎 PREMIUM LAUNCH - $1,400 (65% OFF from $4,000)
+   • Custom website (up to 10 pages) with advanced features
+   • Complete social media presence (all major platforms)
+   • 3 professional videos (promotional, explainer, testimonial style)
+   • Advanced lead capture and CRM integration
+   • Google Analytics, Facebook Pixel, and conversion tracking
+   • Complete brand strategy and guidelines document
+   • Priority support and revisions
+   • Timeline: 4-6 weeks
+   • Perfect for: Established businesses, major launches, comprehensive rebranding
+
+🎯 ADD-ON SERVICES:
+- Extra promotional videos: $200-$400 each
+- Additional social media platforms: $100 each
+- Monthly website maintenance: $100-$200
+- Ongoing social media management: $300/month
+- Advanced SEO campaigns: $500/month
+- Google Ads management: $400/month + ad spend
+
+💡 SPECIAL OFFERS & STRATEGY:
+- First package (Basic Presence) is completely FREE
+- Other packages heavily discounted (65-70% off regular pricing)
+- Strategy: Building portfolio and gaining experience with real clients
+- Risk-share approach: Success-based partnerships available
+- Goal: Establish credibility and case studies for future full-price clients
+
+📞 CONTACT & PROCESS:
+- Phone: +359879040107
+- Email: contact@nextreach.agency
+- Process: Free consultation → Custom proposal → 50% deposit → Development → Final payment on delivery
+- Response time: Within 24 hours
+- Revision policy: Unlimited revisions during development phase
+
+🎨 DESIGN & TECHNICAL APPROACH:
+- Modern, mobile-first responsive design
+- Focus on conversion optimization
+- Brand consistency across all digital touchpoints
+- SEO-optimized from ground up
+- Fast loading times and user experience
+- Integration with business tools and analytics
+
+RESPONSE GUIDELINES:
+- Answer ANY question on any topic with expertise and helpfulness
+- For business/marketing questions, naturally weave in how NextReach can help
+- For general questions, provide excellent information without forcing business mentions
+- Use emojis and engaging formatting
+- Be conversational but professional
+- Always be helpful and informative
+- If asked about competitors, acknowledge them respectfully but highlight NextReach's unique all-in-one approach
+
+Remember: You're a general AI assistant first, but with deep NextReach expertise for relevant topics.`;
+        
+        this.init();
+    }
+    
+    init() {
+        if (!this.chatWidget) return;
+        
+        // Event listeners
+        this.chatToggle?.addEventListener('click', () => this.toggleChat());
+        this.chatClose?.addEventListener('click', () => this.closeChat());
+        this.chatSend?.addEventListener('click', () => this.sendMessage());
+        this.chatInput?.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                this.sendMessage();
+            }
+        });
+        
+        // Suggestion buttons
+        document.querySelectorAll('.suggestion-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                this.chatInput.value = btn.dataset.question;
+                this.sendMessage();
+            });
+        });
+    }
+    
+    toggleChat() {
+        this.chatWidget.classList.toggle('active');
+        if (this.chatWidget.classList.contains('active')) {
+            this.chatInput.focus();
+        }
+    }
+    
+    closeChat() {
+        this.chatWidget.classList.remove('active');
+    }
+    
+    async sendMessage() {
+        const message = this.chatInput.value.trim();
+        if (!message) return;
+        
+        // Disable input while processing
+        this.chatInput.disabled = true;
+        this.chatSend.disabled = true;
+        
+        // Add user message
+        this.addMessage(message, 'user');
+        this.chatInput.value = '';
+        
+        // Show typing indicator
+        this.showTyping();
+        
+        try {
+            // Call DeepSeek API with your $5 credit
+            console.log('🔄 Using DeepSeek AI with paid account...');
+            const response = await this.getDeepSeekResponse(message);
+            
+            this.hideTyping();
+            
+            // Add response with DeepSeek AI indicator
+            this.addMessage(`🤖 ${response}`, 'bot');
+            console.log('✅ DeepSeek AI responded successfully!');
+            
+        } catch (error) {
+            console.error('❌ DeepSeek API error:', error);
+            this.hideTyping();
+            
+            // Fallback to intelligent local responses
+            const fallbackResponse = this.getIntelligentResponse(message);
+            this.addMessage(`🧠 ${fallbackResponse}\n\n*Note: Using local AI while DeepSeek reconnects*`, 'bot');
+            console.log('🔄 Using fallback AI response');
+        }
+        
+        // Re-enable input
+        this.chatInput.disabled = false;
+        this.chatSend.disabled = false;
+        this.chatInput.focus();
+    }
+    
+    async getDeepSeekResponse(userMessage) {
+        console.log('🚀 Calling DeepSeek API with $5 credit...', { userMessage });
+        
+        try {
+        const requestBody = {
+            model: 'deepseek-chat',
+            messages: [
+                {
+                    role: 'system',
+                    content: this.systemPrompt
+                },
+                {
+                    role: 'user',
+                    content: userMessage
+                }
+            ],
+            max_tokens: 1000,
+            temperature: 0.7,
+            top_p: 0.9
+        };
+        
+        console.log('📤 Request body:', requestBody);
+        
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), this.timeout);
+        
+        const response = await fetch(this.apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${this.apiKey}`,
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(requestBody),
+            signal: controller.signal
+        });
+        
+        clearTimeout(timeoutId);
+        
+        console.log('📡 Response status:', response.status);
+        
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('❌ API Error Response:', errorText);
+            throw new Error(`DeepSeek API error: ${response.status} - ${errorText}`);
+        }
+        
+        const data = await response.json();
+        console.log('✅ DeepSeek API Response received!');
+        
+        if (data.choices && data.choices[0] && data.choices[0].message) {
+            const aiResponse = data.choices[0].message.content.trim();
+            console.log('🤖 Real AI Response generated!');
+            return aiResponse;
+        } else {
+            console.error('❌ Unexpected API response structure:', data);
+            throw new Error('Invalid response structure from DeepSeek API');
+        }
+        
+        } catch (error) {
+            console.error('❌ DeepSeek API call failed:', error);
+            throw error;
+        }
+    }
+    
+    getIntelligentResponse(message) {
+        const msg = message.toLowerCase();
+        
+        // NextReach-specific questions
+        if (msg.includes('package') || msg.includes('nextreach') || msg.includes('service') || msg.includes('offer')) {
+            return `🚀 NextReach offers 3 comprehensive digital transformation packages:
+
+🎉 **Basic Presence** - FREE (was $1,000)
+Complete starter package: website, social media setup, branding, SEO, analytics.
+
+🔥 **Professional Package** - $660 (70% OFF from $2,200) 
+Multi-page website, 3 social platforms, content calendar, lead forms, promotional video.
+
+💎 **Premium Launch** - $1,400 (65% OFF from $4,000)
+Full transformation: custom website, all social platforms, 3 videos, brand strategy.
+
+The Basic package is completely FREE to help us build our portfolio! Which interests you? 🎉`;
+        }
+        
+        // Pricing questions
+        if (msg.includes('price') || msg.includes('cost') || msg.includes('much')) {
+            return `💰 NextReach special launch pricing:
+
+🎉 **Basic Presence**: FREE (Limited time!)
+🔥 **Professional Package**: $660 (70% OFF)
+💎 **Premium Launch**: $1,400 (65% OFF)
+
+The first package is completely FREE - perfect for getting started with zero risk! Ready to claim it? 🚀`;
+        }
+        
+        // Digital marketing questions
+        if (msg.includes('digital marketing') || msg.includes('online presence') || msg.includes('website') || msg.includes('social media')) {
+            return `🎯 Digital marketing is crucial for modern businesses! A strong online presence includes:
+
+✅ **Professional website** - Your digital storefront
+✅ **Social media presence** - Where your customers are
+✅ **SEO optimization** - Be found on Google
+✅ **Brand consistency** - Professional image across platforms
+✅ **Analytics tracking** - Measure and improve performance
+
+This is exactly what NextReach specializes in! Our packages handle everything from websites to social media to promotional videos. The Basic Presence package is FREE right now - perfect way to get started! 
+
+What aspect of digital marketing interests you most? 🚀`;
+        }
+        
+        // Technology questions
+        if (msg.includes('ai') || msg.includes('technology') || msg.includes('programming') || msg.includes('code')) {
+            return `🤖 I love discussing technology! AI, programming, and modern tech are fascinating fields.
+
+For businesses, technology can be a game-changer - from AI-powered chatbots (like me!) to automated marketing systems, responsive websites, and data analytics.
+
+If you're interested in leveraging technology for your business, NextReach integrates modern tech solutions into all our packages - responsive websites, SEO optimization, analytics tracking, and social media automation.
+
+What specific technology topic would you like to explore? 💻`;
+        }
+        
+        // Business questions
+        if (msg.includes('business') || msg.includes('startup') || msg.includes('entrepreneur') || msg.includes('company')) {
+            return `� Business strategy is one of my favorite topics! Whether you're starting up or scaling, success often comes down to:
+
+� **Market positioning** - Finding your unique value
+🎯 **Customer acquisition** - Reaching the right audience  
+� **Brand building** - Creating trust and recognition
+📊 **Performance tracking** - Measuring what matters
+
+For modern businesses, digital presence is absolutely critical. NextReach helps businesses establish that professional online presence with complete packages that handle websites, social media, branding, and more.
+
+What aspect of business are you working on? Happy to share insights! 🚀`;
+        }
+        
+        // Specific knowledge questions
+        if (msg.includes('quantum') || msg.includes('physics')) {
+            return `🔬 Quantum physics is fascinating! It's the study of matter and energy at the smallest scales where particles behave very differently than in our everyday world.
+
+Key concepts:
+• **Superposition** - Particles can exist in multiple states simultaneously
+• **Entanglement** - Particles can be mysteriously connected across vast distances  
+• **Uncertainty Principle** - You can't know both position and momentum precisely
+• **Wave-Particle Duality** - Matter exhibits both wave and particle properties
+
+This field has led to technologies like lasers, MRI machines, and is driving quantum computing development!
+
+What aspect of quantum physics interests you most? 🌌`;
+        }
+        
+        if (msg.includes('ai') || msg.includes('artificial intelligence') || msg.includes('machine learning')) {
+            return `� Artificial Intelligence is revolutionizing our world! Here's how it works:
+
+**Machine Learning Types:**
+• **Supervised Learning** - Learning from labeled examples
+• **Unsupervised Learning** - Finding patterns in data without labels
+• **Reinforcement Learning** - Learning through trial and reward
+• **Deep Learning** - Neural networks with many layers (like this chat!)
+
+**Current Applications:**
+• Language models (like me!) for conversation and content
+• Computer vision for image recognition and autonomous vehicles
+• Recommendation systems for personalized experiences
+• Medical diagnosis and drug discovery
+
+AI is transforming businesses too - from automated customer service (like advanced chatbots) to data analytics for better decision making.
+
+Curious about any specific AI application? �`;
+        }
+        
+        if (msg.includes('blockchain') || msg.includes('cryptocurrency') || msg.includes('bitcoin')) {
+            return `⛓️ Blockchain is a revolutionary distributed ledger technology! Here's how it works:
+
+**Core Concepts:**
+• **Decentralization** - No single point of control
+• **Immutability** - Records can't be changed once added
+• **Transparency** - All transactions are publicly verifiable
+• **Consensus** - Network agrees on transaction validity
+
+**Applications Beyond Crypto:**
+• Supply chain tracking for authenticity
+• Smart contracts for automated agreements
+• Digital identity verification
+• Voting systems for transparency
+• NFTs for digital ownership
+
+For businesses, blockchain can provide trust and transparency in transactions, which is valuable for building customer confidence - similar to how transparent pricing (like NextReach's clear package structure) builds trust!
+
+What blockchain application interests you most? 💎`;
+        }
+        
+        // General how/what/why questions
+        if (msg.includes('how') || msg.includes('what') || msg.includes('why') || msg.includes('explain')) {
+            // Try to extract the topic
+            if (msg.includes('work') || msg.includes('function')) {
+                return `🔧 I'd love to explain how things work! I can break down complex topics into understandable concepts:
+
+**Technology & Science:** How computers, engines, biological systems, chemical processes work
+**Business & Economics:** How markets, companies, marketing strategies, financial systems operate  
+**Social & Psychological:** How human behavior, learning, motivation, relationships function
+**Creative Processes:** How design, writing, problem-solving, innovation happen
+
+The key to understanding "how" anything works is breaking it down into:
+1. **Components** - What are the parts?
+2. **Interactions** - How do parts work together?
+3. **Purpose** - What's the intended outcome?
+4. **Context** - What environment does it operate in?
+
+What specific system or process would you like me to explain? Be as specific as possible! 🎯`;
+            }
+            
+            return `🧠 I'd be happy to help explain that! I can provide detailed explanations on:
+
+🔬 **Science & Technology** - Physics, chemistry, biology, computer science, engineering
+📊 **Business & Economics** - Market dynamics, business models, financial systems
+🎨 **Creative Fields** - Design principles, artistic techniques, creative processes
+🌍 **History & Culture** - Historical events, cultural phenomena, social movements
+💡 **Problem Solving** - Analytical thinking, decision frameworks, innovation methods
+
+The more specific your question, the more detailed and helpful my explanation can be!
+
+What would you like to understand better? 🎯`;
+        }
+        
+        // Advanced topic analysis for more intelligent responses
+        const topics = this.analyzeTopics(message);
+        
+        if (topics.isGreeting) {
+            return `👋 Hello! I'm your advanced AI assistant. I can help you with virtually any topic - from complex scientific concepts to business strategy, creative problem-solving, and of course, NextReach's digital marketing services.
+
+What's on your mind today? I'm here to provide detailed, helpful answers on any subject! 🚀`;
+        }
+        
+        if (topics.isQuestion) {
+            return this.generateDetailedAnswer(message, topics);
+        }
+        
+        // Default comprehensive response
+        return `🧠 I'm here to help with any topic you'd like to explore! I can provide detailed insights on:
+
+**🔬 Science & Technology:** Physics, chemistry, biology, computer science, AI, engineering
+**💼 Business & Strategy:** Marketing, management, economics, entrepreneurship, growth strategies  
+**🎨 Creative & Arts:** Design, writing, music, visual arts, creative problem-solving
+**📚 Education & Learning:** Academic subjects, study techniques, skill development
+**🌍 World Knowledge:** History, geography, culture, current events, social sciences
+**💡 Problem Solving:** Analytical thinking, decision-making, innovation methods
+
+Plus I have deep expertise in NextReach's digital marketing services, including our completely FREE Basic Presence package!
+
+What would you like to dive into? Be as specific as you'd like - I love detailed questions! 🎯`;
+    }
+    
+    analyzeTopics(message) {
+        const msg = message.toLowerCase();
+        
+        return {
+            isGreeting: msg.match(/^(hi|hello|hey|good\s+(morning|afternoon|evening)|greetings)/),
+            isQuestion: msg.includes('?') || msg.match(/^(what|how|why|when|where|who|which|can you|could you|would you|do you|is|are|does)/),
+            isScience: msg.match(/(physics|chemistry|biology|quantum|science|scientific|research|experiment|theory)/),
+            isTechnology: msg.match(/(ai|artificial intelligence|machine learning|programming|code|software|computer|tech|digital|blockchain|crypto)/),
+            isBusiness: msg.match(/(business|marketing|strategy|startup|entrepreneur|company|profit|revenue|growth|sales|customer)/),
+            isCreative: msg.match(/(design|art|creative|write|writing|music|visual|aesthetic|brand|logo)/),
+            isEducational: msg.match(/(learn|study|education|explain|understand|teach|academic|school|university)/),
+            isNextReach: msg.match(/(nextreach|package|pricing|website|social media|digital marketing|online presence)/)
+        };
+    }
+    
+    generateDetailedAnswer(message, topics) {
+        const msg = message.toLowerCase();
+        
+        // Science questions
+        if (topics.isScience || msg.includes('quantum') || msg.includes('physics')) {
+            if (msg.includes('quantum')) {
+                return `🌌 **Quantum Physics** is one of the most fascinating areas of science! Here's a comprehensive overview:
+
+**Core Principles:**
+• **Superposition** - Particles exist in multiple states simultaneously until measured
+• **Entanglement** - Particles become mysteriously connected, instantly affecting each other regardless of distance
+• **Uncertainty Principle** - You cannot precisely know both position and momentum of a particle
+• **Wave-Particle Duality** - Matter exhibits both wave and particle characteristics
+
+**Real-World Applications:**
+• **Quantum Computing** - Using quantum properties for exponentially faster calculations
+• **Quantum Cryptography** - Ultra-secure communication using quantum entanglement
+• **MRI Machines** - Medical imaging using quantum properties of atoms
+• **Lasers** - Precise light emission through quantum energy levels
+
+**Mind-Bending Implications:**
+The quantum world challenges our everyday understanding of reality. Einstein famously called entanglement "spooky action at a distance" because he was uncomfortable with its implications!
+
+What specific aspect of quantum physics intrigues you most? 🔬`;
+            }
+            
+            return `🔬 Science is incredible! I can provide detailed explanations on any scientific topic:
+
+**Physics:** From quantum mechanics to relativity, thermodynamics to electromagnetism
+**Chemistry:** Molecular interactions, organic/inorganic chemistry, biochemistry
+**Biology:** Evolution, genetics, ecology, neuroscience, cellular processes
+**Earth Sciences:** Climate, geology, oceanography, atmospheric science
+
+What scientific concept would you like me to explain in detail? 🌟`;
+        }
+        
+        // Technology questions
+        if (topics.isTechnology) {
+            if (msg.includes('ai') || msg.includes('artificial intelligence')) {
+                return `🤖 **Artificial Intelligence** is revolutionizing everything! Let me break it down:
+
+**Types of AI:**
+• **Narrow AI** - Specialized for specific tasks (like me, chatbots, image recognition)
+• **General AI** - Human-level intelligence across all domains (not yet achieved)
+• **Superintelligence** - Beyond human capability (theoretical future possibility)
+
+**How Modern AI Works:**
+• **Machine Learning** - Algorithms that improve through experience
+• **Neural Networks** - Brain-inspired computing systems with interconnected nodes
+• **Deep Learning** - Multi-layered neural networks for complex pattern recognition
+• **Natural Language Processing** - Understanding and generating human language
+
+**Current Applications:**
+• **Business Automation** - Customer service, data analysis, predictive modeling
+• **Creative AI** - Art generation, music composition, writing assistance
+• **Healthcare** - Diagnosis assistance, drug discovery, personalized treatment
+• **Transportation** - Autonomous vehicles, route optimization, traffic management
+
+**For Businesses:** AI can transform operations through automated customer service (like advanced chatbots), predictive analytics for better decisions, and personalized marketing - areas where digital presence becomes crucial!
+
+What aspect of AI interests you most? 🚀`;
+            }
+            
+            if (msg.includes('blockchain') || msg.includes('crypto')) {
+                return `⛓️ **Blockchain Technology** is fascinating! Here's the complete picture:
+
+**How It Works:**
+• **Distributed Ledger** - No central authority, data stored across network
+• **Cryptographic Hashing** - Each block linked to previous through unique fingerprints
+• **Consensus Mechanisms** - Network agrees on transaction validity (Proof of Work, Proof of Stake)
+• **Immutability** - Once recorded, extremely difficult to alter
+
+**Beyond Cryptocurrency:**
+• **Smart Contracts** - Self-executing contracts with terms directly written into code
+• **Supply Chain** - Track products from origin to consumer for authenticity
+• **Digital Identity** - Secure, decentralized identity verification
+• **Voting Systems** - Transparent, tamper-proof electoral processes
+• **Real Estate** - Streamlined property transfers and ownership records
+
+**Business Implications:**
+• **Trust Without Intermediaries** - Direct peer-to-peer transactions
+• **Transparency** - All participants can verify transactions
+• **Cost Reduction** - Eliminates middlemen in many processes
+• **Global Accessibility** - 24/7 operations without geographic restrictions
+
+What blockchain application interests you most? 💎`;
+            }
+            
+            return `💻 Technology is shaping our future! I can explain:
+
+**Programming & Software:** Languages, frameworks, development methodologies
+**AI & Machine Learning:** Algorithms, neural networks, applications
+**Blockchain & Crypto:** Distributed systems, cryptocurrencies, smart contracts
+**Cybersecurity:** Protection methods, encryption, privacy technologies
+**Cloud Computing:** Infrastructure, services, digital transformation
+
+What technology topic would you like to explore? 🌐`;
+        }
+        
+        // Business questions
+        if (topics.isBusiness) {
+            if (msg.includes('startup') || msg.includes('entrepreneur')) {
+                return `🚀 **Starting a Business** is an exciting journey! Here's a comprehensive roadmap:
+
+**Phase 1: Foundation**
+• **Market Research** - Validate your idea, understand customer needs
+• **Business Model** - How will you create and capture value?
+• **Competitive Analysis** - What's your unique advantage?
+• **Financial Planning** - Startup costs, runway, revenue projections
+
+**Phase 2: Launch Preparation**
+• **Legal Structure** - LLC, Corporation, Partnership decisions
+• **Brand Development** - Name, logo, messaging, visual identity
+• **Digital Presence** - Professional website, social media, online credibility
+• **Operations Setup** - Systems, processes, tools, partnerships
+
+**Phase 3: Market Entry**
+• **Marketing Strategy** - How to reach your first customers cost-effectively
+• **Sales Process** - Convert interest into revenue
+• **Customer Feedback** - Iterate based on real user experience
+• **Growth Metrics** - Track what matters for scaling
+
+**Digital Presence is Critical:** In today's market, customers expect to find you online. A professional digital presence builds trust and credibility from day one.
+
+This is exactly what NextReach specializes in - complete digital transformation packages that handle websites, social media, branding, and marketing materials. Our Basic Presence package is even FREE right now for startups!
+
+What stage of your entrepreneurial journey are you in? 💡`;
+            }
+            
+            if (msg.includes('marketing') || msg.includes('customers')) {
+                return `📈 **Modern Marketing** is all about connecting with customers authentically:
+
+**Digital Marketing Foundations:**
+• **Content Marketing** - Valuable content that attracts and engages
+• **Social Media** - Build community and brand awareness
+• **SEO** - Be found when customers search for solutions
+• **Email Marketing** - Nurture relationships and drive conversions
+• **Paid Advertising** - Targeted campaigns for specific outcomes
+
+**Customer Acquisition Strategy:**
+• **Ideal Customer Profile** - Who exactly are you serving?
+• **Value Proposition** - Why should they choose you over alternatives?
+• **Customer Journey** - Map touchpoints from awareness to purchase
+• **Conversion Optimization** - Improve at each stage of the funnel
+
+**Budget-Friendly Approaches:**
+• **Organic Social Media** - Consistent, valuable posts build following
+• **Local SEO** - Dominate local search results
+• **Referral Programs** - Turn customers into advocates
+• **Content Creation** - Blog posts, videos, podcasts establish expertise
+
+**Professional Digital Presence:** The foundation of all modern marketing is having a professional online presence that builds trust and showcases your value.
+
+NextReach handles this completely - from websites to social media setup to promotional videos - everything you need to look professional and attract customers online.
+
+What's your biggest marketing challenge right now? 🎯`;
+            }
+            
+            return `💼 Business strategy is my expertise! I can help with:
+
+**Strategy & Planning:** Market analysis, competitive positioning, growth strategies
+**Marketing & Sales:** Customer acquisition, digital marketing, conversion optimization  
+**Operations:** Process improvement, efficiency, scaling considerations
+**Finance:** Business models, pricing strategies, financial planning
+**Leadership:** Team building, decision-making, organizational development
+
+What business challenge can I help you tackle? 📊`;
+        }
+        
+        // Default detailed response for questions
+        return `🎯 That's a great question! I'd love to provide a detailed answer. 
+
+To give you the most helpful response, could you be a bit more specific about what aspect you're most interested in? The more details you provide, the more comprehensive and useful my answer can be.
+
+For example:
+• Are you looking for a basic explanation or advanced details?
+• Is this for personal learning, business application, or academic purposes?
+• What's your current level of knowledge on this topic?
+
+I'm equipped to handle everything from beginner-friendly explanations to expert-level analysis across virtually any field! 🧠`;
+    }
+    
+    addMessage(text, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${sender}-message`;
+        
+        // Format the message content
+        const formattedText = this.formatMessage(text);
+        
+        messageDiv.innerHTML = `
+            <div class="message-avatar">
+                <i class="fas fa-${sender === 'user' ? 'user' : 'robot'}"></i>
+            </div>
+            <div class="message-content">
+                ${formattedText}
+            </div>
+        `;
+        
+        this.chatMessages.appendChild(messageDiv);
+        this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
+    }
+    
+    formatMessage(text) {
+        // Convert markdown-style formatting to HTML
+        return text
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/\*(.*?)\*/g, '<em>$1</em>')
+            .replace(/\n/g, '<br>');
+    }
+    
+    showTyping() {
+        const typingDiv = document.createElement('div');
+        typingDiv.className = 'message bot-message typing-indicator';
+        typingDiv.id = 'typingIndicator';
+        
+        typingDiv.innerHTML = `
+            <div class="message-avatar">
+                <i class="fas fa-robot"></i>
+            </div>
+            <div class="message-content">
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+            </div>
+        `;
+        
+        this.chatMessages.appendChild(typingDiv);
+        this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
+    }
+    
+    hideTyping() {
+        const typingIndicator = document.getElementById('typingIndicator');
+        if (typingIndicator) {
+            typingIndicator.remove();
+        }
+    }
+}
+
+// Initialize AI Chat when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    new AIChat();
+});

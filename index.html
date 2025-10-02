@@ -83,9 +83,10 @@
             <div class="services-grid">
                 <div class="service-card package-card">
                     <div class="package-badge">1️⃣</div>
+                    <div class="free-badge">🎉 FREE</div>
                     <h3>Basic Presence</h3>
-                    <div class="package-price">$1,000</div>
-                    <p class="package-subtitle">Perfect for small businesses or solo entrepreneurs taking the first step online.</p>
+                    <div class="package-price"><span class="original-price">$1,000</span> <span class="free-price">FREE</span></div>
+                    <p class="package-subtitle">Perfect for small businesses or solo entrepreneurs taking the first step online. <strong>Limited time offer!</strong></p>
                     <ul class="package-features">
                         <li>1-page website or landing page</li>
                         <li>Basic SEO setup</li>
@@ -98,9 +99,10 @@
                 
                 <div class="service-card package-card featured">
                     <div class="package-badge">2️⃣</div>
+                    <div class="discount-badge">🔥 70% OFF</div>
                     <h3>Professional Package</h3>
-                    <div class="package-price">$2,200</div>
-                    <p class="package-subtitle">For growing businesses that want a complete online presence.</p>
+                    <div class="package-price"><span class="original-price">$2,200</span> <span class="discounted-price">$660</span></div>
+                    <p class="package-subtitle">For growing businesses that want a complete online presence. <strong>Special launch pricing!</strong></p>
                     <ul class="package-features">
                         <li>Multi-page website (up to 5 pages)</li>
                         <li>Social media setup (3 platforms)</li>
@@ -113,9 +115,10 @@
                 
                 <div class="service-card package-card">
                     <div class="package-badge">3️⃣</div>
+                    <div class="discount-badge">💎 65% OFF</div>
                     <h3>Premium Launch</h3>
-                    <div class="package-price">$4,000</div>
-                    <p class="package-subtitle">For businesses ready to make a big impact online.</p>
+                    <div class="package-price"><span class="original-price">$4,000</span> <span class="discounted-price">$1,400</span></div>
+                    <p class="package-subtitle">For businesses ready to make a big impact online. <strong>Premium value at startup price!</strong></p>
                     <ul class="package-features">
                         <li>Custom website (up to 10 pages)</li>
                         <li>All major social media platforms</li>
@@ -719,6 +722,62 @@
             </div>
         </div>
     </footer>
+
+    <!-- AI Chat Widget -->
+    <div class="ai-chat-widget" id="aiChatWidget">
+        <div class="chat-header">
+            <div class="chat-avatar">
+                <i class="fas fa-robot"></i>
+            </div>
+            <div class="chat-info">
+                <h4>NextReach AI Assistant</h4>
+                <span class="chat-status">Online - Ask me anything!</span>
+            </div>
+            <button class="chat-close" id="chatClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot-message">
+                <div class="message-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="message-content">
+                    <p>👋 Hi! I'm your advanced AI assistant. I can help you with:</p>
+                    <ul>
+                        <li>🧠 Any topic - science, technology, business, arts, etc.</li>
+                        <li>💼 Business strategy and growth advice</li>
+                        <li>📦 NextReach packages and digital marketing</li>
+                        <li>🎯 Learning and explanations on complex topics</li>
+                        <li>💡 Creative problem-solving and ideas</li>
+                    </ul>
+                    <p>Ask me anything! I'm here to help. 🚀</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chat-input-container">
+            <div class="chat-input-wrapper">
+                <input type="text" id="chatInput" placeholder="Ask about our packages, pricing, timeline..." maxlength="500">
+                <button id="chatSend">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+            <div class="chat-suggestions">
+                <button class="suggestion-btn" data-question="What packages do you offer?">📦 NextReach</button>
+                <button class="suggestion-btn" data-question="Explain artificial intelligence">🤖 AI Topics</button>
+                <button class="suggestion-btn" data-question="How to grow my business online?">💼 Business</button>
+                <button class="suggestion-btn" data-question="What is digital marketing?">🎯 Marketing</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Chat Toggle Button -->
+    <div class="chat-toggle" id="chatToggle">
+        <i class="fas fa-comments"></i>
+        <span class="chat-notification">Ask AI</span>
+    </div>
 
     <script src="script.js"></script>
 </body>
