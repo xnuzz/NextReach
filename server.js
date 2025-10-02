@@ -89,6 +89,7 @@ const validateChatInput = (req, res, next) => {
 // Secure API proxy endpoint
 app.post('/api/chat', chatLimiter, validateChatInput, async (req, res) => {
     try {
+        console.log('📥 Received chat request:', JSON.stringify(req.body, null, 2));
         const { messages, max_tokens = 1000, temperature = 0.7 } = req.body;
         
         // Validate API key exists
@@ -101,7 +102,20 @@ app.post('/api/chat', chatLimiter, validateChatInput, async (req, res) => {
         }
         
         console.log('🚀 Proxying request to DeepSeek API...');
+        console.log('📤 API Request payload:', JSON.stringify({
+            model: 'deepseek-chat',
+            messages: messages,
+            max_tokens: Math.min(max_tokens, 1500),
+            temperature: Math.max(0.1, Math.min(temperature, 1.0))
+        }, null, 2));
         
+        // Add timeout to server-side request
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => {
+            console.log('⏰ Server request timeout after 25 seconds');
+            controller.abort();
+        }, 25000); // 25 seconds server timeout
+
         const response = await fetch('https://api.deepseek.com/v1/chat/completions', {
             method: 'POST',
             headers: {
@@ -115,12 +129,17 @@ app.post('/api/chat', chatLimiter, validateChatInput, async (req, res) => {
                 max_tokens: Math.min(max_tokens, 1500), // Cap max tokens
                 temperature: Math.max(0.1, Math.min(temperature, 1.0)), // Clamp temperature
                 top_p: 0.9
-            })
+            }),
+            signal: controller.signal
         });
+        
+        clearTimeout(timeoutId); // Clear timeout on response
         
         if (!response.ok) {
             const errorText = await response.text();
-            console.error('❌ DeepSeek API error:', response.status, errorText);
+            console.error('❌ DeepSeek API error:', response.status, response.statusText);
+            console.error('❌ Error details:', errorText);
+            console.error('❌ Request headers:', response.headers);
             
             return res.status(500).json({ 
                 error: 'AI service temporarily unavailable',
