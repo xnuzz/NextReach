@@ -467,10 +467,10 @@ class RegistrationForm {
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
             
-            // Reset form after success
+            // Navigate to booking page after showing success message
             setTimeout(() => {
-                this.resetForm();
-            }, 3000);
+                this.navigateToBooking();
+            }, 2000);
         }, 2000);
         
         // Log form data (replace with actual API call)
@@ -487,6 +487,28 @@ class RegistrationForm {
         `;
         
         this.form.insertBefore(successDiv, this.form.firstChild);
+    }
+    
+    navigateToBooking() {
+        // Hide all main sections
+        const sections = ['home', 'packages', 'about', 'portfolio', 'reviews', 'register', 'contact'];
+        sections.forEach(id => {
+            const section = document.getElementById(id);
+            if (section) section.style.display = 'none';
+        });
+        
+        // Show booking section
+        const bookingSection = document.getElementById('booking');
+        if (bookingSection) {
+            bookingSection.style.display = 'block';
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Reset form after navigation
+        setTimeout(() => {
+            this.resetForm();
+        }, 500);
     }
     
     resetForm() {
@@ -1711,3 +1733,353 @@ I'm equipped to handle everything from beginner-friendly explanations to expert-
 document.addEventListener('DOMContentLoaded', () => {
     new AIChat();
 });
+
+// Booking Page Navigation
+function closeBooking() {
+    // Hide booking section
+    const bookingSection = document.getElementById('booking');
+    if (bookingSection) bookingSection.style.display = 'none';
+    
+    // Show all main sections
+    const sections = ['home', 'packages', 'about', 'portfolio', 'reviews', 'register', 'contact'];
+    sections.forEach(id => {
+        const section = document.getElementById(id);
+        if (section) section.style.display = 'block';
+    });
+    
+    // Reset booking page state
+    const preBookingForm = document.getElementById('preBookingForm');
+    const mainCalendar = document.getElementById('mainBookingCalendar');
+    if (preBookingForm) preBookingForm.style.display = 'block';
+    if (mainCalendar) mainCalendar.style.display = 'none';
+    
+    // Scroll to top smoothly
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function openBookingPage(event) {
+    if (event) event.preventDefault();
+    
+    console.log('Opening booking page...');
+    
+    // Hide all main sections
+    const sections = ['home', 'packages', 'about', 'portfolio', 'reviews', 'register', 'contact'];
+    sections.forEach(id => {
+        const section = document.getElementById(id);
+        if (section) section.style.display = 'none';
+    });
+    
+    // Show booking section
+    const bookingSection = document.getElementById('booking');
+    if (bookingSection) {
+        bookingSection.style.display = 'block';
+        
+        // Ensure pre-booking form is shown and calendar is hidden
+        const preBookingForm = document.getElementById('preBookingForm');
+        const mainCalendar = document.getElementById('mainBookingCalendar');
+        
+        if (preBookingForm) {
+            preBookingForm.style.display = 'block';
+            console.log('Pre-booking form shown');
+        }
+        
+        if (mainCalendar) {
+            mainCalendar.style.display = 'none';
+            console.log('Calendar hidden');
+        }
+        
+        // Reset form to step 1
+        currentPreBookingStep = 1;
+        
+        // Make sure first step is visible
+        setTimeout(() => {
+            updatePreBookingSteps();
+            
+            // Focus first input for better UX
+            const firstInput = document.getElementById('pb-name');
+            if (firstInput) {
+                firstInput.focus();
+                console.log('Focused first input');
+            }
+        }, 100);
+    }
+    
+    // Scroll to top smoothly
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Pre-Booking Form Multi-Step Logic
+let currentPreBookingStep = 1;
+let preBookingData = {};
+
+function nextPreBookingStep() {
+    const currentStep = document.querySelector(`.form-step[data-step="${currentPreBookingStep}"]`);
+    const inputs = currentStep.querySelectorAll('input[required], select[required]');
+    
+    // Validate current step
+    let isValid = true;
+    inputs.forEach(input => {
+        if (!input.value.trim()) {
+            isValid = false;
+            input.style.borderColor = '#ef4444';
+            
+            // Remove error styling after user starts typing
+            input.addEventListener('input', function() {
+                this.style.borderColor = '#e2e8f0';
+            }, { once: true });
+        }
+    });
+    
+    if (!isValid) {
+        // Shake animation for error
+        currentStep.style.animation = 'shake 0.5s';
+        setTimeout(() => {
+            currentStep.style.animation = '';
+        }, 500);
+        return;
+    }
+    
+    // Save current step data
+    savePreBookingStepData();
+    
+    // Move to next step
+    if (currentPreBookingStep < 3) {
+        currentPreBookingStep++;
+        updatePreBookingSteps();
+    }
+}
+
+function prevPreBookingStep() {
+    if (currentPreBookingStep > 1) {
+        currentPreBookingStep--;
+        updatePreBookingSteps();
+    }
+}
+
+function updatePreBookingSteps() {
+    // Update form steps visibility
+    document.querySelectorAll('.form-step').forEach((step, index) => {
+        step.classList.remove('active');
+        if (index + 1 === currentPreBookingStep) {
+            step.classList.add('active');
+        }
+    });
+    
+    // Update step indicators
+    document.querySelectorAll('.step-dot').forEach((dot, index) => {
+        dot.classList.remove('active');
+        if (index + 1 === currentPreBookingStep) {
+            dot.classList.add('active');
+        }
+    });
+}
+
+function savePreBookingStepData() {
+    const currentStep = document.querySelector(`.form-step[data-step="${currentPreBookingStep}"]`);
+    const inputs = currentStep.querySelectorAll('input, select, textarea');
+    
+    inputs.forEach(input => {
+        if (input.type === 'checkbox') {
+            if (!preBookingData.goals) preBookingData.goals = [];
+            if (input.checked && !preBookingData.goals.includes(input.value)) {
+                preBookingData.goals.push(input.value);
+            }
+        } else {
+            preBookingData[input.name] = input.value;
+        }
+    });
+}
+
+// Pre-Booking Form Submission
+document.addEventListener('DOMContentLoaded', () => {
+    const preBookingForm = document.getElementById('preBookingFormElement');
+    
+    if (preBookingForm) {
+        preBookingForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Save final step data
+            savePreBookingStepData();
+            
+            // Show loading state
+            const submitBtn = this.querySelector('.btn-submit-prebooking');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            submitBtn.disabled = true;
+            
+            // Simulate API call to save lead data
+            setTimeout(() => {
+                console.log('Pre-booking data:', preBookingData);
+                
+                // Show calendar with personalized welcome
+                showPersonalizedCalendar();
+                
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 1500);
+        });
+    }
+});
+
+function showPersonalizedCalendar() {
+    // Hide pre-booking form
+    const preBookingForm = document.getElementById('preBookingForm');
+    if (preBookingForm) {
+        preBookingForm.style.display = 'none';
+    }
+    
+    // Show calendar
+    const mainCalendar = document.getElementById('mainBookingCalendar');
+    if (mainCalendar) {
+        mainCalendar.style.display = 'grid';
+    }
+    
+    // Personalize welcome message
+    const welcomeName = document.getElementById('welcomeName');
+    const welcomeCompany = document.getElementById('welcomeCompany');
+    const welcomeGoals = document.getElementById('welcomeGoals');
+    
+    if (welcomeName && preBookingData.name) {
+        welcomeName.textContent = preBookingData.name.split(' ')[0]; // First name
+    }
+    
+    if (welcomeCompany && preBookingData.company) {
+        welcomeCompany.textContent = preBookingData.company;
+    }
+    
+    if (welcomeGoals && preBookingData.goals && preBookingData.goals.length > 0) {
+        welcomeGoals.innerHTML = preBookingData.goals.map(goal => {
+            const goalLabels = {
+                'increase-leads': '📈 Increase Leads',
+                'brand-awareness': '🎯 Brand Awareness',
+                'website-traffic': '🚀 Website Traffic',
+                'social-media': '📱 Social Media Growth',
+                'sales': '💰 Boost Sales',
+                'seo': '🔍 SEO Ranking'
+            };
+            return `<span class="goal-badge">${goalLabels[goal] || goal}</span>`;
+        }).join('');
+    }
+    
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    // Store lead data (you can send to your backend here)
+    localStorage.setItem('latestLead', JSON.stringify(preBookingData));
+}
+
+// Skip to Calendar - Direct Booking without Form
+function skipToCalendar() {
+    // Hide pre-booking form
+    const preBookingForm = document.getElementById('preBookingForm');
+    if (preBookingForm) {
+        preBookingForm.style.display = 'none';
+    }
+    
+    // Show calendar without personalized welcome
+    const mainCalendar = document.getElementById('mainBookingCalendar');
+    if (mainCalendar) {
+        mainCalendar.style.display = 'grid';
+    }
+    
+    // Hide personalized welcome (since no form data)
+    const personalizedWelcome = document.getElementById('personalizedWelcome');
+    if (personalizedWelcome) {
+        personalizedWelcome.style.display = 'none';
+    }
+    
+    // Smooth scroll to calendar
+    setTimeout(() => {
+        window.scrollTo({ top: 400, behavior: 'smooth' });
+    }, 100);
+    
+    // Track direct booking
+    console.log('User skipped form - direct booking');
+}
+
+// Scroll to Calendly - Direct scroll to calendar widget
+function scrollToCalendly() {
+    // Hide pre-booking form
+    const preBookingForm = document.getElementById('preBookingForm');
+    if (preBookingForm) {
+        preBookingForm.style.display = 'none';
+    }
+    
+    // Show calendar
+    const mainCalendar = document.getElementById('mainBookingCalendar');
+    if (mainCalendar) {
+        mainCalendar.style.display = 'grid';
+    }
+    
+    // Hide personalized welcome (no form data)
+    const personalizedWelcome = document.getElementById('personalizedWelcome');
+    if (personalizedWelcome) {
+        personalizedWelcome.style.display = 'none';
+    }
+    
+    // Smooth scroll to Calendly widget
+    setTimeout(() => {
+        const calendlySection = document.getElementById('mainBookingCalendar');
+        if (calendlySection) {
+            calendlySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }, 100);
+    
+    // Track direct Calendly booking
+    console.log('User clicked quick action - scrolling to Calendly');
+}
+
+// Animated Counter for Stats
+function animateCounter(element, target, duration = 2000) {
+    const start = 0;
+    const increment = target / (duration / 16);
+    let current = start;
+    
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            element.textContent = Math.ceil(target);
+            clearInterval(timer);
+        } else {
+            element.textContent = Math.ceil(current);
+        }
+    }, 16);
+}
+
+// Initialize counters when booking page is visible
+function initializeCounters() {
+    const counters = document.querySelectorAll('.count-up');
+    counters.forEach(counter => {
+        const target = parseInt(counter.textContent);
+        animateCounter(counter, target, 2000);
+    });
+}
+
+// Run counters when booking page opens
+document.addEventListener('DOMContentLoaded', () => {
+    // Observer to trigger animation when booking section is visible
+    const bookingSection = document.getElementById('booking');
+    if (bookingSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    initializeCounters();
+                    observer.disconnect();
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        observer.observe(bookingSection);
+    }
+});
+
+// Add shake animation
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+        20%, 40%, 60%, 80% { transform: translateX(10px); }
+    }
+`;
+document.head.appendChild(style);

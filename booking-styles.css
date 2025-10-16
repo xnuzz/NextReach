@@ -1,0 +1,632 @@
+/* ========================================
+   PRE-BOOKING REGISTRATION FORM
+   ======================================== */
+
+/* Quick Book Banner */
+.quick-book-banner {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border: 2px solid #fbbf24;
+    border-radius: 15px;
+    padding: 1.25rem 2rem;
+    margin: 2rem auto 0;
+    max-width: 700px;
+    box-shadow: 0 4px 15px rgba(251, 191, 36, 0.2);
+}
+
+.quick-book-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.quick-book-text {
+    font-weight: 600;
+    color: #92400e;
+    font-size: 1.05rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.quick-book-text i {
+    color: #f59e0b;
+    font-size: 1.2rem;
+}
+
+.btn-skip-to-calendar {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    color: white;
+    padding: 0.875rem 1.75rem;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+}
+
+.btn-skip-to-calendar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+    background: linear-gradient(135deg, #7c3aed 0%, #6366f1 100%);
+}
+
+.btn-skip-to-calendar i {
+    font-size: 1.1rem;
+}
+
+.pre-booking-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    animation: fadeIn 0.6s ease;
+}
+
+.pre-booking-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+    position: relative;
+}
+
+.pre-booking-left {
+    position: sticky;
+    top: 100px;
+    z-index: 1;
+}
+
+.pre-booking-right {
+    position: relative;
+    z-index: 2;
+}
+
+.pre-booking-hero {
+    background: white;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+}
+
+.floating-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+    color: #1e293b;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+    animation: pulse 2s infinite;
+}
+
+.floating-badge i {
+    margin-right: 0.5rem;
+    color: #f59e0b;
+}
+
+.pre-booking-hero h3 {
+    font-size: 2rem;
+    color: #1e293b;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.lead-text {
+    font-size: 1.1rem;
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.preparation-benefits h4 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #6366f1;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.benefit-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    align-items: start;
+}
+
+.benefit-icon {
+    font-size: 2rem;
+    min-width: 50px;
+    text-align: center;
+}
+
+.benefit-content strong {
+    display: block;
+    color: #1e293b;
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+}
+
+.benefit-content p {
+    color: #64748b;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.social-proof-mini {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 2px solid #e2e8f0;
+}
+
+.proof-avatars {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-left: -10px;
+}
+
+.avatar:first-child {
+    margin-left: 0;
+}
+
+.proof-text {
+    font-weight: 600;
+    color: #475569;
+    margin-left: 0.5rem;
+}
+
+.proof-stats {
+    display: flex;
+    gap: 2rem;
+}
+
+.mini-stat {
+    text-align: center;
+}
+
+.mini-stat strong {
+    display: block;
+    font-size: 1.5rem;
+    color: #6366f1;
+    font-weight: 700;
+}
+
+.mini-stat span {
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+/* Pre-Booking Form Card */
+.pre-booking-right {
+    position: relative;
+    z-index: 2;
+}
+
+.pre-booking-form-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+    border: 1px solid #e2e8f0;
+    position: relative;
+    z-index: 5;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid #f1f5f9;
+}
+
+.form-step-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.step-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.step-dot.active {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    width: 30px;
+    border-radius: 6px;
+}
+
+.form-header h3 {
+    font-size: 1.8rem;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.form-header p {
+    color: #64748b;
+    font-size: 1rem;
+}
+
+.pre-booking-form .form-step {
+    display: none;
+    animation: fadeInSlide 0.4s ease;
+}
+
+.pre-booking-form .form-step.active {
+    display: block;
+}
+
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.form-group-modern {
+    margin-bottom: 1.5rem;
+}
+
+.form-group-modern label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.form-group-modern label i {
+    color: #6366f1;
+}
+
+.form-group-modern input,
+.form-group-modern select,
+.form-group-modern textarea {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+    background: white;
+    position: relative;
+    z-index: 10;
+    pointer-events: auto;
+}
+
+.form-group-modern input:focus,
+.form-group-modern select:focus,
+.form-group-modern textarea:focus {
+    outline: none;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+    z-index: 20;
+}
+
+.form-group-modern textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Checkbox Grid */
+.checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.checkbox-modern {
+    position: relative;
+    cursor: pointer;
+}
+
+.checkbox-modern input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.checkbox-label i {
+    font-size: 1.2rem;
+    color: #6366f1;
+}
+
+.checkbox-modern input[type="checkbox"]:checked + .checkbox-label {
+    border-color: #6366f1;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
+}
+
+.checkbox-label:hover {
+    border-color: #6366f1;
+    transform: translateY(-2px);
+}
+
+/* Form Buttons */
+.btn-next,
+.btn-back,
+.btn-submit-prebooking {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.btn-next,
+.btn-submit-prebooking {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    color: white;
+    width: 100%;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+}
+
+.btn-next:hover,
+.btn-submit-prebooking:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+}
+
+.btn-back {
+    background: #f1f5f9;
+    color: #475569;
+}
+
+.btn-back:hover {
+    background: #e2e8f0;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.form-buttons .btn-back {
+    flex: 0 0 auto;
+    padding: 1rem 1.5rem;
+}
+
+.form-buttons .btn-next {
+    flex: 1;
+}
+
+.form-footer {
+    margin-top: 1.5rem;
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 2px solid #f1f5f9;
+}
+
+.form-footer p {
+    color: #64748b;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.form-footer i {
+    color: #22c55e;
+}
+
+/* Personalized Welcome Message */
+.personalized-welcome {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    color: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    text-align: center;
+    margin-bottom: 3rem;
+    box-shadow: 0 10px 40px rgba(99, 102, 241, 0.3);
+    animation: slideInDown 0.6s ease;
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.welcome-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    backdrop-filter: blur(10px);
+}
+
+.welcome-badge i {
+    margin-right: 0.5rem;
+    color: #22c55e;
+}
+
+.personalized-welcome h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.personalized-welcome p {
+    font-size: 1.1rem;
+    opacity: 0.95;
+    margin-bottom: 1rem;
+}
+
+.welcome-goals {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+}
+
+.goal-badge {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.welcome-cta {
+    font-size: 1.2rem !important;
+    font-weight: 600;
+    margin-top: 1.5rem !important;
+    margin-bottom: 0 !important;
+}
+
+/* CTA Button in Navbar */
+.nav-link-cta {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    color: white !important;
+    padding: 0.6rem 1.2rem !important;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+}
+
+.nav-link-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+    background: linear-gradient(135deg, #7c3aed 0%, #6366f1 100%);
+}
+
+.nav-link-cta i {
+    margin-right: 0.5rem;
+}
+
+/* Responsive Design for Pre-Booking Form */
+@media (max-width: 968px) {
+    .quick-book-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .btn-skip-to-calendar {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .pre-booking-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .pre-booking-left {
+        position: static;
+    }
+
+    .checkbox-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pre-booking-hero {
+        padding: 2rem;
+    }
+
+    .pre-booking-hero h3 {
+        font-size: 1.6rem;
+    }
+
+    .benefit-icon {
+        font-size: 1.5rem;
+        min-width: 40px;
+    }
+
+    .proof-stats {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .pre-booking-form-card {
+        padding: 1.5rem;
+    }
+
+    .form-header h3 {
+        font-size: 1.5rem;
+    }
+
+    .floating-badge {
+        padding: 0.4rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    .btn-next,
+    .btn-submit-prebooking {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.95rem;
+    }
+
+    .form-buttons {
+        flex-direction: column;
+    }
+
+    .form-buttons .btn-back {
+        width: 100%;
+    }
+}
