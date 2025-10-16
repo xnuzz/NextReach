@@ -187,6 +187,9 @@ class RegistrationForm {
         
         // Phone number formatting
         this.addPhoneFormatting();
+        
+        // Package card interaction enhancement
+        this.enhancePackageCards();
     }
     
     nextStep() {
@@ -394,6 +397,44 @@ class RegistrationForm {
                 e.target.value = value;
             });
         }
+    }
+    
+    enhancePackageCards() {
+        // Add smooth interaction for package cards
+        const packageCards = document.querySelectorAll('.package-card');
+        packageCards.forEach(card => {
+            const input = card.querySelector('input[type="radio"]');
+            const cardInner = card.querySelector('.package-card-inner');
+            
+            if (input && cardInner) {
+                // Handle card click
+                card.addEventListener('click', (e) => {
+                    // Don't trigger if clicking on inner elements
+                    if (e.target === card || e.target === cardInner) {
+                        input.checked = true;
+                        input.dispatchEvent(new Event('change'));
+                    }
+                });
+                
+                // Handle radio change
+                input.addEventListener('change', () => {
+                    // Remove selected class from all cards
+                    document.querySelectorAll('.package-card').forEach(c => {
+                        c.classList.remove('selected');
+                    });
+                    
+                    // Add selected class to current card
+                    if (input.checked) {
+                        card.classList.add('selected');
+                    }
+                });
+                
+                // Initialize selected state
+                if (input.checked) {
+                    card.classList.add('selected');
+                }
+            }
+        });
     }
     
     submitForm(e) {

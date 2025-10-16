@@ -505,35 +505,163 @@
                     
                     <!-- Step 3: Package Selection & Goals -->
                     <div class="form-step" data-step="3">
-                        <h3>Your Goals & Package</h3>
+                        <h3>🎯 Choose Your Growth Package</h3>
+                        <p style="color: #6b7280; margin-bottom: 2.5rem; font-size: 1rem; text-align: center;">Select the perfect plan to launch your digital empire</p>
                         
-                        <div class="form-group">
-                            <label class="radio-label">Which package interests you most?</label>
-                            <div class="radio-group">
-                                <label class="radio-option">
-                                    <input type="radio" name="package" value="basic" required>
-                                    <span class="radio-custom"></span>
-                                    <div class="radio-content">
-                                        <strong>Basic Presence - $1,000</strong>
-                                        <p>1-page website, social media setup</p>
-                                    </div>
-                                </label>
-                                <label class="radio-option">
-                                    <input type="radio" name="package" value="professional" required>
-                                    <span class="radio-custom"></span>
-                                    <div class="radio-content">
-                                        <strong>Professional Package - $2,200</strong>
-                                        <p>Multi-page website, social media, 1 video</p>
-                                    </div>
-                                </label>
-                                <label class="radio-option">
-                                    <input type="radio" name="package" value="premium" required>
-                                    <span class="radio-custom"></span>
-                                    <div class="radio-content">
-                                        <strong>Premium Launch - $4,000</strong>
-                                        <p>Custom website, all platforms, 3 videos</p>
-                                    </div>
-                                </label>
+                        <!-- Package Selection Cards -->
+                        <div class="premium-packages-wrapper">
+                            <div class="package-selector">
+                                <!-- BASIC PACKAGE -->
+                                <div class="pricing-card basic-card" data-package="basic">
+                                    <input type="radio" id="package-basic" name="package" value="basic" required>
+                                    <label for="package-basic" class="pricing-card-label">
+                                        <div class="card-badge free-badge">
+                                            <span class="badge-icon">🎉</span>
+                                            <span class="badge-text">100% FREE</span>
+                                        </div>
+                                        
+                                        <div class="card-header">
+                                            <div class="card-icon">🚀</div>
+                                            <h4 class="card-title">Basic Presence</h4>
+                                            <p class="card-subtitle">Perfect to get started</p>
+                                        </div>
+                                        
+                                        <div class="card-pricing">
+                                            <div class="price-strike">$1,000</div>
+                                            <div class="price-main">FREE</div>
+                                            <div class="price-note">Limited Time Offer!</div>
+                                        </div>
+                                        
+                                        <ul class="card-features">
+                                            <li><i class="fas fa-check-circle"></i> Professional 1-page website</li>
+                                            <li><i class="fas fa-check-circle"></i> Basic SEO setup</li>
+                                            <li><i class="fas fa-check-circle"></i> 2 social media accounts</li>
+                                            <li><i class="fas fa-check-circle"></i> Google Analytics</li>
+                                            <li><i class="fas fa-clock"></i> Ready in 2-3 weeks</li>
+                                        </ul>
+                                        
+                                        <div class="card-footer">
+                                            <span class="perfect-for">
+                                                <i class="fas fa-star"></i>
+                                                Perfect for startups
+                                            </span>
+                                        </div>
+                                        
+                                        <div class="select-indicator">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>Selected</span>
+                                        </div>
+                                    </label>
+                                </div>
+                                
+                                <!-- PROFESSIONAL PACKAGE -->
+                                <div class="pricing-card pro-card recommended" data-package="professional">
+                                    <input type="radio" id="package-professional" name="package" value="professional" required>
+                                    <label for="package-professional" class="pricing-card-label">
+                                        <div class="card-badge popular-badge">
+                                            <span class="badge-icon">⭐</span>
+                                            <span class="badge-text">MOST POPULAR</span>
+                                        </div>
+                                        
+                                        <div class="recommended-ribbon">
+                                            <span>RECOMMENDED</span>
+                                        </div>
+                                        
+                                        <div class="card-header">
+                                            <div class="card-icon">🔥</div>
+                                            <h4 class="card-title">Professional</h4>
+                                            <p class="card-subtitle">Best value for growth</p>
+                                        </div>
+                                        
+                                        <div class="card-pricing">
+                                            <div class="price-strike">$2,200</div>
+                                            <div class="price-main">$660</div>
+                                            <div class="price-save">Save $1,540 (70% OFF)</div>
+                                        </div>
+                                        
+                                        <ul class="card-features">
+                                            <li><i class="fas fa-check-circle"></i> Multi-page website (5 pages)</li>
+                                            <li><i class="fas fa-check-circle"></i> 3 social media platforms</li>
+                                            <li><i class="fas fa-check-circle"></i> 1 promotional video</li>
+                                            <li><i class="fas fa-check-circle"></i> Advanced SEO</li>
+                                            <li><i class="fas fa-check-circle"></i> Lead capture forms</li>
+                                            <li><i class="fas fa-clock"></i> Ready in 3-4 weeks</li>
+                                        </ul>
+                                        
+                                        <div class="card-footer">
+                                            <span class="perfect-for">
+                                                <i class="fas fa-star"></i>
+                                                Perfect for growing businesses
+                                            </span>
+                                        </div>
+                                        
+                                        <div class="select-indicator">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>Selected</span>
+                                        </div>
+                                    </label>
+                                </div>
+                                
+                                <!-- PREMIUM PACKAGE -->
+                                <div class="pricing-card premium-card" data-package="premium">
+                                    <input type="radio" id="package-premium" name="package" value="premium" required>
+                                    <label for="package-premium" class="pricing-card-label">
+                                        <div class="card-badge premium-badge">
+                                            <span class="badge-icon">💎</span>
+                                            <span class="badge-text">PREMIUM</span>
+                                        </div>
+                                        
+                                        <div class="card-header">
+                                            <div class="card-icon">👑</div>
+                                            <h4 class="card-title">Premium Launch</h4>
+                                            <p class="card-subtitle">Complete transformation</p>
+                                        </div>
+                                        
+                                        <div class="card-pricing">
+                                            <div class="price-strike">$4,000</div>
+                                            <div class="price-main">$1,400</div>
+                                            <div class="price-save">Save $2,600 (65% OFF)</div>
+                                        </div>
+                                        
+                                        <ul class="card-features">
+                                            <li><i class="fas fa-check-circle"></i> Custom website (10 pages)</li>
+                                            <li><i class="fas fa-check-circle"></i> All major platforms</li>
+                                            <li><i class="fas fa-check-circle"></i> 3 professional videos</li>
+                                            <li><i class="fas fa-check-circle"></i> CRM integration</li>
+                                            <li><i class="fas fa-check-circle"></i> Brand guidelines</li>
+                                            <li><i class="fas fa-check-circle"></i> Priority support</li>
+                                            <li><i class="fas fa-clock"></i> Ready in 4-6 weeks</li>
+                                        </ul>
+                                        
+                                        <div class="card-footer">
+                                            <span class="perfect-for">
+                                                <i class="fas fa-star"></i>
+                                                Perfect for established brands
+                                            </span>
+                                        </div>
+                                        
+                                        <div class="select-indicator">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>Selected</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Trust Indicators -->
+                        <div class="trust-indicators">
+                            <div class="trust-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Money-back guarantee</span>
+                            </div>
+                            <div class="trust-item">
+                                <i class="fas fa-bolt"></i>
+                                <span>Fast delivery</span>
+                            </div>
+                            <div class="trust-item">
+                                <i class="fas fa-headset"></i>
+                                <span>24/7 Support</span>
                             </div>
                         </div>
                         
