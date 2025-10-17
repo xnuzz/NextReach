@@ -1,0 +1,14 @@
+[
+  {
+    "id": "e8c09890-6494-494d-b0c4-503927857427",
+    "email": "tsvetkovalex790@gmail.com",
+    "name": "Alexander",
+    "businessName": "",
+    "industry": "",
+    "createdAt": "2025-10-17T12:20:42.553Z",
+    "password": "$2b$10$CKTAvcoAsiGlLKNayI/FHerW4q.FUCWqd.5wHatQY9uUeu8YDkvLm",
+    "plan": "free",
+    "messagesUsed": 0,
+    "dailyLimit": 10
+  }
+]

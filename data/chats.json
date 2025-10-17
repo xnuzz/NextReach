@@ -1,0 +1,56 @@
+[
+  {
+    "id": "b9c4e703-73ba-4d2d-b25f-0e1c33492821",
+    "userId": "e8c09890-6494-494d-b0c4-503927857427",
+    "title": "New Conversation",
+    "messages": [],
+    "createdAt": "2025-10-17T12:32:55.709Z",
+    "updatedAt": "2025-10-17T12:32:55.709Z"
+  },
+  {
+    "id": "b8d292fa-da45-4383-8acf-eb24ab4da082",
+    "userId": "e8c09890-6494-494d-b0c4-503927857427",
+    "title": "New Conversation",
+    "messages": [
+      {
+        "id": "755031f7-58e6-460a-984c-4d4ab61c0eaf",
+        "role": "user",
+        "content": "Hi",
+        "timestamp": "2025-10-17T12:33:02.416Z"
+      }
+    ],
+    "createdAt": "2025-10-17T12:33:02.390Z",
+    "updatedAt": "2025-10-17T12:33:02.416Z"
+  },
+  {
+    "id": "b47d6b77-8910-4b97-91b0-97dac724d2b9",
+    "userId": "e8c09890-6494-494d-b0c4-503927857427",
+    "title": "New Conversation",
+    "messages": [],
+    "createdAt": "2025-10-17T12:36:56.215Z",
+    "updatedAt": "2025-10-17T12:36:56.215Z"
+  },
+  {
+    "id": "8171ad6c-64f1-4762-b7f1-3b507e3da95e",
+    "userId": "e8c09890-6494-494d-b0c4-503927857427",
+    "title": "New Conversation",
+    "messages": [
+      {
+        "id": "be05a48d-a935-4909-ac2f-e31abf21e33b",
+        "role": "user",
+        "content": "Hi",
+        "timestamp": "2025-10-17T12:36:59.889Z"
+      }
+    ],
+    "createdAt": "2025-10-17T12:36:59.832Z",
+    "updatedAt": "2025-10-17T12:36:59.889Z"
+  },
+  {
+    "id": "70b0cae1-f3a5-47cd-a43b-b52a93a4b013",
+    "userId": "e8c09890-6494-494d-b0c4-503927857427",
+    "title": "New Conversation",
+    "messages": [],
+    "createdAt": "2025-10-17T12:37:08.993Z",
+    "updatedAt": "2025-10-17T12:37:08.993Z"
+  }
+]
