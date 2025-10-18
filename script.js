@@ -1,17 +1,24 @@
 // Mobile Navigation Toggle
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
+const navActions = document.querySelector('.nav-actions');
 
 if (hamburger && navMenu) {
     hamburger.addEventListener('click', () => {
         hamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
+        if (navActions) {
+            navActions.classList.toggle('active');
+        }
     });
 
     // Close mobile menu when clicking on a link
-    document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+    document.querySelectorAll('.nav-link, .nav-btn').forEach(n => n.addEventListener('click', () => {
         hamburger.classList.remove('active');
         navMenu.classList.remove('active');
+        if (navActions) {
+            navActions.classList.remove('active');
+        }
     }));
 }
 
@@ -689,6 +696,9 @@ document.addEventListener('keydown', (e) => {
         if (hamburger && navMenu) {
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
+            if (navActions) {
+                navActions.classList.remove('active');
+            }
         }
     }
 });

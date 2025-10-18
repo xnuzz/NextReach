@@ -33,22 +33,75 @@
                     <a href="#portfolio" class="nav-link">Portfolio</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#register" class="nav-link">Get Started</a>
-                </li>
-                <li class="nav-item">
-                    <a href="ai-claude.html" class="nav-link nav-link-ai">
-                        <i class="fas fa-robot"></i> AI Assistant
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#book-call" class="nav-link nav-link-cta" onclick="openBookingPage(event)">
-                        <i class="fas fa-calendar-check"></i> Book a Call
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a href="#contact" class="nav-link">Contact</a>
                 </li>
             </ul>
+            <div class="nav-actions">
+                <a href="ai-claude.html" class="nav-btn nav-btn-ai" title="AI Assistant">
+                    <i class="fas fa-robot"></i>
+                    <span class="nav-btn-text">AI Assistant</span>
+                </a>
+                <a href="#book-call" class="nav-btn nav-btn-book" onclick="openBookingPage(event)" title="Book a Call">
+                    <i class="fas fa-calendar-check"></i>
+                    <span class="nav-btn-text">Book Call</span>
+                </a>
+                <!-- Auth buttons (shown when logged out) -->
+                <a href="login.html" class="nav-btn nav-btn-login auth-only-logged-out" title="Login">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span class="nav-btn-text">Login</span>
+                </a>
+                <a href="register.html" class="nav-btn nav-btn-primary auth-only-logged-out" title="Get Started">
+                    <i class="fas fa-rocket"></i>
+                    <span class="nav-btn-text">Get Started</span>
+                </a>
+                <!-- User profile (shown when logged in) -->
+                <div class="user-profile-wrapper auth-only-logged-in" style="display: none;">
+                    <button class="user-profile-btn" id="userProfileBtn">
+                        <div class="user-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <span class="user-name" id="userNameDisplay"></span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </button>
+                    <div class="user-dropdown" id="userDropdown">
+                        <div class="dropdown-header">
+                            <div class="user-info">
+                                <div class="user-avatar-large">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="user-details">
+                                    <p class="user-full-name" id="userFullName"></p>
+                                    <p class="user-email" id="userEmail"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-menu">
+                            <a href="ai-claude.html" class="dropdown-item">
+                                <i class="fas fa-robot"></i>
+                                <span>AI Assistant</span>
+                            </a>
+                            <a href="ai-claude.html#history" class="dropdown-item">
+                                <i class="fas fa-history"></i>
+                                <span>Saved Chats</span>
+                            </a>
+                            <a href="#profile" class="dropdown-item" id="profileLink">
+                                <i class="fas fa-user-circle"></i>
+                                <span>My Profile</span>
+                            </a>
+                            <a href="#settings" class="dropdown-item" id="settingsLink">
+                                <i class="fas fa-cog"></i>
+                                <span>Settings</span>
+                            </a>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <button class="dropdown-item logout-btn" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Logout</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
             <div class="hamburger">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -1559,6 +1612,8 @@
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
     <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 
+    <script src="database.js"></script>
+    <script src="session-manager.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
