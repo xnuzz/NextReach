@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Assistant - NextReach</title>
+    <link rel="icon" type="image/svg+xml" href="NextReach.svg">
+    <link rel="stylesheet" href="ai-claude.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+</head>
+<body>
+    <!-- Claude-Style Header -->
+    <header class="claude-header">
+        <div class="header-left">
+            <button class="menu-btn" id="menuBtn" title="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <a href="index.html" class="logo-link">
+                <img src="NextReach.svg" alt="NextReach" class="header-logo">
+                <span class="header-title">NextReach AI</span>
+            </a>
+        </div>
+        <div class="header-right">
+            <button class="new-chat-btn" id="newChatBtn">
+                <i class="fas fa-plus"></i>
+                <span>New chat</span>
+                <span class="new-chat-badge">HOT</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-content">
+            <div class="sidebar-header">
+                <h3>Chat History</h3>
+                <button class="close-sidebar" id="closeSidebar">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chat-history" id="chatHistory">
+                <div class="empty-history">
+                    <i class="fas fa-comments"></i>
+                    <p>No chat history yet</p>
+                    <p style="font-size: 0.8125rem; margin-top: 0.5rem;">Start a conversation to see it here</p>
+                </div>
+            </div>
+            <div class="sidebar-footer">
+                <button class="sidebar-new-chat" id="sidebarNewChat">
+                    <i class="fas fa-plus"></i>
+                    <span>New Chat</span>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Overlay for sidebar -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main Chat Container -->
+    <main class="chat-main">
+        <div class="chat-content">
+            <!-- Welcome Screen -->
+            <div class="welcome-screen" id="welcomeScreen">
+                <div class="welcome-wrapper">
+                    <h1 class="welcome-title">How can I help you today?</h1>
+                    
+                    <!-- Suggested Prompts Grid (2x2) -->
+                    <div class="suggestions-grid">
+                        <button class="suggestion-card" data-prompt="What makes NextReach different from other digital marketing agencies?">
+                            <div class="suggestion-icon">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <div class="suggestion-text">
+                                <h3>About NextReach</h3>
+                                <p>Learn what makes us unique</p>
+                            </div>
+                        </button>
+                        
+                        <button class="suggestion-card" data-prompt="How can AI improve my business operations and marketing strategy?">
+                            <div class="suggestion-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div class="suggestion-text">
+                                <h3>AI for Business</h3>
+                                <p>Discover AI-powered solutions</p>
+                            </div>
+                        </button>
+                        
+                        <button class="suggestion-card" data-prompt="What's the best social media strategy for a startup in 2025?">
+                            <div class="suggestion-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="suggestion-text">
+                                <h3>Marketing Strategy</h3>
+                                <p>Get expert marketing advice</p>
+                            </div>
+                        </button>
+                        
+                        <button class="suggestion-card" data-prompt="Explain the latest digital marketing trends and how to leverage them">
+                            <div class="suggestion-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <div class="suggestion-text">
+                                <h3>Industry Trends</h3>
+                                <p>Stay ahead of the curve</p>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Messages Container -->
+            <div class="messages-container" id="messagesContainer">
+                <!-- Messages will be added here dynamically -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Fixed Bottom Input Area -->
+    <div class="input-area">
+        <div class="input-container">
+            <div class="input-wrapper">
+                <textarea 
+                    id="messageInput" 
+                    class="message-input" 
+                    placeholder="Message NextReach AI..."
+                    rows="1"
+                ></textarea>
+                <button class="send-btn" id="sendBtn" title="Send message">
+                    <i class="fas fa-arrow-up"></i>
+                </button>
+            </div>
+            <div class="input-footer">
+                <p>NextReach AI can make mistakes. Please verify important information.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/11.1.1/marked.min.js"></script>
+    <script src="ai-claude.js"></script>
+</body>
+</html>

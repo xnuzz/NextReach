@@ -64,13 +64,15 @@
 .pre-booking-wrapper {
     max-width: 1400px;
     margin: 0 auto;
+    display: block !important; /* Always visible */
+    opacity: 1 !important;
     animation: fadeIn 0.6s ease;
 }
 
 .pre-booking-content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 3.5rem;
     align-items: start;
     position: relative;
 }
@@ -88,76 +90,99 @@
 
 .pre-booking-hero {
     background: white;
-    padding: 3rem;
+    padding: 3rem 2.5rem;
     border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    border: 2px solid #f1f5f9;
 }
 
 .floating-badge {
-    display: inline-block;
-    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
-    color: #1e293b;
-    padding: 0.5rem 1.5rem;
-    border-radius: 50px;
-    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
     font-size: 0.9rem;
+    border-radius: 50px;
     margin-bottom: 1.5rem;
-    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
-    animation: pulse 2s infinite;
+    box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
 }
 
 .floating-badge i {
-    margin-right: 0.5rem;
-    color: #f59e0b;
+    color: #fbbf24;
 }
 
 .pre-booking-hero h3 {
-    font-size: 2rem;
-    color: #1e293b;
+    font-size: 2.25rem;
+    color: #0f172a;
     margin-bottom: 1rem;
     line-height: 1.2;
+    font-weight: 800;
 }
 
 .lead-text {
-    font-size: 1.1rem;
-    color: #64748b;
-    line-height: 1.6;
-    margin-bottom: 2rem;
+    font-size: 1.05rem;
+    color: #475569;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
 }
 
 .preparation-benefits h4 {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: #6366f1;
-    font-size: 1.2rem;
-    margin-bottom: 1.5rem;
+    color: #1e3a8a;
+    font-size: 1.15rem;
+    margin-bottom: 1.75rem;
+    font-weight: 700;
 }
 
 .benefit-item {
     display: flex;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+    gap: 1.25rem;
+    margin-bottom: 1.75rem;
     align-items: start;
+    padding: 1.25rem;
+    background: #f8fafc;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.benefit-item:hover {
+    background: white;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+    transform: translateX(5px);
 }
 
 .benefit-icon {
-    font-size: 2rem;
-    min-width: 50px;
+    font-size: 1.75rem;
+    min-width: 55px;
     text-align: center;
+    color: #3b82f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.1), rgba(59, 130, 246, 0.1));
+    border-radius: 12px;
+    width: 55px;
+    height: 55px;
+    flex-shrink: 0;
 }
 
 .benefit-content strong {
     display: block;
-    color: #1e293b;
-    font-size: 1.1rem;
-    margin-bottom: 0.25rem;
+    color: #0f172a;
+    font-size: 1.05rem;
+    margin-bottom: 0.4rem;
+    font-weight: 700;
 }
 
 .benefit-content p {
     color: #64748b;
     font-size: 0.95rem;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 .social-proof-mini {
@@ -174,50 +199,66 @@
 }
 
 .avatar {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    background: linear-gradient(135deg, #1e3a8a, #3b82f6);
     display: flex;
     align-items: center;
     justify-content: center;
     border: 3px solid white;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    margin-left: -10px;
+    box-shadow: 0 3px 10px rgba(15, 23, 42, 0.15);
+    margin-left: -12px;
+    color: white;
+    font-size: 0.9rem;
 }
 
 .avatar:first-child {
     margin-left: 0;
 }
 
+.avatar i {
+    color: white;
+}
+
 .proof-text {
     font-weight: 600;
-    color: #475569;
-    margin-left: 0.5rem;
+    color: #334155;
+    margin-left: 0.75rem;
+    font-size: 0.95rem;
 }
 
 .proof-stats {
     display: flex;
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
 .mini-stat {
     text-align: center;
+    padding: 1rem 1.5rem;
+    background: #f8fafc;
+    border-radius: 10px;
+    flex: 1;
 }
 
 .mini-stat strong {
     display: block;
-    font-size: 1.5rem;
-    color: #6366f1;
-    font-weight: 700;
+    font-size: 1.75rem;
+    background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 800;
+    margin-bottom: 0.25rem;
 }
 
 .mini-stat span {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: #64748b;
+    font-weight: 500;
 }
 
-/* Pre-Booking Form Card */
+/* Pre-Booking Form Card - Professional */
 .pre-booking-right {
     position: relative;
     z-index: 2;
@@ -225,51 +266,56 @@
 
 .pre-booking-form-card {
     background: white;
-    padding: 2.5rem;
-    border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.12);
-    border: 1px solid #e2e8f0;
+    padding: 3rem;
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.1);
+    border: 2px solid #f1f5f9;
     position: relative;
     z-index: 5;
 }
 
 .form-header {
     text-align: center;
-    margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 2px solid #f1f5f9;
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid #e2e8f0;
 }
 
 .form-step-indicator {
     display: flex;
     justify-content: center;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
 }
 
 .step-dot {
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
-    background: #e2e8f0;
-    transition: all 0.3s ease;
+    background: #cbd5e1;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid #e2e8f0;
 }
 
 .step-dot.active {
-    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-    width: 30px;
-    border-radius: 6px;
+    background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+    width: 40px;
+    border-radius: 8px;
+    border-color: #1e3a8a;
+    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
 }
 
 .form-header h3 {
-    font-size: 1.8rem;
-    color: #1e293b;
-    margin-bottom: 0.5rem;
+    font-size: 2rem;
+    color: #0f172a;
+    margin-bottom: 0.75rem;
+    font-weight: 800;
 }
 
 .form-header p {
     color: #64748b;
-    font-size: 1rem;
+    font-size: 1.05rem;
+    line-height: 1.6;
 }
 
 .pre-booking-form .form-step {
@@ -301,43 +347,52 @@
     align-items: center;
     gap: 0.5rem;
     font-weight: 600;
-    color: #334155;
-    margin-bottom: 0.5rem;
-    font-size: 0.95rem;
+    color: #1e293b;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
 }
 
 .form-group-modern label i {
-    color: #6366f1;
+    color: #3b82f6;
+    font-size: 1.1rem;
 }
 
 .form-group-modern input,
 .form-group-modern select,
 .form-group-modern textarea {
     width: 100%;
-    padding: 0.875rem 1rem;
+    padding: 1rem 1.25rem;
     border: 2px solid #e2e8f0;
-    border-radius: 10px;
+    border-radius: 12px;
     font-size: 1rem;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     font-family: 'Inter', sans-serif;
     background: white;
+    color: #1e293b;
     position: relative;
     z-index: 10;
     pointer-events: auto;
+}
+
+.form-group-modern input:hover,
+.form-group-modern select:hover,
+.form-group-modern textarea:hover {
+    border-color: #cbd5e1;
 }
 
 .form-group-modern input:focus,
 .form-group-modern select:focus,
 .form-group-modern textarea:focus {
     outline: none;
-    border-color: #6366f1;
-    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
     z-index: 20;
 }
 
 .form-group-modern textarea {
     resize: vertical;
-    min-height: 100px;
+    min-height: 120px;
+    line-height: 1.6;
 }
 
 /* Checkbox Grid */
@@ -361,69 +416,76 @@
 .checkbox-label {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    padding: 1rem;
+    gap: 0.875rem;
+    padding: 1.25rem;
     border: 2px solid #e2e8f0;
-    border-radius: 10px;
-    transition: all 0.3s ease;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     background: white;
+    cursor: pointer;
+    font-weight: 500;
 }
 
 .checkbox-label i {
-    font-size: 1.2rem;
-    color: #6366f1;
+    font-size: 1.25rem;
+    color: #3b82f6;
 }
 
 .checkbox-modern input[type="checkbox"]:checked + .checkbox-label {
-    border-color: #6366f1;
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
-    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
+    border-color: #3b82f6;
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.05), rgba(59, 130, 246, 0.05));
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+    font-weight: 600;
+    color: #1e3a8a;
 }
 
 .checkbox-label:hover {
-    border-color: #6366f1;
+    border-color: #3b82f6;
     transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
 }
 
-/* Form Buttons */
+/* Form Buttons - Professional */
 .btn-next,
 .btn-back,
 .btn-submit-prebooking {
-    padding: 1rem 2rem;
+    padding: 1.25rem 2rem;
     border: none;
-    border-radius: 10px;
-    font-size: 1rem;
-    font-weight: 600;
+    border-radius: 12px;
+    font-size: 1.05rem;
+    font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.75rem;
     font-family: 'Inter', sans-serif;
 }
 
 .btn-next,
 .btn-submit-prebooking {
-    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    background: linear-gradient(135deg, #1e3a8a, #3b82f6);
     color: white;
     width: 100%;
     justify-content: center;
-    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 8px 20px rgba(30, 58, 138, 0.3);
 }
 
 .btn-next:hover,
 .btn-submit-prebooking:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(30, 58, 138, 0.4);
 }
 
 .btn-back {
-    background: #f1f5f9;
-    color: #475569;
+    background: #f8fafc;
+    color: #334155;
+    border: 2px solid #e2e8f0;
 }
 
 .btn-back:hover {
-    background: #e2e8f0;
+    background: white;
+    border-color: #cbd5e1;
 }
 
 .form-buttons {
@@ -461,16 +523,17 @@
     color: #22c55e;
 }
 
-/* Personalized Welcome Message */
+/* Personalized Welcome Message - Professional */
 .personalized-welcome {
-    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    background: linear-gradient(135deg, #1e3a8a, #3b82f6);
     color: white;
-    padding: 2.5rem;
-    border-radius: 20px;
+    padding: 3rem;
+    border-radius: 24px;
     text-align: center;
     margin-bottom: 3rem;
-    box-shadow: 0 10px 40px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 20px 50px rgba(30, 58, 138, 0.3);
     animation: slideInDown 0.6s ease;
+    border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 @keyframes slideInDown {
@@ -486,54 +549,63 @@
 
 .welcome-badge {
     display: inline-block;
-    background: rgba(255, 255, 255, 0.2);
-    padding: 0.5rem 1.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.75rem 1.75rem;
     border-radius: 50px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
     backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .welcome-badge i {
     margin-right: 0.5rem;
-    color: #22c55e;
+    color: #4ade80;
 }
 
 .personalized-welcome h3 {
-    font-size: 2rem;
+    font-size: 2.25rem;
     margin-bottom: 1rem;
     line-height: 1.3;
+    font-weight: 800;
 }
 
 .personalized-welcome p {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     opacity: 0.95;
     margin-bottom: 1rem;
+    line-height: 1.6;
 }
 
 .welcome-goals {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 0.75rem;
-    margin: 1.5rem 0;
+    gap: 1rem;
+    margin: 2rem 0;
 }
 
 .goal-badge {
-    background: rgba(255, 255, 255, 0.2);
-    padding: 0.6rem 1.2rem;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.75rem 1.5rem;
     border-radius: 50px;
     font-size: 0.95rem;
     font-weight: 600;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.goal-badge:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
 }
 
 .welcome-cta {
-    font-size: 1.2rem !important;
-    font-weight: 600;
-    margin-top: 1.5rem !important;
+    font-size: 1.25rem !important;
+    font-weight: 700;
+    margin-top: 2rem !important;
     margin-bottom: 0 !important;
 }
 
@@ -558,7 +630,18 @@
     margin-right: 0.5rem;
 }
 
-/* Responsive Design for Pre-Booking Form */
+/* Responsive Design for Pre-Booking Form - Professional */
+@media (max-width: 1024px) {
+    .pre-booking-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .pre-booking-left {
+        position: static;
+    }
+}
+
 @media (max-width: 968px) {
     .quick-book-content {
         flex-direction: column;
@@ -572,11 +655,7 @@
 
     .pre-booking-content {
         grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-
-    .pre-booking-left {
-        position: static;
+        gap: 2.5rem;
     }
 
     .checkbox-grid {
@@ -584,16 +663,65 @@
     }
 
     .pre-booking-hero {
-        padding: 2rem;
+        padding: 2.5rem 2rem;
     }
 
     .pre-booking-hero h3 {
-        font-size: 1.6rem;
+        font-size: 1.75rem;
+    }
+
+    .benefit-item {
+        padding: 1rem;
     }
 
     .benefit-icon {
+        width: 50px;
+        height: 50px;
+        min-width: 50px;
         font-size: 1.5rem;
-        min-width: 40px;
+    }
+
+    .proof-stats {
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    .pre-booking-form-card {
+        padding: 2.5rem 2rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .pre-booking-wrapper {
+        padding: 0 1rem;
+    }
+
+    .pre-booking-hero {
+        padding: 2rem 1.5rem;
+    }
+
+    .pre-booking-hero h3 {
+        font-size: 1.5rem;
+    }
+
+    .lead-text {
+        font-size: 1rem;
+    }
+
+    .benefit-item {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem 1rem;
+    }
+
+    .proof-avatars {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .avatar {
+        margin-left: 0 !important;
     }
 
     .proof-stats {
@@ -604,7 +732,7 @@
 
 @media (max-width: 480px) {
     .pre-booking-form-card {
-        padding: 1.5rem;
+        padding: 2rem 1.5rem;
     }
 
     .form-header h3 {
