@@ -211,22 +211,27 @@ Be conversational, clear, and helpful. Format responses with proper markdown.`;
         };
 
         try {
+            console.log('📤 Sending request to DeepSeek API...');
             const response = await fetch('https://api.deepseek.com/chat/completions', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer sk-a8fd0b6bcbfc46ffbf38802e68506cd4'
+                    'Authorization': 'Bearer sk-6cf8ec9791054fbbbe627532301d154b'
                 },
                 body: JSON.stringify(requestBody),
                 signal: AbortSignal.timeout(this.timeout)
             });
 
+            console.log('📥 Response status:', response.status);
+
             if (!response.ok) {
-                throw new Error(`API Error: ${response.status}`);
+                const errorData = await response.json().catch(() => ({}));
+                console.error('❌ API Error Details:', errorData);
+                throw new Error(`API Error: ${response.status} - ${JSON.stringify(errorData)}`);
             }
 
             const data = await response.json();
-            console.log('✅ AI Response received');
+            console.log('✅ AI Response received:', data);
 
             return data.choices[0].message.content;
 
