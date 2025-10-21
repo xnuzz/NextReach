@@ -22,6 +22,90 @@ if (hamburger && navMenu) {
     }));
 }
 
+// Pricing Selector Functionality - 3 Payment Options
+const paymentButtons = document.querySelectorAll('.payment-option-btn');
+if (paymentButtons.length > 0) {
+    paymentButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remove active class from all buttons
+            paymentButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            const selectedPlan = this.getAttribute('data-plan');
+            updatePricing(selectedPlan);
+        });
+    });
+}
+
+function updatePricing(plan) {
+    const priceElements = document.querySelectorAll('.package-price');
+    const subtitleElements = document.querySelectorAll('.price-subtitle');
+    const noteElements = document.querySelectorAll('.payment-note');
+    
+    priceElements.forEach((el, index) => {
+        const monthly6 = el.getAttribute('data-monthly6');
+        const monthly3 = el.getAttribute('data-monthly3');
+        const onetime = el.getAttribute('data-onetime');
+        const deposit = el.getAttribute('data-deposit');
+        const fulldiscount = el.getAttribute('data-fulldiscount');
+        
+        if (monthly6 && monthly3 && onetime && deposit && fulldiscount) {
+            const monthly6Price = monthly6.replace(/[^0-9]/g, '');
+            const monthly3Price = monthly3.replace(/[^0-9]/g, '');
+            const onetimePrice = onetime.replace(/[^0-9,]/g, '').replace(',', '');
+            const depositPrice = deposit.replace(/[^0-9,]/g, '').replace(',', '');
+            const fullDiscountPrice = fulldiscount.replace(/[^0-9,]/g, '').replace(',', '');
+            
+            const amountEl = el.querySelector('.amount');
+            const periodEl = el.querySelector('.period');
+            const subtitleEl = subtitleElements[index];
+            const noteEl = noteElements[index];
+            
+            if (plan === 'full') {
+                // Pay in full - show discounted price
+                amountEl.textContent = parseInt(fullDiscountPrice).toLocaleString();
+                periodEl.textContent = '';
+                if (subtitleEl) {
+                    const savings = parseInt(onetimePrice) - parseInt(fullDiscountPrice);
+                    subtitleEl.textContent = `One-time payment (Save $${savings}!)`;
+                }
+                if (noteEl) {
+                    noteEl.textContent = `✨ Or split: $${parseInt(depositPrice).toLocaleString()} down + payments`;
+                }
+            } else if (plan === '3months') {
+                // 3-month plan
+                amountEl.textContent = parseInt(depositPrice).toLocaleString();
+                periodEl.textContent = ` down + $${monthly3Price}/mo`;
+                if (subtitleEl) {
+                    const total = parseInt(depositPrice) + (parseInt(monthly3Price) * 3);
+                    subtitleEl.textContent = `Total: $${total.toLocaleString()} ($${parseInt(depositPrice).toLocaleString()} deposit + $${monthly3Price}/mo × 3)`;
+                }
+                if (noteEl) {
+                    noteEl.textContent = `💰 Pay $${parseInt(fullDiscountPrice).toLocaleString()} in full & save 10%`;
+                }
+            } else if (plan === '6months') {
+                // 6-month plan (default)
+                amountEl.textContent = parseInt(depositPrice).toLocaleString();
+                periodEl.textContent = ` down + $${monthly6Price}/mo`;
+                if (subtitleEl) {
+                    const total = parseInt(depositPrice) + (parseInt(monthly6Price) * 6);
+                    subtitleEl.textContent = `Total: $${total.toLocaleString()} ($${parseInt(depositPrice).toLocaleString()} deposit + $${monthly6Price}/mo × 6)`;
+                }
+                if (noteEl) {
+                    noteEl.textContent = `💰 Pay $${parseInt(fullDiscountPrice).toLocaleString()} in full & save 10%`;
+                }
+            }
+            
+            // Animate the change
+            el.style.transform = 'scale(1.05)';
+            setTimeout(() => {
+                el.style.transform = 'scale(1)';
+            }, 200);
+        }
+    });
+}
+
 // Enhanced navbar scroll effect with parallax
 let lastScrollY = 0;
 let ticking = false;
