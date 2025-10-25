@@ -1,0 +1,480 @@
+/* Who We Are Section - Improved Layout */
+.about-section {
+    padding: 6rem 0;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 50%, #ffffff 100%);
+}
+
+.about-hero {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 4rem;
+}
+
+.section-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    color: var(--primary-color);
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 15px rgba(30, 58, 138, 0.15);
+}
+
+.lead-text {
+    font-size: 1.3rem;
+    line-height: 1.7;
+    color: var(--text-light);
+    margin-top: 1rem;
+    font-weight: 400;
+}
+
+/* Stats Overview Grid */
+.about-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto 5rem;
+}
+
+.about-stat-item {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(30, 58, 138, 0.08);
+    transition: all 0.3s ease;
+}
+
+.about-stat-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 30px rgba(30, 58, 138, 0.15);
+}
+
+.about-stat-number {
+    font-size: 3rem;
+    font-weight: 900;
+    background: var(--logo-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.about-stat-label {
+    font-size: 1rem;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+/* Mission & Values Content Grid */
+.about-content-grid {
+    max-width: 1200px;
+    margin: 0 auto 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 3rem;
+}
+
+.about-mission-card {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    padding: 3rem;
+    border-radius: 24px;
+    color: white;
+    box-shadow: 0 10px 40px rgba(30, 58, 138, 0.2);
+    height: fit-content;
+    position: sticky;
+    top: 100px;
+}
+
+.mission-icon {
+    width: 70px;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.mission-icon i {
+    font-size: 2rem;
+    color: white;
+}
+
+.about-mission-card h3 {
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.about-mission-card p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.95);
+    margin: 0;
+}
+
+/* Values Card */
+.about-values-card {
+    background: white;
+    padding: 3rem;
+    border-radius: 24px;
+    box-shadow: 0 8px 30px rgba(30, 58, 138, 0.08);
+}
+
+.about-values-card h3 {
+    font-size: 2rem;
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+}
+
+.value-props-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.value-prop {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.value-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.value-icon i {
+    color: #10b981;
+    font-size: 1.25rem;
+}
+
+.value-content h4 {
+    font-size: 1.15rem;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.value-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin: 0;
+}
+
+/* How We Work Process */
+.about-process {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem;
+    background: linear-gradient(135deg, #f8fafc, #ffffff);
+    border-radius: 24px;
+    box-shadow: 0 8px 30px rgba(30, 58, 138, 0.08);
+}
+
+.process-title {
+    text-align: center;
+    font-size: 2.25rem;
+    color: var(--text-dark);
+    margin-bottom: 3rem;
+}
+
+.process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.process-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(30, 58, 138, 0.06);
+    transition: all 0.3s ease;
+}
+
+.process-step:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 30px rgba(30, 58, 138, 0.12);
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+}
+
+.step-content h4 {
+    font-size: 1.25rem;
+    color: var(--text-dark);
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+}
+
+.step-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin: 0;
+}
+
+/* What We Offer Section */
+.services-offer-section {
+    padding: 6rem 0;
+    background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+}
+
+.services-hero {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 5rem;
+}
+
+.services-grid-detailed {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-detailed-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(30, 58, 138, 0.08);
+    transition: all 0.4s ease;
+    border: 2px solid transparent;
+}
+
+.service-detailed-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 15px 50px rgba(30, 58, 138, 0.15);
+    border-color: var(--primary-color);
+}
+
+.service-icon-large {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.service-detailed-card:hover .service-icon-large {
+    transform: rotate(10deg) scale(1.1);
+}
+
+.service-icon-large i {
+    font-size: 2.5rem;
+    color: white;
+}
+
+.service-detailed-card h3 {
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+
+.service-detailed-card > p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+}
+
+.service-features {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.service-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    color: var(--text-light);
+}
+
+.service-features i {
+    color: #10b981;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+/* Mobile Responsive for New Sections */
+@media (max-width: 992px) {
+    .about-content-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+    
+    .about-mission-card {
+        position: relative;
+        top: 0;
+    }
+    
+    .process-steps {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    
+    .services-grid-detailed {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-section,
+    .services-offer-section {
+        padding: 4rem 0;
+    }
+    
+    .about-hero,
+    .services-hero {
+        margin-bottom: 3rem;
+    }
+    
+    .lead-text {
+        font-size: 1.1rem;
+    }
+    
+    .about-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+    }
+    
+    .about-stat-number {
+        font-size: 2.5rem;
+    }
+    
+    .about-stat-label {
+        font-size: 0.9rem;
+    }
+    
+    .about-mission-card,
+    .about-values-card {
+        padding: 2rem;
+    }
+    
+    .about-mission-card h3,
+    .about-values-card h3 {
+        font-size: 1.5rem;
+    }
+    
+    .value-props-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .about-process {
+        padding: 2.5rem 1.5rem;
+    }
+    
+    .process-title {
+        font-size: 1.75rem;
+        margin-bottom: 2rem;
+    }
+    
+    .process-steps {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .process-step {
+        padding: 1.5rem;
+    }
+    
+    .services-grid-detailed {
+        grid-template-columns: 1fr;
+    }
+    
+    .service-detailed-card {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-section,
+    .services-offer-section {
+        padding: 3rem 0;
+    }
+    
+    .about-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .about-stat-item {
+        padding: 1.5rem 1rem;
+    }
+    
+    .about-stat-number {
+        font-size: 2rem;
+    }
+    
+    .about-mission-card,
+    .about-values-card,
+    .about-process {
+        padding: 1.5rem;
+    }
+    
+    .mission-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .mission-icon i {
+        font-size: 1.5rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .process-title {
+        font-size: 1.5rem;
+    }
+    
+    .step-number {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+}

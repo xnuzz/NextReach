@@ -1835,7 +1835,7 @@ function closeBooking() {
     if (bookingSection) bookingSection.style.display = 'none';
     
     // Show all main sections
-    const sections = ['home', 'packages', 'about', 'portfolio', 'reviews', 'register', 'contact'];
+    const sections = ['home', 'payment-info', 'about', 'services', 'packages', 'portfolio', 'reviews', 'register', 'contact'];
     sections.forEach(id => {
         const section = document.getElementById(id);
         if (section) section.style.display = 'block';
@@ -1857,49 +1857,31 @@ function openBookingPage(event) {
     console.log('Opening booking page...');
     
     // Hide all main sections
-    const sections = ['home', 'packages', 'about', 'portfolio', 'reviews', 'register', 'contact'];
+    const sections = ['home', 'payment-info', 'about', 'services', 'packages', 'portfolio', 'reviews', 'register', 'contact'];
     sections.forEach(id => {
         const section = document.getElementById(id);
-        if (section) section.style.display = 'none';
+        if (section) {
+            section.style.display = 'none';
+            console.log(`Hiding section: ${id}`);
+        }
     });
     
     // Show booking section
     const bookingSection = document.getElementById('booking');
+    console.log('Booking section found:', bookingSection);
+    
     if (bookingSection) {
         bookingSection.style.display = 'block';
+        console.log('Booking section display set to block');
         
-        // Ensure pre-booking form is shown and calendar is hidden
-        const preBookingForm = document.getElementById('preBookingForm');
-        const mainCalendar = document.getElementById('mainBookingCalendar');
+        // Scroll to top immediately
+        window.scrollTo({ top: 0, behavior: 'instant' });
         
-        if (preBookingForm) {
-            preBookingForm.style.display = 'block';
-            console.log('Pre-booking form shown');
-        }
-        
-        if (mainCalendar) {
-            mainCalendar.style.display = 'none';
-            console.log('Calendar hidden');
-        }
-        
-        // Reset form to step 1
-        currentPreBookingStep = 1;
-        
-        // Make sure first step is visible
-        setTimeout(() => {
-            updatePreBookingSteps();
-            
-            // Focus first input for better UX
-            const firstInput = document.getElementById('pb-name');
-            if (firstInput) {
-                firstInput.focus();
-                console.log('Focused first input');
-            }
-        }, 100);
+        // Log success
+        console.log('Booking page opened successfully');
+    } else {
+        console.error('Booking section not found!');
     }
-    
-    // Scroll to top smoothly
-    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // Pre-Booking Form Multi-Step Logic

@@ -1,0 +1,749 @@
+/* ========================================
+   WORLD-CLASS BOOKING PAGE - 100/10
+   ======================================== */
+
+/* Main Section */
+.booking-section {
+    display: none;
+    padding: 0 !important;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%) !important;
+    min-height: 100vh !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* When booking section is shown */
+.booking-section[style*="display: block"] {
+    display: block !important;
+}
+
+/* Animated Background */
+.booking-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+    animation: backgroundShift 15s ease infinite;
+    z-index: 1;
+}
+
+@keyframes backgroundShift {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.1) rotate(5deg); }
+}
+
+/* Header Bar */
+.booking-header-bar {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 2rem 0;
+    position: relative;
+    z-index: 10;
+}
+
+.back-to-home {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    padding: 0.875rem 2rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.back-to-home::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.back-to-home:hover::before {
+    left: 100%;
+}
+
+.back-to-home:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateX(-5px) scale(1.05);
+    box-shadow: 0 12px 40px rgba(59, 130, 246, 0.4);
+}
+
+.back-to-home i {
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+}
+
+.back-to-home:hover i {
+    transform: translateX(-3px);
+}
+
+/* Hero Section - Spectacular */
+.booking-hero {
+    max-width: 1000px;
+    margin: 0 auto 5rem;
+    text-align: center;
+    padding: 4rem 2rem 0;
+    position: relative;
+    z-index: 10;
+}
+
+.booking-hero-content {
+    position: relative;
+}
+
+.booking-main-title {
+    font-size: 4.5rem;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 2rem;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    animation: titleFadeIn 1s ease-out;
+}
+
+@keyframes titleFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #06b6d4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 3s ease infinite;
+    background-size: 200% 200%;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.booking-subtitle {
+    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.8;
+    max-width: 750px;
+    margin: 0 auto;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    animation: subtitleFadeIn 1s ease-out 0.3s both;
+}
+
+@keyframes subtitleFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Main Grid Layout - Premium */
+.booking-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 3rem;
+    align-items: start;
+    position: relative;
+    z-index: 10;
+    animation: gridFadeIn 1s ease-out 0.6s both;
+}
+
+@keyframes gridFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Calendar Container - Glass Morphism */
+.booking-calendar-container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 32px;
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.booking-calendar-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4, #3b82f6);
+    background-size: 200% 100%;
+    animation: borderGlow 3s linear infinite;
+}
+
+@keyframes borderGlow {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 200% 0%; }
+}
+
+.booking-calendar-container:hover {
+    transform: translateY(-8px);
+    box-shadow: 
+        0 30px 80px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+}
+
+.calendar-wrapper {
+    padding: 3rem;
+}
+
+.calendar-header {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid rgba(59, 130, 246, 0.1);
+    position: relative;
+}
+
+.calendar-header::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    border-radius: 2px;
+}
+
+.calendar-header i {
+    font-size: 2rem;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: iconPulse 2s ease infinite;
+}
+
+@keyframes iconPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.calendar-header h3 {
+    font-size: 1.75rem;
+    color: #0f172a;
+    margin: 0;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+}
+
+/* Info Container - Cards */
+.booking-info-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.info-block {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    padding: 2.5rem;
+    border-radius: 24px;
+    box-shadow: 
+        0 10px 40px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.info-block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.05), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.info-block:hover::before {
+    opacity: 1;
+}
+
+.info-block:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.25),
+        0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+}
+
+.info-block-header {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.info-block-header i {
+    font-size: 1.75rem;
+    background: linear-gradient(135deg, #10b981, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: iconPulse 2s ease infinite;
+}
+
+.info-block-header h3 {
+    font-size: 1.4rem;
+    color: #0f172a;
+    margin: 0;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+}
+
+/* Benefits List - Enhanced */
+.benefits-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.benefits-list li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.05rem;
+    color: #334155;
+    line-height: 1.6;
+    padding: 0.75rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.benefits-list li:hover {
+    background: rgba(59, 130, 246, 0.05);
+    transform: translateX(5px);
+}
+
+.benefits-list i {
+    color: #10b981;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    animation: checkBounce 2s ease infinite;
+}
+
+@keyframes checkBounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* Trust Block - Premium */
+.trust-block {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.05));
+    border: 2px solid rgba(59, 130, 246, 0.2);
+}
+
+.trust-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.trust-stat {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: all 0.3s ease;
+    padding: 0.5rem;
+    border-radius: 16px;
+}
+
+.trust-stat:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: translateX(5px);
+}
+
+.trust-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+    transition: all 0.3s ease;
+}
+
+.trust-stat:hover .trust-icon {
+    transform: rotate(10deg) scale(1.1);
+    box-shadow: 0 12px 35px rgba(59, 130, 246, 0.5);
+}
+
+.trust-icon i {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.trust-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.trust-content strong {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #0f172a;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.trust-content span {
+    font-size: 0.95rem;
+    color: #64748b;
+    font-weight: 600;
+}
+
+/* Guarantee Block - Stunning */
+.guarantee-block {
+    background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+    border: 3px solid #10b981;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.guarantee-block::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+    animation: guaranteeGlow 4s ease infinite;
+}
+
+@keyframes guaranteeGlow {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(10%, 10%); }
+}
+
+.guarantee-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #10b981, #059669);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    box-shadow: 0 10px 40px rgba(16, 185, 129, 0.4);
+    position: relative;
+    z-index: 1;
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.guarantee-icon i {
+    color: white;
+    font-size: 2rem;
+}
+
+.guarantee-block h4 {
+    font-size: 1.5rem;
+    color: #0f172a;
+    margin: 0 0 1rem 0;
+    font-weight: 900;
+    position: relative;
+    z-index: 1;
+    letter-spacing: -0.01em;
+}
+
+.guarantee-block p {
+    font-size: 1.05rem;
+    color: #334155;
+    line-height: 1.7;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+    font-weight: 500;
+}
+
+/* Calendly Widget Styling */
+.calendly-inline-widget {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) inset;
+}
+
+/* Mobile Responsive - Perfect */
+@media (max-width: 1200px) {
+    .booking-grid {
+        grid-template-columns: 1fr 380px;
+        gap: 2.5rem;
+    }
+    
+    .booking-main-title {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .booking-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+    
+    .booking-calendar-container {
+        order: 2;
+    }
+    
+    .booking-info-container {
+        order: 1;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        display: grid;
+        gap: 2rem;
+    }
+    
+    .booking-main-title {
+        font-size: 3rem;
+    }
+    
+    .booking-subtitle {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .booking-section {
+        padding: 0;
+    }
+    
+    .booking-header-bar {
+        padding: 1.5rem 1rem 0;
+    }
+    
+    .booking-hero {
+        margin-bottom: 3rem;
+        padding: 3rem 1rem 0;
+    }
+    
+    .booking-main-title {
+        font-size: 2.5rem;
+    }
+    
+    .booking-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .booking-grid {
+        padding: 0 1rem 3rem;
+        gap: 2rem;
+    }
+    
+    .calendar-wrapper {
+        padding: 2rem 1.5rem;
+    }
+    
+    .calendar-header {
+        flex-direction: row;
+        gap: 1rem;
+    }
+    
+    .calendar-header h3 {
+        font-size: 1.4rem;
+    }
+    
+    .info-block {
+        padding: 2rem;
+    }
+    
+    .booking-info-container {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .calendly-inline-widget {
+        min-width: 100% !important;
+        height: 650px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .booking-main-title {
+        font-size: 2rem;
+    }
+    
+    .booking-subtitle {
+        font-size: 1rem;
+    }
+    
+    .back-to-home {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .calendar-wrapper {
+        padding: 1.5rem 1rem;
+    }
+    
+    .calendar-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+        margin-bottom: 2rem;
+    }
+    
+    .calendar-header h3 {
+        font-size: 1.25rem;
+    }
+    
+    .info-block {
+        padding: 1.5rem;
+    }
+    
+    .info-block-header h3 {
+        font-size: 1.2rem;
+    }
+    
+    .benefits-list li {
+        font-size: 0.95rem;
+    }
+    
+    .calendly-inline-widget {
+        height: 600px !important;
+    }
+    
+    .trust-stats {
+        gap: 1.5rem;
+    }
+    
+    .trust-icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .trust-icon i {
+        font-size: 1.25rem;
+    }
+    
+    .trust-content strong {
+        font-size: 1.25rem;
+    }
+    
+    .guarantee-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .guarantee-icon i {
+        font-size: 1.5rem;
+    }
+    
+    .guarantee-block h4 {
+        font-size: 1.25rem;
+    }
+    
+    .guarantee-block p {
+        font-size: 0.95rem;
+    }
+}
+
+/* Additional Premium Effects */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes shimmer {
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Selection Color */
+::selection {
+    background: rgba(59, 130, 246, 0.3);
+    color: white;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #3b82f6, #8b5cf6);
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #2563eb, #7c3aed);
+}
+
+

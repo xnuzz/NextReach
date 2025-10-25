@@ -7,8 +7,9 @@
     <title>NextReach - Launch Your Digital Presence</title>
     <link rel="icon" type="image/svg+xml" href="NextReach.svg">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="booking-styles.css">
-    <link rel="stylesheet" href="booking-wow.css">
+    <link rel="stylesheet" href="new-sections.css">
+    <link rel="stylesheet" href="responsive-enhancements.css">
+    <link rel="stylesheet" href="booking-clean.css?v=3.0">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -24,13 +25,13 @@
                     <a href="#home" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#packages" class="nav-link">Packages</a>
+                    <a href="#about" class="nav-link">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#about" class="nav-link">About</a>
+                    <a href="#services" class="nav-link">Services</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#portfolio" class="nav-link">Portfolio</a>
+                    <a href="#packages" class="nav-link">Pricing</a>
                 </li>
                 <li class="nav-item">
                     <a href="#contact" class="nav-link">Contact</a>
@@ -112,29 +113,98 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <div class="hero-background-shapes">
+            <div class="hero-shape shape-1"></div>
+            <div class="hero-shape shape-2"></div>
+            <div class="hero-shape shape-3"></div>
+        </div>
         <div class="hero-container">
             <div class="hero-content">
-                <div class="hero-logo-container">
+                <div class="hero-badge">
+                    <i class="fas fa-star"></i>
+                    <span>Trusted by 500+ Growing Businesses</span>
                 </div>
-                <h1 class="hero-title">🚀 Launch Your Digital Presence</h1>
-                <p class="hero-subtitle">We help entrepreneurs and businesses shine online with professional websites, perfectly linked social media, and engaging videos—all in one place. We don't just build a website—we create your launch-ready digital presence.</p>
+                <h1 class="hero-title">
+                    Transform Your Business With a 
+                    <span class="gradient-text">Complete Digital Presence</span>
+                </h1>
+                <p class="hero-subtitle">Get a professional website, fully-integrated social media, and engaging video content—all expertly crafted and launch-ready in 2-6 weeks. No hidden fees, zero interest payment plans, and a risk-share guarantee.</p>
+                
+                <div class="hero-features-quick">
+                    <div class="quick-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Launch in 2-6 Weeks</span>
+                    </div>
+                    <div class="quick-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>0% Interest Payments</span>
+                    </div>
+                    <div class="quick-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Risk-Share Guarantee</span>
+                    </div>
+                </div>
+                
                 <div class="hero-buttons">
-                    <a href="#register" class="btn btn-primary">Get Started Today</a>
-                    <a href="#packages" class="btn btn-secondary">View Packages</a>
+                    <a href="#register" class="btn btn-primary btn-hero-main">
+                        <span>Start Your Digital Transformation</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#packages" class="btn btn-secondary btn-hero-secondary">
+                        <i class="fas fa-th-large"></i>
+                        <span>View Packages & Pricing</span>
+                    </a>
+                </div>
+                
+                <div class="hero-trust-bar">
+                    <div class="trust-item">
+                        <i class="fas fa-lock"></i>
+                        <span>Secure & Private</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="fas fa-headset"></i>
+                        <span>24/7 Support</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="fas fa-trophy"></i>
+                        <span>Award-Winning Team</span>
+                    </div>
                 </div>
             </div>
             <div class="hero-image">
+                <div class="hero-visual-main">
+                    <div class="visual-mockup">
+                        <div class="mockup-browser">
+                            <div class="browser-bar">
+                                <span></span><span></span><span></span>
+                            </div>
+                            <div class="browser-content">
+                                <div class="content-bar"></div>
+                                <div class="content-bar short"></div>
+                                <div class="content-grid">
+                                    <div class="grid-item"></div>
+                                    <div class="grid-item"></div>
+                                    <div class="grid-item"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="floating-card card-1">
                     <i class="fas fa-globe"></i>
                     <span>Complete Online Presence</span>
                 </div>
                 <div class="floating-card card-2">
                     <i class="fas fa-rocket"></i>
-                    <span>2-6 Week Launch</span>
+                    <span>Launch in 2-6 Weeks</span>
                 </div>
                 <div class="floating-card card-3">
                     <i class="fas fa-shield-alt"></i>
                     <span>Risk-Share Guarantee</span>
+                </div>
+                <div class="floating-card card-4">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Proven Results</span>
                 </div>
             </div>
         </div>
@@ -307,177 +377,252 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Pricing Comparison Table -->
-            <div class="pricing-comparison-section">
-                <div class="comparison-header">
-                    <h3>💰 Payment Options Comparison</h3>
-                    <p class="comparison-subtitle">Choose the payment method that works best for your budget. All options include the same great service!</p>
+    <!-- Who We Are Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-hero">
+                <span class="section-badge">
+                    <i class="fas fa-users"></i>
+                    About NextReach
+                </span>
+                <h2 class="section-title">Your Partner in Digital Success</h2>
+                <p class="lead-text">We help growing businesses launch their complete digital presence—fast, affordable, and risk-free.</p>
+            </div>
+
+            <!-- Stats Overview -->
+            <div class="about-stats-grid">
+                <div class="about-stat-item">
+                    <div class="about-stat-number">500+</div>
+                    <div class="about-stat-label">Businesses Launched</div>
                 </div>
-                
-                <div class="comparison-cards-grid">
-                    <!-- Pay in Full Column -->
-                    <div class="comparison-column best-value-col">
-                        <div class="column-header">
-                            <div class="column-badge best">💰 Best Value</div>
-                            <h4>Pay in Full</h4>
-                            <p>Save 10% instantly</p>
-                        </div>
-                        <div class="column-content">
-                            <div class="price-row">
-                                <div class="row-label">🚀 Starter</div>
-                                <div class="row-price">
-                                    <span class="main-price">$627</span>
-                                    <span class="save-tag">Save $70</span>
-                                </div>
-                            </div>
-                            <div class="price-row featured-row">
-                                <div class="row-label">💼 Professional</div>
-                                <div class="row-price">
-                                    <span class="main-price">$1,347</span>
-                                    <span class="save-tag">Save $150</span>
-                                </div>
-                            </div>
-                            <div class="price-row">
-                                <div class="row-label">👑 Premium</div>
-                                <div class="row-price">
-                                    <span class="main-price">$1,797</span>
-                                    <span class="save-tag">Save $203</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 3-Month Plan Column -->
-                    <div class="comparison-column">
-                        <div class="column-header">
-                            <h4>3-Month Plan</h4>
-                            <p>Fast payoff option</p>
-                        </div>
-                        <div class="column-content">
-                            <div class="price-row">
-                                <div class="row-label">🚀 Starter</div>
-                                <div class="row-price">
-                                    <span class="main-price">$349</span>
-                                    <span class="price-breakdown">down + $116/mo × 3</span>
-                                    <span class="save-tag-alt">0% Interest</span>
-                                </div>
-                            </div>
-                            <div class="price-row featured-row">
-                                <div class="row-label">💼 Professional</div>
-                                <div class="row-price">
-                                    <span class="main-price">$748</span>
-                                    <span class="price-breakdown">down + $250/mo × 3</span>
-                                    <span class="save-tag-alt">0% Interest</span>
-                                </div>
-                            </div>
-                            <div class="price-row">
-                                <div class="row-label">👑 Premium</div>
-                                <div class="row-price">
-                                    <span class="main-price">$1,000</span>
-                                    <span class="price-breakdown">down + $333/mo × 3</span>
-                                    <span class="save-tag-alt">0% Interest</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 6-Month Plan Column -->
-                    <div class="comparison-column popular-col">
-                        <div class="column-header">
-                            <div class="column-badge popular">⭐ Most Popular</div>
-                            <h4>6-Month Plan</h4>
-                            <p>Lowest monthly payments</p>
-                        </div>
-                        <div class="column-content">
-                            <div class="price-row">
-                                <div class="row-label">🚀 Starter</div>
-                                <div class="row-price">
-                                    <span class="main-price">$349</span>
-                                    <span class="price-breakdown">down + $58/mo × 6</span>
-                                    <span class="save-tag-alt">0% Interest</span>
-                                </div>
-                            </div>
-                            <div class="price-row featured-row">
-                                <div class="row-label">💼 Professional</div>
-                                <div class="row-price">
-                                    <span class="main-price">$748</span>
-                                    <span class="price-breakdown">down + $125/mo × 6</span>
-                                    <span class="save-tag-alt">0% Interest</span>
-                                </div>
-                            </div>
-                            <div class="price-row">
-                                <div class="row-label">👑 Premium</div>
-                                <div class="row-price">
-                                    <span class="main-price">$1,000</span>
-                                    <span class="price-breakdown">down + $167/mo × 6</span>
-                                    <span class="save-tag-alt">0% Interest</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="about-stat-item">
+                    <div class="about-stat-number">98%</div>
+                    <div class="about-stat-label">Client Satisfaction</div>
                 </div>
-                
-                <div class="comparison-notes">
-                    <div class="note-item">
-                        <div class="note-icon">
-                            <i class="fas fa-percentage"></i>
-                        </div>
-                        <div class="note-content">
-                            <strong>0% Interest</strong>
-                            <p>No interest charges on any payment plan. What you see is what you pay.</p>
-                        </div>
+                <div class="about-stat-item">
+                    <div class="about-stat-number">2-6</div>
+                    <div class="about-stat-label">Week Delivery Time</div>
+                </div>
+                <div class="about-stat-item">
+                    <div class="about-stat-number">100%</div>
+                    <div class="about-stat-label">Money-Back Guarantee</div>
+                </div>
+            </div>
+
+            <!-- Mission & Value Props -->
+            <div class="about-content-grid">
+                <div class="about-mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-bullseye"></i>
                     </div>
-                    <div class="note-item">
-                        <div class="note-icon">
-                            <i class="fas fa-bolt"></i>
+                    <h3>Our Mission</h3>
+                    <p>Every business deserves a professional digital presence. We make enterprise-level marketing accessible to growing businesses through transparent pricing, flexible payment plans, and proven strategies that deliver results.</p>
+                </div>
+
+                <div class="about-values-card">
+                    <h3>Why Businesses Choose Us</h3>
+                    <div class="value-props-grid">
+                        <div class="value-prop">
+                            <div class="value-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="value-content">
+                                <h4>All-in-One Solution</h4>
+                                <p>Website, social media, video content, and AI chatbot—everything you need in one package</p>
+                            </div>
                         </div>
-                        <div class="note-content">
-                            <strong>Pay Early Anytime</strong>
-                            <p>Pay off your balance early with absolutely no penalties or prepayment fees.</p>
+                        
+                        <div class="value-prop">
+                            <div class="value-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="value-content">
+                                <h4>Fast Launch</h4>
+                                <p>Go live in 2-6 weeks with a complete digital presence that's ready to attract customers</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="note-item">
-                        <div class="note-icon">
-                            <i class="fas fa-shield-alt"></i>
+                        
+                        <div class="value-prop">
+                            <div class="value-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="value-content">
+                                <h4>Zero Risk</h4>
+                                <p>100% money-back guarantee—if you're not satisfied, you don't pay. We share the risk with you</p>
+                            </div>
                         </div>
-                        <div class="note-content">
-                            <strong>Secure & Easy</strong>
-                            <p>Auto-billing through Stripe means you never miss a payment. Cancel anytime.</p>
+                        
+                        <div class="value-prop">
+                            <div class="value-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="value-content">
+                                <h4>Budget-Friendly</h4>
+                                <p>0% interest payment plans from $233/month—no hidden fees, no surprises</p>
+                            </div>
+                        </div>
+                        
+                        <div class="value-prop">
+                            <div class="value-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="value-content">
+                                <h4>Expert Team</h4>
+                                <p>Experienced designers, developers, and marketers dedicated to your success</p>
+                            </div>
+                        </div>
+                        
+                        <div class="value-prop">
+                            <div class="value-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="value-content">
+                                <h4>Ongoing Support</h4>
+                                <p>Priority support, regular updates, and strategic guidance to help you grow</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Trust Banner -->
-            <div class="payment-trust-banner">
-                <div class="trust-item">
-                    <i class="fas fa-shield-check"></i>
-                    <div>
-                        <strong>Secure Payments</strong>
-                        <p>256-bit SSL encryption</p>
+            <!-- How We Work -->
+            <div class="about-process">
+                <h3 class="process-title">How We Work With You</h3>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Discovery Call</h4>
+                            <p>We learn about your business, goals, and ideal customers</p>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Strategy & Design</h4>
+                            <p>We create a custom plan and design that matches your brand</p>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Build & Launch</h4>
+                            <p>We build everything and launch your complete digital presence</p>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Grow & Optimize</h4>
+                            <p>We help you attract customers and continuously improve results</p>
+                        </div>
                     </div>
                 </div>
-                <div class="trust-item">
-                    <i class="fas fa-lock"></i>
-                    <div>
-                        <strong>Money-Back Guarantee</strong>
-                        <p>100% refund within 30 days</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Offer Section -->
+    <section id="services" class="services-offer-section">
+        <div class="container">
+            <div class="services-hero">
+                <span class="section-badge">
+                    <i class="fas fa-briefcase"></i>
+                    Our Services
+                </span>
+                <h2 class="section-title">What We Offer</h2>
+                <p class="lead-text">Everything you need to dominate your market online. We handle the tech, you focus on growing your business.</p>
+            </div>
+
+            <div class="services-grid-detailed">
+                <div class="service-detailed-card">
+                    <div class="service-icon-large">
+                        <i class="fas fa-globe"></i>
                     </div>
+                    <h3>Professional Website Design</h3>
+                    <p>Custom-built, mobile-responsive websites that convert visitors into customers. From simple landing pages to complex e-commerce platforms.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Mobile-responsive design</li>
+                        <li><i class="fas fa-check"></i> SEO optimization</li>
+                        <li><i class="fas fa-check"></i> Fast loading speeds</li>
+                        <li><i class="fas fa-check"></i> Secure hosting included</li>
+                    </ul>
                 </div>
-                <div class="trust-item">
-                    <i class="fas fa-percentage"></i>
-                    <div>
-                        <strong>0% Interest</strong>
-                        <p>No hidden fees or charges</p>
+
+                <div class="service-detailed-card">
+                    <div class="service-icon-large">
+                        <i class="fas fa-share-alt"></i>
                     </div>
+                    <h3>Social Media Integration</h3>
+                    <p>Fully branded social media profiles across all major platforms, linked seamlessly to your website for maximum reach.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Profile setup & branding</li>
+                        <li><i class="fas fa-check"></i> Content strategy</li>
+                        <li><i class="fas fa-check"></i> Cross-platform integration</li>
+                        <li><i class="fas fa-check"></i> Analytics tracking</li>
+                    </ul>
                 </div>
-                <div class="trust-item">
-                    <i class="fas fa-handshake"></i>
-                    <div>
-                        <strong>Transparent Terms</strong>
-                        <p>Clear, simple agreements</p>
+
+                <div class="service-detailed-card">
+                    <div class="service-icon-large">
+                        <i class="fas fa-video"></i>
                     </div>
+                    <h3>Professional Video Content</h3>
+                    <p>Engaging promo videos that tell your story and capture attention. Perfect for social media, websites, and advertising.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Professional editing</li>
+                        <li><i class="fas fa-check"></i> Stock footage included</li>
+                        <li><i class="fas fa-check"></i> Custom animations</li>
+                        <li><i class="fas fa-check"></i> Multiple formats</li>
+                    </ul>
+                </div>
+
+                <div class="service-detailed-card">
+                    <div class="service-icon-large">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI-Powered Features</h3>
+                    <p>Smart chatbots, automated responses, and AI assistants that work 24/7 to capture leads and answer customer questions.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> 24/7 customer support</li>
+                        <li><i class="fas fa-check"></i> Lead qualification</li>
+                        <li><i class="fas fa-check"></i> Automated booking</li>
+                        <li><i class="fas fa-check"></i> Smart responses</li>
+                    </ul>
+                </div>
+
+                <div class="service-detailed-card">
+                    <div class="service-icon-large">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Marketing & SEO</h3>
+                    <p>Get found online with our comprehensive SEO strategies, Google Ads setup, and marketing automation tools.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Keyword optimization</li>
+                        <li><i class="fas fa-check"></i> Google Ads setup</li>
+                        <li><i class="fas fa-check"></i> Email marketing</li>
+                        <li><i class="fas fa-check"></i> Analytics & reporting</li>
+                    </ul>
+                </div>
+
+                <div class="service-detailed-card">
+                    <div class="service-icon-large">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Ongoing Support</h3>
+                    <p>We don't disappear after launch. Get dedicated support, maintenance, updates, and strategic consultations included.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Priority support</li>
+                        <li><i class="fas fa-check"></i> Regular updates</li>
+                        <li><i class="fas fa-check"></i> Security monitoring</li>
+                        <li><i class="fas fa-check"></i> Strategy sessions</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -486,12 +631,36 @@
     <!-- Packages Section -->
     <section id="packages" class="services">
         <div class="container">
-            <h2 class="section-title">Choose Your Growth Package</h2>
-            <p class="section-subtitle">Professional digital presence without breaking the bank. Pick your package below.</p>
+            <div class="packages-hero">
+                <span class="packages-badge">
+                    <i class="fas fa-box-open"></i>
+                    Transparent Pricing
+                </span>
+                <h2 class="section-title">Choose Your Perfect Growth Package</h2>
+                <p class="section-subtitle">Professional digital presence solutions designed for businesses at every stage. All packages include 0% interest payment plans and our risk-share guarantee.</p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Happy Clients</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">98%</span>
+                        <span class="stat-label">Satisfaction Rate</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">2-6</span>
+                        <span class="stat-label">Week Delivery</span>
+                    </div>
+                </div>
+            </div>
             
             <!-- Payment Plan Selector -->
             <div class="payment-selector">
-                <p class="selector-label">Choose your payment option:</p>
+                <p class="selector-label">
+                    <i class="fas fa-credit-card"></i>
+                    Select Your Payment Option:
+                </p>
                 <div class="payment-buttons">
                     <button class="payment-option-btn" data-plan="full">
                         <i class="fas fa-bolt"></i>
@@ -695,75 +864,6 @@
                             <h5>Website Maintenance</h5>
                             <p>$97/month</p>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>Why Choose NextReach?</h2>
-                    <p class="lead">Your website, social media, and videos all connected and ready to attract clients.</p>
-                    
-                    <div class="value-props">
-                        <div class="value-prop">
-                            <i class="fas fa-layer-group"></i>
-                            <div>
-                                <h4>All-in-One Service</h4>
-                                <p>Website, social media, and videos under one roof</p>
-                            </div>
-                        </div>
-                        <div class="value-prop">
-                            <i class="fas fa-star"></i>
-                            <div>
-                                <h4>Professional & Modern Design</h4>
-                                <p>Build trust with your audience instantly</p>
-                            </div>
-                        </div>
-                        <div class="value-prop">
-                            <i class="fas fa-target"></i>
-                            <div>
-                                <h4>Results-Focused</h4>
-                                <p>Launch your business online efficiently and effectively</p>
-                            </div>
-                        </div>
-                        <div class="value-prop">
-                            <i class="fas fa-shield-alt"></i>
-                            <div>
-                                <h4>Early Client Confidence</h4>
-                                <p>Partial refund option shows we stand behind our work</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="stats">
-                        <div class="stat">
-                            <h3>2-6</h3>
-                            <p>Week Launch</p>
-                        </div>
-                        <div class="stat">
-                            <h3>100%</h3>
-                            <p>Mobile Optimized</p>
-                        </div>
-                        <div class="stat">
-                            <h3>10-20%</h3>
-                            <p>Risk-Share Refund</p>
-                        </div>
-                        <div class="stat">
-                            <h3>All-in-One</h3>
-                            <p>Digital Solution</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="about-image">
-                    <div class="image-placeholder">
-                        <i class="fas fa-users"></i>
-                        <p>Our Team</p>
                     </div>
                 </div>
             </div>
@@ -1264,279 +1364,119 @@
     <!-- Booking Section -->
     <section id="booking" class="booking-section">
         <div class="container">
-            <!-- Epic Hero Header -->
-            <div class="booking-hero-header">
+            <!-- Header with Back Button -->
+            <div class="booking-header-bar">
                 <button class="back-to-home" onclick="closeBooking()">
-                    <i class="fas fa-arrow-left"></i> Back to Home
-                </button>
-                
-                <div class="hero-badge-container">
-                    <span class="hero-badge pulse-badge">🔥 Limited Availability</span>
-                    <span class="hero-badge">⚡ Same-Day Response</span>
-                </div>
-                
-                <h1 class="booking-hero-title">
-                    Let's Build Something <span class="gradient-text">Extraordinary</span>
-                </h1>
-                <p class="booking-hero-subtitle">
-                    Join successful businesses who've transformed their digital presence with NextReach
-                </p>
-                
-                <!-- Live Stats Counter -->
-                <div class="live-stats-bar">
-                    <div class="stat-item-live">
-                        <div class="stat-icon">📈</div>
-                        <div class="stat-details">
-                            <span class="stat-number count-up">247</span>
-                            <span class="stat-label">Hours Saved for Clients</span>
-                        </div>
-                    </div>
-                    <div class="stat-item-live">
-                        <div class="stat-icon">⭐</div>
-                        <div class="stat-details">
-                            <span class="stat-number">5.0</span>
-                            <span class="stat-label">Perfect Rating</span>
-                        </div>
-                    </div>
-                    <div class="stat-item-live">
-                        <div class="stat-icon">🚀</div>
-                        <div class="stat-details">
-                            <span class="stat-number count-up">12</span>
-                            <span class="stat-label">Active Projects</span>
-                        </div>
-                    </div>
-                    <div class="stat-item-live">
-                        <div class="stat-icon">💼</div>
-                        <div class="stat-details">
-                            <span class="stat-number">100%</span>
-                            <span class="stat-label">Client Satisfaction</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Quick Action Buttons -->
-            <div class="quick-actions-grid">
-                <button class="quick-action-btn primary-action" onclick="scrollToCalendly()">
-                    <div class="action-icon">📝</div>
-                    <div class="action-content">
-                        <strong>Book Free Consultation</strong>
-                        <span>30-minute strategy session</span>
-                    </div>
-                    <i class="fas fa-arrow-right action-arrow"></i>
-                </button>
-                
-                <button class="quick-action-btn secondary-action" onclick="scrollToCalendly()">
-                    <div class="action-icon">⚡</div>
-                    <div class="action-content">
-                        <strong>Quick Booking</strong>
-                        <span>Skip form & schedule directly</span>
-                    </div>
-                    <i class="fas fa-calendar-check action-arrow"></i>
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Back to Home</span>
                 </button>
             </div>
 
-            <!-- Trust Proof Section -->
-            <div class="trust-proof-section">
-                <div class="proof-header">
-                    <h3>Why Industry Leaders Choose NextReach</h3>
-                </div>
-                
-                <div class="proof-grid">
-                    <div class="proof-card">
-                        <div class="proof-icon-large">🎯</div>
-                        <h4>Strategic Excellence</h4>
-                        <p>Data-driven strategies that deliver <strong>3x ROI</strong> on average</p>
-                        <div class="proof-metric">
-                            <span class="metric-number">300%</span>
-                            <span class="metric-label">Average ROI Increase</span>
-                        </div>
-                    </div>
-                    
-                    <div class="proof-card highlight-card">
-                        <div class="proof-icon-large">⚡</div>
-                        <h4>Lightning Fast Delivery</h4>
-                        <p>Your website live in <strong>7-14 days</strong>, not months</p>
-                        <div class="proof-metric">
-                            <span class="metric-number">7-14</span>
-                            <span class="metric-label">Days to Launch</span>
-                        </div>
-                    </div>
-                    
-                    <div class="proof-card">
-                        <div class="proof-icon-large">💎</div>
-                        <h4>Premium Quality</h4>
-                        <p>Enterprise-level design at <strong>startup prices</strong></p>
-                        <div class="proof-metric">
-                            <span class="metric-number">50%</span>
-                            <span class="metric-label">Below Market Rate</span>
-                        </div>
-                    </div>
+            <!-- Hero Area -->
+            <div class="booking-hero">
+                <div class="booking-hero-content">
+                    <h1 class="booking-main-title">
+                        Book Your Free <span class="gradient-text">Strategy Call</span>
+                    </h1>
+                    <p class="booking-subtitle">
+                        30 minutes that could transform your business. Let's discuss your goals and create a custom plan together.
+                    </p>
                 </div>
             </div>
 
-            <!-- Portfolio Showcase -->
-            <div class="portfolio-showcase-booking">
-                <div class="showcase-header">
-                    <span class="showcase-badge">🏆 Featured Work</span>
-                    <h3>Recent Success Stories</h3>
-                    <p>Real results from real clients</p>
+            <!-- Main Content Area -->
+            <div class="booking-grid">
+                <!-- Calendar Section - Left/Top -->
+                <div class="booking-calendar-container">
+                    <div class="calendar-wrapper">
+                        <div class="calendar-header">
+                            <i class="fas fa-calendar-alt"></i>
+                            <h3>Choose Your Perfect Time</h3>
+                        </div>
+                        <!-- Calendly Inline Widget -->
+                        <div class="calendly-inline-widget" 
+                             data-url="https://calendly.com/tsvetkovalex790/30min?hide_gdpr_banner=1&primary_color=3b82f6" 
+                             style="min-width:320px;height:700px;">
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="showcase-grid">
-                    <div class="showcase-card">
-                        <div class="showcase-image-wrapper">
-                            <div class="showcase-mockup">
-                                <div class="mockup-browser">
-                                    <div class="browser-bar">
-                                        <span class="browser-dot"></span>
-                                        <span class="browser-dot"></span>
-                                        <span class="browser-dot"></span>
-                                    </div>
-                                    <div class="mockup-content gradient-bg-1">
-                                        <div class="mockup-logo">NextReach</div>
-                                        <div class="mockup-text"></div>
-                                        <div class="mockup-text short"></div>
-                                    </div>
+
+                <!-- Info Section - Right/Bottom -->
+                <div class="booking-info-container">
+                    <!-- What You'll Get -->
+                    <div class="info-block">
+                        <div class="info-block-header">
+                            <i class="fas fa-gift"></i>
+                            <h3>What You'll Get</h3>
+                        </div>
+                        <ul class="benefits-list">
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span>Personalized strategy for your business</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span>Clear pricing with no hidden fees</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span>Timeline and next steps outlined</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span>Answers to all your questions</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Trust Indicators -->
+                    <div class="info-block trust-block">
+                        <div class="trust-stats">
+                            <div class="trust-stat">
+                                <div class="trust-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="trust-content">
+                                    <strong>500+</strong>
+                                    <span>Happy Clients</span>
                                 </div>
                             </div>
-                            <div class="showcase-badge-overlay">Live Project ✨</div>
-                        </div>
-                        <div class="showcase-info">
-                            <h4>NextReach Digital Agency</h4>
-                            <p class="showcase-type">Full-Service Digital Platform</p>
-                            <div class="showcase-results">
-                                <span class="result-tag">🚀 Modern Design</span>
-                                <span class="result-tag">💼 Lead Generation</span>
-                                <span class="result-tag">📱 Mobile-First</span>
+                            <div class="trust-stat">
+                                <div class="trust-icon">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="trust-content">
+                                    <strong>5.0</strong>
+                                    <span>Average Rating</span>
+                                </div>
+                            </div>
+                            <div class="trust-stat">
+                                <div class="trust-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="trust-content">
+                                    <strong>2-6 Weeks</strong>
+                                    <span>To Launch</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="showcase-card coming-soon-card">
-                        <div class="showcase-image-wrapper">
-                            <div class="showcase-mockup blurred">
-                                <div class="mockup-browser">
-                                    <div class="browser-bar">
-                                        <span class="browser-dot"></span>
-                                        <span class="browser-dot"></span>
-                                        <span class="browser-dot"></span>
-                                    </div>
-                                    <div class="mockup-content gradient-bg-2">
-                                        <div class="coming-soon-overlay">
-                                            <div class="coming-soon-icon">🎨</div>
-                                            <div class="coming-soon-text">Your Project Here</div>
-                                            <div class="coming-soon-subtext">Be Our Next Success Story</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
+                    <!-- Guarantee -->
+                    <div class="info-block guarantee-block">
+                        <div class="guarantee-icon">
+                            <i class="fas fa-shield-check"></i>
                         </div>
-                        <div class="showcase-info">
-                            <h4>Your Business Name</h4>
-                            <p class="showcase-type">Your Dream Website</p>
-                            <div class="showcase-results">
-                                <span class="result-tag">✨ Custom Design</span>
-                                <span class="result-tag">📈 High Converting</span>
-                                <span class="result-tag">🎯 Brand Focus</span>
-                            </div>
-                        </div>
+                        <h4>No Pressure, No Obligation</h4>
+                        <p>This call is completely free. We'll discuss your needs and see if we're a good fit. Zero commitment required.</p>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Client Testimonial Slider -->
-            <div class="testimonial-slider-section">
-                <div class="slider-header">
-                    <h3>What Clients Say</h3>
-                    <div class="slider-rating">
-                        <span class="stars">⭐⭐⭐⭐⭐</span>
-                        <span class="rating-text">5.0 across all reviews</span>
-                    </div>
-                </div>
-                
-                <div class="testimonials-carousel">
-                    <div class="testimonial-slide active">
-                        <div class="testimonial-content">
-                            <div class="quote-icon">"</div>
-                            <p class="testimonial-text">
-                                "Absolutely incredible work! Our website went from outdated to cutting-edge. 
-                                Lead generation increased by 280% in just 2 months. Best investment we've made!"
-                            </p>
-                            <div class="testimonial-author">
-                                <div class="author-avatar">JD</div>
-                                <div class="author-info">
-                                    <strong>James Davidson</strong>
-                                    <span>CEO, TechStart Solutions</span>
-                                </div>
-                            </div>
-                            <div class="testimonial-stats">
-                                <span class="stat-badge">📈 +280% Leads</span>
-                                <span class="stat-badge">⏱️ 10 Days Delivery</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Guarantee Section -->
-            <div class="guarantee-section">
-                <div class="guarantee-card">
-                    <div class="guarantee-icon">🛡️</div>
-                    <h3>Our 100% Satisfaction Guarantee</h3>
-                    <p>If you're not absolutely thrilled with our work, we'll revise it until you are - or give you a full refund. No questions asked.</p>
-                    <div class="guarantee-features">
-                        <div class="guarantee-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Unlimited revisions</span>
-                        </div>
-                        <div class="guarantee-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>30-day money-back guarantee</span>
-                        </div>
-                        <div class="guarantee-item">
-                            <i class="fas fa-check-circle"></i>
-                            <span>100% ownership of all files</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Pre-Booking Registration Form -->
-            <div id="preBookingForm" class="pre-booking-wrapper">
-                <div class="pre-booking-content">
-                    <div class="pre-booking-left">
-                        <div class="pre-booking-hero">
-                            <div class="floating-badge">
-                                <i class="fas fa-crown"></i> Premium Consultation
-                            </div>
-                            <h3>Before We Schedule...</h3>
-                            <p class="lead-text">Help us prepare the perfect strategy for your business. This 30-second form ensures we deliver maximum value during your call.</p>
-                            
-                            <div class="preparation-benefits">
-                                <h4><i class="fas fa-check-circle"></i> We'll Prepare:</h4>
-                                <div class="benefit-item">
-                                    <div class="benefit-icon"><i class="fas fa-chart-line"></i></div>
-                                    <div class="benefit-content">
-                                        <strong>Custom Analysis</strong>
-                                        <p>Pre-call research on your industry & competitors</p>
-                                    </div>
-                                </div>
-                                <div class="benefit-item">
-                                    <div class="benefit-icon"><i class="fas fa-lightbulb"></i></div>
-                                    <div class="benefit-content">
-                                        <strong>Tailored Solutions</strong>
-                                        <p>Strategies specific to your business goals</p>
-                                    </div>
-                                </div>
-                                <div class="benefit-item">
-                                    <div class="benefit-icon"><i class="fas fa-bullseye"></i></div>
-                                    <div class="benefit-content">
-                                        <strong>ROI Projections</strong>
-                                        <p>Expected results & timeline for your project</p>
-                                    </div>
-                                </div>
-                                <div class="benefit-item">
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
                                     <div class="benefit-icon"><i class="fas fa-rocket"></i></div>
                                     <div class="benefit-content">
                                         <strong>Growth Roadmap</strong>
