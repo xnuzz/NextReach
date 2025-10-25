@@ -3,6 +3,8 @@ const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const path = require('path');
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const emailService = require('./email-service-server');
 require('dotenv').config();
 
 const app = express();
@@ -15,9 +17,10 @@ app.use(helmet({
             defaultSrc: ["'self'"],
             styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com", "https://cdnjs.cloudflare.com"],
             fontSrc: ["'self'", "https://fonts.gstatic.com", "https://cdnjs.cloudflare.com"],
-            scriptSrc: ["'self'", "'unsafe-inline'"],
+            scriptSrc: ["'self'", "'unsafe-inline'", "https://js.stripe.com"],
+            frameSrc: ["https://js.stripe.com"],
             imgSrc: ["'self'", "data:", "https:"],
-            connectSrc: ["'self'"]
+            connectSrc: ["'self'", "https://api.stripe.com"]
         }
     }
 }));
@@ -171,6 +174,203 @@ app.get('/api/health', (req, res) => {
     });
 });
 
+// Contact form endpoint
+app.post('/api/contact', async (req, res) => {
+    try {
+        const { name, email, phone, company, message } = req.body;
+        
+        // Validate inputs
+        if (!name || !email || !message) {
+            return res.status(400).json({ error: 'Name, email, and message are required' });
+        }
+        
+        console.log('📧 Sending contact form emails...');
+        
+        // Send emails (to both admin and customer)
+        const results = await emailService.sendContactFormEmails({
+            name,
+            email,
+            phone,
+            company,
+            message
+        });
+        
+        console.log('✅ Contact form emails sent successfully');
+        
+        res.json({ 
+            success: true, 
+            message: 'Thank you! We\'ll be in touch within 24 hours.' 
+        });
+        
+    } catch (error) {
+        console.error('❌ Contact form error:', error);
+        res.status(500).json({ error: 'Failed to send message. Please try again.' });
+    }
+});
+
+// Payment endpoint - Create Stripe payment intent
+app.post('/create-payment-intent', async (req, res) => {
+    try {
+        const { amount, package: packageType, paymentPlan, customerInfo } = req.body;
+        
+        // Validate inputs
+        if (!amount || !packageType || !paymentPlan || !customerInfo) {
+            return res.status(400).json({ error: 'Missing required payment information' });
+        }
+        
+        if (!customerInfo.email || !customerInfo.name) {
+            return res.status(400).json({ error: 'Customer information incomplete' });
+        }
+        
+        // Validate amount is reasonable (between $100 and $3000)
+        if (amount < 10000 || amount > 300000) { // in cents
+            return res.status(400).json({ error: 'Invalid payment amount' });
+        }
+        
+        console.log('💳 Creating payment intent for:', {
+            amount: amount / 100,
+            package: packageType,
+            plan: paymentPlan,
+            customer: customerInfo.email
+        });
+        
+        // Check if Stripe is configured
+        if (!process.env.STRIPE_SECRET_KEY) {
+            console.error('❌ Stripe secret key not configured');
+            return res.status(500).json({ 
+                error: 'Payment processing unavailable. Please contact support.' 
+            });
+        }
+        
+        // Create or retrieve customer
+        let customer;
+        try {
+            const customers = await stripe.customers.list({
+                email: customerInfo.email,
+                limit: 1
+            });
+            
+            if (customers.data.length > 0) {
+                customer = customers.data[0];
+                console.log('✅ Existing customer found:', customer.id);
+            } else {
+                customer = await stripe.customers.create({
+                    email: customerInfo.email,
+                    name: customerInfo.name,
+                    phone: customerInfo.phone,
+                    metadata: {
+                        package: packageType,
+                        paymentPlan: paymentPlan
+                    }
+                });
+                console.log('✅ New customer created:', customer.id);
+            }
+        } catch (error) {
+            console.error('❌ Error managing customer:', error);
+            return res.status(500).json({ error: 'Customer creation failed' });
+        }
+        
+        // Create payment intent
+        const paymentIntent = await stripe.paymentIntents.create({
+            amount: amount,
+            currency: 'usd',
+            customer: customer.id,
+            description: `NextReach ${packageType} Package - ${paymentPlan}`,
+            metadata: {
+                package: packageType,
+                paymentPlan: paymentPlan,
+                customerName: customerInfo.name,
+                customerEmail: customerInfo.email,
+                customerPhone: customerInfo.phone
+            },
+            receipt_email: customerInfo.email
+        });
+        
+        console.log('✅ Payment intent created:', paymentIntent.id);
+        
+        // Send payment confirmation emails automatically
+        // (Will be triggered by webhook when payment succeeds)
+        
+        res.json({
+            clientSecret: paymentIntent.client_secret,
+            paymentIntentId: paymentIntent.id
+        });
+        
+    } catch (error) {
+        console.error('❌ Payment intent creation error:', error);
+        res.status(500).json({ 
+            error: error.message || 'Payment processing failed' 
+        });
+    }
+});
+
+// Webhook endpoint for Stripe events (for future payment confirmations)
+app.post('/webhook', express.raw({ type: 'application/json' }), async (req, res) => {
+    const sig = req.headers['stripe-signature'];
+    
+    if (!process.env.STRIPE_WEBHOOK_SECRET) {
+        console.warn('⚠️  Stripe webhook secret not configured');
+        return res.sendStatus(400);
+    }
+    
+    let event;
+    
+    try {
+        event = stripe.webhooks.constructEvent(
+            req.body,
+            sig,
+            process.env.STRIPE_WEBHOOK_SECRET
+        );
+    } catch (err) {
+        console.error('❌ Webhook signature verification failed:', err.message);
+        return res.sendStatus(400);
+    }
+    
+    // Handle the event
+    switch (event.type) {
+        case 'payment_intent.succeeded':
+            const paymentIntent = event.data.object;
+            console.log('✅ Payment succeeded:', paymentIntent.id);
+            
+            // Send payment confirmation and welcome emails
+            const orderData = {
+                orderId: paymentIntent.id,
+                customerName: paymentIntent.metadata.customerName,
+                customerEmail: paymentIntent.metadata.customerEmail,
+                customerPhone: paymentIntent.metadata.customerPhone,
+                packageName: paymentIntent.metadata.package + ' Package',
+                paymentPlan: paymentIntent.metadata.paymentPlan,
+                amountPaid: paymentIntent.amount / 100,
+                totalAmount: paymentIntent.amount / 100
+            };
+            
+            // Send payment receipt and notification
+            await emailService.sendPaymentEmails(orderData);
+            
+            // Send welcome email after 30 seconds
+            setTimeout(async () => {
+                await emailService.sendWelcomeEmail({
+                    customerName: orderData.customerName,
+                    customerEmail: orderData.customerEmail,
+                    packageName: orderData.packageName
+                });
+            }, 30000);
+            
+            break;
+            
+        case 'payment_intent.payment_failed':
+            const failedPayment = event.data.object;
+            console.error('❌ Payment failed:', failedPayment.id);
+            // TODO: Send failure notification
+            break;
+            
+        default:
+            console.log(`Unhandled event type: ${event.type}`);
+    }
+    
+    res.sendStatus(200);
+});
+
 // Serve main page
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
@@ -191,10 +391,17 @@ app.listen(PORT, () => {
     console.log(`🚀 NextReach server running securely on port ${PORT}`);
     console.log(`🔒 Security features enabled`);
     console.log(`🤖 AI proxy endpoint: /api/chat`);
+    console.log(`💳 Payment endpoint: /create-payment-intent`);
     
     if (!process.env.DEEPSEEK_API_KEY) {
         console.warn('⚠️  DEEPSEEK_API_KEY not set - AI features will use fallback');
     } else {
         console.log('✅ DeepSeek API key configured');
+    }
+    
+    if (!process.env.STRIPE_SECRET_KEY) {
+        console.warn('⚠️  STRIPE_SECRET_KEY not set - Payment processing unavailable');
+    } else {
+        console.log('✅ Stripe payment processing configured');
     }
 });

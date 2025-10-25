@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful - NextReach</title>
+    <link rel="icon" type="image/svg+xml" href="NextReach.svg">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="email-service.js"></script>
+    <style>
+        .success-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .success-icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, #10b981, #059669);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: scaleIn 0.5s ease;
+        }
+
+        .success-icon i {
+            font-size: 4rem;
+            color: white;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .success-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+        }
+
+        .success-content h1 {
+            font-size: 2.5rem;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+        }
+
+        .success-content p {
+            font-size: 1.125rem;
+            color: #64748b;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .order-details {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .order-details h2 {
+            font-size: 1.25rem;
+            color: #1e3a8a;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: #475569;
+        }
+
+        .detail-value {
+            color: #1e3a8a;
+            font-weight: 600;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            border-left: 4px solid #3b82f6;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .highlight-box h3 {
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .highlight-box h3 i {
+            color: #3b82f6;
+        }
+
+        .highlight-box p {
+            color: #475569;
+            margin-bottom: 0;
+            font-size: 1rem;
+        }
+
+        .next-steps {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+        }
+
+        .next-steps h2 {
+            font-size: 1.75rem;
+            color: #1e3a8a;
+            margin-bottom: 2rem;
+        }
+
+        .step-list {
+            display: grid;
+            gap: 1.5rem;
+            text-align: left;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 1.25rem;
+            padding: 1.5rem;
+            background: #f8fafc;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .step-item:hover {
+            transform: translateX(8px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #3b82f6, #1e3a8a);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            color: #1e3a8a;
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+        }
+
+        .step-content p {
+            color: #64748b;
+            margin: 0;
+            font-size: 0.9375rem;
+        }
+
+        .action-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .action-btn {
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6, #1e3a8a);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #3b82f6;
+            border: 2px solid #3b82f6;
+        }
+
+        .btn-secondary:hover {
+            background: #eff6ff;
+        }
+
+        .support-box {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            margin-top: 2rem;
+        }
+
+        .support-box h3 {
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .support-box p {
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .contact-methods {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+        }
+
+        .contact-method i {
+            color: #10b981;
+        }
+
+        @media (max-width: 768px) {
+            .action-buttons {
+                grid-template-columns: 1fr;
+            }
+
+            .success-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .success-content h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="NextReach.svg" alt="NextReach" class="logo-img">
+                <span class="logo-text">NextReach</span>
+            </a>
+        </div>
+    </nav>
+
+    <div class="success-container">
+        <div class="success-icon">
+            <i class="fas fa-check"></i>
+        </div>
+
+        <div class="success-content">
+            <h1>Payment Successful! 🎉</h1>
+            <p>Thank you for choosing NextReach! Your payment has been processed successfully, and we're excited to start transforming your digital presence.</p>
+
+            <div class="order-details" id="orderDetails">
+                <h2>Order Summary</h2>
+                <div class="detail-row">
+                    <span class="detail-label">Order ID</span>
+                    <span class="detail-value" id="orderId">-</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Package</span>
+                    <span class="detail-value" id="packageName">-</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Payment Plan</span>
+                    <span class="detail-value" id="paymentPlan">-</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Amount Paid Today</span>
+                    <span class="detail-value" id="amountPaid">-</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Total Investment</span>
+                    <span class="detail-value" id="totalAmount">-</span>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3><i class="fas fa-envelope"></i> Confirmation Email Sent</h3>
+                <p>We've sent a confirmation email to <strong id="customerEmail">-</strong> with your receipt and next steps. Please check your inbox (and spam folder, just in case).</p>
+            </div>
+        </div>
+
+        <div class="next-steps">
+            <h2>What Happens Next?</h2>
+            <div class="step-list">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Welcome Email (Within 1 Hour)</h3>
+                        <p>You'll receive a welcome email with your client portal login credentials and onboarding instructions.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Kickoff Call (Within 24-48 Hours)</h3>
+                        <p>Our team will reach out to schedule your strategy call. We'll discuss your goals, brand vision, and project timeline.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Onboarding Questionnaire</h3>
+                        <p>Complete a brief questionnaire about your business, target audience, competitors, and design preferences.</p>
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Project Launch (Day 3-5)</h3>
+                        <p>We'll begin work on your project! You'll have access to our client portal to track progress in real-time.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <a href="index.html" class="action-btn btn-secondary">
+                    <i class="fas fa-home"></i>
+                    Back to Home
+                </a>
+                <a href="mailto:support@nextreach.com" class="action-btn btn-primary">
+                    <i class="fas fa-envelope"></i>
+                    Contact Support
+                </a>
+            </div>
+        </div>
+
+        <div class="support-box">
+            <h3>Need Help? We're Here!</h3>
+            <p>Our team is available to answer any questions you might have about your order.</p>
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <i class="fas fa-envelope"></i>
+                    <span>support@nextreach.com</span>
+                </div>
+                <div class="contact-method">
+                    <i class="fas fa-phone"></i>
+                    <span>(555) 123-4567</span>
+                </div>
+                <div class="contact-method">
+                    <i class="fas fa-comments"></i>
+                    <span>Live Chat (9am-6pm EST)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Load order details from localStorage
+        const orderDetails = JSON.parse(localStorage.getItem('orderDetails'));
+
+        if (orderDetails) {
+            document.getElementById('orderId').textContent = orderDetails.orderId.substring(0, 16).toUpperCase();
+            document.getElementById('packageName').textContent = orderDetails.packageName;
+            
+            let planText = '';
+            switch(orderDetails.paymentPlan) {
+                case '6month':
+                    planText = '6 Monthly Payments';
+                    break;
+                case '3month':
+                    planText = '3 Monthly Payments';
+                    break;
+                case 'full':
+                    planText = 'Paid in Full (10% Discount)';
+                    break;
+            }
+            
+            document.getElementById('paymentPlan').textContent = planText;
+            document.getElementById('amountPaid').textContent = `$${orderDetails.amountPaid.toFixed(2)}`;
+            document.getElementById('totalAmount').textContent = `$${orderDetails.totalAmount.toFixed(2)}`;
+            document.getElementById('customerEmail').textContent = orderDetails.customerEmail;
+            
+            // Send confirmation email (if EmailJS is configured)
+            if (typeof emailService !== 'undefined') {
+                emailService.sendPaymentConfirmation(orderDetails)
+                    .then(result => {
+                        if (result.success) {
+                            console.log('✅ Confirmation email sent successfully');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Email sending failed:', error);
+                    });
+                
+                // Send welcome email after 2 seconds
+                setTimeout(() => {
+                    emailService.sendWelcomeEmail({
+                        name: orderDetails.customerName,
+                        email: orderDetails.customerEmail,
+                        package: orderDetails.packageName
+                    });
+                }, 2000);
+            }
+        } else {
+            // If no order details, redirect to home
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 3000);
+        }
+
+        // Clear order details after displaying (optional - keeps it for page refresh)
+        // localStorage.removeItem('orderDetails');
+    </script>
+</body>
+</html>

@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Checkout - NextReach</title>
+    <link rel="icon" type="image/svg+xml" href="NextReach.svg">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        .checkout-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem 4rem;
+            display: grid;
+            grid-template-columns: 1fr 450px;
+            gap: 3rem;
+        }
+
+        .checkout-main {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .checkout-sidebar {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            padding: 2.5rem;
+            border-radius: 16px;
+            color: white;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .checkout-header {
+            margin-bottom: 2rem;
+        }
+
+        .checkout-header h1 {
+            font-size: 2rem;
+            color: #1e3a8a;
+            margin-bottom: 0.5rem;
+        }
+
+        .checkout-header p {
+            color: #64748b;
+        }
+
+        .form-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .form-section h2 {
+            font-size: 1.25rem;
+            color: #1e3a8a;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .form-section h2 i {
+            color: #3b82f6;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin-bottom: 0.5rem;
+            font-size: 0.9375rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.875rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .payment-method-selector {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .payment-method-option {
+            padding: 1.25rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+        }
+
+        .payment-method-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .payment-method-option input[type="radio"]:checked + label {
+            border-color: #3b82f6;
+            background: #eff6ff;
+        }
+
+        .payment-method-option label {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0;
+        }
+
+        .payment-method-option i {
+            font-size: 2rem;
+            color: #3b82f6;
+        }
+
+        .payment-method-option:hover {
+            border-color: #3b82f6;
+            background: #f8fafc;
+        }
+
+        #card-element {
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            background: white;
+        }
+
+        .plan-selector {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .plan-option {
+            padding: 1.25rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .plan-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .plan-option.selected {
+            border-color: #3b82f6;
+            background: #eff6ff;
+        }
+
+        .plan-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-name {
+            font-weight: 600;
+            color: #1e3a8a;
+            font-size: 1.0625rem;
+        }
+
+        .plan-price {
+            font-weight: 700;
+            color: #3b82f6;
+            font-size: 1.125rem;
+        }
+
+        .plan-details {
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+
+        .plan-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        .order-summary {
+            margin-bottom: 2rem;
+        }
+
+        .order-summary h3 {
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .summary-item:last-child {
+            border-bottom: none;
+        }
+
+        .summary-label {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .summary-value {
+            font-weight: 600;
+            color: white;
+        }
+
+        .total-row {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid rgba(255, 255, 255, 0.3);
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .trust-badges {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.875rem;
+        }
+
+        .trust-badge i {
+            color: #10b981;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.125rem 2rem;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.0625rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .security-note {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+
+        .security-note i {
+            color: #10b981;
+            margin-right: 0.5rem;
+        }
+
+        @media (max-width: 968px) {
+            .checkout-container {
+                grid-template-columns: 1fr;
+            }
+
+            .checkout-sidebar {
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="NextReach.svg" alt="NextReach" class="logo-img">
+                <span class="logo-text">NextReach</span>
+            </a>
+        </div>
+    </nav>
+
+    <div class="checkout-container">
+        <div class="checkout-main">
+            <div class="checkout-header">
+                <h1>Secure Checkout</h1>
+                <p>Complete your order and start your digital transformation today</p>
+            </div>
+
+            <form id="payment-form">
+                <!-- Contact Information -->
+                <div class="form-section">
+                    <h2><i class="fas fa-user"></i> Contact Information</h2>
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Package Selection -->
+                <div class="form-section">
+                    <h2><i class="fas fa-box"></i> Select Your Package</h2>
+                    <div class="plan-selector">
+                        <div class="plan-option" data-package="starter" data-price="697">
+                            <input type="radio" name="package" value="starter" id="starter">
+                            <div class="plan-header">
+                                <label for="starter" class="plan-name">Starter Package</label>
+                                <span class="plan-price">$697</span>
+                            </div>
+                            <div class="plan-details">3-page website, 2 social profiles, 30-day support</div>
+                        </div>
+
+                        <div class="plan-option selected" data-package="professional" data-price="1497">
+                            <input type="radio" name="package" value="professional" id="professional" checked>
+                            <div class="plan-header">
+                                <label for="professional" class="plan-name">
+                                    Professional Package
+                                    <span class="plan-badge">MOST POPULAR</span>
+                                </label>
+                                <span class="plan-price">$1,497</span>
+                            </div>
+                            <div class="plan-details">7-page website, AI chatbot, 4 social profiles, promo video, 90-day support</div>
+                        </div>
+
+                        <div class="plan-option" data-package="premium" data-price="2000">
+                            <input type="radio" name="package" value="premium" id="premium">
+                            <div class="plan-header">
+                                <label for="premium" class="plan-name">Premium Package</label>
+                                <span class="plan-price">$2,000</span>
+                            </div>
+                            <div class="plan-details">Unlimited pages, e-commerce, 3 videos, full branding, 6-month support</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Plan -->
+                <div class="form-section">
+                    <h2><i class="fas fa-calendar-alt"></i> Choose Payment Plan</h2>
+                    <div class="plan-selector" id="payment-plans">
+                        <div class="plan-option selected" data-plan="6month">
+                            <input type="radio" name="paymentPlan" value="6month" id="6month" checked>
+                            <div class="plan-header">
+                                <label for="6month" class="plan-name">6 Monthly Payments</label>
+                                <span class="plan-price" id="price-6month">$748 + $125/mo</span>
+                            </div>
+                            <div class="plan-details">50% deposit, then 6 easy payments (0% interest)</div>
+                        </div>
+
+                        <div class="plan-option" data-plan="3month">
+                            <input type="radio" name="paymentPlan" value="3month" id="3month">
+                            <div class="plan-header">
+                                <label for="3month" class="plan-name">3 Monthly Payments</label>
+                                <span class="plan-price" id="price-3month">$748 + $250/mo</span>
+                            </div>
+                            <div class="plan-details">50% deposit, then 3 payments (0% interest)</div>
+                        </div>
+
+                        <div class="plan-option" data-plan="full">
+                            <input type="radio" name="paymentPlan" value="full" id="full">
+                            <div class="plan-header">
+                                <label for="full" class="plan-name">
+                                    Pay in Full
+                                    <span class="plan-badge">SAVE 10%</span>
+                                </label>
+                                <span class="plan-price" id="price-full">$1,347</span>
+                            </div>
+                            <div class="plan-details">One-time payment, save $150 instantly!</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Method -->
+                <div class="form-section">
+                    <h2><i class="fas fa-credit-card"></i> Payment Information</h2>
+                    <div id="card-element"></div>
+                    <div id="card-errors" role="alert" style="color: #ef4444; margin-top: 1rem;"></div>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submit-button">
+                    <i class="fas fa-lock"></i>
+                    <span>Complete Secure Payment</span>
+                    <span id="button-amount"></span>
+                </button>
+
+                <div class="security-note">
+                    <i class="fas fa-shield-alt"></i>
+                    Secured by Stripe. Your payment information is encrypted and secure.
+                </div>
+            </form>
+        </div>
+
+        <div class="checkout-sidebar">
+            <div class="order-summary">
+                <h3>Order Summary</h3>
+                <div class="summary-item">
+                    <span class="summary-label">Package</span>
+                    <span class="summary-value" id="summary-package">Professional</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">Payment Plan</span>
+                    <span class="summary-value" id="summary-plan">6 Monthly Payments</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">Today's Payment</span>
+                    <span class="summary-value" id="summary-today">$748.00</span>
+                </div>
+                <div class="summary-item">
+                    <span class="summary-label">Future Payments</span>
+                    <span class="summary-value" id="summary-future">$125/mo × 6</span>
+                </div>
+                <div class="summary-item total-row">
+                    <span class="summary-label">Total Investment</span>
+                    <span class="summary-value" id="summary-total">$1,497.00</span>
+                </div>
+            </div>
+
+            <div class="trust-badges">
+                <div class="trust-badge">
+                    <i class="fas fa-check-circle"></i>
+                    <span>0% Interest</span>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Secure Payment</span>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Money-Back Guarantee</span>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-check-circle"></i>
+                    <span>No Hidden Fees</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="payment.js"></script>
+</body>
+</html>
