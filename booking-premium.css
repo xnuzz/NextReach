@@ -1,0 +1,690 @@
+/* ============================================
+   BOOKING PAGE - PREMIUM STYLES
+   ============================================ */
+
+/* Variables */
+:root {
+    --primary-blue: #3b82f6;
+    --primary-navy: #1e3a8a;
+    --accent-blue: #60a5fa;
+    --success-green: #10b981;
+    --warning-orange: #f59e0b;
+    --purple: #8b5cf6;
+    --dark: #1a1a1a;
+    --gray: #6b7280;
+    --light-gray: #f3f4f6;
+    --white: #ffffff;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   BOOKING HERO SECTION
+   ============================================ */
+
+.booking-hero {
+    position: relative;
+    padding: 120px 0 80px;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--primary-navy) 0%, var(--primary-blue) 100%);
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.shape {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    animation: float 20s infinite ease-in-out;
+}
+
+.shape-1 {
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.shape-2 {
+    width: 200px;
+    height: 200px;
+    top: 50%;
+    right: 10%;
+    animation-delay: 5s;
+}
+
+.shape-3 {
+    width: 150px;
+    height: 150px;
+    bottom: 10%;
+    left: 50%;
+    animation-delay: 10s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-30px) rotate(180deg);
+    }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-badge {
+    display: inline-block;
+    padding: 8px 24px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 50px;
+    color: var(--white);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: slideDown 0.6s ease-out;
+}
+
+.booking-hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 20px;
+    line-height: 1.2;
+    animation: slideDown 0.6s ease-out 0.1s both;
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.booking-hero p {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 40px;
+    line-height: 1.6;
+    animation: slideDown 0.6s ease-out 0.2s both;
+}
+
+.hero-features {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    animation: slideDown 0.6s ease-out 0.3s both;
+}
+
+.hero-features .feature {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--white);
+    font-size: 1rem;
+}
+
+.hero-features .feature i {
+    color: var(--success-green);
+    font-size: 1.2rem;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   BOOKING SECTION
+   ============================================ */
+
+.booking-section {
+    padding: 80px 0;
+    background: var(--light-gray);
+}
+
+.container-booking {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.booking-grid {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 40px;
+    align-items: start;
+}
+
+/* Calendar Container */
+.calendar-container {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: var(--shadow-xl);
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.calendar-wrapper {
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+/* Calendly Widget Styling */
+.calendly-inline-widget {
+    border-radius: 16px;
+}
+
+/* Info Sidebar */
+.info-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    animation: fadeInUp 0.6s ease-out 0.2s both;
+}
+
+.info-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.card-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.card-icon.success {
+    background: linear-gradient(135deg, var(--success-green) 0%, #059669 100%);
+}
+
+.card-icon.purple {
+    background: linear-gradient(135deg, var(--purple) 0%, #7c3aed 100%);
+}
+
+.info-card h3 {
+    font-size: 1.5rem;
+    color: var(--dark);
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.checklist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.checklist li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    color: var(--gray);
+}
+
+.checklist li i {
+    color: var(--success-green);
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.detail-item:last-child {
+    border-bottom: none;
+}
+
+.detail-item strong {
+    color: var(--dark);
+    font-weight: 600;
+}
+
+.detail-item span {
+    color: var(--gray);
+}
+
+/* Highlight Card */
+.info-card.highlight {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border: 2px solid var(--primary-blue);
+}
+
+.offer-text {
+    font-size: 1.1rem;
+    color: var(--dark);
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.offer-text strong {
+    color: var(--primary-blue);
+}
+
+.countdown {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: rgba(59, 130, 246, 0.1);
+    border-radius: 8px;
+    color: var(--primary-blue);
+    font-weight: 600;
+    margin-top: 15px;
+}
+
+.countdown i {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Testimonial Card */
+.testimonial-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: var(--shadow-md);
+    border-left: 4px solid var(--warning-orange);
+    transition: var(--transition);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.stars {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+.stars i {
+    color: var(--warning-orange);
+    font-size: 1.1rem;
+}
+
+.testimonial-card p {
+    font-size: 1rem;
+    color: var(--gray);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.testimonial-author {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.testimonial-author strong {
+    color: var(--dark);
+    font-weight: 600;
+}
+
+.testimonial-author span {
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+/* Contact Card */
+.contact-card {
+    background: linear-gradient(135deg, var(--primary-navy) 0%, var(--primary-blue) 100%);
+    border-radius: 16px;
+    padding: 30px;
+    color: var(--white);
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+}
+
+.contact-card h4 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.contact-card p {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 20px;
+}
+
+.contact-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contact-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.contact-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+}
+
+.contact-btn i {
+    font-size: 1.1rem;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   CTA SECTION
+   ============================================ */
+
+.booking-cta {
+    padding: 80px 0;
+    background: var(--white);
+    text-align: center;
+}
+
+.booking-cta h2 {
+    font-size: 2.5rem;
+    color: var(--dark);
+    margin-bottom: 15px;
+    font-weight: 800;
+}
+
+.booking-cta p {
+    font-size: 1.2rem;
+    color: var(--gray);
+    margin-bottom: 40px;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn-large {
+    padding: 16px 40px;
+    font-size: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--primary-blue);
+    border: 2px solid var(--primary-blue);
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.btn-secondary:hover {
+    background: var(--primary-blue);
+    color: var(--white);
+    transform: translateY(-3px);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 1200px) {
+    .booking-grid {
+        grid-template-columns: 1fr 350px;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .booking-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .info-sidebar {
+        grid-template-columns: repeat(2, 1fr);
+        display: grid;
+    }
+
+    .contact-card {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .booking-hero {
+        padding: 100px 0 60px;
+    }
+
+    .booking-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .booking-hero p {
+        font-size: 1.1rem;
+    }
+
+    .hero-features {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .booking-section {
+        padding: 60px 0;
+    }
+
+    .info-sidebar {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-card {
+        grid-column: span 1;
+    }
+
+    .booking-cta h2 {
+        font-size: 2rem;
+    }
+
+    .booking-cta p {
+        font-size: 1.1rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn-large {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+
+    .calendar-container {
+        padding: 15px;
+    }
+
+    .calendly-inline-widget {
+        height: 600px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .booking-hero h1 {
+        font-size: 2rem;
+    }
+
+    .booking-hero p {
+        font-size: 1rem;
+    }
+
+    .hero-badge {
+        font-size: 0.85rem;
+        padding: 6px 18px;
+    }
+
+    .info-card {
+        padding: 20px;
+    }
+
+    .info-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .card-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
+
+    .testimonial-card {
+        padding: 20px;
+    }
+
+    .contact-card {
+        padding: 20px;
+    }
+
+    .booking-cta h2 {
+        font-size: 1.75rem;
+    }
+
+    .calendly-inline-widget {
+        height: 550px !important;
+    }
+}
+
+/* ============================================
+   ADDITIONAL ANIMATIONS
+   ============================================ */
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.loading-shimmer {
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+    background: var(--primary-blue);
+    color: var(--white);
+}
+
+/* Focus states */
+button:focus,
+a:focus,
+input:focus {
+    outline: 2px solid var(--primary-blue);
+    outline-offset: 2px;
+}
