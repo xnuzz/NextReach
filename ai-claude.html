@@ -46,6 +46,29 @@
                     <i class="fas fa-times"></i>
                 </button>
             </div>
+            
+            <!-- User Context Panel -->
+            <div class="user-context-panel" id="userContextPanel" style="display: none;">
+                <div style="background: linear-gradient(135deg, #667eea, #764ba2); padding: 1rem; border-radius: 12px; margin-bottom: 1rem; color: white;">
+                    <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
+                        <div style="width: 40px; height: 40px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem;">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <div style="font-weight: 700; font-size: 1rem;" id="contextUserName"></div>
+                            <div style="font-size: 0.75rem; opacity: 0.9;" id="contextUserEmail"></div>
+                        </div>
+                    </div>
+                    <div style="font-size: 0.8rem; opacity: 0.95; margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid rgba(255,255,255,0.2);">
+                        <div style="margin-bottom: 0.5rem;"><i class="fas fa-brain"></i> <strong>AI knows about you:</strong></div>
+                        <div id="contextDetails" style="font-size: 0.75rem; line-height: 1.5;"></div>
+                    </div>
+                    <button onclick="claudeAI.showUserPreferencesModal()" style="width: 100%; margin-top: 0.75rem; padding: 0.5rem; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); color: white; border-radius: 8px; cursor: pointer; font-size: 0.8rem; font-weight: 600;">
+                        <i class="fas fa-edit"></i> Edit Profile
+                    </button>
+                </div>
+            </div>
+            
             <div class="chat-history" id="chatHistory">
                 <div class="empty-history">
                     <i class="fas fa-comments"></i>
@@ -71,7 +94,7 @@
             <!-- Welcome Screen -->
             <div class="welcome-screen" id="welcomeScreen">
                 <div class="welcome-wrapper">
-                    <h1 class="welcome-title">How can I help you today?</h1>
+                    <h1 class="welcome-title" id="welcomeTitle">How can I help you today?</h1>
                     
                     <!-- Suggested Prompts Grid (2x2) -->
                     <div class="suggestions-grid">

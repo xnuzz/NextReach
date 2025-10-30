@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Disallow admin/internal pages
+Disallow: /data/
+Disallow: /*?*
+Disallow: /login.html
+Disallow: /register.html
+Disallow: /dashboard.html
+
+# Sitemap location
+Sitemap: https://nextreach374.com/sitemap.xml
+
+# Crawl delay
+Crawl-delay: 1
