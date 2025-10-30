@@ -1,375 +1,152 @@
-<!DOCTYPE html><!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Assistant - NextReach Digital Intelligence</title>
+    <link rel="icon" type="image/svg+xml" href="NextReach.svg">
+    <link rel="stylesheet" href="ai-assistant.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+    <!-- Professional Header -->
+    <header class="ai-header">
+        <div class="header-container">
+            <div class="header-left">
+                <a href="index.html" class="back-btn">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Back to Home</span>
+                </a>
+                <div class="logo-area">
+                    <img src="NextReach.svg" alt="NextReach" class="header-logo">
+                    <div class="logo-text">
+                        <h1>AI Assistant</h1>
+                        <span class="ai-status">
+                            <span class="status-dot"></span>
+                            DeepSeek AI Active
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="header-btn" id="newChatBtn" title="Start New Chat">
+                    <i class="fas fa-plus"></i>
+                    <span>New Chat</span>
+                </button>
+                <button class="header-btn" id="exportChatBtn" title="Export Chat">
+                    <i class="fas fa-download"></i>
+                    <span>Export</span>
+                </button>
+            </div>
+        </div>
+    </header>
 
-<html lang="en"><html lang="en">
-
-<head><head>
-
-    <meta charset="UTF-8">    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>AI Assistant - NextReach | Your 24/7 Marketing Expert</title>    <title>AI Assistant - NextReach Digital Intelligence</title>
-
-    <meta name="description" content="Chat with our advanced AI assistant powered by DeepSeek. Get instant answers about our services, pricing, and digital marketing strategies.">    <link rel="icon" type="image/svg+xml" href="NextReach.svg">
-
-    <link rel="icon" type="image/svg+xml" href="NextReach.svg">    <link rel="stylesheet" href="ai-assistant.css">
-
-    <link rel="stylesheet" href="styles.css">    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="ai-assistant-premium.css">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></head>
-
-</head><body>
-
-<body>    <!-- Professional Header -->
-
-    <!-- Navigation -->    <header class="ai-header">
-
-    <nav class="navbar">        <div class="header-container">
-
-        <div class="nav-container">            <div class="header-left">
-
-            <div class="nav-logo">                <a href="index.html" class="back-btn">
-
-                <a href="index.html">                    <i class="fas fa-arrow-left"></i>
-
-                    <img src="NextReach.svg" alt="NextReach" class="logo-nav">                    <span>Back to Home</span>
-
-                </a>                </a>
-
-            </div>                <div class="logo-area">
-
-            <ul class="nav-menu">                    <img src="NextReach.svg" alt="NextReach" class="header-logo">
-
-                <li class="nav-item">                    <div class="logo-text">
-
-                    <a href="index.html" class="nav-link">Home</a>                        <h1>AI Assistant</h1>
-
-                </li>                        <span class="ai-status">
-
-                <li class="nav-item">                            <span class="status-dot"></span>
-
-                    <a href="services.html" class="nav-link">Services</a>                            DeepSeek AI Active
-
-                </li>                        </span>
-
-                <li class="nav-item">                    </div>
-
-                    <a href="portfolio.html" class="nav-link">Portfolio</a>                </div>
-
-                </li>            </div>
-
-                <li class="nav-item">            <div class="header-right">
-
-                    <a href="about.html" class="nav-link">About</a>                <button class="header-btn" id="newChatBtn" title="Start New Chat">
-
-                </li>                    <i class="fas fa-plus"></i>
-
-                <li class="nav-item">                    <span>New Chat</span>
-
-                    <a href="contact.html" class="nav-link">Contact</a>                </button>
-
-                </li>                <button class="header-btn" id="exportChatBtn" title="Export Chat">
-
-            </ul>                    <i class="fas fa-download"></i>
-
-            <div class="nav-actions">                    <span>Export</span>
-
-                <a href="booking.html" class="btn btn-primary">Book Call</a>                </button>
-
-            </div>            </div>
-
-            <div class="hamburger" id="hamburger">        </div>
-
-                <span class="bar"></span>    </header>
-
-                <span class="bar"></span>
-
-                <span class="bar"></span>    <!-- Main AI Interface -->
-
-            </div>    <main class="ai-main">
-
-        </div>        <!-- Sidebar -->
-
-    </nav>        <aside class="ai-sidebar" id="aiSidebar">
-
+    <!-- Main AI Interface -->
+    <main class="ai-main">
+        <!-- Sidebar -->
+        <aside class="ai-sidebar" id="aiSidebar">
             <div class="sidebar-header">
+                <h3><i class="fas fa-history"></i> Chat History</h3>
+                <button class="clear-history-btn" id="clearHistoryBtn" title="Clear All History">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            </div>
+            <div class="chat-history" id="chatHistory">
+                <!-- History items will be dynamically added here -->
+            </div>
+        </aside>
 
-    <!-- AI Assistant Container -->                <h3><i class="fas fa-history"></i> Chat History</h3>
-
-    <div class="ai-container">                <button class="clear-history-btn" id="clearHistoryBtn" title="Clear All History">
-
-        <!-- Sidebar -->                    <i class="fas fa-trash-alt"></i>
-
-        <aside class="ai-sidebar">                </button>
-
-            <div class="sidebar-header">            </div>
-
-                <div class="logo-section">            <div class="chat-history" id="chatHistory">
-
-                    <div class="ai-logo">                <!-- History items will be dynamically added here -->
-
-                        <i class="fas fa-robot"></i>            </div>
-
-                    </div>        </aside>
-
-                    <div>
-
-                        <h3>AI Assistant</h3>        <!-- Chat Area -->
-
-                        <span class="status-badge">        <div class="chat-container">
-
-                            <span class="status-dot"></span>            <!-- Welcome Screen -->
-
-                            Online            <div class="welcome-screen" id="welcomeScreen">
-
-                        </span>                <div class="welcome-content">
-
-                    </div>                    <div class="welcome-icon">
-
-                </div>                        <i class="fas fa-robot"></i>
-
-            </div>                    </div>
-
+        <!-- Chat Area -->
+        <div class="chat-container">
+            <!-- Welcome Screen -->
+            <div class="welcome-screen" id="welcomeScreen">
+                <div class="welcome-content">
+                    <div class="welcome-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
                     <h2>Welcome to NextReach AI Assistant</h2>
-
-            <div class="quick-actions">                    <p class="welcome-subtitle">Powered by DeepSeek AI - Ask me anything about digital marketing, business strategy, technology, coding, or general knowledge!</p>
-
-                <h4>Quick Actions</h4>                    
-
-                <button class="quick-btn" data-message="Tell me about your services">                    <div class="suggested-prompts">
-
-                    <i class="fas fa-concierge-bell"></i>                        <h3><i class="fas fa-magic"></i> Quick Start - Try These:</h3>
-
-                    <span>Our Services</span>                        <div class="prompt-grid">
-
-                </button>                            <button class="prompt-btn" data-prompt="What makes NextReach different from other digital marketing agencies?">
-
-                <button class="quick-btn" data-message="What are your pricing packages?">                                <i class="fas fa-rocket"></i>
-
-                    <i class="fas fa-tag"></i>                                <span>About NextReach</span>
-
-                    <span>Pricing</span>                            </button>
-
-                </button>                            <button class="prompt-btn" data-prompt="How can AI improve my business operations?">
-
-                <button class="quick-btn" data-message="Show me your portfolio">                                <i class="fas fa-robot"></i>
-
-                    <i class="fas fa-briefcase"></i>                                <span>AI for Business</span>
-
-                    <span>Portfolio</span>                            </button>
-
-                </button>                            <button class="prompt-btn" data-prompt="What's the best social media strategy for a startup?">
-
-                <button class="quick-btn" data-message="How can you help my business grow?">                                <i class="fas fa-hashtag"></i>
-
-                    <i class="fas fa-rocket"></i>                                <span>Marketing Strategy</span>
-
-                    <span>Get Started</span>                            </button>
-
-                </button>                            <button class="prompt-btn" data-prompt="Explain blockchain technology in simple terms">
-
-            </div>                                <i class="fas fa-link"></i>
-
+                    <p class="welcome-subtitle">Powered by DeepSeek AI - Ask me anything about digital marketing, business strategy, technology, coding, or general knowledge!</p>
+                    
+                    <div class="suggested-prompts">
+                        <h3><i class="fas fa-magic"></i> Quick Start - Try These:</h3>
+                        <div class="prompt-grid">
+                            <button class="prompt-btn" data-prompt="What makes NextReach different from other digital marketing agencies?">
+                                <i class="fas fa-rocket"></i>
+                                <span>About NextReach</span>
+                            </button>
+                            <button class="prompt-btn" data-prompt="How can AI improve my business operations?">
+                                <i class="fas fa-robot"></i>
+                                <span>AI for Business</span>
+                            </button>
+                            <button class="prompt-btn" data-prompt="What's the best social media strategy for a startup?">
+                                <i class="fas fa-hashtag"></i>
+                                <span>Marketing Strategy</span>
+                            </button>
+                            <button class="prompt-btn" data-prompt="Explain blockchain technology in simple terms">
+                                <i class="fas fa-link"></i>
                                 <span>Tech Explained</span>
-
-            <div class="conversation-history">                            </button>
-
-                <h4>Recent Chats</h4>                            <button class="prompt-btn" data-prompt="Write a Python function to analyze website traffic">
-
-                <div id="chatHistory" class="chat-list">                                <i class="fas fa-code"></i>
-
-                    <div class="empty-state">                                <span>Code Help</span>
-
-                        <i class="fas fa-comments"></i>                            </button>
-
-                        <p>No recent conversations</p>                            <button class="prompt-btn" data-prompt="What are the latest trends in digital marketing for 2025?">
-
-                    </div>                                <i class="fas fa-chart-pie"></i>
-
-                </div>                                <span>Industry Trends</span>
-
-            </div>                            </button>
-
+                            </button>
+                            <button class="prompt-btn" data-prompt="Write a Python function to analyze website traffic">
+                                <i class="fas fa-code"></i>
+                                <span>Code Help</span>
+                            </button>
+                            <button class="prompt-btn" data-prompt="What are the latest trends in digital marketing for 2025?">
+                                <i class="fas fa-chart-pie"></i>
+                                <span>Industry Trends</span>
+                            </button>
                         </div>
+                    </div>
+                </div>
+            </div>
 
-            <div class="sidebar-footer">                    </div>
-
-                <button class="new-chat-btn" id="newChatBtn">                </div>
-
-                    <i class="fas fa-plus"></i>            </div>
-
-                    <span>New Conversation</span>
-
-                </button>            <!-- Messages Area -->
-
-            </div>            <div class="messages-area" id="messagesArea">
-
-        </aside>                <div class="messages-container" id="messagesContainer">
-
+            <!-- Messages Area -->
+            <div class="messages-area" id="messagesArea">
+                <div class="messages-container" id="messagesContainer">
                     <!-- Messages will be added here dynamically -->
-
-        <!-- Main Chat Area -->                </div>
-
-        <main class="ai-main">            </div>
-
-            <!-- Chat Header -->
-
-            <div class="chat-header">            <!-- Input Area -->
-
-                <div class="header-info">            <div class="input-area">
-
-                    <div class="avatar-large">                <div class="input-container">
-
-                        <i class="fas fa-robot"></i>                    <div class="input-wrapper">
-
-                    </div>                        <textarea 
-
-                    <div>                            id="messageInput" 
-
-                        <h2>NextReach AI Assistant</h2>                            class="message-input" 
-
-                        <p>Powered by DeepSeek | Instant responses, 24/7</p>                            placeholder="Ask me anything... (Shift + Enter for new line)"
-
-                    </div>                            rows="1"
-
-                </div>                        ></textarea>
-
-                <div class="header-actions">                        <button class="send-btn" id="sendBtn" title="Send Message">
-
-                    <button class="icon-btn" id="clearChatBtn" title="Clear Chat">                            <i class="fas fa-paper-plane"></i>
-
-                        <i class="fas fa-trash"></i>                        </button>
-
-                    </button>                    </div>
-
-                    <button class="icon-btn" id="saveChatBtn" title="Save Chat">                    
-
-                        <i class="fas fa-save"></i>                    <div class="input-footer">
-
-                    </button>                        <p>
-
-                </div>                            <i class="fas fa-shield-alt"></i>
-
-            </div>                            Powered by DeepSeek AI • Your conversations are private
-
-                        </p>
-
-            <!-- Chat Messages -->                    </div>
-
-            <div class="chat-messages" id="chatMessages">                </div>
-
-                <!-- Welcome Message -->            </div>
-
-                <div class="message ai-message">        </div>
-
-                    <div class="message-avatar">
-
-                        <i class="fas fa-robot"></i>
-
-                    </div>    </main>
-
-                    <div class="message-content">
-
-                        <div class="message-bubble">    <!-- Loading Overlay -->
-
-                            <h3>👋 Welcome to NextReach AI Assistant!</h3>    <div class="loading-overlay" id="loadingOverlay">
-
-                            <p>I'm here to help you with:</p>        <div class="loading-spinner">
-
-                            <ul>            <div class="spinner"></div>
-
-                                <li>✨ Information about our digital marketing services</li>            <p>AI is thinking...</p>
-
-                                <li>💰 Pricing and package details</li>        </div>
-
-                                <li>🎯 Strategy recommendations for your business</li>    </div>
-
-                                <li>📊 Portfolio and case studies</li>
-
-                                <li>📞 Scheduling consultations</li>    <!-- Scripts -->
-
-                            </ul>    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-
-                            <p>Ask me anything! I'm powered by advanced AI to give you instant, accurate answers.</p>    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/11.1.1/marked.min.js"></script>
-
-                        </div>    <script src="ai-assistant.js"></script>
-
-                        <span class="message-time">Just now</span></body>
-
-                    </div></html>
-
-                </div>
-
-                <!-- Suggested Questions -->
-                <div class="suggestions">
-                    <p class="suggestions-title">Try asking:</p>
-                    <button class="suggestion-chip" data-message="What services do you offer?">
-                        What services do you offer?
-                    </button>
-                    <button class="suggestion-chip" data-message="How much does a website cost?">
-                        How much does a website cost?
-                    </button>
-                    <button class="suggestion-chip" data-message="Can you help with social media marketing?">
-                        Can you help with social media?
-                    </button>
-                    <button class="suggestion-chip" data-message="Show me your success stories">
-                        Show me your success stories
-                    </button>
                 </div>
             </div>
 
-            <!-- Typing Indicator -->
-            <div class="typing-indicator" id="typingIndicator" style="display: none;">
-                <div class="message ai-message">
-                    <div class="message-avatar">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <div class="message-content">
-                        <div class="typing-dots">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Chat Input -->
-            <div class="chat-input-container">
-                <form id="chatForm" class="chat-form">
+            <!-- Input Area -->
+            <div class="input-area">
+                <div class="input-container">
                     <div class="input-wrapper">
-                        <button type="button" class="attach-btn" title="Attach file">
-                            <i class="fas fa-paperclip"></i>
-                        </button>
                         <textarea 
                             id="messageInput" 
                             class="message-input" 
-                            placeholder="Type your message here... (Shift+Enter for new line)"
+                            placeholder="Ask me anything... (Shift + Enter for new line)"
                             rows="1"
-                            autocomplete="off"
-                            required
                         ></textarea>
-                        <button type="submit" class="send-btn" id="sendBtn" title="Send message">
+                        <button class="send-btn" id="sendBtn" title="Send Message">
                             <i class="fas fa-paper-plane"></i>
                         </button>
                     </div>
+                    
                     <div class="input-footer">
-                        <span class="char-count"><span id="charCount">0</span>/2000</span>
-                        <span class="ai-badge">
+                        <p>
                             <i class="fas fa-shield-alt"></i>
-                            Secure & Private
-                        </span>
+                            Powered by DeepSeek AI • Your conversations are private
+                        </p>
                     </div>
-                </form>
+                </div>
             </div>
-        </main>
+        </div>
+
+
+    </main>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>AI is thinking...</p>
+        </div>
     </div>
 
     <!-- Scripts -->
-    <script src="ai-assistant-premium.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/11.1.1/marked.min.js"></script>
+    <script src="ai-assistant.js"></script>
 </body>
 </html>
