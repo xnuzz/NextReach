@@ -120,6 +120,9 @@ class AuthSystem {
                 
                 this.currentUser = userData;
                 
+                // Set flag for welcome animation
+                sessionStorage.setItem('justLoggedIn', 'true');
+                
                 // Show success
                 this.showSuccess('Login successful! Redirecting...');
                 
@@ -238,6 +241,10 @@ class AuthSystem {
             localStorage.setItem('nextreach_user', JSON.stringify(userData));
             
             this.currentUser = userData;
+            
+            // Set flag for welcome animation
+            sessionStorage.setItem('justLoggedIn', 'true');
+            sessionStorage.setItem('isNewUser', 'true');
             
             // Show success
             this.showSuccess('Account created successfully! Redirecting...');

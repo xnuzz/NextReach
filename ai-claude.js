@@ -464,6 +464,11 @@ Be conversational, clear, and helpful. Format responses with proper markdown. Al
         // Add user message
         this.addMessage('user', message);
         this.messages.push({ role: 'user', content: message });
+        
+        // Trigger AI Chatter achievement on first message
+        if (this.messages.length === 1 && typeof achievementSystem !== 'undefined') {
+            achievementSystem.onAIChat();
+        }
 
         // Clear input
         this.messageInput.value = '';

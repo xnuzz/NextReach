@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard - NextReach</title>
+    <meta name="description" content="Your personal NextReach dashboard. Track projects, view saved chats, and manage your account.">
+    <link rel="icon" type="image/svg+xml" href="NextReach.svg">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="new-sections.css">
+    <link rel="stylesheet" href="responsive-enhancements.css">
+    <link rel="stylesheet" href="enhanced-ui.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="NextReach.svg" alt="NextReach" class="logo-nav">
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+                <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
+                <li class="nav-item"><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                <li class="nav-item"><a href="testimonials.html" class="nav-link">Testimonials</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="ai-claude.html" class="nav-btn nav-btn-ai">
+                    <i class="fas fa-robot"></i>
+                    <span class="nav-btn-text">AI Assistant</span>
+                </a>
+                <a href="index.html#booking" class="nav-btn nav-btn-book">
+                    <i class="fas fa-calendar-check"></i>
+                    <span class="nav-btn-text">Book Call</span>
+                </a>
+                <a href="login.html" class="nav-btn nav-btn-outline" id="nav-login">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span class="nav-btn-text">Login</span>
+                </a>
+                <a href="pricing.html" class="nav-btn nav-btn-primary" id="nav-get-started">
+                    <i class="fas fa-rocket"></i>
+                    <span class="nav-btn-text">Get Started</span>
+                </a>
+                <button class="user-profile-btn" id="user-profile" style="display: none;">
+                    <div class="user-avatar"><i class="fas fa-user"></i></div>
+                    <span class="user-name" id="user-display-name"></span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+            <div class="user-dropdown" id="user-dropdown" style="display: none;">
+                <div class="user-dropdown-header">
+                    <div class="user-avatar-large"><i class="fas fa-user"></i></div>
+                    <div class="user-info">
+                        <div class="user-full-name" id="dropdown-user-name"></div>
+                        <div class="user-email" id="dropdown-user-email"></div>
+                    </div>
+                </div>
+                <div class="user-dropdown-menu">
+                    <a href="dashboard.html" class="dropdown-item"><i class="fas fa-tachometer-alt"></i><span>My Dashboard</span></a>
+                    <a href="ai-claude.html" class="dropdown-item"><i class="fas fa-robot"></i><span>AI Assistant</span></a>
+                    <a href="#" class="dropdown-item" id="saved-chats"><i class="fas fa-comments"></i><span>Saved Chats</span></a>
+                    <a href="#" class="dropdown-item" id="my-profile"><i class="fas fa-user-circle"></i><span>My Profile</span></a>
+                    <a href="#" class="dropdown-item" id="settings"><i class="fas fa-cog"></i><span>Settings</span></a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item" id="logout-btn"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
+                </div>
+            </div>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <section style="padding: 8rem 0 4rem; background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%); min-height: 100vh;">
+        <div class="dashboard-container">
+            <!-- Dashboard Header -->
+            <div class="dashboard-header">
+                <h1 class="dashboard-welcome" id="dashboard-welcome">Welcome back!</h1>
+                <p class="dashboard-subtitle" id="dashboard-subtitle">Here's what's happening with your NextReach account</p>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <div class="dashboard-card-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div class="dashboard-card-title">Saved Conversations</div>
+                    <div class="dashboard-card-value" id="stat-chats">0</div>
+                    <div class="dashboard-card-label">AI Assistant chats</div>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="dashboard-card-icon" style="background: linear-gradient(135deg, #10b981, #34d399);">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="dashboard-card-title">Bookings Made</div>
+                    <div class="dashboard-card-value" id="stat-bookings">0</div>
+                    <div class="dashboard-card-label">Strategy calls scheduled</div>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="dashboard-card-icon" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="dashboard-card-title">Account Age</div>
+                    <div class="dashboard-card-value" id="stat-age">0d</div>
+                    <div class="dashboard-card-label">Member since</div>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="dashboard-card-icon" style="background: linear-gradient(135deg, #8b5cf6, #ec4899);">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="dashboard-card-title">Business Type</div>
+                    <div class="dashboard-card-value" style="font-size: 1.3rem;" id="stat-business">—</div>
+                    <div class="dashboard-card-label">Your industry</div>
+                </div>
+            </div>
+
+            <!-- Achievements Section -->
+            <div style="margin-bottom: 3rem;">
+                <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 2rem; text-align: center; color: var(--text-dark);">
+                    🏆 Your Achievements
+                </h2>
+                <div id="achievements-grid" class="achievements-grid"></div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div style="margin-bottom: 3rem;">
+                <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 2rem; text-align: center; color: var(--text-dark);">Quick Actions</h2>
+                <div class="dashboard-actions">
+                    <a href="ai-claude.html" class="dashboard-action-card">
+                        <div class="dashboard-action-icon"><i class="fas fa-robot"></i></div>
+                        <div class="dashboard-action-title">Chat with AI Assistant</div>
+                    </a>
+                    <a href="index.html#booking" class="dashboard-action-card">
+                        <div class="dashboard-action-icon"><i class="fas fa-calendar-check"></i></div>
+                        <div class="dashboard-action-title">Book Strategy Call</div>
+                    </a>
+                    <a href="pricing.html" class="dashboard-action-card">
+                        <div class="dashboard-action-icon"><i class="fas fa-box-open"></i></div>
+                        <div class="dashboard-action-title">View Packages</div>
+                    </a>
+                    <a href="portfolio.html" class="dashboard-action-card">
+                        <div class="dashboard-action-icon"><i class="fas fa-briefcase"></i></div>
+                        <div class="dashboard-action-title">Browse Portfolio</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Account Info -->
+            <div style="background: white; padding: 2.5rem; border-radius: 20px; box-shadow: var(--shadow-md);">
+                <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-dark);">
+                    <i class="fas fa-user-circle" style="color: var(--primary-color); margin-right: 0.5rem;"></i>
+                    Account Information
+                </h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                    <div>
+                        <div style="font-size: 0.85rem; color: var(--text-light); margin-bottom: 0.5rem; font-weight: 600; text-transform: uppercase;">Full Name</div>
+                        <div style="font-size: 1.1rem; color: var(--text-dark); font-weight: 600;" id="account-name">—</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 0.85rem; color: var(--text-light); margin-bottom: 0.5rem; font-weight: 600; text-transform: uppercase;">Email Address</div>
+                        <div style="font-size: 1.1rem; color: var(--text-dark); font-weight: 600;" id="account-email">—</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 0.85rem; color: var(--text-light); margin-bottom: 0.5rem; font-weight: 600; text-transform: uppercase;">Company Size</div>
+                        <div style="font-size: 1.1rem; color: var(--text-dark); font-weight: 600;" id="account-company">—</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 0.85rem; color: var(--text-light); margin-bottom: 0.5rem; font-weight: 600; text-transform: uppercase;">Member Since</div>
+                        <div style="font-size: 1.1rem; color: var(--text-dark); font-weight: 600;" id="account-date">—</div>
+                    </div>
+                </div>
+                <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #e5e7eb; display: flex; gap: 1rem;">
+                    <a href="#" class="btn btn-outline" id="edit-profile">
+                        <i class="fas fa-edit"></i>
+                        <span>Edit Profile</span>
+                    </a>
+                    <a href="#" class="btn btn-outline" id="change-password">
+                        <i class="fas fa-lock"></i>
+                        <span>Change Password</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="NextReach.svg" alt="NextReach" class="footer-logo" style="height: 60px; margin-bottom: 1rem;">
+                    <p>Empowering businesses with complete digital solutions.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="testimonials.html">Testimonials</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="index.html#booking">Book a Call</a></li>
+                        <li><a href="ai-claude.html">AI Assistant</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +359879040107</li>
+                        <li><i class="fas fa-envelope"></i> @nextreach.agency</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Marketing District</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 NextReach. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="database.js"></script>
+    <script src="achievement-system.js"></script>
+    <script src="session-manager-enhanced.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Check if user is logged in, redirect if not
+        if (typeof sessionManager !== 'undefined') {
+            const user = sessionManager.getCurrentUser();
+            
+            if (!user) {
+                // Not logged in, redirect to login
+                window.location.href = 'login.html';
+            } else {
+                // User is logged in, populate dashboard
+                sessionManager.init();
+                
+                // Update welcome message
+                document.getElementById('dashboard-welcome').textContent = `Welcome back, ${user.firstName}!`;
+                document.getElementById('dashboard-subtitle').textContent = `Here's what's happening with your NextReach account`;
+                
+                // Update stats
+                document.getElementById('stat-chats').textContent = user.chats ? user.chats.length : 0;
+                document.getElementById('stat-bookings').textContent = '0'; // To be connected later
+                
+                // Calculate account age
+                const createdDate = new Date(user.createdAt);
+                const now = new Date();
+                const daysDiff = Math.floor((now - createdDate) / (1000 * 60 * 60 * 24));
+                document.getElementById('stat-age').textContent = daysDiff === 0 ? 'Today' : `${daysDiff}d`;
+                
+                // Update business type
+                const businessTypes = {
+                    'digital-marketing': 'Digital Marketing',
+                    'web-development': 'Web Development',
+                    'seo': 'SEO',
+                    'social-media': 'Social Media',
+                    'content-creation': 'Content Creation',
+                    'ecommerce': 'E-commerce',
+                    'consulting': 'Consulting',
+                    'saas': 'SaaS',
+                    'other': 'Other'
+                };
+                document.getElementById('stat-business').textContent = businessTypes[user.preferences?.businessType] || '—';
+                
+                // Update account info
+                document.getElementById('account-name').textContent = `${user.firstName} ${user.lastName}`;
+                document.getElementById('account-email').textContent = user.email;
+                
+                const companySizes = {
+                    '1-10': '1-10 employees',
+                    '11-50': '11-50 employees',
+                    '51-200': '51-200 employees',
+                    '201-500': '201-500 employees',
+                    '500+': '500+ employees'
+                };
+                document.getElementById('account-company').textContent = companySizes[user.preferences?.companySize] || '—';
+                document.getElementById('account-date').textContent = createdDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+                
+                // Populate achievements
+                if (typeof achievementSystem !== 'undefined') {
+                    const achievementsGrid = document.getElementById('achievements-grid');
+                    const userAchievements = achievementSystem.getUserAchievements();
+                    const allAchievements = achievementSystem.achievements;
+                    
+                    let html = '';
+                    for (const [key, achievement] of Object.entries(allAchievements)) {
+                        const isUnlocked = userAchievements.includes(key);
+                        html += `
+                            <div class="achievement-badge ${isUnlocked ? 'unlocked' : 'locked'}">
+                                <div class="achievement-badge-icon" style="background: ${isUnlocked ? achievement.color : 'linear-gradient(135deg, #e2e8f0, #cbd5e1)'}">
+                                    <span style="font-size: 2rem; ${isUnlocked ? '' : 'filter: grayscale(1); opacity: 0.5;'}">${achievement.icon}</span>
+                                </div>
+                                <div class="achievement-badge-title">${achievement.title}</div>
+                                <div class="achievement-badge-description">${achievement.description}</div>
+                                ${isUnlocked ? '<div class="achievement-badge-status">✓ Unlocked</div>' : '<div class="achievement-badge-status locked-status">🔒 Locked</div>'}
+                            </div>
+                        `;
+                    }
+                    achievementsGrid.innerHTML = html;
+                }
+            }
+            
+            // Profile dropdown toggle
+            const profileBtn = document.getElementById('user-profile');
+            const dropdown = document.getElementById('user-dropdown');
+            if (profileBtn && dropdown) {
+                profileBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+                });
+                document.addEventListener('click', (e) => {
+                    if (!profileBtn.contains(e.target) && !dropdown.contains(e.target)) {
+                        dropdown.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Logout handler
+            const logoutBtn = document.getElementById('logout-btn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    sessionManager.logout();
+                    window.location.href = 'index.html';
+                });
+            }
+        }
+    </script>
+</body>
+</html>

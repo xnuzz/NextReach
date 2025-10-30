@@ -32,7 +32,31 @@
             <div class="nav-actions">
                 <a href="ai-claude.html" class="nav-btn nav-btn-ai"><i class="fas fa-robot"></i><span class="nav-btn-text">AI Assistant</span></a>
                 <a href="index.html#booking" class="nav-btn nav-btn-book"><i class="fas fa-calendar-check"></i><span class="nav-btn-text">Book Call</span></a>
-                <a href="pricing.html" class="nav-btn nav-btn-primary"><i class="fas fa-rocket"></i><span class="nav-btn-text">Get Started</span></a>
+                <a href="login.html" class="nav-btn nav-btn-outline" id="nav-login"><i class="fas fa-sign-in-alt"></i><span class="nav-btn-text">Login</span></a>
+                <a href="pricing.html" class="nav-btn nav-btn-primary" id="nav-get-started"><i class="fas fa-rocket"></i><span class="nav-btn-text">Get Started</span></a>
+                <button class="user-profile-btn" id="user-profile" style="display: none;">
+                    <div class="user-avatar"><i class="fas fa-user"></i></div>
+                    <span class="user-name" id="user-display-name"></span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+            <div class="user-dropdown" id="user-dropdown" style="display: none;">
+                <div class="user-dropdown-header">
+                    <div class="user-avatar-large"><i class="fas fa-user"></i></div>
+                    <div class="user-info">
+                        <div class="user-full-name" id="dropdown-user-name"></div>
+                        <div class="user-email" id="dropdown-user-email"></div>
+                    </div>
+                </div>
+                <div class="user-dropdown-menu">
+                    <a href="dashboard.html" class="dropdown-item"><i class="fas fa-tachometer-alt"></i><span>My Dashboard</span></a>
+                    <a href="ai-claude.html" class="dropdown-item"><i class="fas fa-robot"></i><span>AI Assistant</span></a>
+                    <a href="#" class="dropdown-item" id="saved-chats"><i class="fas fa-comments"></i><span>Saved Chats</span></a>
+                    <a href="#" class="dropdown-item" id="my-profile"><i class="fas fa-user-circle"></i><span>My Profile</span></a>
+                    <a href="#" class="dropdown-item" id="settings"><i class="fas fa-cog"></i><span>Settings</span></a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item" id="logout-btn"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
+                </div>
             </div>
             <div class="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
         </div>
@@ -223,6 +247,35 @@
         </div>
     </footer>
 
+    <script src="database.js"></script>
+    <script src="achievement-system.js"></script>
+    <script src="session-manager-enhanced.js"></script>
     <script src="script.js"></script>
+    <script>
+        if (typeof sessionManager !== 'undefined') {
+            sessionManager.init();
+            const profileBtn = document.getElementById('user-profile');
+            const dropdown = document.getElementById('user-dropdown');
+            if (profileBtn && dropdown) {
+                profileBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+                });
+                document.addEventListener('click', (e) => {
+                    if (!profileBtn.contains(e.target) && !dropdown.contains(e.target)) {
+                        dropdown.style.display = 'none';
+                    }
+                });
+            }
+            const logoutBtn = document.getElementById('logout-btn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    sessionManager.logout();
+                    window.location.reload();
+                });
+            }
+        }
+    </script>
 </body>
 </html>
