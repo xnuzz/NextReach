@@ -108,7 +108,7 @@ class ConversionOptimizer {
                     </p>
                     
                     <div style="display: flex; gap: 1rem; flex-direction: column;">
-                        <a href="#booking" onclick="this.closest('#exit-intent-popup').remove()" style="
+                        <a href="booking.html" onclick="this.closest('#exit-intent-popup').remove()" style="
                             background: linear-gradient(135deg, #667eea, #764ba2);
                             color: white;
                             padding: 1rem 2rem;
@@ -197,7 +197,7 @@ class ConversionOptimizer {
                     margin-bottom: 0.5rem;
                 ">View Pricing & Packages</a>
                 
-                <a href="#booking" onclick="this.closest('#scroll-popup').remove()" style="
+                <a href="booking.html" onclick="this.closest('#scroll-popup').remove()" style="
                     display: block;
                     text-align: center;
                     color: #667eea;

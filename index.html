@@ -103,7 +103,7 @@
                     <i class="fas fa-robot"></i>
                     <span class="nav-btn-text">AI Assistant</span>
                 </a>
-                <a href="#booking" class="nav-btn nav-btn-book">
+                <a href="booking.html" class="nav-btn nav-btn-book">
                     <i class="fas fa-calendar-check"></i>
                     <span class="nav-btn-text">Book Call</span>
                 </a>
@@ -134,35 +134,87 @@
                     <div class="user-info">
                         <div class="user-full-name" id="dropdown-user-name"></div>
                         <div class="user-email" id="dropdown-user-email"></div>
+                        <div class="user-stats" style="display: flex; gap: 1rem; margin-top: 0.5rem; font-size: 0.75rem; color: #64748b;">
+                            <span id="user-member-since"><i class="fas fa-calendar"></i> Member since <span id="member-date"></span></span>
+                        </div>
                     </div>
                 </div>
-                <div class="user-dropdown-menu">
-                    <a href="dashboard.html" class="dropdown-item">
-                        <i class="fas fa-tachometer-alt"></i>
-                        <span>My Dashboard</span>
-                    </a>
+                
+                <!-- User Activity Stats -->
+                <div class="dropdown-stats">
+                    <div class="stat-item">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="total-chats">0</div>
+                            <div class="stat-label">AI Conversations</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="last-active">Today</div>
+                            <div class="stat-label">Last Active</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Actions -->
+                <div class="dropdown-section">
+                    <div class="dropdown-section-title">Quick Actions</div>
                     <a href="ai-claude.html" class="dropdown-item">
                         <i class="fas fa-robot"></i>
-                        <span>AI Assistant</span>
+                        <span>New AI Chat</span>
+                        <span class="item-badge" style="background: #10b981;">HOT</span>
                     </a>
-                    <a href="#" class="dropdown-item" id="saved-chats">
-                        <i class="fas fa-comments"></i>
-                        <span>Saved Chats</span>
+                    <a href="booking.html" class="dropdown-item">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Book a Call</span>
                     </a>
-                    <a href="#" class="dropdown-item" id="my-profile">
-                        <i class="fas fa-user-circle"></i>
-                        <span>My Profile</span>
+                    <a href="#" class="dropdown-item" id="view-saved-chats">
+                        <i class="fas fa-history"></i>
+                        <span>View Chat History</span>
+                    </a>
+                </div>
+                
+                <!-- Account Management -->
+                <div class="dropdown-section">
+                    <div class="dropdown-section-title">Account</div>
+                    <a href="dashboard.html" class="dropdown-item">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="#" class="dropdown-item" id="edit-profile">
+                        <i class="fas fa-user-edit"></i>
+                        <span>Edit Profile</span>
+                    </a>
+                    <a href="#" class="dropdown-item" id="export-data">
+                        <i class="fas fa-download"></i>
+                        <span>Export My Data</span>
+                    </a>
+                </div>
+                
+                <!-- Support & Settings -->
+                <div class="dropdown-section">
+                    <div class="dropdown-section-title">Support</div>
+                    <a href="mailto:nextreach374@gmail.com" class="dropdown-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>Contact Support</span>
                     </a>
                     <a href="#" class="dropdown-item" id="settings">
                         <i class="fas fa-cog"></i>
                         <span>Settings</span>
                     </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item" id="logout-btn">
-                        <i class="fas fa-sign-out-alt"></i>
-                        <span>Logout</span>
-                    </a>
                 </div>
+                
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item dropdown-item-danger" id="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
             </div>
             <div class="hamburger">
                 <span class="bar"></span>
@@ -211,7 +263,7 @@
                         <span>Start Your Digital Transformation</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>
-                    <a href="#booking" class="btn btn-secondary btn-hero-secondary">
+                    <a href="booking.html" class="btn btn-secondary btn-hero-secondary">
                         <i class="fas fa-calendar-check"></i>
                         <span>Book Free Consultation</span>
                     </a>
@@ -537,7 +589,7 @@
                         <i class="fas fa-rocket"></i>
                         <span>Get Started Now</span>
                     </a>
-                    <a href="#booking" class="btn" style="background: rgba(255,255,255,0.15); color: white; border: 2px solid white; padding: 1.2rem 3rem; font-size: 1.15rem; font-weight: 700; backdrop-filter: blur(10px);">
+                    <a href="booking.html" class="btn" style="background: rgba(255,255,255,0.15); color: white; border: 2px solid white; padding: 1.2rem 3rem; font-size: 1.15rem; font-weight: 700; backdrop-filter: blur(10px);">
                         <i class="fas fa-calendar-check"></i>
                         <span>Book Free Call</span>
                     </a>
@@ -723,7 +775,7 @@
                     <ul>
                         <li><a href="#about">About Us</a></li>
                         <li><a href="#contact">Contact</a></li>
-                        <li><a href="#booking">Book a Call</a></li>
+                        <li><a href="booking.html">Book a Call</a></li>
                         <li><a href="ai-claude.html">AI Assistant</a></li>
                     </ul>
                 </div>
@@ -755,6 +807,23 @@
     
     <!-- Initialize Session & Profile Dropdown -->
     <script>
+        // Smooth scroll for all anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && href.length > 1) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+        
         // Initialize session and update navbar
         if (typeof sessionManager !== 'undefined') {
             sessionManager.init();
@@ -778,14 +847,23 @@
                 }, 3500); // After welcome animation
             }
             
-            // Profile dropdown toggle
+            // Profile dropdown toggle and populate stats
             const profileBtn = document.getElementById('user-profile');
             const dropdown = document.getElementById('user-dropdown');
             
             if (profileBtn && dropdown) {
+                // Populate user stats
+                populateUserStats();
+                
                 profileBtn.addEventListener('click', (e) => {
                     e.stopPropagation();
-                    dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+                    // Toggle visibility
+                    if (dropdown.style.display === 'none') {
+                        dropdown.style.display = 'block';
+                        populateUserStats(); // Refresh stats on open
+                    } else {
+                        dropdown.style.display = 'none';
+                    }
                 });
                 
                 // Close dropdown when clicking outside
@@ -805,6 +883,342 @@
                     window.location.reload();
                 });
             }
+            
+            // Enhanced dropdown handlers
+            setupDropdownHandlers();
+        }
+        
+        // Populate user stats in dropdown
+        function populateUserStats() {
+            try {
+                const currentUser = JSON.parse(localStorage.getItem('nextreach_user'));
+                if (!currentUser) return;
+                
+                // Calculate member since
+                const memberDate = document.getElementById('member-date');
+                if (memberDate && currentUser.createdAt) {
+                    const date = new Date(currentUser.createdAt);
+                    memberDate.textContent = date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+                }
+                
+                // Count AI conversations
+                const allChats = JSON.parse(localStorage.getItem('nextreach_ai_chats_all') || '[]');
+                const userChats = allChats.filter(chat => chat.userId === currentUser.id);
+                const totalChatsEl = document.getElementById('total-chats');
+                if (totalChatsEl) {
+                    totalChatsEl.textContent = userChats.length;
+                }
+                
+                // Calculate last active
+                const lastActiveEl = document.getElementById('last-active');
+                if (lastActiveEl) {
+                    const lastLogin = localStorage.getItem('lastLoginTime');
+                    if (lastLogin) {
+                        const lastDate = new Date(parseInt(lastLogin));
+                        const now = new Date();
+                        const diffHours = Math.floor((now - lastDate) / (1000 * 60 * 60));
+                        
+                        if (diffHours < 1) {
+                            lastActiveEl.textContent = 'Just now';
+                        } else if (diffHours < 24) {
+                            lastActiveEl.textContent = 'Today';
+                        } else if (diffHours < 48) {
+                            lastActiveEl.textContent = 'Yesterday';
+                        } else {
+                            const diffDays = Math.floor(diffHours / 24);
+                            lastActiveEl.textContent = `${diffDays}d ago`;
+                        }
+                    }
+                }
+            } catch (error) {
+                console.error('Error populating user stats:', error);
+            }
+        }
+        
+        // Setup enhanced dropdown handlers
+        function setupDropdownHandlers() {
+            // View saved chats
+            const viewChatsBtn = document.getElementById('view-saved-chats');
+            if (viewChatsBtn) {
+                viewChatsBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    window.location.href = 'ai-claude.html';
+                });
+            }
+            
+            // Edit profile
+            const editProfileBtn = document.getElementById('edit-profile');
+            if (editProfileBtn) {
+                editProfileBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showEditProfileModal();
+                });
+            }
+            
+            // Export data
+            const exportDataBtn = document.getElementById('export-data');
+            if (exportDataBtn) {
+                exportDataBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    exportUserData();
+                });
+            }
+            
+            // Settings
+            const settingsBtn = document.getElementById('settings');
+            if (settingsBtn) {
+                settingsBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showSettingsModal();
+                });
+            }
+        }
+        
+        // Edit profile modal
+        function showEditProfileModal() {
+            const currentUser = JSON.parse(localStorage.getItem('nextreach_user'));
+            if (!currentUser) return;
+            
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.7);
+                z-index: 10000;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                animation: fadeIn 0.3s ease;
+            `;
+            
+            modal.innerHTML = `
+                <div style="
+                    background: white;
+                    border-radius: 16px;
+                    padding: 2rem;
+                    max-width: 500px;
+                    width: 90%;
+                    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+                ">
+                    <h2 style="margin-bottom: 1.5rem; color: #1e293b;">Edit Profile</h2>
+                    <div style="margin-bottom: 1rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #64748b;">Name</label>
+                        <input type="text" id="edit-name" value="${currentUser.name || ''}" style="
+                            width: 100%;
+                            padding: 0.75rem;
+                            border: 2px solid #e5e7eb;
+                            border-radius: 8px;
+                            font-size: 1rem;
+                        ">
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #64748b;">Email</label>
+                        <input type="email" id="edit-email" value="${currentUser.email || ''}" readonly style="
+                            width: 100%;
+                            padding: 0.75rem;
+                            border: 2px solid #e5e7eb;
+                            border-radius: 8px;
+                            font-size: 1rem;
+                            background: #f8fafc;
+                            cursor: not-allowed;
+                        ">
+                        <small style="color: #94a3b8; font-size: 0.85rem;">Email cannot be changed</small>
+                    </div>
+                    <div style="display: flex; gap: 1rem;">
+                        <button onclick="saveProfile()" style="
+                            flex: 1;
+                            background: linear-gradient(135deg, #667eea, #764ba2);
+                            color: white;
+                            padding: 0.75rem;
+                            border: none;
+                            border-radius: 8px;
+                            font-weight: 700;
+                            cursor: pointer;
+                        ">Save Changes</button>
+                        <button onclick="this.closest('div[style*=\"position: fixed\"]').remove()" style="
+                            flex: 1;
+                            background: #e5e7eb;
+                            color: #64748b;
+                            padding: 0.75rem;
+                            border: none;
+                            border-radius: 8px;
+                            font-weight: 700;
+                            cursor: pointer;
+                        ">Cancel</button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+        }
+        
+        // Save profile changes
+        function saveProfile() {
+            const currentUser = JSON.parse(localStorage.getItem('nextreach_user'));
+            const newName = document.getElementById('edit-name').value.trim();
+            
+            if (newName && currentUser) {
+                currentUser.name = newName;
+                localStorage.setItem('nextreach_user', JSON.stringify(currentUser));
+                
+                // Update all users array
+                const allUsers = JSON.parse(localStorage.getItem('nextreach_users') || '[]');
+                const userIndex = allUsers.findIndex(u => u.id === currentUser.id);
+                if (userIndex !== -1) {
+                    allUsers[userIndex].name = newName;
+                    localStorage.setItem('nextreach_users', JSON.stringify(allUsers));
+                }
+                
+                // Close modal and reload
+                document.querySelector('div[style*="position: fixed"]').remove();
+                window.location.reload();
+            }
+        }
+        
+        // Export user data
+        function exportUserData() {
+            try {
+                const currentUser = JSON.parse(localStorage.getItem('nextreach_user'));
+                const allChats = JSON.parse(localStorage.getItem('nextreach_ai_chats_all') || '[]');
+                const userChats = allChats.filter(chat => chat.userId === currentUser.id);
+                const userPrefs = JSON.parse(localStorage.getItem(`nextreach_user_prefs_${currentUser.id}`) || '{}');
+                
+                const exportData = {
+                    user: currentUser,
+                    chats: userChats,
+                    preferences: userPrefs,
+                    exportDate: new Date().toISOString()
+                };
+                
+                const dataStr = JSON.stringify(exportData, null, 2);
+                const blob = new Blob([dataStr], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `nextreach-data-${currentUser.email}-${Date.now()}.json`;
+                a.click();
+                URL.revokeObjectURL(url);
+                
+                alert('Your data has been exported successfully!');
+            } catch (error) {
+                console.error('Error exporting data:', error);
+                alert('Failed to export data. Please try again.');
+            }
+        }
+        
+        // Settings modal
+        function showSettingsModal() {
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.7);
+                z-index: 10000;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                animation: fadeIn 0.3s ease;
+            `;
+            
+            modal.innerHTML = `
+                <div style="
+                    background: white;
+                    border-radius: 16px;
+                    padding: 2rem;
+                    max-width: 500px;
+                    width: 90%;
+                    max-height: 80vh;
+                    overflow-y: auto;
+                    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+                ">
+                    <h2 style="margin-bottom: 1.5rem; color: #1e293b;">Settings</h2>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <h3 style="font-size: 1rem; margin-bottom: 1rem; color: #64748b;">Preferences</h3>
+                        <label style="display: flex; align-items: center; justify-content: space-between; padding: 1rem; background: #f8fafc; border-radius: 8px; margin-bottom: 0.5rem; cursor: pointer;">
+                            <span style="font-weight: 600;">Email Notifications</span>
+                            <input type="checkbox" id="email-notifications" checked style="width: 20px; height: 20px; cursor: pointer;">
+                        </label>
+                        <label style="display: flex; align-items: center; justify-content: space-between; padding: 1rem; background: #f8fafc; border-radius: 8px; margin-bottom: 0.5rem; cursor: pointer;">
+                            <span style="font-weight: 600;">AI Chat History</span>
+                            <input type="checkbox" id="save-chat-history" checked style="width: 20px; height: 20px; cursor: pointer;">
+                        </label>
+                        <label style="display: flex; align-items: center; justify-content: space-between; padding: 1rem; background: #f8fafc; border-radius: 8px; cursor: pointer;">
+                            <span style="font-weight: 600;">Marketing Updates</span>
+                            <input type="checkbox" id="marketing-updates" style="width: 20px; height: 20px; cursor: pointer;">
+                        </label>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <h3 style="font-size: 1rem; margin-bottom: 1rem; color: #64748b;">Data & Privacy</h3>
+                        <button onclick="exportUserData()" style="
+                            width: 100%;
+                            background: #10b981;
+                            color: white;
+                            padding: 0.75rem;
+                            border: none;
+                            border-radius: 8px;
+                            font-weight: 700;
+                            margin-bottom: 0.5rem;
+                            cursor: pointer;
+                        ">
+                            <i class="fas fa-download"></i> Export My Data
+                        </button>
+                        <button onclick="if(confirm('Are you sure? This will delete all your chats.')) { clearUserChats(); }" style="
+                            width: 100%;
+                            background: #f59e0b;
+                            color: white;
+                            padding: 0.75rem;
+                            border: none;
+                            border-radius: 8px;
+                            font-weight: 700;
+                            cursor: pointer;
+                        ">
+                            <i class="fas fa-trash"></i> Clear All Chats
+                        </button>
+                    </div>
+                    
+                    <button onclick="this.closest('div[style*=\"position: fixed\"]').remove()" style="
+                        width: 100%;
+                        background: #e5e7eb;
+                        color: #64748b;
+                        padding: 0.75rem;
+                        border: none;
+                        border-radius: 8px;
+                        font-weight: 700;
+                        cursor: pointer;
+                    ">Close</button>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+        }
+        
+        // Clear user chats
+        function clearUserChats() {
+            try {
+                const currentUser = JSON.parse(localStorage.getItem('nextreach_user'));
+                const allChats = JSON.parse(localStorage.getItem('nextreach_ai_chats_all') || '[]');
+                const otherUserChats = allChats.filter(chat => chat.userId !== currentUser.id);
+                localStorage.setItem('nextreach_ai_chats_all', JSON.stringify(otherUserChats));
+                alert('All your chats have been deleted.');
+                document.querySelector('div[style*="position: fixed"]').remove();
+                populateUserStats(); // Refresh stats
+            } catch (error) {
+                console.error('Error clearing chats:', error);
+                alert('Failed to clear chats. Please try again.');
+            }
+        }
+        
+        // Booking section scroll function
+        function closeBooking() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         
         // Welcome Animation
