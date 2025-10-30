@@ -3,6 +3,7 @@ const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const path = require('path');
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const emailService = require('./email-service-server');
 require('dotenv').config();
 
@@ -51,7 +52,14 @@ app.use(cors({
 }));
 
 app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ extended: true }));
+app.use(express.static('.', {
+    setHeaders: (res, path) => {
+        // Security headers for static files
+        res.setHeader('X-Content-Type-Options', 'nosniff');
+        res.setHeader('X-Frame-Options', 'DENY');
+        res.setHeader('X-XSS-Protection', '1; mode=block');
+    }
+}));
 
 // Input validation middleware
 const validateChatInput = (req, res, next) => {
@@ -169,31 +177,14 @@ app.get('/api/health', (req, res) => {
 // Contact form endpoint
 app.post('/api/contact', async (req, res) => {
     try {
-        console.log('📨 Contact form submission received');
-        console.log('Request body:', req.body);
-        
-        const { name, email, phone, company, service, budget, message } = req.body;
+        const { name, email, phone, company, message } = req.body;
         
         // Validate inputs
         if (!name || !email || !message) {
-            console.log('❌ Validation failed: missing required fields');
-            return res.status(400).json({ 
-                success: false,
-                error: 'Name, email, and message are required' 
-            });
+            return res.status(400).json({ error: 'Name, email, and message are required' });
         }
         
-        // Email validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            console.log('❌ Validation failed: invalid email format');
-            return res.status(400).json({ 
-                success: false,
-                error: 'Invalid email address' 
-            });
-        }
-        
-        console.log('📧 Sending contact form emails for:', { name, email, service });
+        console.log('📧 Sending contact form emails...');
         
         // Send emails (to both admin and customer)
         const results = await emailService.sendContactFormEmails({
@@ -201,13 +192,10 @@ app.post('/api/contact', async (req, res) => {
             email,
             phone,
             company,
-            service,
-            budget,
             message
         });
         
         console.log('✅ Contact form emails sent successfully');
-        console.log('Email results:', results);
         
         res.json({ 
             success: true, 
@@ -216,11 +204,7 @@ app.post('/api/contact', async (req, res) => {
         
     } catch (error) {
         console.error('❌ Contact form error:', error);
-        console.error('Error stack:', error.stack);
-        res.status(500).json({ 
-            success: false,
-            error: 'Failed to send message. Please try again or email us directly.' 
-        });
+        res.status(500).json({ error: 'Failed to send message. Please try again.' });
     }
 });
 
@@ -387,16 +371,6 @@ app.post('/webhook', express.raw({ type: 'application/json' }), async (req, res)
     res.sendStatus(200);
 });
 
-// Static files middleware (AFTER API routes)
-app.use(express.static('.', {
-    setHeaders: (res, path) => {
-        // Security headers for static files
-        res.setHeader('X-Content-Type-Options', 'nosniff');
-        res.setHeader('X-Frame-Options', 'DENY');
-        res.setHeader('X-XSS-Protection', '1; mode=block');
-    }
-}));
-
 // Serve main page
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
@@ -418,7 +392,6 @@ app.listen(PORT, () => {
     console.log(`🔒 Security features enabled`);
     console.log(`🤖 AI proxy endpoint: /api/chat`);
     console.log(`💳 Payment endpoint: /create-payment-intent`);
-    console.log(`📧 Contact endpoint: /api/contact`);
     
     if (!process.env.DEEPSEEK_API_KEY) {
         console.warn('⚠️  DEEPSEEK_API_KEY not set - AI features will use fallback');
@@ -430,12 +403,5 @@ app.listen(PORT, () => {
         console.warn('⚠️  STRIPE_SECRET_KEY not set - Payment processing unavailable');
     } else {
         console.log('✅ Stripe payment processing configured');
-    }
-    
-    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASSWORD) {
-        console.warn('⚠️  EMAIL_USER or EMAIL_PASSWORD not set - Email service unavailable');
-    } else {
-        console.log('✅ Email service configured');
-        console.log(`   Email: ${process.env.EMAIL_USER}`);
     }
 });

@@ -26,7 +26,7 @@ const emailTemplates = {
     // 1. Contact Form Submission (to business)
     contactFormToAdmin: (formData) => ({
         to: EMAIL_CONFIG.businessEmail,
-        subject: `🎯 New Contact Form: ${formData.name} - ${formData.service || 'General Inquiry'}`,
+        subject: `🎯 New Contact Form: ${formData.name}`,
         html: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background: #f8fafc; border-radius: 10px;">
                 <h2 style="color: #1e3a8a; margin-bottom: 20px;">📨 New Contact Form Submission</h2>
@@ -36,8 +36,6 @@ const emailTemplates = {
                     <p style="margin: 10px 0;"><strong>Email:</strong> <a href="mailto:${formData.email}">${formData.email}</a></p>
                     <p style="margin: 10px 0;"><strong>Phone:</strong> ${formData.phone || 'Not provided'}</p>
                     <p style="margin: 10px 0;"><strong>Company:</strong> ${formData.company || 'Not provided'}</p>
-                    ${formData.service ? `<p style="margin: 10px 0;"><strong>Service Interest:</strong> <span style="color: #3b82f6; font-weight: 600;">${formData.service}</span></p>` : ''}
-                    ${formData.budget ? `<p style="margin: 10px 0;"><strong>Budget Range:</strong> <span style="color: #10b981; font-weight: 600;">${formData.budget}</span></p>` : ''}
                 </div>
                 
                 <div style="background: white; padding: 20px; border-radius: 8px;">
@@ -47,10 +45,6 @@ const emailTemplates = {
                 
                 <div style="margin-top: 20px; padding: 15px; background: #eff6ff; border-left: 4px solid #3b82f6; border-radius: 5px;">
                     <p style="margin: 0; color: #1e3a8a;">⏰ <strong>Action Required:</strong> Reply within 24 hours for best conversion rate!</p>
-                </div>
-                
-                <div style="margin-top: 15px; text-align: center;">
-                    <a href="mailto:${formData.email}" style="display: inline-block; background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 12px 30px; text-decoration: none; border-radius: 8px; font-weight: bold;">Reply to Customer</a>
                 </div>
             </div>
         `
