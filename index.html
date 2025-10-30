@@ -809,6 +809,9 @@
         
         // Welcome Animation
         function showWelcomeAnimation(user) {
+            // Check if this is a new user or returning user
+            const isNewUser = sessionStorage.getItem('isNewUser') === 'true';
+            
             const overlay = document.createElement('div');
             overlay.style.cssText = `
                 position: fixed;
@@ -831,6 +834,16 @@
                 color: white;
                 animation: scaleIn 0.6s ease 0.3s backwards;
             `;
+            
+            // Different messages for new users vs returning users
+            const welcomeTitle = isNewUser ? 
+                `Welcome, ${user.firstName}! 🎉` : 
+                `Welcome back, ${user.firstName}! 👋`;
+            
+            const welcomeMessage = isNewUser ? 
+                `Your NextReach account is ready. Let's build something amazing!` : 
+                `Great to see you again. Let's continue growing your business!`;
+            
             content.innerHTML = `
                 <div style="width: 120px; height: 120px; background: white; border-radius: 50%; margin: 0 auto 2rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 20px 60px rgba(0,0,0,0.3); animation: pulse 2s ease infinite;">
                     <div style="width: 100px; height: 100px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 3rem; font-weight: 800; color: white;">
@@ -838,10 +851,10 @@
                     </div>
                 </div>
                 <h1 style="font-size: 3rem; font-weight: 900; margin-bottom: 1rem; animation: fadeInUp 0.6s ease 0.6s backwards;">
-                    Welcome, ${user.firstName}! 🎉
+                    ${welcomeTitle}
                 </h1>
                 <p style="font-size: 1.3rem; opacity: 0.95; animation: fadeInUp 0.6s ease 0.8s backwards;">
-                    Your NextReach account is ready. Let's build something amazing!
+                    ${welcomeMessage}
                 </p>
                 <div style="margin-top: 2rem; animation: fadeInUp 0.6s ease 1s backwards;">
                     <i class="fas fa-check-circle" style="font-size: 4rem; animation: scaleIn 0.5s ease 1.2s backwards;"></i>

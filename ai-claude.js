@@ -210,9 +210,9 @@ Be conversational, clear, and helpful. Format responses with proper markdown. Al
                 this.currentUser = SessionManager.getCurrentUser();
             }
             
-            // Fallback to localStorage
+            // Fallback to localStorage (check both possible keys)
             if (!this.currentUser) {
-                const userData = localStorage.getItem('nextreach_current_user');
+                const userData = localStorage.getItem('nextreach_user') || localStorage.getItem('nextreach_current_user');
                 if (userData) {
                     this.currentUser = JSON.parse(userData);
                 }
