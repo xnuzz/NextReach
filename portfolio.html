@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - NextReach Digital Marketing</title>
+    <link rel="icon" type="image/svg+xml" href="NextReach.svg">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="new-sections.css">
+    <link rel="stylesheet" href="responsive-enhancements.css">
+    <link rel="stylesheet" href="enhanced-ui.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="NextReach.svg" alt="NextReach" class="logo-nav">
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+                <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
+                <li class="nav-item"><a href="portfolio.html" class="nav-link active">Portfolio</a></li>
+                <li class="nav-item"><a href="testimonials.html" class="nav-link">Testimonials</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="ai-claude.html" class="nav-btn nav-btn-ai"><i class="fas fa-robot"></i><span class="nav-btn-text">AI Assistant</span></a>
+                <a href="index.html#booking" class="nav-btn nav-btn-book"><i class="fas fa-calendar-check"></i><span class="nav-btn-text">Book Call</span></a>
+                <a href="pricing.html" class="nav-btn nav-btn-primary"><i class="fas fa-rocket"></i><span class="nav-btn-text">Get Started</span></a>
+            </div>
+            <div class="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="page-hero" style="padding-top: 140px; padding-bottom: 4rem; background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);">
+        <div class="container" style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <span class="section-badge" style="display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); color: var(--primary-color); padding: 0.6rem 1.5rem; border-radius: 50px; font-size: 0.95rem; font-weight: 600; margin-bottom: 1.5rem;">
+                <i class="fas fa-briefcase"></i> Our Work
+            </span>
+            <h1 style="font-size: 3.5rem; font-weight: 800; margin-bottom: 1.5rem; background: var(--logo-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Real Results From Real Clients</h1>
+            <p style="font-size: 1.25rem; color: var(--text-light); line-height: 1.7; margin-bottom: 2rem;">See how we've transformed businesses through strategic digital marketing and complete online presence solutions.</p>
+        </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="portfolio-filter">
+                <button class="filter-btn active" data-filter="all"><i class="fas fa-th"></i><span>All Projects</span></button>
+                <button class="filter-btn" data-filter="digital"><i class="fas fa-laptop-code"></i><span>Web Design</span></button>
+                <button class="filter-btn" data-filter="branding"><i class="fas fa-palette"></i><span>Branding</span></button>
+                <button class="filter-btn" data-filter="video"><i class="fas fa-video"></i><span>Video</span></button>
+            </div>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="digital">
+                    <div class="portfolio-image">
+                        <div class="image-placeholder"><i class="fas fa-mobile-alt"></i><span class="placeholder-text">TechStart</span></div>
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <span class="project-category">Digital Marketing</span>
+                                <h3>TechStart Campaign</h3>
+                                <p>Complete digital transformation with responsive website, SEO optimization, and social media integration</p>
+                                <div class="project-stats">
+                                    <div class="stat"><i class="fas fa-chart-line"></i><span>+300% Traffic</span></div>
+                                    <div class="stat"><i class="fas fa-users"></i><span>10K+ Users</span></div>
+                                </div>
+                                <a href="#" class="portfolio-link"><span>View Case Study</span><i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="branding">
+                    <div class="portfolio-image">
+                        <div class="image-placeholder branding-gradient"><i class="fas fa-palette"></i><span class="placeholder-text">EcoFresh</span></div>
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <span class="project-category">Brand Identity</span>
+                                <h3>EcoFresh Rebrand</h3>
+                                <p>Full brand identity overhaul including logo design, brand guidelines, and marketing collateral</p>
+                                <div class="project-stats">
+                                    <div class="stat"><i class="fas fa-star"></i><span>Market Leader</span></div>
+                                    <div class="stat"><i class="fas fa-trophy"></i><span>Award Winner</span></div>
+                                </div>
+                                <a href="#" class="portfolio-link"><span>View Case Study</span><i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="video">
+                    <div class="portfolio-image">
+                        <div class="image-placeholder video-gradient"><i class="fas fa-play"></i><span class="placeholder-text">SportZone</span></div>
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <span class="project-category">Video Production</span>
+                                <h3>SportZone Commercial</h3>
+                                <p>High-impact promotional video campaign with professional editing and motion graphics</p>
+                                <div class="project-stats">
+                                    <div class="stat"><i class="fas fa-eye"></i><span>2M+ Views</span></div>
+                                    <div class="stat"><i class="fas fa-heart"></i><span>50K Likes</span></div>
+                                </div>
+                                <a href="#" class="portfolio-link"><span>View Case Study</span><i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="digital">
+                    <div class="portfolio-image">
+                        <div class="image-placeholder seo-gradient"><i class="fas fa-chart-line"></i><span class="placeholder-text">FinanceFlow</span></div>
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <span class="project-category">SEO Strategy</span>
+                                <h3>FinanceFlow SEO</h3>
+                                <p>Strategic SEO campaign with keyword research, content optimization, and link building</p>
+                                <div class="project-stats">
+                                    <div class="stat"><i class="fas fa-search"></i><span>#1 Rankings</span></div>
+                                    <div class="stat"><i class="fas fa-rocket"></i><span>500% ROI</span></div>
+                                </div>
+                                <a href="#" class="portfolio-link"><span>View Case Study</span><i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="branding">
+                    <div class="portfolio-image">
+                        <div class="image-placeholder startup-gradient"><i class="fas fa-rocket"></i><span class="placeholder-text">LaunchPad</span></div>
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <span class="project-category">Brand Strategy</span>
+                                <h3>LaunchPad Startup</h3>
+                                <p>Complete startup branding package with market positioning and go-to-market strategy</p>
+                                <div class="project-stats">
+                                    <div class="stat"><i class="fas fa-bullseye"></i><span>Perfect Launch</span></div>
+                                    <div class="stat"><i class="fas fa-dollar-sign"></i><span>$1M Funded</span></div>
+                                </div>
+                                <a href="#" class="portfolio-link"><span>View Case Study</span><i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="video">
+                    <div class="portfolio-image">
+                        <div class="image-placeholder social-gradient"><i class="fas fa-share-alt"></i><span class="placeholder-text">SocialBoost</span></div>
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <span class="project-category">Social Media</span>
+                                <h3>SocialBoost Campaign</h3>
+                                <p>Viral social media campaign with short-form video content across multiple platforms</p>
+                                <div class="project-stats">
+                                    <div class="stat"><i class="fas fa-fire"></i><span>Viral Hit</span></div>
+                                    <div class="stat"><i class="fas fa-users"></i><span>100K Followers</span></div>
+                                </div>
+                                <a href="#" class="portfolio-link"><span>View Case Study</span><i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-cta">
+                <div class="cta-content">
+                    <h3>Ready to see your project here?</h3>
+                    <p>Join our growing list of successful clients and transform your digital presence</p>
+                    <a href="pricing.html" class="btn btn-primary btn-lg"><span>Start Your Project</span><i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="NextReach.svg" alt="NextReach" class="footer-logo" style="height: 60px; margin-bottom: 1rem;">
+                    <p>Empowering businesses with complete digital solutions.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="testimonials.html">Testimonials</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="index.html#booking">Book a Call</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +359879040107</li>
+                        <li><i class="fas fa-envelope"></i> @nextreach.agency</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Marketing District</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2025 NextReach. All rights reserved.</p></div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Testimonials - NextReach Digital Marketing</title>
+    <link rel="icon" type="image/svg+xml" href="NextReach.svg">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="new-sections.css">
+    <link rel="stylesheet" href="responsive-enhancements.css">
+    <link rel="stylesheet" href="enhanced-ui.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="NextReach.svg" alt="NextReach" class="logo-nav">
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+                <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
+                <li class="nav-item"><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                <li class="nav-item"><a href="testimonials.html" class="nav-link active">Testimonials</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="ai-claude.html" class="nav-btn nav-btn-ai"><i class="fas fa-robot"></i><span class="nav-btn-text">AI Assistant</span></a>
+                <a href="index.html#booking" class="nav-btn nav-btn-book"><i class="fas fa-calendar-check"></i><span class="nav-btn-text">Book Call</span></a>
+                <a href="pricing.html" class="nav-btn nav-btn-primary"><i class="fas fa-rocket"></i><span class="nav-btn-text">Get Started</span></a>
+            </div>
+            <div class="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="page-hero" style="padding-top: 140px; padding-bottom: 4rem; background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);">
+        <div class="container" style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <span class="section-badge" style="display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); color: var(--primary-color); padding: 0.6rem 1.5rem; border-radius: 50px; font-size: 0.95rem; font-weight: 600; margin-bottom: 1.5rem;">
+                <i class="fas fa-star"></i> Client Reviews
+            </span>
+            <h1 style="font-size: 3.5rem; font-weight: 800; margin-bottom: 1.5rem; background: var(--logo-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">What Our Clients Say</h1>
+            <p style="font-size: 1.25rem; color: var(--text-light); line-height: 1.7; margin-bottom: 2rem;">Real stories from real businesses we've helped grow. See why clients trust NextReach with their digital presence.</p>
+        </div>
+    </section>
+
+    <!-- Comments Section -->
+    <section id="reviews" class="comments">
+        <div class="container">
+            <h2 class="section-title">Client Reviews</h2>
+            <p class="section-subtitle">Share your experience with NextReach</p>
+            
+            <!-- Add Comment Form -->
+            <div class="add-comment-form">
+                <h3>Leave a Review</h3>
+                <form id="commentForm">
+                    <div class="form-group">
+                        <input type="text" id="commentName" placeholder="Your Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="commentCompany" placeholder="Company or Organization (Optional)">
+                    </div>
+                    <div class="form-group rating-group">
+                        <label>How would you rate our service?</label>
+                        <div class="star-rating">
+                            <span class="star" data-rating="1">★</span>
+                            <span class="star" data-rating="2">★</span>
+                            <span class="star" data-rating="3">★</span>
+                            <span class="star" data-rating="4">★</span>
+                            <span class="star" data-rating="5">★</span>
+                        </div>
+                        <div class="rating-labels">
+                            <span class="rating-label left">Poor</span>
+                            <div class="rating-description" id="ratingDescription">Select a rating</div>
+                            <span class="rating-label right">Excellent</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="commentText" placeholder="Tell us about your experience with NextReach. What did you like most? How did we help your business grow?" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-comment-btn">
+                        <i class="fas fa-rocket"></i>
+                        Submit Review
+                    </button>
+                </form>
+            </div>
+            
+            <!-- Comments Display -->
+            <div class="comments-display">
+                <div class="comments-header">
+                    <h3>Client Reviews</h3>
+                    <div class="rating-summary">
+                        <div class="average-rating">
+                            <span class="rating-number">4.8</span>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="total-reviews">Based on <span id="totalReviews">0</span> reviews</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="comments-list" id="commentsList"></div>
+                
+                <div class="empty-comments" id="emptyComments">
+                    <i class="fas fa-comments"></i>
+                    <p>Be the first to leave a review!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="padding: 6rem 0; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white;">
+        <div class="container" style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <h2 style="font-size: 3rem; margin-bottom: 1.5rem; color: white;">Ready to Join Our Success Stories?</h2>
+            <p style="font-size: 1.25rem; margin-bottom: 2.5rem; opacity: 0.95;">Let's create something amazing together and add your testimonial to our growing list!</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="pricing.html" class="btn" style="background: white; color: var(--primary-color); padding: 1rem 2.5rem; font-size: 1.1rem; font-weight: 600;"><i class="fas fa-rocket"></i><span>View Pricing</span></a>
+                <a href="index.html#booking" class="btn" style="background: rgba(255,255,255,0.1); color: white; border: 2px solid white; padding: 1rem 2.5rem; font-size: 1.1rem; font-weight: 600;"><i class="fas fa-calendar-check"></i><span>Book a Call</span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="NextReach.svg" alt="NextReach" class="footer-logo" style="height: 60px; margin-bottom: 1rem;">
+                    <p>Empowering businesses with complete digital solutions.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="testimonials.html">Testimonials</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                        <li><a href="index.html#booking">Book a Call</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +359879040107</li>
+                        <li><i class="fas fa-envelope"></i> @nextreach.agency</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Marketing District</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2025 NextReach. All rights reserved.</p></div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
