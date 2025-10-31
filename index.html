@@ -857,12 +857,19 @@
                 
                 profileBtn.addEventListener('click', (e) => {
                     e.stopPropagation();
-                    // Toggle visibility
-                    if (dropdown.style.display === 'none') {
+                    // Toggle visibility - check for both 'none' and empty string
+                    const currentDisplay = window.getComputedStyle(dropdown).display;
+                    if (currentDisplay === 'none' || dropdown.style.display === 'none' || dropdown.style.display === '') {
                         dropdown.style.display = 'block';
+                        dropdown.style.opacity = '1';
+                        dropdown.style.visibility = 'visible';
+                        dropdown.style.transform = 'translateY(0)';
                         populateUserStats(); // Refresh stats on open
                     } else {
                         dropdown.style.display = 'none';
+                        dropdown.style.opacity = '0';
+                        dropdown.style.visibility = 'hidden';
+                        dropdown.style.transform = 'translateY(-10px)';
                     }
                 });
                 
@@ -870,6 +877,9 @@
                 document.addEventListener('click', (e) => {
                     if (!profileBtn.contains(e.target) && !dropdown.contains(e.target)) {
                         dropdown.style.display = 'none';
+                        dropdown.style.opacity = '0';
+                        dropdown.style.visibility = 'hidden';
+                        dropdown.style.transform = 'translateY(-10px)';
                     }
                 });
             }

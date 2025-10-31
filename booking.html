@@ -10,59 +10,282 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Inter', sans-serif;
+            background: #0f172a;
             min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+            z-index: 0;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+        
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
             padding: 2rem 1rem;
         }
         
-        .booking-container {
-            max-width: 1200px;
-            margin: 0 auto;
+        /* Navigation Bar */
+        .nav-bar {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            padding: 1rem 2rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
         }
         
-        .booking-header {
-            text-align: center;
-            color: white;
-            margin-bottom: 3rem;
-        }
-        
-        .booking-header h1 {
-            font-size: 3rem;
+        .nav-bar .logo {
+            font-size: 1.5rem;
             font-weight: 900;
-            margin-bottom: 1rem;
-            text-shadow: 0 2px 20px rgba(0,0,0,0.2);
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
-        .booking-header p {
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+        
+        .nav-links a:hover {
+            color: #667eea;
+            transform: translateY(-2px);
+        }
+        
+        .back-button {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.6);
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(102, 126, 234, 0.15);
+            border: 2px solid rgba(102, 126, 234, 0.4);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            color: #a5b4fc;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.6s ease, pulse 2s ease-in-out infinite;
+            box-shadow: 0 0 30px rgba(102, 126, 234, 0.3);
+        }
+        
+        @keyframes pulse {
+            0%, 100% { 
+                box-shadow: 0 0 30px rgba(102, 126, 234, 0.3);
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 40px rgba(102, 126, 234, 0.5);
+                transform: scale(1.02);
+            }
+        }
+        
+        .hero h1 {
+            font-size: 5rem;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+            animation: fadeInUp 0.6s ease 0.2s backwards;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            letter-spacing: -0.02em;
+        }
+        
+        .hero h1 .gradient-text {
+            background: linear-gradient(135deg, #818cf8, #c084fc, #e879f9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% 200%;
+            animation: shimmer 4s ease-in-out infinite;
+            display: inline-block;
+            font-weight: 900;
+        }
+        
+        @keyframes shimmer {
+            0%, 100% { 
+                background-position: 0% 50%;
+            }
+            50% { 
+                background-position: 100% 50%;
+            }
+        }
+        
+        .hero p {
+            font-size: 1.4rem;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 750px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+            animation: fadeInUp 0.6s ease 0.4s backwards;
+            font-weight: 400;
+        }
+        
+        .hero-features {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.6s ease 0.6s backwards;
+            margin-top: 2rem;
+        }
+        
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+            font-size: 1.05rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .hero-feature:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(102, 126, 234, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .hero-feature i {
+            color: #34d399;
             font-size: 1.3rem;
-            opacity: 0.95;
-            max-width: 600px;
-            margin: 0 auto;
+            filter: drop-shadow(0 0 10px rgba(52, 211, 153, 0.5));
         }
         
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Booking Grid */
         .booking-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.2fr 0.8fr;
             gap: 2rem;
-            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease;
         }
         
         .booking-card {
-            background: white;
-            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
             padding: 2.5rem;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .booking-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        
+        .booking-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .booking-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px rgba(102, 126, 234, 0.3);
+            border-color: rgba(102, 126, 234, 0.3);
         }
         
         .booking-card h2 {
             font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: #1e293b;
+            margin-bottom: 1rem;
+            color: white;
+            font-weight: 800;
         }
         
         .booking-card p {
-            color: #64748b;
+            color: rgba(255, 255, 255, 0.6);
             line-height: 1.7;
             margin-bottom: 2rem;
         }
@@ -70,14 +293,17 @@
         .calendly-inline-widget {
             min-width: 100%;
             height: 700px;
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
+        /* Info Section */
         .quick-info {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 1.25rem;
         }
         
         .info-item {
@@ -85,8 +311,34 @@
             align-items: flex-start;
             gap: 1rem;
             padding: 1.5rem;
-            background: linear-gradient(135deg, #f8fafc, #e0e7ff);
-            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .info-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .info-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(5px);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+        
+        .info-item:hover::before {
+            transform: scaleY(1);
         }
         
         .info-icon {
@@ -98,51 +350,43 @@
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             flex-shrink: 0;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
         }
         
         .info-content h3 {
             font-size: 1.1rem;
             font-weight: 700;
-            color: #1e293b;
+            color: white;
             margin-bottom: 0.5rem;
         }
         
         .info-content p {
-            font-size: 0.95rem;
-            color: #64748b;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
             margin: 0;
+            line-height: 1.5;
         }
         
-        .back-button {
-            position: fixed;
-            top: 2rem;
-            left: 2rem;
-            background: white;
-            color: #667eea;
-            padding: 1rem 1.5rem;
-            border-radius: 50px;
-            text-decoration: none;
+        /* Contact Options */
+        .contact-section {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .contact-section h3 {
+            font-size: 1.2rem;
+            color: white;
+            margin-bottom: 1rem;
             font-weight: 700;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            z-index: 1000;
-        }
-        
-        .back-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
         }
         
         .contact-options {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1rem;
-            margin-top: 2rem;
         }
         
         .contact-btn {
@@ -151,64 +395,182 @@
             justify-content: center;
             gap: 0.75rem;
             padding: 1.25rem;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             color: white;
             text-decoration: none;
             border-radius: 12px;
             font-weight: 700;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .contact-btn:hover::before {
+            left: 100%;
         }
         
         .contact-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+            background: rgba(102, 126, 234, 0.2);
+            border-color: rgba(102, 126, 234, 0.4);
         }
         
-        .contact-btn.whatsapp {
-            background: linear-gradient(135deg, #25D366, #128C7E);
+        .contact-btn.email { border-left: 3px solid #3b82f6; }
+        .contact-btn.phone { border-left: 3px solid #8b5cf6; }
+        .contact-btn.whatsapp { border-left: 3px solid #25D366; }
+        .contact-btn.ai { border-left: 3px solid #10b981; }
+        
+        .contact-btn i {
+            font-size: 1.2rem;
+        }
+        
+        /* Trust Badges */
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .trust-badge {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .trust-badge-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+        
+        .trust-badge-text {
+            font-size: 0.9rem;
+            font-weight: 600;
         }
         
         @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+            }
+            
             .booking-grid {
                 grid-template-columns: 1fr;
             }
             
-            .booking-header h1 {
-                font-size: 2rem;
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .hero-badge {
+                font-size: 0.85rem;
+                padding: 0.6rem 1.2rem;
+            }
+            
+            .hero-features {
+                gap: 1rem;
+            }
+            
+            .hero-feature {
+                font-size: 0.95rem;
+                padding: 0.6rem 1.2rem;
             }
             
             .contact-options {
                 grid-template-columns: 1fr;
             }
+            
+            .trust-badges {
+                gap: 2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <a href="index.html" class="back-button">
-        <i class="fas fa-arrow-left"></i>
-        Back to Home
-    </a>
-    
-    <div class="booking-container">
-        <div class="booking-header">
-            <h1>📅 Book Your Free Strategy Call</h1>
-            <p>Schedule a 30-minute consultation with our team to discuss your digital marketing goals</p>
+    <div class="container">
+        <!-- Navigation -->
+        <div class="nav-bar">
+            <div class="logo">NextReach</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="ai-claude.html">AI Assistant</a>
+                <a href="index.html#services">Services</a>
+                <a href="index.html" class="back-button">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Home
+                </a>
+            </div>
         </div>
         
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="hero-badge">
+                <i class="fas fa-calendar-check"></i>
+                <span>🎉 Free 30-Minute Consultation</span>
+            </div>
+            <h1>
+                Book Your<br><span class="gradient-text">Strategy Call</span>
+            </h1>
+            <p>
+                Schedule a personalized consultation with our digital marketing experts.<br>
+                Let's discuss your goals and create a custom growth strategy for your business.
+            </p>
+            <div class="hero-features">
+                <div class="hero-feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>100% Free</span>
+                </div>
+                <div class="hero-feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Expert Advice</span>
+                </div>
+                <div class="hero-feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Custom Strategy</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Booking Grid -->
         <div class="booking-grid">
             <!-- Calendly Widget -->
             <div class="booking-card">
-                <h2>Choose Your Time</h2>
-                <p>Pick a date and time that works best for you. We'll send you a confirmation email with all the details.</p>
+                <h2>📅 Pick Your Perfect Time</h2>
+                <p>Select a date and time that works best for your schedule. You'll receive instant confirmation.</p>
                 
                 <!-- Calendly inline widget begin -->
-                <div class="calendly-inline-widget" data-url="https://calendly.com/tsvetkovalex790/30min?hide_gdpr_banner=1&primary_color=3b82f6" style="min-width:320px;height:700px;"></div>
+                <div class="calendly-inline-widget" data-url="https://calendly.com/tsvetkovalex790/30min?hide_gdpr_banner=1&primary_color=667eea" style="min-width:320px;height:700px;"></div>
                 <!-- Calendly inline widget end -->
             </div>
             
             <!-- Information & Quick Contact -->
             <div class="booking-card">
-                <h2>What to Expect</h2>
+                <h2>✨ What You'll Get</h2>
                 
                 <div class="quick-info">
                     <div class="info-item">
@@ -216,8 +578,8 @@
                             <i class="fas fa-clock"></i>
                         </div>
                         <div class="info-content">
-                            <h3>30-Minute Call</h3>
-                            <p>Quick, focused discussion about your business goals and how we can help</p>
+                            <h3>30-Minute Deep Dive</h3>
+                            <p>Focused discussion on your business goals, challenges, and growth opportunities</p>
                         </div>
                     </div>
                     
@@ -226,18 +588,18 @@
                             <i class="fas fa-users"></i>
                         </div>
                         <div class="info-content">
-                            <h3>Meet Our Team</h3>
-                            <p>Connect with experienced digital marketing professionals</p>
+                            <h3>Expert Team</h3>
+                            <p>Work directly with experienced digital marketing professionals</p>
                         </div>
                     </div>
                     
                     <div class="info-item">
                         <div class="info-icon">
-                            <i class="fas fa-lightbulb"></i>
+                            <i class="fas fa-chart-line"></i>
                         </div>
                         <div class="info-content">
-                            <h3>Custom Strategy</h3>
-                            <p>Get personalized recommendations for your business</p>
+                            <h3>Custom Growth Plan</h3>
+                            <p>Receive actionable strategies tailored specifically for your business</p>
                         </div>
                     </div>
                     
@@ -246,31 +608,63 @@
                             <i class="fas fa-gift"></i>
                         </div>
                         <div class="info-content">
-                            <h3>100% Free</h3>
-                            <p>No obligation, no pressure. Just valuable insights for your business</p>
+                            <h3>Zero Cost</h3>
+                            <p>Completely free consultation. No strings attached, no pressure to buy</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="info-content">
+                            <h3>Instant Results</h3>
+                            <p>Walk away with clear next steps and actionable insights you can implement today</p>
                         </div>
                     </div>
                 </div>
                 
-                <h2 style="margin-top: 2rem; margin-bottom: 1rem;">Prefer Instant Contact?</h2>
-                <div class="contact-options">
-                    <a href="mailto:nextreach374@gmail.com" class="contact-btn">
-                        <i class="fas fa-envelope"></i>
-                        Email Us
-                    </a>
-                    <a href="tel:+359879040107" class="contact-btn">
-                        <i class="fas fa-phone"></i>
-                        Call Now
-                    </a>
-                    <a href="https://wa.me/359879040107" target="_blank" class="contact-btn whatsapp">
-                        <i class="fab fa-whatsapp"></i>
-                        WhatsApp
-                    </a>
-                    <a href="ai-claude.html" class="contact-btn" style="background: linear-gradient(135deg, #10b981, #34d399);">
-                        <i class="fas fa-robot"></i>
-                        AI Assistant
-                    </a>
+                <div class="contact-section">
+                    <h3>⚡ Prefer Instant Contact?</h3>
+                    <div class="contact-options">
+                        <a href="mailto:nextreach374@gmail.com" class="contact-btn email">
+                            <i class="fas fa-envelope"></i>
+                            Email Us
+                        </a>
+                        <a href="tel:+359879040107" class="contact-btn phone">
+                            <i class="fas fa-phone"></i>
+                            Call Now
+                        </a>
+                        <a href="https://wa.me/359879040107" target="_blank" class="contact-btn whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                            WhatsApp
+                        </a>
+                        <a href="ai-claude.html" class="contact-btn ai">
+                            <i class="fas fa-robot"></i>
+                            AI Assistant
+                        </a>
+                    </div>
                 </div>
+            </div>
+        </div>
+        
+        <!-- Trust Badges -->
+        <div class="trust-badges">
+            <div class="trust-badge">
+                <div class="trust-badge-number">500+</div>
+                <div class="trust-badge-text">Happy Clients</div>
+            </div>
+            <div class="trust-badge">
+                <div class="trust-badge-number">98%</div>
+                <div class="trust-badge-text">Satisfaction Rate</div>
+            </div>
+            <div class="trust-badge">
+                <div class="trust-badge-number">24/7</div>
+                <div class="trust-badge-text">Support Available</div>
+            </div>
+            <div class="trust-badge">
+                <div class="trust-badge-number">5★</div>
+                <div class="trust-badge-text">Average Rating</div>
             </div>
         </div>
     </div>
