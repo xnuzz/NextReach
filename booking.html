@@ -18,7 +18,7 @@
         
         body {
             font-family: 'Inter', sans-serif;
-            background: #0f172a;
+            background: #ffffff;
             min-height: 100vh;
             position: relative;
             overflow-x: hidden;
@@ -33,9 +33,9 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 40% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+                radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(59, 130, 246, 0.03) 0%, transparent 50%);
             animation: float 20s ease-in-out infinite;
             z-index: 0;
         }
@@ -55,7 +55,7 @@
         
         /* Navigation Bar */
         .nav-bar {
-            background: rgba(15, 23, 42, 0.8);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
             padding: 1rem 2rem;
             border-radius: 20px;
@@ -63,8 +63,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(102, 126, 234, 0.1);
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.1);
         }
         
         .nav-bar .logo {
@@ -83,7 +83,7 @@
         }
         
         .nav-links a {
-            color: rgba(255, 255, 255, 0.8);
+            color: #1e293b;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
@@ -245,14 +245,15 @@
         }
         
         .booking-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: #ffffff;
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.15);
             border-radius: 24px;
             padding: 2.5rem;
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.08);
         }
         
         .booking-card::before {
@@ -273,19 +274,19 @@
         
         .booking-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 30px 60px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
             border-color: rgba(102, 126, 234, 0.3);
         }
         
         .booking-card h2 {
             font-size: 1.8rem;
             margin-bottom: 1rem;
-            color: white;
+            color: #1e293b;
             font-weight: 800;
         }
         
         .booking-card p {
-            color: rgba(255, 255, 255, 0.6);
+            color: #64748b;
             line-height: 1.7;
             margin-bottom: 2rem;
         }
@@ -295,8 +296,8 @@
             height: 700px;
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.15);
+            border: 1px solid rgba(102, 126, 234, 0.1);
         }
         
         /* Info Section */
@@ -311,8 +312,8 @@
             align-items: flex-start;
             gap: 1rem;
             padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(102, 126, 234, 0.02);
+            border: 1px solid rgba(102, 126, 234, 0.1);
             border-radius: 16px;
             transition: all 0.3s ease;
             position: relative;
@@ -332,7 +333,7 @@
         }
         
         .info-item:hover {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(102, 126, 234, 0.08);
             transform: translateX(5px);
             border-color: rgba(102, 126, 234, 0.3);
         }
@@ -352,19 +353,19 @@
             color: white;
             font-size: 1.4rem;
             flex-shrink: 0;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
         }
         
         .info-content h3 {
             font-size: 1.1rem;
             font-weight: 700;
-            color: white;
+            color: #1e293b;
             margin-bottom: 0.5rem;
         }
         
         .info-content p {
             font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.6);
+            color: #64748b;
             margin: 0;
             line-height: 1.5;
         }
@@ -378,7 +379,7 @@
         
         .contact-section h3 {
             font-size: 1.2rem;
-            color: white;
+            color: #1e293b;
             margin-bottom: 1rem;
             font-weight: 700;
         }
@@ -395,9 +396,9 @@
             justify-content: center;
             gap: 0.75rem;
             padding: 1.25rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: white;
+            background: rgba(102, 126, 234, 0.05);
+            border: 1px solid rgba(102, 126, 234, 0.15);
+            color: #1e293b;
             text-decoration: none;
             border-radius: 12px;
             font-weight: 700;
@@ -413,7 +414,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
             transition: left 0.5s ease;
         }
         
@@ -423,9 +424,9 @@
         
         .contact-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
-            background: rgba(102, 126, 234, 0.2);
-            border-color: rgba(102, 126, 234, 0.4);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+            background: rgba(102, 126, 234, 0.1);
+            border-color: rgba(102, 126, 234, 0.3);
         }
         
         .contact-btn.email { border-left: 3px solid #3b82f6; }
@@ -445,14 +446,14 @@
             flex-wrap: wrap;
             margin-top: 3rem;
             padding: 2rem;
-            background: rgba(255, 255, 255, 0.02);
+            background: rgba(102, 126, 234, 0.03);
             border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(102, 126, 234, 0.1);
         }
         
         .trust-badge {
             text-align: center;
-            color: rgba(255, 255, 255, 0.8);
+            color: #1e293b;
         }
         
         .trust-badge-number {
@@ -524,35 +525,6 @@
                     <i class="fas fa-arrow-left"></i>
                     Back to Home
                 </a>
-            </div>
-        </div>
-        
-        <!-- Hero Section -->
-        <div class="hero">
-            <div class="hero-badge">
-                <i class="fas fa-calendar-check"></i>
-                <span>🎉 Free 30-Minute Consultation</span>
-            </div>
-            <h1>
-                Book Your<br><span class="gradient-text">Strategy Call</span>
-            </h1>
-            <p>
-                Schedule a personalized consultation with our digital marketing experts.<br>
-                Let's discuss your goals and create a custom growth strategy for your business.
-            </p>
-            <div class="hero-features">
-                <div class="hero-feature">
-                    <i class="fas fa-check-circle"></i>
-                    <span>100% Free</span>
-                </div>
-                <div class="hero-feature">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Expert Advice</span>
-                </div>
-                <div class="hero-feature">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Custom Strategy</span>
-                </div>
             </div>
         </div>
         
@@ -651,20 +623,20 @@
         <!-- Trust Badges -->
         <div class="trust-badges">
             <div class="trust-badge">
-                <div class="trust-badge-number">500+</div>
-                <div class="trust-badge-text">Happy Clients</div>
+                <div class="trust-badge-number">15+</div>
+                <div class="trust-badge-text">Projects Completed</div>
             </div>
             <div class="trust-badge">
-                <div class="trust-badge-number">98%</div>
-                <div class="trust-badge-text">Satisfaction Rate</div>
+                <div class="trust-badge-number">100%</div>
+                <div class="trust-badge-text">Client Satisfaction</div>
             </div>
             <div class="trust-badge">
                 <div class="trust-badge-number">24/7</div>
                 <div class="trust-badge-text">Support Available</div>
             </div>
             <div class="trust-badge">
-                <div class="trust-badge-number">5★</div>
-                <div class="trust-badge-text">Average Rating</div>
+                <div class="trust-badge-number">2024</div>
+                <div class="trust-badge-text">Founded</div>
             </div>
         </div>
     </div>

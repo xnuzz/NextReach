@@ -105,7 +105,9 @@ Be conversational, clear, and helpful. Format responses with proper markdown. Al
                 });
             }
             
-            prompt += `\nIMPORTANT: Address the user by name (${this.currentUser.name.split(' ')[0]}) when appropriate. Reference their past questions and preferences to provide personalized, contextual responses. Remember what they've asked before and build on previous conversations.`;
+            // Get first name safely
+            const firstName = this.currentUser.name ? this.currentUser.name.split(' ')[0] : 'there';
+            prompt += `\nIMPORTANT: Address the user by name (${firstName}) when appropriate. Reference their past questions and preferences to provide personalized, contextual responses. Remember what they've asked before and build on previous conversations.`;
         }
         
         return prompt;
@@ -289,12 +291,13 @@ Be conversational, clear, and helpful. Format responses with proper markdown. Al
             localStorage.setItem('nextreach_ai_chats_all', JSON.stringify(this.chats));
             
             // Save current user's active chat
-            if (this.currentUser) {
+            if (this.currentUser && this.currentUser.id) {
                 const key = `nextreach_current_chat_${this.currentUser.id}`;
                 localStorage.setItem(key, this.currentChatId);
             }
             
-            console.log('💾 Chats saved to localStorage (User:', this.currentUser ? this.currentUser.name : 'Guest', ')');
+            const userName = (this.currentUser && this.currentUser.name) ? this.currentUser.name : 'Guest';
+            console.log('💾 Chats saved to localStorage (User:', userName, ')');
         } catch (error) {
             console.error('Error saving chats:', error);
         }
@@ -391,7 +394,7 @@ Be conversational, clear, and helpful. Format responses with proper markdown. Al
         const welcomeTitle = document.getElementById('welcomeTitle');
         if (!welcomeTitle) return;
         
-        if (this.currentUser) {
+        if (this.currentUser && this.currentUser.name) {
             const firstName = this.currentUser.name.split(' ')[0];
             const timeOfDay = new Date().getHours() < 12 ? 'morning' : new Date().getHours() < 18 ? 'afternoon' : 'evening';
             
@@ -914,8 +917,8 @@ Be conversational, clear, and helpful. Format responses with proper markdown. Al
         const emailEl = document.getElementById('contextUserEmail');
         const detailsEl = document.getElementById('contextDetails');
         
-        if (nameEl) nameEl.textContent = this.currentUser.name;
-        if (emailEl) emailEl.textContent = this.currentUser.email;
+        if (nameEl) nameEl.textContent = this.currentUser.name || 'User';
+        if (emailEl) emailEl.textContent = this.currentUser.email || '';
         
         if (detailsEl) {
             let details = [];

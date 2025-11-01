@@ -21,8 +21,8 @@ class ConversionOptimizer {
         // Urgency timer
         this.initUrgencyTimer();
         
-        // Social proof notifications
-        this.initSocialProof();
+        // Social proof notifications - DISABLED
+        // this.initSocialProof();
         
         // Chat widget placeholder
         this.initChatWidget();
@@ -104,7 +104,7 @@ class ConversionOptimizer {
                     
                     <h2 style="font-size: 2rem; margin-bottom: 1rem; color: #1e293b;">Wait! Before You Go...</h2>
                     <p style="font-size: 1.1rem; color: #64748b; margin-bottom: 2rem;">
-                        Get a <strong style="color: #667eea;">FREE Strategy Session</strong> ($500 value) to discuss how we can transform your business!
+                        Get a <strong style="color: #667eea;">FREE Strategy Session</strong> to discuss how we can transform your business!
                     </p>
                     
                     <div style="display: flex; gap: 1rem; flex-direction: column;">
@@ -182,7 +182,7 @@ class ConversionOptimizer {
                     <i class="fas fa-rocket" style="color: #667eea;"></i> Ready to Get Started?
                 </h3>
                 <p style="color: #64748b; margin-bottom: 1rem; font-size: 0.95rem;">
-                    Join 500+ businesses that transformed their online presence with NextReach!
+                    Transform your online presence with NextReach!
                 </p>
                 
                 <a href="pricing.html" style="
