@@ -1,0 +1,62 @@
+<!-- 
+╔══════════════════════════════════════════════════════════════╗
+║         GOOGLE ANALYTICS TRACKING CODE                        ║
+║         Add this to ALL HTML files BEFORE </head>            ║
+╚══════════════════════════════════════════════════════════════╝
+
+SETUP INSTRUCTIONS:
+1. Go to: https://analytics.google.com
+2. Create account: "NextReach"
+3. Add property: "NextReach Website"  
+4. Get your Tracking ID (looks like: G-XXXXXXXXXX)
+5. Replace G-XXXXXXXXXX below with your actual ID
+6. Copy the entire script below
+7. Paste it BEFORE the </head> tag in these files:
+   
+   ✅ index.html
+   ✅ about.html
+   ✅ services.html
+   ✅ pricing.html
+   ✅ portfolio.html
+   ✅ testimonials.html
+   ✅ booking.html
+   ✅ ai-claude.html
+   ✅ ai-assistant.html
+   ✅ login.html
+   ✅ register.html
+   ✅ dashboard.html
+   ✅ payment.html
+   ✅ payment-success.html
+   
+8. Deploy your changes
+9. Verify in Google Analytics (Real-Time reports)
+
+-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+
+<!-- 
+WHAT THIS TRACKS:
+- Page views
+- Unique visitors
+- Traffic sources (Google, social media, direct)
+- User demographics
+- Device types (mobile, desktop)
+- Bounce rate
+- Time on site
+- Conversions (when set up)
+
+PRIVACY COMPLIANT:
+- Anonymizes IPs
+- GDPR compliant
+- No personal data stored
+- User consent respected
+-->

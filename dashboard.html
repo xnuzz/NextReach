@@ -130,7 +130,7 @@
             <!-- Achievements Section -->
             <div style="margin-bottom: 3rem;">
                 <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 2rem; text-align: center; color: var(--text-dark);">
-                    🏆 Your Achievements
+                    <i class="fas fa-trophy" style="color: #f59e0b; margin-right: 0.5rem;"></i>Your Achievements
                 </h2>
                 <div id="achievements-grid" class="achievements-grid"></div>
             </div>
@@ -317,7 +317,7 @@
                                 </div>
                                 <div class="achievement-badge-title">${achievement.title}</div>
                                 <div class="achievement-badge-description">${achievement.description}</div>
-                                ${isUnlocked ? '<div class="achievement-badge-status">✓ Unlocked</div>' : '<div class="achievement-badge-status locked-status">🔒 Locked</div>'}
+                                ${isUnlocked ? '<div class="achievement-badge-status">✓ Unlocked</div>' : '<div class="achievement-badge-status locked-status"><i class="fas fa-lock"></i> Locked</div>'}
                             </div>
                         `;
                     }

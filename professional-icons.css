@@ -1,0 +1,36 @@
+/* ============================================
+   PROFESSIONAL PACKAGE ICON STYLING
+   Modern gradient icons for pricing cards
+   ============================================ */
+
+.package-icon-modern {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 1rem;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+    transition: all 0.3s ease;
+}
+
+.package-icon-modern i {
+    font-size: 1.8rem;
+    color: white;
+}
+
+.package-icon-modern:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 12px 30px rgba(59, 130, 246, 0.4);
+}
+
+/* Hide old emoji icons */
+.package-icon {
+    display: none;
+}
+
+.service-card:hover .package-icon-modern {
+    transform: translateY(-4px) scale(1.05) rotate(5deg);
+}
