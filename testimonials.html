@@ -44,21 +44,93 @@
             </div>
             <div class="user-dropdown" id="user-dropdown" style="display: none;">
                 <div class="user-dropdown-header">
-                    <div class="user-avatar-large"><i class="fas fa-user"></i></div>
+                    <div class="user-avatar-large">
+                        <i class="fas fa-user"></i>
+                    </div>
                     <div class="user-info">
                         <div class="user-full-name" id="dropdown-user-name"></div>
                         <div class="user-email" id="dropdown-user-email"></div>
+                        <div class="user-stats" style="display: flex; gap: 1rem; margin-top: 0.5rem; font-size: 0.75rem; color: #64748b;">
+                            <span id="user-member-since"><i class="fas fa-calendar"></i> Member since <span id="member-date"></span></span>
+                        </div>
                     </div>
                 </div>
-                <div class="user-dropdown-menu">
-                    <a href="dashboard.html" class="dropdown-item"><i class="fas fa-tachometer-alt"></i><span>My Dashboard</span></a>
-                    <a href="ai-claude.html" class="dropdown-item"><i class="fas fa-robot"></i><span>AI Assistant</span></a>
-                    <a href="#" class="dropdown-item" id="saved-chats"><i class="fas fa-comments"></i><span>Saved Chats</span></a>
-                    <a href="#" class="dropdown-item" id="my-profile"><i class="fas fa-user-circle"></i><span>My Profile</span></a>
-                    <a href="#" class="dropdown-item" id="settings"><i class="fas fa-cog"></i><span>Settings</span></a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item" id="logout-btn"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
+                
+                <!-- User Activity Stats -->
+                <div class="dropdown-stats">
+                    <div class="stat-item">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="total-chats">0</div>
+                            <div class="stat-label">AI Conversations</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="last-active">Today</div>
+                            <div class="stat-label">Last Active</div>
+                        </div>
+                    </div>
                 </div>
+                
+                <!-- Quick Actions -->
+                <div class="dropdown-section">
+                    <div class="dropdown-section-title">Quick Actions</div>
+                    <a href="ai-claude.html" class="dropdown-item">
+                        <i class="fas fa-robot"></i>
+                        <span>New AI Chat</span>
+                        <span class="item-badge" style="background: #10b981;">HOT</span>
+                    </a>
+                    <a href="booking.html" class="dropdown-item">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Book a Call</span>
+                    </a>
+                    <a href="#" class="dropdown-item" id="view-saved-chats">
+                        <i class="fas fa-history"></i>
+                        <span>View Chat History</span>
+                    </a>
+                </div>
+                
+                <!-- Account Management -->
+                <div class="dropdown-section">
+                    <div class="dropdown-section-title">Account</div>
+                    <a href="dashboard.html" class="dropdown-item">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="#" class="dropdown-item" id="edit-profile">
+                        <i class="fas fa-user-edit"></i>
+                        <span>Edit Profile</span>
+                    </a>
+                    <a href="#" class="dropdown-item" id="export-data">
+                        <i class="fas fa-download"></i>
+                        <span>Export My Data</span>
+                    </a>
+                </div>
+                
+                <!-- Support & Settings -->
+                <div class="dropdown-section">
+                    <div class="dropdown-section-title">Support</div>
+                    <a href="mailto:nextreach374@gmail.com" class="dropdown-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>Contact Support</span>
+                    </a>
+                    <a href="#" class="dropdown-item" id="settings">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </div>
+                
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item dropdown-item-danger" id="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
             </div>
             <div class="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
         </div>

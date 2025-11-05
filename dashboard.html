@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="new-sections.css">
     <link rel="stylesheet" href="responsive-enhancements.css">
     <link rel="stylesheet" href="enhanced-ui.css">
+    <link rel="stylesheet" href="navbar-professional.css">
+    <link rel="stylesheet" href="premium-polish.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -55,21 +57,93 @@
             </div>
             <div class="user-dropdown" id="user-dropdown" style="display: none;">
                 <div class="user-dropdown-header">
-                    <div class="user-avatar-large"><i class="fas fa-user"></i></div>
+                    <div class="user-avatar-large">
+                        <i class="fas fa-user"></i>
+                    </div>
                     <div class="user-info">
                         <div class="user-full-name" id="dropdown-user-name"></div>
                         <div class="user-email" id="dropdown-user-email"></div>
+                        <div class="user-stats" style="display: flex; gap: 1rem; margin-top: 0.5rem; font-size: 0.75rem; color: #64748b;">
+                            <span id="user-member-since"><i class="fas fa-calendar"></i> Member since <span id="member-date"></span></span>
+                        </div>
                     </div>
                 </div>
-                <div class="user-dropdown-menu">
-                    <a href="dashboard.html" class="dropdown-item"><i class="fas fa-tachometer-alt"></i><span>My Dashboard</span></a>
-                    <a href="ai-claude.html" class="dropdown-item"><i class="fas fa-robot"></i><span>AI Assistant</span></a>
-                    <a href="#" class="dropdown-item" id="saved-chats"><i class="fas fa-comments"></i><span>Saved Chats</span></a>
-                    <a href="#" class="dropdown-item" id="my-profile"><i class="fas fa-user-circle"></i><span>My Profile</span></a>
-                    <a href="#" class="dropdown-item" id="settings"><i class="fas fa-cog"></i><span>Settings</span></a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item" id="logout-btn"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
+                
+                <!-- User Activity Stats -->
+                <div class="dropdown-stats">
+                    <div class="stat-item">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="total-chats">0</div>
+                            <div class="stat-label">AI Conversations</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="last-active">Today</div>
+                            <div class="stat-label">Last Active</div>
+                        </div>
+                    </div>
                 </div>
+                
+                <!-- Quick Actions -->
+                <div class="dropdown-section">
+                    <div class="dropdown-section-title">Quick Actions</div>
+                    <a href="ai-claude.html" class="dropdown-item">
+                        <i class="fas fa-robot"></i>
+                        <span>New AI Chat</span>
+                        <span class="item-badge" style="background: #10b981;">HOT</span>
+                    </a>
+                    <a href="booking.html" class="dropdown-item">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Book a Call</span>
+                    </a>
+                    <a href="#" class="dropdown-item" id="view-saved-chats">
+                        <i class="fas fa-history"></i>
+                        <span>View Chat History</span>
+                    </a>
+                </div>
+                
+                <!-- Account Management -->
+                <div class="dropdown-section">
+                    <div class="dropdown-section-title">Account</div>
+                    <a href="dashboard.html" class="dropdown-item">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="#" class="dropdown-item" id="edit-profile">
+                        <i class="fas fa-user-edit"></i>
+                        <span>Edit Profile</span>
+                    </a>
+                    <a href="#" class="dropdown-item" id="export-data">
+                        <i class="fas fa-download"></i>
+                        <span>Export My Data</span>
+                    </a>
+                </div>
+                
+                <!-- Support & Settings -->
+                <div class="dropdown-section">
+                    <div class="dropdown-section-title">Support</div>
+                    <a href="mailto:nextreach374@gmail.com" class="dropdown-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>Contact Support</span>
+                    </a>
+                    <a href="#" class="dropdown-item" id="settings">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </div>
+                
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item dropdown-item-danger" id="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
             </div>
             <div class="hamburger">
                 <span class="bar"></span>
@@ -246,6 +320,7 @@
     <script src="database.js"></script>
     <script src="achievement-system.js"></script>
     <script src="session-manager-enhanced.js"></script>
+    <script src="navbar-session.js"></script>
     <script src="script.js"></script>
     <script>
         // Check if user is logged in, redirect if not
@@ -325,30 +400,57 @@
                 }
             }
             
-            // Profile dropdown toggle
-            const profileBtn = document.getElementById('user-profile');
-            const dropdown = document.getElementById('user-dropdown');
-            if (profileBtn && dropdown) {
-                profileBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
-                });
-                document.addEventListener('click', (e) => {
-                    if (!profileBtn.contains(e.target) && !dropdown.contains(e.target)) {
-                        dropdown.style.display = 'none';
+            // Note: Dropdown handlers are now managed by navbar-session.js
+            
+            // Populate dropdown stats
+            function populateDropdownStats() {
+                try {
+                    const currentUser = JSON.parse(localStorage.getItem('nextreach_user'));
+                    if (!currentUser) return;
+                    
+                    // Calculate member since
+                    const memberDateEl = document.getElementById('member-date');
+                    if (memberDateEl && currentUser.createdAt) {
+                        const date = new Date(currentUser.createdAt);
+                        memberDateEl.textContent = date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
                     }
-                });
+                    
+                    // Count AI conversations
+                    const allChats = JSON.parse(localStorage.getItem('nextreach_ai_chats_all') || '[]');
+                    const userChats = allChats.filter(chat => chat.userId === currentUser.id);
+                    const totalChatsEl = document.getElementById('total-chats');
+                    if (totalChatsEl) {
+                        totalChatsEl.textContent = userChats.length;
+                    }
+                    
+                    // Calculate last active
+                    const lastActiveEl = document.getElementById('last-active');
+                    if (lastActiveEl) {
+                        const lastLogin = localStorage.getItem('lastLoginTime');
+                        if (lastLogin) {
+                            const lastDate = new Date(parseInt(lastLogin));
+                            const now = new Date();
+                            const diffHours = Math.floor((now - lastDate) / (1000 * 60 * 60));
+                            
+                            if (diffHours < 1) {
+                                lastActiveEl.textContent = 'Just now';
+                            } else if (diffHours < 24) {
+                                lastActiveEl.textContent = 'Today';
+                            } else if (diffHours < 48) {
+                                lastActiveEl.textContent = 'Yesterday';
+                            } else {
+                                const diffDays = Math.floor(diffHours / 24);
+                                lastActiveEl.textContent = `${diffDays}d ago`;
+                            }
+                        }
+                    }
+                } catch (error) {
+                    console.error('Error populating dropdown stats:', error);
+                }
             }
             
-            // Logout handler
-            const logoutBtn = document.getElementById('logout-btn');
-            if (logoutBtn) {
-                logoutBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    sessionManager.logout();
-                    window.location.href = 'index.html';
-                });
-            }
+            // Call populate function after user data is loaded
+            setTimeout(populateDropdownStats, 100);
         }
     </script>
 </body>
