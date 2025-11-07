@@ -77,25 +77,29 @@ Be conversational, clear, and helpful. Format responses with proper markdown. Al
         let prompt = this.baseSystemPrompt;
         
         if (this.currentUser) {
-            prompt += `\n\n=== USER CONTEXT ===\n`;
+            prompt += `\n\n=== USER CONTEXT (IMPORTANT - USE THIS INFO IN RESPONSES) ===\n`;
             prompt += `User Name: ${this.currentUser.name}\n`;
             prompt += `User Email: ${this.currentUser.email}\n`;
             prompt += `Account Created: ${new Date(this.currentUser.createdAt).toLocaleDateString()}\n`;
             
             if (this.userPreferences.businessName) {
                 prompt += `Business Name: ${this.userPreferences.businessName}\n`;
+                prompt += `IMPORTANT: Refer to their business as "${this.userPreferences.businessName}" and personalize recommendations for this business.\n`;
             }
             
             if (this.userPreferences.industry) {
                 prompt += `Industry: ${this.userPreferences.industry}\n`;
+                prompt += `IMPORTANT: Tailor all marketing advice specifically for the ${this.userPreferences.industry} industry. Mention industry-specific strategies and examples.\n`;
             }
             
             if (this.userPreferences.goals && this.userPreferences.goals.length > 0) {
                 prompt += `User Goals: ${this.userPreferences.goals.join(', ')}\n`;
+                prompt += `IMPORTANT: Focus responses on helping achieve these specific goals. Reference these goals when making recommendations.\n`;
             }
             
             if (this.userPreferences.interests && this.userPreferences.interests.length > 0) {
-                prompt += `Interests: ${this.userPreferences.interests.join(', ')}\n`;
+                prompt += `Marketing Interests: ${this.userPreferences.interests.join(', ')}\n`;
+                prompt += `IMPORTANT: Emphasize these areas in your responses and suggest strategies related to their interests.\n`;
             }
             
             if (this.userPreferences.pastQuestions && this.userPreferences.pastQuestions.length > 0) {
@@ -959,75 +963,96 @@ Be conversational, clear, and helpful. Format responses with proper markdown. Al
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.7);
+            background: rgba(30, 58, 138, 0.8);
+            backdrop-filter: blur(8px);
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 10000;
             padding: 1rem;
+            animation: fadeIn 0.3s ease;
         `;
         
         modal.innerHTML = `
-            <div style="background: white; border-radius: 16px; padding: 2rem; max-width: 500px; width: 100%; max-height: 90vh; overflow-y: auto;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-                    <h2 style="margin: 0; color: #1e293b;">Edit Your Profile</h2>
-                    <button onclick="this.closest('div[style*=fixed]').remove()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #64748b;">&times;</button>
+            <div style="background: white; border-radius: 20px; padding: 2.5rem; max-width: 550px; width: 100%; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); animation: slideUp 0.3s ease;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <div>
+                        <h2 style="margin: 0; color: #1e3a8a; font-size: 1.75rem; font-weight: 700;">Edit Your Profile</h2>
+                        <p style="margin: 0.5rem 0 0 0; color: #64748b; font-size: 0.95rem;">Help our AI understand you better</p>
+                    </div>
+                    <button onclick="this.closest('div[style*=fixed]').remove()" style="background: #f1f5f9; border: none; width: 40px; height: 40px; border-radius: 50%; font-size: 1.5rem; cursor: pointer; color: #64748b; transition: all 0.2s; display: flex; align-items: center; justify-content: center;" onmouseover="this.style.background='#e2e8f0'" onmouseout="this.style.background='#f1f5f9'">&times;</button>
                 </div>
                 
                 <div style="margin-bottom: 1.5rem;">
-                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #475569;">Business Name</label>
-                    <input type="text" id="prefBusinessName" value="${this.userPreferences.businessName || ''}" placeholder="Your business name" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #1e3a8a; font-size: 0.95rem;"><i class="fas fa-building" style="margin-right: 0.5rem;"></i>Business Name</label>
+                    <input type="text" id="prefBusinessName" value="${this.userPreferences.businessName || ''}" placeholder="e.g., Coffee Shop Downtown" style="width: 100%; padding: 0.875rem 1rem; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 1rem; transition: all 0.2s;" onfocus="this.style.borderColor='#3b82f6'" onblur="this.style.borderColor='#e2e8f0'">
                 </div>
                 
                 <div style="margin-bottom: 1.5rem;">
-                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #475569;">Industry</label>
-                    <select id="prefIndustry" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem;">
-                        <option value="">Select industry...</option>
-                        <option value="restaurant" ${this.userPreferences.industry === 'restaurant' ? 'selected' : ''}>Restaurant</option>
-                        <option value="gym" ${this.userPreferences.industry === 'gym' ? 'selected' : ''}>Gym / Fitness</option>
-                        <option value="salon" ${this.userPreferences.industry === 'salon' ? 'selected' : ''}>Salon / Beauty</option>
-                        <option value="retail" ${this.userPreferences.industry === 'retail' ? 'selected' : ''}>Retail</option>
-                        <option value="ecommerce" ${this.userPreferences.industry === 'ecommerce' ? 'selected' : ''}>E-commerce</option>
-                        <option value="consulting" ${this.userPreferences.industry === 'consulting' ? 'selected' : ''}>Consulting</option>
-                        <option value="real estate" ${this.userPreferences.industry === 'real estate' ? 'selected' : ''}>Real Estate</option>
-                        <option value="healthcare" ${this.userPreferences.industry === 'healthcare' ? 'selected' : ''}>Healthcare</option>
-                        <option value="technology" ${this.userPreferences.industry === 'technology' ? 'selected' : ''}>Technology</option>
-                        <option value="education" ${this.userPreferences.industry === 'education' ? 'selected' : ''}>Education</option>
-                        <option value="finance" ${this.userPreferences.industry === 'finance' ? 'selected' : ''}>Finance</option>
-                        <option value="other" ${this.userPreferences.industry === 'other' ? 'selected' : ''}>Other</option>
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #1e3a8a; font-size: 0.95rem;"><i class="fas fa-industry" style="margin-right: 0.5rem;"></i>Industry</label>
+                    <select id="prefIndustry" style="width: 100%; padding: 0.875rem 1rem; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 1rem; cursor: pointer; background: white; transition: all 0.2s;" onfocus="this.style.borderColor='#3b82f6'" onblur="this.style.borderColor='#e2e8f0'">
+                        <option value="">Select your industry...</option>
+                        <option value="restaurant" ${this.userPreferences.industry === 'restaurant' ? 'selected' : ''}>🍽️ Restaurant / Food Service</option>
+                        <option value="gym" ${this.userPreferences.industry === 'gym' ? 'selected' : ''}>💪 Gym / Fitness Center</option>
+                        <option value="salon" ${this.userPreferences.industry === 'salon' ? 'selected' : ''}>💇 Salon / Beauty Services</option>
+                        <option value="retail" ${this.userPreferences.industry === 'retail' ? 'selected' : ''}>🛍️ Retail Store</option>
+                        <option value="ecommerce" ${this.userPreferences.industry === 'ecommerce' ? 'selected' : ''}>🛒 E-commerce / Online Store</option>
+                        <option value="consulting" ${this.userPreferences.industry === 'consulting' ? 'selected' : ''}>💼 Consulting / Professional Services</option>
+                        <option value="real estate" ${this.userPreferences.industry === 'real estate' ? 'selected' : ''}>🏠 Real Estate</option>
+                        <option value="healthcare" ${this.userPreferences.industry === 'healthcare' ? 'selected' : ''}>⚕️ Healthcare / Medical</option>
+                        <option value="technology" ${this.userPreferences.industry === 'technology' ? 'selected' : ''}>💻 Technology / Software</option>
+                        <option value="education" ${this.userPreferences.industry === 'education' ? 'selected' : ''}>📚 Education / Training</option>
+                        <option value="finance" ${this.userPreferences.industry === 'finance' ? 'selected' : ''}>💰 Finance / Banking</option>
+                        <option value="other" ${this.userPreferences.industry === 'other' ? 'selected' : ''}>✨ Other</option>
                     </select>
                 </div>
                 
                 <div style="margin-bottom: 1.5rem;">
-                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #475569;">Your Goals (comma-separated)</label>
-                    <textarea id="prefGoals" placeholder="e.g., increase sales, improve online presence, grow social media" style="width: 100%; padding: 0.75rem; border: 2px solid #e2e8f0; border-radius: 8px; font-size: 1rem; min-height: 80px; resize: vertical;">${this.userPreferences.goals ? this.userPreferences.goals.join(', ') : ''}</textarea>
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #1e3a8a; font-size: 0.95rem;"><i class="fas fa-bullseye" style="margin-right: 0.5rem;"></i>Your Goals</label>
+                    <textarea id="prefGoals" placeholder="e.g., increase online sales, improve SEO ranking, grow social media following" style="width: 100%; padding: 0.875rem 1rem; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 1rem; min-height: 90px; resize: vertical; font-family: inherit; transition: all 0.2s;" onfocus="this.style.borderColor='#3b82f6'" onblur="this.style.borderColor='#e2e8f0'">${this.userPreferences.goals ? this.userPreferences.goals.join(', ') : ''}</textarea>
+                    <small style="color: #64748b; font-size: 0.85rem;"><i class="fas fa-info-circle"></i> Separate multiple goals with commas</small>
                 </div>
                 
-                <div style="margin-bottom: 1.5rem;">
-                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #475569;">Marketing Interests</label>
-                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                <div style="margin-bottom: 2rem;">
+                    <label style="display: block; margin-bottom: 0.75rem; font-weight: 600; color: #1e3a8a; font-size: 0.95rem;"><i class="fas fa-heart" style="margin-right: 0.5rem;"></i>Marketing Interests</label>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.625rem;">
                         ${['SEO', 'Social Media', 'Content Marketing', 'Email Marketing', 'PPC', 'Branding', 'Video Marketing', 'AI'].map(interest => {
                             const checked = this.userPreferences.interests && this.userPreferences.interests.includes(interest.toLowerCase());
                             return `
-                                <label style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: ${checked ? '#667eea' : '#f1f5f9'}; color: ${checked ? 'white' : '#475569'}; border-radius: 20px; cursor: pointer; font-size: 0.875rem; font-weight: 600;">
-                                    <input type="checkbox" value="${interest.toLowerCase()}" ${checked ? 'checked' : ''} style="margin: 0;">
+                                <label style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.625rem 1.125rem; background: ${checked ? 'linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%)' : '#f1f5f9'}; color: ${checked ? 'white' : '#475569'}; border-radius: 25px; cursor: pointer; font-size: 0.875rem; font-weight: 600; transition: all 0.2s; user-select: none; border: 2px solid ${checked ? 'transparent' : '#e2e8f0'};" onmouseover="if(!this.querySelector('input').checked) { this.style.background='#e2e8f0'; }" onmouseout="if(!this.querySelector('input').checked) { this.style.background='#f1f5f9'; }">
+                                    <input type="checkbox" value="${interest.toLowerCase()}" ${checked ? 'checked' : ''} style="margin: 0; width: 16px; height: 16px; cursor: pointer;" onchange="this.closest('label').style.background = this.checked ? 'linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%)' : '#f1f5f9'; this.closest('label').style.color = this.checked ? 'white' : '#475569'; this.closest('label').style.borderColor = this.checked ? 'transparent' : '#e2e8f0';">
                                     ${interest}
                                 </label>
                             `;
                         }).join('')}
                     </div>
+                    <small style="color: #64748b; font-size: 0.85rem; display: block; margin-top: 0.5rem;"><i class="fas fa-magic"></i> Select all that apply - helps AI personalize responses</small>
                 </div>
                 
                 <div style="display: flex; gap: 1rem;">
-                    <button onclick="claudeAI.saveUserPreferencesFromModal(); this.closest('div[style*=fixed]').remove();" style="flex: 1; padding: 0.875rem; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer;">
-                        <i class="fas fa-save"></i> Save Profile
+                    <button onclick="claudeAI.saveUserPreferencesFromModal(); this.closest('div[style*=fixed]').remove();" style="flex: 1; padding: 1rem 1.5rem; background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%); color: white; border: none; border-radius: 10px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(30, 58, 138, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(30, 58, 138, 0.3)'">
+                        <i class="fas fa-save"></i> Save Profile & Personalize AI
                     </button>
-                    <button onclick="this.closest('div[style*=fixed]').remove()" style="padding: 0.875rem 1.5rem; background: #e2e8f0; color: #475569; border: none; border-radius: 8px; font-weight: 600; font-size: 1rem; cursor: pointer;">
+                    <button onclick="this.closest('div[style*=fixed]').remove()" style="padding: 1rem 1.5rem; background: #f1f5f9; color: #475569; border: none; border-radius: 10px; font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='#e2e8f0'" onmouseout="this.style.background='#f1f5f9'">
                         Cancel
                     </button>
                 </div>
             </div>
         `;
+        
+        // Add animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+            @keyframes slideUp {
+                from { transform: translateY(30px); opacity: 0; }
+                to { transform: translateY(0); opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
         
         document.body.appendChild(modal);
     }
@@ -1062,21 +1087,25 @@ Be conversational, clear, and helpful. Format responses with proper markdown. Al
         const successMsg = document.createElement('div');
         successMsg.style.cssText = `
             position: fixed;
-            top: 20px;
+            top: 80px;
             right: 20px;
             background: linear-gradient(135deg, #10b981, #34d399);
             color: white;
-            padding: 1rem 1.5rem;
+            padding: 1.125rem 1.75rem;
             border-radius: 12px;
             box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
             z-index: 10001;
             font-weight: 600;
+            font-size: 1rem;
             animation: slideInRight 0.3s ease;
         `;
-        successMsg.innerHTML = '<i class="fas fa-check-circle"></i> Profile updated! AI will remember your preferences.';
+        successMsg.innerHTML = '<i class="fas fa-check-circle" style="margin-right: 0.5rem;"></i> Profile updated! AI will now personalize responses for you.';
         document.body.appendChild(successMsg);
         
-        setTimeout(() => successMsg.remove(), 3000);
+        setTimeout(() => {
+            successMsg.style.animation = 'slideOutRight 0.3s ease';
+            setTimeout(() => successMsg.remove(), 300);
+        }, 3500);
     }
 }
 

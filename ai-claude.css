@@ -1,40 +1,36 @@
 /* ================================================
-   CLAUDE AI STYLE - NEXTREACH AI ASSISTANT
-   Exact Claude AI Design with NextReach Brand Colors
+   NEXTREACH AI ASSISTANT - PREMIUM UI
+   Modern, Clean Design with Brand Gradient
    ================================================ */
 
 :root {
-    /* NextReach Brand Colors - From Main Site */
-    --primary-color: #1e3a8a;    /* Navy blue */
-    --secondary-color: #3b82f6;  /* Bright blue */
-    --accent-color: #60a5fa;     /* Light blue accent */
-    --gradient: linear-gradient(135deg, #1e3a8a, #3b82f6);
+    /* NextReach Brand Colors */
+    --primary-color: #1e3a8a;
+    --secondary-color: #3b82f6;
+    --accent-color: #60a5fa;
+    --gradient: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
     
-    /* Claude-Style Color Mapping with NextReach Brand */
-    --claude-bg: #f5f5f5;        /* Claude's soft gray background */
-    --claude-white: #ffffff;
-    --claude-text: #2d333a;      /* Claude's text color */
-    --claude-text-light: #6e6e80; /* Claude's secondary text */
-    --claude-border: #e5e5ea;    /* Claude's subtle borders */
-    --claude-accent: #3b82f6;    /* NextReach blue for accents */
-    --claude-accent-hover: #2563eb;
-    --claude-user-bg: #f4f4f6;   /* Claude's user message background */
-    --claude-ai-bg: #ffffff;
-    --claude-input-bg: #ffffff;
-    --claude-sidebar-bg: #ffffff;
-    --claude-sidebar-hover: #f5f5f5;
-    --claude-sidebar-active: #eff6ff;
-    --claude-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    --claude-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.08);
+    /* UI Colors */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --bg-tertiary: #f1f5f9;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-tertiary: #64748b;
+    --border-color: #e2e8f0;
+    --user-msg-bg: #eff6ff;
+    --ai-msg-bg: #ffffff;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 10px 40px rgba(30, 58, 138, 0.15);
     
-    /* Spacing - Exact Claude Measurements */
-    --header-height: 60px;
-    --sidebar-width: 260px;
-    --max-width: 720px;
-    --input-max-width: 720px;
+    /* Spacing */
+    --header-height: 64px;
+    --sidebar-width: 280px;
+    --input-max-width: 768px;
     
-    /* Transitions - Claude's smooth animations */
-    --transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Transitions */
+    --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {
@@ -44,11 +40,12 @@
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: var(--claude-bg);
-    color: var(--claude-text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
     overflow-x: hidden;
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
 }
 
 /* ==================
@@ -61,13 +58,14 @@ body {
     left: 0;
     right: 0;
     height: var(--header-height);
-    background: var(--claude-white);
-    border-bottom: 1px solid var(--claude-border);
+    background: var(--gradient);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 1rem;
     z-index: 100;
+    box-shadow: 0 4px 20px rgba(30, 58, 138, 0.15);
 }
 
 .header-left {
@@ -80,8 +78,8 @@ body {
     width: 36px;
     height: 36px;
     border: none;
-    background: transparent;
-    color: var(--claude-text);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
     font-size: 1.125rem;
     cursor: pointer;
     border-radius: 6px;
@@ -92,7 +90,7 @@ body {
 }
 
 .menu-btn:hover {
-    background: var(--claude-sidebar-hover);
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .logo-link {
@@ -100,18 +98,25 @@ body {
     align-items: center;
     gap: 0.5rem;
     text-decoration: none;
-    color: var(--claude-text);
+    color: white;
 }
 
 .header-logo {
-    width: 26px;
-    height: 26px;
+    width: 32px;
+    height: 32px;
+    filter: brightness(0) invert(1) drop-shadow(0 2px 8px rgba(255, 255, 255, 0.3));
+    transition: var(--transition);
+}
+
+.header-logo:hover {
+    transform: scale(1.1) rotate(5deg);
 }
 
 .header-title {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--claude-text);
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: white;
+    letter-spacing: -0.01em;
 }
 
 .header-right {
@@ -124,8 +129,8 @@ body {
     width: 36px;
     height: 36px;
     border: none;
-    background: transparent;
-    color: var(--claude-text-light);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
     border-radius: 6px;
     cursor: pointer;
     transition: var(--transition);
@@ -136,8 +141,8 @@ body {
 }
 
 .header-action-btn:hover {
-    background: var(--claude-sidebar-hover);
-    color: var(--claude-text);
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
 }
 
 .header-action-btn:active {
@@ -149,20 +154,20 @@ body {
     align-items: center;
     gap: 0.5rem;
     padding: 0.5rem 0.875rem;
-    background: var(--gradient);
-    color: white;
+    background: white;
+    color: #1e3a8a;
     border: none;
     border-radius: 8px;
     font-size: 0.875rem;
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
     transition: var(--transition);
     position: relative;
-    box-shadow: 0 2px 8px rgba(30, 58, 138, 0.15);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .new-chat-btn:hover {
-    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.25);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     transform: translateY(-1px);
 }
 
@@ -199,7 +204,7 @@ body {
 }
 
 /* ==================
-   SIDEBAR - EXACT CLAUDE DESIGN
+   SIDEBAR - PREMIUM DESIGN
    ================== */
 
 .sidebar {
@@ -208,13 +213,14 @@ body {
     left: 0;
     width: var(--sidebar-width);
     height: calc(100vh - var(--header-height));
-    background: var(--claude-sidebar-bg);
-    border-right: 1px solid var(--claude-border);
-    transition: transform 0.2s ease;
+    background: white;
+    border-right: 2px solid var(--border-color);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 90;
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.05);
 }
 
 .sidebar.hidden {
@@ -267,7 +273,89 @@ body {
 .chat-history {
     flex: 1;
     overflow-y: auto;
-    padding: 0.5rem;
+    padding: 0.75rem;
+}
+
+/* Custom Scrollbar for Chat History */
+.chat-history::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-history::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.chat-history::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 10px;
+}
+
+.chat-history::-webkit-scrollbar-thumb:hover {
+    background: var(--text-tertiary);
+}
+
+/* User Context Panel */
+.user-context-panel {
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.user-context-card {
+    background: var(--gradient);
+    padding: 1.25rem;
+    border-radius: 16px;
+    margin-bottom: 0.75rem;
+    color: white;
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.25);
+}
+
+.context-user-info {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    margin-bottom: 0.75rem;
+}
+
+.context-avatar {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.25rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.context-details-section {
+    font-size: 0.8125rem;
+    opacity: 0.95;
+    margin-top: 0.875rem;
+    padding-top: 0.875rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.edit-profile-btn {
+    width: 100%;
+    margin-top: 0.875rem;
+    padding: 0.625rem;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.edit-profile-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
 }
 
 /* Chat History Items - Claude Style */
@@ -302,90 +390,108 @@ body {
 }
 
 .history-date {
-    font-size: 0.6875rem;
-    color: var(--claude-text-light);
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
     display: flex;
     align-items: center;
-    gap: 0.25rem;
+    gap: 0.375rem;
 }
 
 .history-date i {
-    font-size: 0.625rem;
+    font-size: 0.6875rem;
 }
 
 .history-delete {
     position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    width: 24px;
-    height: 24px;
+    top: 50%;
+    right: 0.75rem;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
     border: none;
     background: rgba(239, 68, 68, 0.1);
     color: #ef4444;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
     opacity: 0;
-    transition: var(--transition);
+    transition: all 0.2s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.6875rem;
+    font-size: 0.75rem;
 }
 
 .history-item:hover .history-delete {
     opacity: 1;
+    transform: translateY(-50%) scale(1);
 }
 
 .history-delete:hover {
     background: #ef4444;
     color: white;
+    transform: translateY(-50%) scale(1.1);
 }
 
 .empty-history {
     text-align: center;
-    padding: 2rem 1rem;
-    color: var(--claude-text-light);
+    padding: 3rem 1.5rem;
+    color: var(--text-tertiary);
 }
 
 .empty-history i {
-    font-size: 2rem;
-    margin-bottom: 0.75rem;
-    opacity: 0.3;
-    color: var(--claude-text-light);
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.2;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .empty-history p {
-    font-size: 0.8125rem;
-    color: var(--claude-text-light);
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.empty-history p:first-of-type {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
 }
 
 /* Sidebar Footer */
 .sidebar-footer {
-    padding: 0.75rem;
-    border-top: 1px solid var(--claude-border);
+    padding: 1rem;
+    border-top: 2px solid var(--border-color);
+    background: linear-gradient(180deg, transparent 0%, rgba(59, 130, 246, 0.02) 100%);
 }
 
 .sidebar-new-chat {
     width: 100%;
-    padding: 0.625rem;
+    padding: 0.875rem;
     background: var(--gradient);
     color: white;
     border: none;
-    border-radius: 6px;
-    font-size: 0.8125rem;
-    font-weight: 500;
+    border-radius: 12px;
+    font-size: 0.875rem;
+    font-weight: 600;
     cursor: pointer;
-    transition: var(--transition);
+    transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.375rem;
+    gap: 0.5rem;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
 .sidebar-new-chat:hover {
-    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
 }
 
+/* Sidebar Overlay */
 .sidebar-overlay {
     position: fixed;
     top: var(--header-height);
@@ -428,15 +534,16 @@ body {
 }
 
 /* ==================
-   WELCOME SCREEN - CLAUDE STYLE
+   WELCOME SCREEN - PREMIUM DESIGN
    ================== */
 
 .welcome-screen {
-    padding: 3rem 1rem;
-    min-height: calc(100vh - var(--header-height) - 160px);
+    padding: 4rem 1.5rem;
+    min-height: calc(100vh - var(--header-height) - 180px);
     display: flex;
     align-items: center;
     justify-content: center;
+    background: linear-gradient(180deg, rgba(59, 130, 246, 0.03) 0%, rgba(96, 165, 250, 0.05) 100%);
 }
 
 .welcome-screen.hidden {
@@ -445,77 +552,114 @@ body {
 
 .welcome-wrapper {
     width: 100%;
-    max-width: 640px;
+    max-width: 720px;
+    animation: fadeInUp 0.6s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .welcome-title {
-    font-size: 2rem;
-    font-weight: 400;
-    color: var(--claude-text);
+    font-size: 2.5rem;
+    font-weight: 600;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     text-align: center;
-    margin-bottom: 2.5rem;
+    margin-bottom: 3rem;
     line-height: 1.2;
+    letter-spacing: -0.02em;
 }
 
 /* ==================
-   SUGGESTION CARDS (2x2) - CLAUDE STYLE
+   SUGGESTION CARDS - PREMIUM DESIGN
    ================== */
 
 .suggestions-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
+    gap: 1rem;
 }
 
 .suggestion-card {
-    background: var(--claude-white);
-    border: 1px solid var(--claude-border);
-    border-radius: 10px;
-    padding: 1.25rem;
+    background: white;
+    border: 2px solid var(--border-color);
+    border-radius: 16px;
+    padding: 1.5rem;
     cursor: pointer;
-    transition: var(--transition);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     text-align: left;
     display: flex;
     flex-direction: column;
-    gap: 0.625rem;
+    gap: 0.875rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.suggestion-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
 }
 
 .suggestion-card:hover {
-    border-color: var(--claude-accent);
-    box-shadow: var(--claude-shadow-hover);
+    border-color: var(--secondary-color);
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15);
+    transform: translateY(-4px);
+}
+
+.suggestion-card:hover::before {
+    transform: scaleX(1);
 }
 
 .suggestion-icon {
-    width: 36px;
-    height: 36px;
+    width: 48px;
+    height: 48px;
     background: var(--gradient);
-    border-radius: 8px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 1rem;
+    font-size: 1.25rem;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
 .suggestion-text h3 {
-    font-size: 0.9375rem;
-    font-weight: 500;
-    color: var(--claude-text);
-    margin-bottom: 0.125rem;
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
 }
 
 .suggestion-text p {
-    font-size: 0.8125rem;
-    color: var(--claude-text-light);
-    line-height: 1.4;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
 }
 
 /* ==================
-   MESSAGES - EXACT CLAUDE STYLE
+   MESSAGES - PREMIUM DESIGN
    ================== */
 
 .messages-container {
-    padding: 1.5rem 0;
+    padding: 2rem 0;
     display: none;
 }
 
@@ -524,14 +668,14 @@ body {
 }
 
 .message {
-    margin-bottom: 1.5rem;
-    animation: messageSlide 0.2s ease-out;
+    margin-bottom: 2rem;
+    animation: messageSlide 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @keyframes messageSlide {
     from {
         opacity: 0;
-        transform: translateY(6px);
+        transform: translateY(10px);
     }
     to {
         opacity: 1;
@@ -540,38 +684,64 @@ body {
 }
 
 .message-role {
-    font-size: 0.8125rem;
-    font-weight: 500;
-    color: var(--claude-text);
-    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
     display: flex;
     align-items: center;
-    gap: 0.375rem;
+    gap: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .message-role i {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
     font-size: 0.875rem;
 }
 
+.message.user .message-role i {
+    background: var(--gradient);
+    color: white;
+}
+
+.message.assistant .message-role i {
+    background: linear-gradient(135deg, #10b981, #34d399);
+    color: white;
+}
+
 .message-content {
-    padding: 1rem 1.125rem;
-    border-radius: 8px;
-    font-size: 0.9375rem;
-    line-height: 1.6;
-    color: var(--claude-text);
+    padding: 1.5rem 1.75rem;
+    border-radius: 16px;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+    box-shadow: var(--shadow-sm);
+    border: 2px solid transparent;
+    transition: var(--transition);
 }
 
 .message.user .message-content {
-    background: var(--claude-user-bg);
+    background: var(--user-msg-bg);
+    border-color: rgba(59, 130, 246, 0.2);
 }
 
 .message.assistant .message-content {
-    background: var(--claude-ai-bg);
-    border: 1px solid var(--claude-border);
+    background: white;
+    border-color: var(--border-color);
+}
+
+.message-content:hover {
+    box-shadow: var(--shadow-md);
 }
 
 .message-content p {
-    margin-bottom: 0.875rem;
+    margin-bottom: 1rem;
 }
 
 .message-content p:last-child {
@@ -579,8 +749,9 @@ body {
 }
 
 .message-content code {
-    background: rgba(0, 0, 0, 0.05);
-    padding: 0.15rem 0.35rem;
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--secondary-color);
+    padding: 0.2rem 0.5rem;
     border-radius: 3px;
     font-family: 'Monaco', 'Courier New', monospace;
     font-size: 0.875rem;
@@ -645,7 +816,7 @@ body {
 }
 
 /* ==================
-   INPUT AREA - EXACT CLAUDE STYLE
+   INPUT AREA - PREMIUM DESIGN
    ================== */
 
 .input-area {
@@ -653,9 +824,10 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to top, var(--claude-bg) 90%, transparent);
-    padding: 1rem 1rem 1.5rem;
+    background: linear-gradient(to top, var(--bg-secondary) 70%, transparent);
+    padding: 1.5rem 1.5rem 2rem;
     z-index: 50;
+    backdrop-filter: blur(8px);
 }
 
 .input-container {
@@ -665,32 +837,33 @@ body {
 
 .input-wrapper {
     position: relative;
-    background: var(--claude-input-bg);
-    border: 1px solid var(--claude-border);
-    border-radius: 20px;
-    padding: 0.5rem 0.875rem;
+    background: white;
+    border: 2px solid var(--border-color);
+    border-radius: 24px;
+    padding: 0.75rem 1.125rem;
     display: flex;
     align-items: flex-end;
-    gap: 0.625rem;
-    box-shadow: var(--claude-shadow);
-    transition: var(--transition);
+    gap: 0.875rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .input-wrapper:focus-within {
-    border-color: var(--claude-accent);
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    border-color: var(--secondary-color);
+    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.2);
+    transform: translateY(-2px);
 }
 
 .message-input {
     flex: 1;
     border: none;
     background: transparent;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.9375rem;
-    color: var(--claude-text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 1rem;
+    color: var(--text-primary);
     resize: none;
-    max-height: 180px;
-    line-height: 1.5;
+    max-height: 200px;
+    line-height: 1.6;
     padding: 0.5rem 0;
 }
 
@@ -699,32 +872,39 @@ body {
 }
 
 .message-input::placeholder {
-    color: var(--claude-text-light);
+    color: var(--text-tertiary);
 }
 
 .send-btn {
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
     border: none;
     background: var(--gradient);
     color: white;
     border-radius: 50%;
     cursor: pointer;
-    transition: var(--transition);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    font-size: 1.125rem;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
 .send-btn:hover:not(:disabled) {
-    opacity: 0.9;
-    transform: scale(1.05);
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+}
+
+.send-btn:active:not(:disabled) {
+    transform: scale(0.95);
 }
 
 .send-btn:disabled {
     opacity: 0.4;
     cursor: not-allowed;
+    transform: none;
 }
 
 .send-btn i {
@@ -733,12 +913,50 @@ body {
 
 .input-footer {
     text-align: center;
-    margin-top: 0.75rem;
+    margin-top: 0.875rem;
 }
 
 .input-footer p {
-    font-size: 0.6875rem;
-    color: var(--claude-text-light);
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    font-weight: 500;
+}
+
+/* ==================
+   TYPING INDICATOR - ANIMATED
+   ================== */
+
+.typing-indicator {
+    display: flex;
+    gap: 0.375rem;
+    padding: 0.5rem 0;
+}
+
+.typing-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--secondary-color);
+    border-radius: 50%;
+    animation: typingPulse 1.4s ease-in-out infinite;
+}
+
+.typing-dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typingPulse {
+    0%, 60%, 100% {
+        transform: translateY(0);
+        opacity: 0.5;
+    }
+    30% {
+        transform: translateY(-8px);
+        opacity: 1;
+    }
 }
 
 /* ==================
