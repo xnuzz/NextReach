@@ -6824,6 +6824,146 @@ input:checked + .slider:before {
     .hero {
         padding-top: 110px;
     }
+    
+    /* CTA Section Mobile */
+    .cta-section {
+        padding: 4rem 0 0 0 !important;
+    }
+    
+    .cta-section h2 {
+        font-size: 2rem !important;
+    }
+    
+    .cta-section p {
+        font-size: 1rem !important;
+    }
+    
+    /* Trust Indicators Mobile */
+    .cta-section > div > div > div[style*="display: flex"] {
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+    }
+    
+    /* Services Grid Mobile */
+    .services-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+    
+    /* Testimonials Mobile */
+    .testimonials-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    /* Footer Mobile */
+    .footer-content {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+        text-align: center;
+    }
+    
+    .footer-section ul {
+        align-items: center;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+    
+    /* Buttons Mobile */
+    .btn, .nav-btn, .hero-btn {
+        padding: 0.875rem 1.5rem !important;
+        font-size: 0.95rem !important;
+    }
+    
+    /* Spacing Mobile */
+    .container {
+        padding: 0 1.25rem;
+    }
+    
+    section {
+        padding: 3rem 0 !important;
+    }
+    
+    /* Text Sizes Mobile */
+    h1, .hero-title {
+        font-size: 2rem !important;
+        line-height: 1.2 !important;
+    }
+    
+    h2, .section-title {
+        font-size: 1.75rem !important;
+    }
+    
+    h3 {
+        font-size: 1.35rem !important;
+    }
+    
+    p, .hero-subtitle {
+        font-size: 0.95rem !important;
+        line-height: 1.6 !important;
+    }
+}
+
+/* Additional Mobile Optimization for smaller screens */
+@media (max-width: 480px) {
+    .logo-nav {
+        height: 55px !important;
+    }
+    
+    .navbar {
+        padding: 0.6rem 0 !important;
+    }
+    
+    .hero-title {
+        font-size: 1.75rem !important;
+    }
+    
+    .cta-section h2 {
+        font-size: 1.65rem !important;
+    }
+    
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .hero-btn {
+        width: 100%;
+    }
+    
+    /* Hide floating cards on very small screens */
+    .floating-card {
+        display: none !important;
+    }
+}
+
+/* Tablet optimization (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .logo-nav {
+        height: 65px !important;
+    }
+    
+    .nav-menu {
+        gap: 1.5rem;
+    }
+    
+    .nav-actions {
+        gap: 0.75rem;
+    }
+    
+    .nav-btn-text {
+        display: none;
+    }
+    
+    .nav-btn {
+        padding: 0.6rem 1rem;
+    }
 }
 
 /* Animation utilities */

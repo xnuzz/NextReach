@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pricing & Packages - NextReach Digital Marketing</title>
+    <title>Pricing & Packages - From $58/Month | Flexible Payment Plans | NextReach</title>
+    <meta name="description" content="Transparent pricing for complete digital solutions. Choose from Starter ($58/mo), Professional ($125/mo), or Premium ($167/mo) packages. 0% interest payment plans. No hidden fees.">
     <link rel="icon" type="image/svg+xml" href="NextReach.svg">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="new-sections.css">
@@ -28,8 +29,6 @@
                 <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
                 <li class="nav-item"><a href="pricing.html" class="nav-link active">Pricing</a></li>
-                <li class="nav-item"><a href="portfolio.html" class="nav-link">Portfolio</a></li>
-                <li class="nav-item"><a href="testimonials.html" class="nav-link">Testimonials</a></li>
                 <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
             </ul>
             <div class="nav-actions">
@@ -37,7 +36,7 @@
                     <i class="fas fa-robot"></i>
                     <span class="nav-btn-text">AI Assistant</span>
                 </a>
-                <a href="index.html#booking" class="nav-btn nav-btn-book" title="Book a Call">
+                <a href="booking.html" class="nav-btn nav-btn-book" title="Book a Call">
                     <i class="fas fa-calendar-check"></i>
                     <span class="nav-btn-text">Book Call</span>
                 </a>
@@ -69,73 +68,32 @@
                     </div>
                 </div>
                 
-                <!-- User Activity Stats -->
-                <div class="dropdown-stats">
-                    <div class="stat-item">
-                        <div class="stat-icon" style="background: linear-gradient(135deg, #667eea, #764ba2);">
-                            <i class="fas fa-comments"></i>
-                        </div>
-                        <div class="stat-content">
-                            <div class="stat-value" id="total-chats">0</div>
-                            <div class="stat-label">AI Conversations</div>
-                        </div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-icon" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div class="stat-content">
-                            <div class="stat-value" id="last-active">Today</div>
-                            <div class="stat-label">Last Active</div>
-                        </div>
-                    </div>
-                </div>
-                
                 <!-- Quick Actions -->
                 <div class="dropdown-section">
-                    <div class="dropdown-section-title">Quick Actions</div>
                     <a href="ai-claude.html" class="dropdown-item">
                         <i class="fas fa-robot"></i>
-                        <span>New AI Chat</span>
+                        <span>AI Assistant</span>
                         <span class="item-badge" style="background: #10b981;">HOT</span>
                     </a>
                     <a href="booking.html" class="dropdown-item">
                         <i class="fas fa-calendar-check"></i>
                         <span>Book a Call</span>
                     </a>
-                    <a href="#" class="dropdown-item" id="view-saved-chats">
-                        <i class="fas fa-history"></i>
-                        <span>View Chat History</span>
+                    <a href="pricing.html" class="dropdown-item">
+                        <i class="fas fa-tag"></i>
+                        <span>View Pricing</span>
                     </a>
                 </div>
                 
-                <!-- Account Management -->
+                <!-- Account -->
                 <div class="dropdown-section">
-                    <div class="dropdown-section-title">Account</div>
-                    <a href="dashboard.html" class="dropdown-item">
-                        <i class="fas fa-tachometer-alt"></i>
-                        <span>Dashboard</span>
-                    </a>
                     <a href="#" class="dropdown-item" id="edit-profile">
                         <i class="fas fa-user-edit"></i>
                         <span>Edit Profile</span>
                     </a>
-                    <a href="#" class="dropdown-item" id="export-data">
-                        <i class="fas fa-download"></i>
-                        <span>Export My Data</span>
-                    </a>
-                </div>
-                
-                <!-- Support & Settings -->
-                <div class="dropdown-section">
-                    <div class="dropdown-section-title">Support</div>
                     <a href="mailto:nextreach374@gmail.com" class="dropdown-item">
                         <i class="fas fa-envelope"></i>
                         <span>Contact Support</span>
-                    </a>
-                    <a href="#" class="dropdown-item" id="settings">
-                        <i class="fas fa-cog"></i>
-                        <span>Settings</span>
                     </a>
                 </div>
                 
@@ -189,8 +147,18 @@
     <!-- Packages Section -->
     <section id="packages" class="services">
         <div class="container">
-            <!-- Payment Plan Selector -->
-            <div class="payment-selector">
+            <!-- Simplified Pricing Intro -->
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <p style="font-size: 1.15rem; color: var(--text-light); margin-bottom: 1rem;">
+                    <i class="fas fa-check-circle" style="color: #10b981;"></i> Flexible payment plans available • 0% interest • No credit card required to start
+                </p>
+                <button onclick="document.getElementById('payment-options-details').style.display='block'; this.style.display='none';" class="btn btn-secondary" style="font-size: 0.95rem; padding: 0.75rem 1.5rem;">
+                    <i class="fas fa-calculator"></i> View All Payment Options
+                </button>
+            </div>
+
+            <!-- Payment Plan Selector (Initially Hidden) -->
+            <div class="payment-selector" id="payment-options-details" style="display: none;">
                 <p class="selector-label">
                     <i class="fas fa-credit-card"></i>
                     Select Your Payment Option:
@@ -224,13 +192,20 @@
                     </div>
                     
                     <div class="package-price-wrapper">
-                        <div class="package-price" data-monthly6="$58" data-monthly3="$116" data-onetime="$697" data-deposit="$349" data-fulldiscount="$627">
+                        <div class="package-price-simple" style="text-align: center; margin-bottom: 1rem;">
+                            <div style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 0.5rem;">Starting at</div>
+                            <div style="font-size: 3.5rem; font-weight: 800; color: var(--primary-color); line-height: 1;">
+                                <span style="font-size: 1.5rem; vertical-align: super;">$</span>58<span style="font-size: 1.5rem; font-weight: 500; color: var(--text-light);">/mo</span>
+                            </div>
+                            <div style="font-size: 0.95rem; color: var(--text-light); margin-top: 0.5rem;">Total: $697 • 6-month plan</div>
+                        </div>
+                        <div class="package-price" data-monthly6="$58" data-monthly3="$116" data-onetime="$697" data-deposit="$349" data-fulldiscount="$627" style="display: none;">
                             <span class="currency">$</span>
                             <span class="amount">349</span>
                             <span class="period"> down + $58/mo</span>
                         </div>
-                        <p class="price-subtitle">Total: $697 ($349 deposit + $58/mo × 6)</p>
-                        <p class="payment-note"><i class="fas fa-tag"></i> Pay $627 in full & save 10%</p>
+                        <p class="price-subtitle" style="display: none;">Total: $697 ($349 deposit + $58/mo × 6)</p>
+                        <p class="payment-note" style="font-size: 0.85rem; text-align: center;"><i class="fas fa-tag"></i> Or pay $627 in full & save 10%</p>
                     </div>
 
                     <ul class="package-features">
@@ -245,7 +220,7 @@
                     </ul>
 
                     <div class="package-cta">
-                        <a href="index.html#booking" class="btn btn-outline">Get Started</a>
+                        <a href="booking.html" class="btn btn-outline">Get Started</a>
                         <p class="delivery-time"><i class="fas fa-clock"></i> Ready in 7-10 days</p>
                     </div>
                 </div>
@@ -260,13 +235,20 @@
                     </div>
                     
                     <div class="package-price-wrapper">
-                        <div class="package-price" data-monthly6="$125" data-monthly3="$250" data-onetime="$1,497" data-deposit="$748" data-fulldiscount="$1,347">
+                        <div class="package-price-simple" style="text-align: center; margin-bottom: 1rem;">
+                            <div style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 0.5rem;">Starting at</div>
+                            <div style="font-size: 3.5rem; font-weight: 800; color: var(--primary-color); line-height: 1;">
+                                <span style="font-size: 1.5rem; vertical-align: super;">$</span>125<span style="font-size: 1.5rem; font-weight: 500; color: var(--text-light);">/mo</span>
+                            </div>
+                            <div style="font-size: 0.95rem; color: var(--text-light); margin-top: 0.5rem;">Total: $1,497 • 6-month plan</div>
+                        </div>
+                        <div class="package-price" data-monthly6="$125" data-monthly3="$250" data-onetime="$1,497" data-deposit="$748" data-fulldiscount="$1,347" style="display: none;">
                             <span class="currency">$</span>
                             <span class="amount">748</span>
                             <span class="period"> down + $125/mo</span>
                         </div>
-                        <p class="price-subtitle">Total: $1,497 ($748 deposit + $125/mo × 6)</p>
-                        <p class="payment-note"><i class="fas fa-tag"></i> Pay $1,347 in full & save 10%</p>
+                        <p class="price-subtitle" style="display: none;">Total: $1,497 ($748 deposit + $125/mo × 6)</p>
+                        <p class="payment-note" style="font-size: 0.85rem; text-align: center;"><i class="fas fa-tag"></i> Or pay $1,347 in full & save 10%</p>
                     </div>
 
                     <ul class="package-features">
@@ -283,7 +265,7 @@
                     </ul>
 
                     <div class="package-cta">
-                        <a href="index.html#booking" class="btn btn-primary">Get Started</a>
+                        <a href="booking.html" class="btn btn-primary">Get Started</a>
                         <p class="delivery-time"><i class="fas fa-clock"></i> Ready in 14-21 days</p>
                     </div>
                 </div>
@@ -297,13 +279,20 @@
                     </div>
                     
                     <div class="package-price-wrapper">
-                        <div class="package-price" data-monthly6="$167" data-monthly3="$333" data-onetime="$2,000" data-deposit="$1,000" data-fulldiscount="$1,797">
+                        <div class="package-price-simple" style="text-align: center; margin-bottom: 1rem;">
+                            <div style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 0.5rem;">Starting at</div>
+                            <div style="font-size: 3.5rem; font-weight: 800; color: var(--primary-color); line-height: 1;">
+                                <span style="font-size: 1.5rem; vertical-align: super;">$</span>167<span style="font-size: 1.5rem; font-weight: 500; color: var(--text-light);">/mo</span>
+                            </div>
+                            <div style="font-size: 0.95rem; color: var(--text-light); margin-top: 0.5rem;">Total: $2,000 • 6-month plan</div>
+                        </div>
+                        <div class="package-price" data-monthly6="$167" data-monthly3="$333" data-onetime="$2,000" data-deposit="$1,000" data-fulldiscount="$1,797" style="display: none;">
                             <span class="currency">$</span>
                             <span class="amount">998</span>
                             <span class="period"> down + $167/mo</span>
                         </div>
-                        <p class="price-subtitle">Total: $2,000 ($998 deposit + $167/mo × 6)</p>
-                        <p class="payment-note"><i class="fas fa-tag"></i> Pay $1,797 in full & save 10%</p>
+                        <p class="price-subtitle" style="display: none;">Total: $2,000 ($998 deposit + $167/mo × 6)</p>
+                        <p class="payment-note" style="font-size: 0.85rem; text-align: center;"><i class="fas fa-tag"></i> Or pay $1,797 in full & save 10%</p>
                     </div>
 
                     <ul class="package-features">
@@ -321,7 +310,7 @@
                     </ul>
 
                     <div class="package-cta">
-                        <a href="index.html#booking" class="btn btn-outline">Get Started</a>
+                        <a href="booking.html" class="btn btn-outline">Get Started</a>
                         <p class="delivery-time"><i class="fas fa-clock"></i> Ready in 21-30 days</p>
                     </div>
                 </div>

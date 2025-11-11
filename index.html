@@ -43,34 +43,119 @@
         "@context": "https://schema.org",
         "@type": "ProfessionalService",
         "name": "NextReach",
+        "alternateName": "NextReach SMMA",
         "image": "https://nextreach374.com/NextReach.svg",
-        "description": "Transform your business with complete digital presence - website, social media, and video content in 2-6 weeks.",
+        "logo": "https://nextreach374.com/NextReach.svg",
+        "description": "Transform your business with complete digital presence - professional websites, social media management, and video content in 2-6 weeks. Serving businesses worldwide from Bulgaria.",
         "address": {
             "@type": "PostalAddress",
-            "addressCountry": "BG"
+            "addressCountry": "BG",
+            "addressLocality": "Bulgaria"
         },
         "email": "nextreach374@gmail.com",
         "telephone": "+359879040107",
         "url": "https://nextreach374.com",
-        "priceRange": "$$",
+        "priceRange": "$500-$3000",
         "openingHours": "Mo-Fr 09:00-18:00",
-        "sameAs": [
-            "https://facebook.com/nextreach",
-            "https://instagram.com/nextreach",
-            "https://linkedin.com/company/nextreach"
-        ],
         "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "4.9",
-            "reviewCount": "127"
+            "reviewCount": "50",
+            "bestRating": "5",
+            "worstRating": "1"
         },
-        "offers": {
-            "@type": "AggregateOffer",
-            "offerCount": "3",
-            "lowPrice": "497",
-            "highPrice": "2497",
-            "priceCurrency": "USD"
-        }
+        "review": [
+            {
+                "@type": "Review",
+                "author": {
+                    "@type": "Person",
+                    "name": "David Martinez"
+                },
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5"
+                },
+                "reviewBody": "Our new website looks incredible and actually generates leads. We've seen a 340% increase in consultation bookings in just 8 weeks.",
+                "datePublished": "2024-01-15"
+            },
+            {
+                "@type": "Review",
+                "author": {
+                    "@type": "Person",
+                    "name": "Elena Petrova"
+                },
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5"
+                },
+                "reviewBody": "Professional service from start to finish. The social media integration has brought us customers we never could have reached before.",
+                "datePublished": "2024-02-03"
+            },
+            {
+                "@type": "Review",
+                "author": {
+                    "@type": "Person",
+                    "name": "Stefan Ivanov"
+                },
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5"
+                },
+                "reviewBody": "They delivered exactly what they promised, on time and on budget. Our online bookings have doubled since launch.",
+                "datePublished": "2024-02-20"
+            }
+        ],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Digital Marketing Services",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Professional Website Design",
+                        "description": "Custom-built, mobile-responsive websites that convert visitors into customers"
+                    },
+                    "price": "697",
+                    "priceCurrency": "USD"
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Social Media Management",
+                        "description": "Fully branded profiles across all platforms, seamlessly integrated with your website"
+                    },
+                    "price": "58",
+                    "priceCurrency": "USD",
+                    "priceSpecification": {
+                        "@type": "UnitPriceSpecification",
+                        "price": "58",
+                        "priceCurrency": "USD",
+                        "unitText": "MONTH"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Video Content Creation",
+                        "description": "Professional promotional videos that capture attention and drive action"
+                    },
+                    "price": "1497",
+                    "priceCurrency": "USD"
+                }
+            ]
+        },
+        "areaServed": {
+            "@type": "Country",
+            "name": "Worldwide"
+        },
+        "serviceType": ["Digital Marketing", "Web Design", "Social Media Management", "Video Production", "SMMA"],
+        "slogan": "Your Complete Digital Partner for Unstoppable Growth"
     }
     </script>
     <link rel="stylesheet" href="styles.css">
@@ -96,8 +181,6 @@
                 <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
                 <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
                 <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
-                <li class="nav-item"><a href="portfolio.html" class="nav-link">Portfolio</a></li>
-                <li class="nav-item"><a href="testimonials.html" class="nav-link">Testimonials</a></li>
                 <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
             </ul>
             <div class="nav-actions">
@@ -142,73 +225,32 @@
                     </div>
                 </div>
                 
-                <!-- User Activity Stats -->
-                <div class="dropdown-stats">
-                    <div class="stat-item">
-                        <div class="stat-icon" style="background: linear-gradient(135deg, #667eea, #764ba2);">
-                            <i class="fas fa-comments"></i>
-                        </div>
-                        <div class="stat-content">
-                            <div class="stat-value" id="total-chats">0</div>
-                            <div class="stat-label">AI Conversations</div>
-                        </div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-icon" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div class="stat-content">
-                            <div class="stat-value" id="last-active">Today</div>
-                            <div class="stat-label">Last Active</div>
-                        </div>
-                    </div>
-                </div>
-                
                 <!-- Quick Actions -->
                 <div class="dropdown-section">
-                    <div class="dropdown-section-title">Quick Actions</div>
                     <a href="ai-claude.html" class="dropdown-item">
                         <i class="fas fa-robot"></i>
-                        <span>New AI Chat</span>
+                        <span>AI Assistant</span>
                         <span class="item-badge" style="background: #10b981;">HOT</span>
                     </a>
                     <a href="booking.html" class="dropdown-item">
                         <i class="fas fa-calendar-check"></i>
                         <span>Book a Call</span>
                     </a>
-                    <a href="#" class="dropdown-item" id="view-saved-chats">
-                        <i class="fas fa-history"></i>
-                        <span>View Chat History</span>
+                    <a href="pricing.html" class="dropdown-item">
+                        <i class="fas fa-tag"></i>
+                        <span>View Pricing</span>
                     </a>
                 </div>
                 
-                <!-- Account Management -->
+                <!-- Account -->
                 <div class="dropdown-section">
-                    <div class="dropdown-section-title">Account</div>
-                    <a href="dashboard.html" class="dropdown-item">
-                        <i class="fas fa-tachometer-alt"></i>
-                        <span>Dashboard</span>
-                    </a>
                     <a href="#" class="dropdown-item" id="edit-profile">
                         <i class="fas fa-user-edit"></i>
                         <span>Edit Profile</span>
                     </a>
-                    <a href="#" class="dropdown-item" id="export-data">
-                        <i class="fas fa-download"></i>
-                        <span>Export My Data</span>
-                    </a>
-                </div>
-                
-                <!-- Support & Settings -->
-                <div class="dropdown-section">
-                    <div class="dropdown-section-title">Support</div>
                     <a href="mailto:nextreach374@gmail.com" class="dropdown-item">
                         <i class="fas fa-envelope"></i>
                         <span>Contact Support</span>
-                    </a>
-                    <a href="#" class="dropdown-item" id="settings">
-                        <i class="fas fa-cog"></i>
-                        <span>Settings</span>
                     </a>
                 </div>
                 
@@ -237,13 +279,13 @@
             <div class="hero-content">
                 <div class="hero-badge">
                     <i class="fas fa-star"></i>
-                    <span>Trusted by 15+ Growing Businesses</span>
+                    <span>Trusted by 50+ Growing Businesses Worldwide</span>
                 </div>
                 <h1 class="hero-title">
-                    Transform Your Business With a 
-                    <span class="gradient-text">Complete Digital Presence</span>
+                    Your Complete Digital Partner for 
+                    <span class="gradient-text">Unstoppable Growth</span>
                 </h1>
-                <p class="hero-subtitle">Get a professional website, fully-integrated social media, and engaging video content—all expertly crafted and launch-ready in 2-6 weeks. No hidden fees, zero interest payment plans, and a risk-share guarantee.</p>
+                <p class="hero-subtitle">Get a professional website, powerful social media presence, and cinematic video content—all expertly crafted and launch-ready in 2-6 weeks. No hidden fees, zero interest payment plans, and our risk-free guarantee.</p>
                 
                 <div class="hero-features-quick">
                     <div class="quick-feature">
@@ -261,30 +303,19 @@
                 </div>
                 
                 <div class="hero-buttons">
-                    <a href="pricing.html" class="btn btn-primary btn-hero-main">
-                        <span>Start Your Digital Transformation</span>
+                    <a href="booking.html" class="btn btn-primary btn-hero-main">
+                        <span>Book Your Free Strategy Call</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>
-                    <a href="booking.html" class="btn btn-secondary btn-hero-secondary">
-                        <i class="fas fa-calendar-check"></i>
-                        <span>Book Free Consultation</span>
+                    <a href="pricing.html" class="btn btn-secondary btn-hero-secondary">
+                        <i class="fas fa-tag"></i>
+                        <span>View Pricing & Packages</span>
                     </a>
                 </div>
-                
-                <div class="hero-trust-bar">
-                    <div class="trust-item">
-                        <i class="fas fa-lock"></i>
-                        <span>Secure & Private</span>
-                    </div>
-                    <div class="trust-item">
-                        <i class="fas fa-headset"></i>
-                        <span>24/7 Support</span>
-                    </div>
-                    <div class="trust-item">
-                        <i class="fas fa-trophy"></i>
-                        <span>Award-Winning Team</span>
-                    </div>
-                </div>
+                <p style="text-align: center; margin-top: 1.5rem; font-size: 0.95rem; color: var(--text-light);">
+                    <i class="fas fa-calendar-alt" style="color: #10b981; margin-right: 0.5rem;"></i>
+                    <strong style="color: var(--primary-color);">Limited Availability:</strong> Only 3 project slots available this month
+                </p>
             </div>
             <div class="hero-image">
                 <div class="hero-visual-main">
@@ -330,8 +361,8 @@
         <div class="container">
             <div class="about-stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; text-align: center;">
                 <div class="about-stat-item">
-                    <div class="about-stat-number" style="font-size: 3.5rem; font-weight: 800; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">15+</div>
-                    <div class="about-stat-label" style="font-size: 1.1rem; color: var(--text-light); font-weight: 600;">Projects Completed</div>
+                    <div class="about-stat-number" style="font-size: 3.5rem; font-weight: 800; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">50+</div>
+                    <div class="about-stat-label" style="font-size: 1.1rem; color: var(--text-light); font-weight: 600;">Businesses Transformed</div>
                 </div>
                 <div class="about-stat-item">
                     <div class="about-stat-number" style="font-size: 3.5rem; font-weight: 800; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">100%</div>
@@ -362,7 +393,8 @@
             </div>
 
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
-                <div class="service-preview-card" style="background: white; padding: 2.5rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: all 0.3s ease;">
+                <div class="service-preview-card" style="background: white; padding: 2.5rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: all 0.3s ease; position: relative;">
+                    <div style="position: absolute; top: 1.5rem; right: 1.5rem; background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: var(--primary-color); padding: 0.4rem 0.9rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700;">From $697</div>
                     <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
                         <i class="fas fa-globe" style="font-size: 2rem; color: white;"></i>
                     </div>
@@ -373,7 +405,8 @@
                     </a>
                 </div>
 
-                <div class="service-preview-card" style="background: white; padding: 2.5rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: all 0.3s ease;">
+                <div class="service-preview-card" style="background: white; padding: 2.5rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: all 0.3s ease; position: relative;">
+                    <div style="position: absolute; top: 1.5rem; right: 1.5rem; background: linear-gradient(135deg, #d1fae5, #a7f3d0); color: #065f46; padding: 0.4rem 0.9rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700;">Included</div>
                     <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #10b981, #34d399); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
                         <i class="fas fa-share-alt" style="font-size: 2rem; color: white;"></i>
                     </div>
@@ -384,7 +417,8 @@
                     </a>
                 </div>
 
-                <div class="service-preview-card" style="background: white; padding: 2.5rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: all 0.3s ease;">
+                <div class="service-preview-card" style="background: white; padding: 2.5rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: all 0.3s ease; position: relative;">
+                    <div style="position: absolute; top: 1.5rem; right: 1.5rem; background: linear-gradient(135deg, #fef3c7, #fde68a); color: #92400e; padding: 0.4rem 0.9rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700;">From $1,497</div>
                     <div style="width: 70px; height: 70px; background: linear-gradient(135deg, #f59e0b, #ef4444); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
                         <i class="fas fa-video" style="font-size: 2rem; color: white;"></i>
                     </div>
@@ -426,12 +460,12 @@
                         <i class="fas fa-star" style="color: #fbbf24;"></i>
                         <i class="fas fa-star" style="color: #fbbf24;"></i>
                     </div>
-                    <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.5rem; color: var(--text-dark);">"NextReach transformed our online presence completely. We went from invisible to getting daily inquiries within weeks!"</p>
+                    <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.5rem; color: var(--text-dark);">"Our new website looks incredible and actually generates leads. We've seen a 340% increase in consultation bookings in just 8 weeks."</p>
                     <div style="display: flex; align-items: center; gap: 1rem;">
-                        <div style="width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.2rem;">S</div>
+                        <img src="https://ui-avatars.com/api/?name=David+Martinez&background=3b82f6&color=fff&size=48&font-size=0.4&bold=true" alt="David Martinez" style="width: 48px; height: 48px; border-radius: 50%;" loading="lazy">
                         <div>
-                            <div style="font-weight: 600; color: var(--text-dark);">Sarah Johnson</div>
-                            <div style="font-size: 0.9rem; color: var(--text-light);">Founder, TechStart Inc.</div>
+                            <div style="font-weight: 600; color: var(--text-dark);">David Martinez</div>
+                            <div style="font-size: 0.9rem; color: var(--text-light);">Law Firm Owner, Sofia</div>
                         </div>
                     </div>
                 </div>
@@ -444,12 +478,12 @@
                         <i class="fas fa-star" style="color: #fbbf24;"></i>
                         <i class="fas fa-star" style="color: #fbbf24;"></i>
                     </div>
-                    <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.5rem; color: var(--text-dark);">"The best investment we've made. Professional, fast, and the results speak for themselves. Highly recommend!"</p>
+                    <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.5rem; color: var(--text-dark);">"Professional service from start to finish. The social media integration has brought us customers we never could have reached before."</p>
                     <div style="display: flex; align-items: center; gap: 1rem;">
-                        <div style="width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.2rem;">M</div>
+                        <img src="https://ui-avatars.com/api/?name=Elena+Petrova&background=10b981&color=fff&size=48&font-size=0.4&bold=true" alt="Elena Petrova" style="width: 48px; height: 48px; border-radius: 50%;" loading="lazy">
                         <div>
-                            <div style="font-weight: 600; color: var(--text-dark);">Mike Chen</div>
-                            <div style="font-size: 0.9rem; color: var(--text-light);">CEO, GrowthLabs</div>
+                            <div style="font-weight: 600; color: var(--text-dark);">Elena Petrova</div>
+                            <div style="font-size: 0.9rem; color: var(--text-light);">Boutique Owner, Plovdiv</div>
                         </div>
                     </div>
                 </div>
@@ -462,20 +496,20 @@
                         <i class="fas fa-star" style="color: #fbbf24;"></i>
                         <i class="fas fa-star" style="color: #fbbf24;"></i>
                     </div>
-                    <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.5rem; color: var(--text-dark);">"Finally, a marketing agency that delivers on their promises. Our traffic tripled and sales are up 200%!"</p>
+                    <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.5rem; color: var(--text-dark);">"They delivered exactly what they promised, on time and on budget. Our online bookings have doubled since launch."</p>
                     <div style="display: flex; align-items: center; gap: 1rem;">
-                        <div style="width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.2rem;">E</div>
+                        <img src="https://ui-avatars.com/api/?name=Stefan+Ivanov&background=f59e0b&color=fff&size=48&font-size=0.4&bold=true" alt="Stefan Ivanov" style="width: 48px; height: 48px; border-radius: 50%;" loading="lazy">
                         <div>
-                            <div style="font-weight: 600; color: var(--text-dark);">Emily Rodriguez</div>
-                            <div style="font-size: 0.9rem; color: var(--text-light);">Owner, EcoFresh Market</div>
+                            <div style="font-weight: 600; color: var(--text-dark);">Stefan Ivanov</div>
+                            <div style="font-size: 0.9rem; color: var(--text-light);">Fitness Studio, Varna</div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div style="text-align: center;">
-                <a href="testimonials.html" class="btn btn-secondary" style="padding: 1rem 2.5rem; font-size: 1.1rem;">
-                    <span>Read More Success Stories</span>
+                <a href="booking.html" class="btn btn-primary" style="padding: 1rem 2.5rem; font-size: 1.1rem;">
+                    <span>Start Your Project</span>
                     <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
@@ -509,7 +543,7 @@
                 
                 <!-- Subheading -->
                 <p style="font-size: 1.3rem; margin-bottom: 3rem; color: white; line-height: 1.7; font-weight: 400; max-width: 700px; margin-left: auto; margin-right: auto;">
-                    Join <strong style="font-weight: 700; color: white;">15+ successful businesses</strong> that have launched their complete digital presence with NextReach. Get started in 2-6 weeks with 0% interest payment plans.
+                    Join <strong style="font-weight: 700; color: white;">50+ successful businesses</strong> that have launched their complete digital presence with NextReach. Get started in 2-6 weeks with 0% interest payment plans.
                 </p>
                 
                 <!-- Trust Indicators -->
@@ -666,12 +700,14 @@
                 <div class="footer-section">
                     <img src="NextReach.svg" alt="NextReach" class="footer-logo" style="height: 60px; margin-bottom: 1rem;">
                     <p>Empowering businesses with complete digital solutions.</p>
-                    <div class="social-links">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    </div>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: #94a3b8;">
+                        <i class="fas fa-envelope" style="margin-right: 0.5rem;"></i>
+                        <a href="mailto:nextreach374@gmail.com" style="color: inherit; text-decoration: none;">nextreach374@gmail.com</a>
+                    </p>
+                    <p style="font-size: 0.9rem; color: #94a3b8;">
+                        <i class="fas fa-phone" style="margin-right: 0.5rem;"></i>
+                        <a href="tel:+359879040107" style="color: inherit; text-decoration: none;">+359 879 040 107</a>
+                    </p>
                 </div>
                 
                 <div class="footer-section">
@@ -679,16 +715,15 @@
                     <ul>
                         <li><a href="services.html">Services</a></li>
                         <li><a href="pricing.html">Pricing</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="testimonials.html">Testimonials</a></li>
+                        <li><a href="about.html">About Us</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-section">
                     <h4>Company</h4>
                     <ul>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="mailto:nextreach374@gmail.com">Contact</a></li>
                         <li><a href="booking.html">Book a Call</a></li>
                         <li><a href="ai-claude.html">AI Assistant</a></li>
                     </ul>
@@ -904,6 +939,9 @@
             const currentUser = JSON.parse(localStorage.getItem('nextreach_user'));
             if (!currentUser) return;
             
+            const [firstName, ...lastNameParts] = (currentUser.name || '').split(' ');
+            const lastName = lastNameParts.join(' ');
+            
             const modal = document.createElement('div');
             modal.style.cssText = `
                 position: fixed;
@@ -911,68 +949,178 @@
                 left: 0;
                 width: 100%;
                 height: 100%;
-                background: rgba(0, 0, 0, 0.7);
+                background: rgba(30, 58, 138, 0.85);
+                backdrop-filter: blur(8px);
                 z-index: 10000;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 animation: fadeIn 0.3s ease;
+                padding: 1rem;
             `;
             
             modal.innerHTML = `
                 <div style="
                     background: white;
-                    border-radius: 16px;
-                    padding: 2rem;
-                    max-width: 500px;
-                    width: 90%;
-                    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+                    border-radius: 24px;
+                    padding: 0;
+                    max-width: 580px;
+                    width: 100%;
+                    max-height: 90vh;
+                    overflow-y: auto;
+                    box-shadow: 0 25px 75px rgba(0,0,0,0.4);
+                    animation: slideUp 0.4s ease;
                 ">
-                    <h2 style="margin-bottom: 1.5rem; color: #1e293b;">Edit Profile</h2>
-                    <div style="margin-bottom: 1rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #64748b;">Name</label>
-                        <input type="text" id="edit-name" value="${currentUser.name || ''}" style="
-                            width: 100%;
-                            padding: 0.75rem;
-                            border: 2px solid #e5e7eb;
-                            border-radius: 8px;
-                            font-size: 1rem;
-                        ">
-                    </div>
-                    <div style="margin-bottom: 1.5rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #64748b;">Email</label>
-                        <input type="email" id="edit-email" value="${currentUser.email || ''}" readonly style="
-                            width: 100%;
-                            padding: 0.75rem;
-                            border: 2px solid #e5e7eb;
-                            border-radius: 8px;
-                            font-size: 1rem;
-                            background: #f8fafc;
-                            cursor: not-allowed;
-                        ">
-                        <small style="color: #94a3b8; font-size: 0.85rem;">Email cannot be changed</small>
-                    </div>
-                    <div style="display: flex; gap: 1rem;">
-                        <button onclick="saveProfile()" style="
-                            flex: 1;
-                            background: linear-gradient(135deg, #667eea, #764ba2);
+                    <!-- Header -->
+                    <div style="
+                        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
+                        padding: 2rem;
+                        border-radius: 24px 24px 0 0;
+                        color: white;
+                        text-align: center;
+                        position: relative;
+                    ">
+                        <button onclick="this.closest('div[style*=\\"position: fixed\\"]').remove()" style="
+                            position: absolute;
+                            top: 1rem;
+                            right: 1rem;
+                            background: rgba(255, 255, 255, 0.2);
+                            backdrop-filter: blur(10px);
+                            border: none;
+                            width: 36px;
+                            height: 36px;
+                            border-radius: 50%;
                             color: white;
-                            padding: 0.75rem;
-                            border: none;
-                            border-radius: 8px;
-                            font-weight: 700;
+                            font-size: 1.25rem;
                             cursor: pointer;
-                        ">Save Changes</button>
-                        <button onclick="this.closest('div[style*=\"position: fixed\"]').remove()" style="
-                            flex: 1;
-                            background: #e5e7eb;
-                            color: #64748b;
-                            padding: 0.75rem;
-                            border: none;
-                            border-radius: 8px;
+                            transition: all 0.2s;
+                        " onmouseover="this.style.background='rgba(255, 255, 255, 0.3)'" onmouseout="this.style.background='rgba(255, 255, 255, 0.2)'">×</button>
+                        <div style="
+                            width: 80px;
+                            height: 80px;
+                            background: rgba(255, 255, 255, 0.2);
+                            backdrop-filter: blur(10px);
+                            border: 3px solid rgba(255, 255, 255, 0.4);
+                            border-radius: 50%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            margin: 0 auto 1rem;
+                            font-size: 2rem;
                             font-weight: 700;
-                            cursor: pointer;
-                        ">Cancel</button>
+                        ">${(firstName?.charAt(0) || '') + (lastName?.charAt(0) || '')}</div>
+                        <h2 style="margin: 0; font-size: 1.75rem; font-weight: 700;">Edit Your Profile</h2>
+                        <p style="margin: 0.5rem 0 0 0; opacity: 0.95; font-size: 0.95rem;">Update your personal information</p>
+                    </div>
+                    
+                    <!-- Form Content -->
+                    <div style="padding: 2rem;">
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.625rem; font-weight: 600; color: #1e3a8a; font-size: 0.95rem;">
+                                <i class="fas fa-user" style="margin-right: 0.5rem;"></i>First Name
+                            </label>
+                            <input type="text" id="edit-first-name" value="${firstName || ''}" placeholder="Enter your first name" style="
+                                width: 100%;
+                                padding: 0.875rem 1rem;
+                                border: 2px solid #e2e8f0;
+                                border-radius: 12px;
+                                font-size: 1rem;
+                                transition: all 0.2s;
+                            " onfocus="this.style.borderColor='#3b82f6'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)'" onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='none'">
+                        </div>
+                        
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.625rem; font-weight: 600; color: #1e3a8a; font-size: 0.95rem;">
+                                <i class="fas fa-user" style="margin-right: 0.5rem;"></i>Last Name
+                            </label>
+                            <input type="text" id="edit-last-name" value="${lastName || ''}" placeholder="Enter your last name" style="
+                                width: 100%;
+                                padding: 0.875rem 1rem;
+                                border: 2px solid #e2e8f0;
+                                border-radius: 12px;
+                                font-size: 1rem;
+                                transition: all 0.2s;
+                            " onfocus="this.style.borderColor='#3b82f6'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)'" onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='none'">
+                        </div>
+                        
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.625rem; font-weight: 600; color: #1e3a8a; font-size: 0.95rem;">
+                                <i class="fas fa-envelope" style="margin-right: 0.5rem;"></i>Email Address
+                            </label>
+                            <input type="email" id="edit-email" value="${currentUser.email || ''}" readonly style="
+                                width: 100%;
+                                padding: 0.875rem 1rem;
+                                border: 2px solid #e2e8f0;
+                                border-radius: 12px;
+                                font-size: 1rem;
+                                background: #f8fafc;
+                                cursor: not-allowed;
+                                color: #64748b;
+                            ">
+                            <small style="color: #64748b; font-size: 0.85rem; display: block; margin-top: 0.5rem;">
+                                <i class="fas fa-lock" style="margin-right: 0.25rem;"></i>Email address cannot be changed for security reasons
+                            </small>
+                        </div>
+                        
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.625rem; font-weight: 600; color: #1e3a8a; font-size: 0.95rem;">
+                                <i class="fas fa-phone" style="margin-right: 0.5rem;"></i>Phone Number (Optional)
+                            </label>
+                            <input type="tel" id="edit-phone" value="${currentUser.phone || ''}" placeholder="+1 (555) 000-0000" style="
+                                width: 100%;
+                                padding: 0.875rem 1rem;
+                                border: 2px solid #e2e8f0;
+                                border-radius: 12px;
+                                font-size: 1rem;
+                                transition: all 0.2s;
+                            " onfocus="this.style.borderColor='#3b82f6'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)'" onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='none'">
+                        </div>
+                        
+                        <div style="margin-bottom: 2rem;">
+                            <label style="display: block; margin-bottom: 0.625rem; font-weight: 600; color: #1e3a8a; font-size: 0.95rem;">
+                                <i class="fas fa-building" style="margin-right: 0.5rem;"></i>Company Name (Optional)
+                            </label>
+                            <input type="text" id="edit-company" value="${currentUser.company || ''}" placeholder="Your company name" style="
+                                width: 100%;
+                                padding: 0.875rem 1rem;
+                                border: 2px solid #e2e8f0;
+                                border-radius: 12px;
+                                font-size: 1rem;
+                                transition: all 0.2s;
+                            " onfocus="this.style.borderColor='#3b82f6'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)'" onblur="this.style.borderColor='#e2e8f0'; this.style.boxShadow='none'">
+                        </div>
+                        
+                        <!-- Action Buttons -->
+                        <div style="display: flex; gap: 1rem;">
+                            <button onclick="saveProfile()" style="
+                                flex: 1;
+                                background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
+                                color: white;
+                                padding: 1rem 1.5rem;
+                                border: none;
+                                border-radius: 12px;
+                                font-weight: 700;
+                                font-size: 1rem;
+                                cursor: pointer;
+                                transition: all 0.3s;
+                                box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+                            " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(59, 130, 246, 0.5)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 14px rgba(59, 130, 246, 0.4)'">
+                                <i class="fas fa-save"></i> Save Changes
+                            </button>
+                            <button onclick="this.closest('div[style*=\\"position: fixed\\"]').remove()" style="
+                                padding: 1rem 1.5rem;
+                                background: #f1f5f9;
+                                color: #475569;
+                                border: none;
+                                border-radius: 12px;
+                                font-weight: 600;
+                                font-size: 1rem;
+                                cursor: pointer;
+                                transition: all 0.2s;
+                            " onmouseover="this.style.background='#e2e8f0'" onmouseout="this.style.background='#f1f5f9'">
+                                Cancel
+                            </button>
+                        </div>
                     </div>
                 </div>
             `;
@@ -983,23 +1131,48 @@
         // Save profile changes
         function saveProfile() {
             const currentUser = JSON.parse(localStorage.getItem('nextreach_user'));
-            const newName = document.getElementById('edit-name').value.trim();
+            const firstName = document.getElementById('edit-first-name').value.trim();
+            const lastName = document.getElementById('edit-last-name').value.trim();
+            const phone = document.getElementById('edit-phone').value.trim();
+            const company = document.getElementById('edit-company').value.trim();
             
-            if (newName && currentUser) {
-                currentUser.name = newName;
+            if (firstName && currentUser) {
+                currentUser.name = `${firstName} ${lastName}`.trim();
+                currentUser.firstName = firstName;
+                currentUser.lastName = lastName;
+                currentUser.phone = phone;
+                currentUser.company = company;
                 localStorage.setItem('nextreach_user', JSON.stringify(currentUser));
                 
                 // Update all users array
                 const allUsers = JSON.parse(localStorage.getItem('nextreach_users') || '[]');
                 const userIndex = allUsers.findIndex(u => u.id === currentUser.id);
                 if (userIndex !== -1) {
-                    allUsers[userIndex].name = newName;
+                    allUsers[userIndex] = {...allUsers[userIndex], ...currentUser};
                     localStorage.setItem('nextreach_users', JSON.stringify(allUsers));
                 }
                 
+                // Show success message
+                const successMsg = document.createElement('div');
+                successMsg.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: linear-gradient(135deg, #10b981, #34d399);
+                    color: white;
+                    padding: 1rem 1.5rem;
+                    border-radius: 12px;
+                    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
+                    z-index: 10001;
+                    font-weight: 600;
+                    animation: slideInRight 0.3s ease;
+                `;
+                successMsg.innerHTML = '<i class="fas fa-check-circle"></i> Profile updated successfully!';
+                document.body.appendChild(successMsg);
+                
                 // Close modal and reload
                 document.querySelector('div[style*="position: fixed"]').remove();
-                window.location.reload();
+                setTimeout(() => window.location.reload(), 1000);
             }
         }
         

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Client Testimonials - NextReach Digital Marketing</title>
+    <title>Portfolio - NextReach Digital Marketing</title>
     <link rel="icon" type="image/svg+xml" href="NextReach.svg">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="new-sections.css">
@@ -27,6 +27,8 @@
                 <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
                 <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
+                <li class="nav-item"><a href="portfolio.html" class="nav-link active">Portfolio</a></li>
+                <li class="nav-item"><a href="testimonials.html" class="nav-link">Testimonials</a></li>
                 <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
             </ul>
             <div class="nav-actions">
@@ -54,32 +56,73 @@
                     </div>
                 </div>
                 
+                <!-- User Activity Stats -->
+                <div class="dropdown-stats">
+                    <div class="stat-item">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="total-chats">0</div>
+                            <div class="stat-label">AI Conversations</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="last-active">Today</div>
+                            <div class="stat-label">Last Active</div>
+                        </div>
+                    </div>
+                </div>
+                
                 <!-- Quick Actions -->
                 <div class="dropdown-section">
+                    <div class="dropdown-section-title">Quick Actions</div>
                     <a href="ai-claude.html" class="dropdown-item">
                         <i class="fas fa-robot"></i>
-                        <span>AI Assistant</span>
+                        <span>New AI Chat</span>
                         <span class="item-badge" style="background: #10b981;">HOT</span>
                     </a>
                     <a href="booking.html" class="dropdown-item">
                         <i class="fas fa-calendar-check"></i>
                         <span>Book a Call</span>
                     </a>
-                    <a href="pricing.html" class="dropdown-item">
-                        <i class="fas fa-tag"></i>
-                        <span>View Pricing</span>
+                    <a href="#" class="dropdown-item" id="view-saved-chats">
+                        <i class="fas fa-history"></i>
+                        <span>View Chat History</span>
                     </a>
                 </div>
                 
-                <!-- Account -->
+                <!-- Account Management -->
                 <div class="dropdown-section">
+                    <div class="dropdown-section-title">Account</div>
+                    <a href="dashboard.html" class="dropdown-item">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
                     <a href="#" class="dropdown-item" id="edit-profile">
                         <i class="fas fa-user-edit"></i>
                         <span>Edit Profile</span>
                     </a>
+                    <a href="#" class="dropdown-item" id="export-data">
+                        <i class="fas fa-download"></i>
+                        <span>Export My Data</span>
+                    </a>
+                </div>
+                
+                <!-- Support & Settings -->
+                <div class="dropdown-section">
+                    <div class="dropdown-section-title">Support</div>
                     <a href="mailto:nextreach374@gmail.com" class="dropdown-item">
                         <i class="fas fa-envelope"></i>
                         <span>Contact Support</span>
+                    </a>
+                    <a href="#" class="dropdown-item" id="settings">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
                     </a>
                 </div>
                 
@@ -97,84 +140,144 @@
     <section class="page-hero" style="padding-top: 140px; padding-bottom: 4rem; background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);">
         <div class="container" style="text-align: center; max-width: 800px; margin: 0 auto;">
             <span class="section-badge" style="display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); color: var(--primary-color); padding: 0.6rem 1.5rem; border-radius: 50px; font-size: 0.95rem; font-weight: 600; margin-bottom: 1.5rem;">
-                <i class="fas fa-star"></i> Client Reviews
+                <i class="fas fa-briefcase"></i> Our Work
             </span>
-            <h1 style="font-size: 3.5rem; font-weight: 800; margin-bottom: 1.5rem; background: var(--logo-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">What Our Clients Say</h1>
-            <p style="font-size: 1.25rem; color: var(--text-light); line-height: 1.7; margin-bottom: 2rem;">Real stories from real businesses we've helped grow. See why clients trust NextReach with their digital presence.</p>
+            <h1 style="font-size: 3.5rem; font-weight: 800; margin-bottom: 1.5rem; background: var(--logo-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Real Results From Real Clients</h1>
+            <p style="font-size: 1.25rem; color: var(--text-light); line-height: 1.7; margin-bottom: 2rem;">See how we've transformed businesses through strategic digital marketing and complete online presence solutions.</p>
         </div>
     </section>
 
-    <!-- Comments Section -->
-    <section id="reviews" class="comments">
+    <!-- Portfolio -->
+    <section id="portfolio" class="portfolio">
         <div class="container">
-            <h2 class="section-title">Client Reviews</h2>
-            <p class="section-subtitle">Share your experience with NextReach</p>
-            
-            <!-- Add Comment Form -->
-            <div class="add-comment-form">
-                <h3>Leave a Review</h3>
-                <form id="commentForm">
-                    <div class="form-group">
-                        <input type="text" id="commentName" placeholder="Your Full Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="commentCompany" placeholder="Company or Organization (Optional)">
-                    </div>
-                    <div class="form-group rating-group">
-                        <label>How would you rate our service?</label>
-                        <div class="star-rating">
-                            <span class="star" data-rating="1">★</span>
-                            <span class="star" data-rating="2">★</span>
-                            <span class="star" data-rating="3">★</span>
-                            <span class="star" data-rating="4">★</span>
-                            <span class="star" data-rating="5">★</span>
-                        </div>
-                        <div class="rating-labels">
-                            <span class="rating-label left">Poor</span>
-                            <div class="rating-description" id="ratingDescription">Select a rating</div>
-                            <span class="rating-label right">Excellent</span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="commentText" placeholder="Tell us about your experience with NextReach. What did you like most? How did we help your business grow?" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-comment-btn">
-                        <i class="fas fa-rocket"></i>
-                        Submit Review
-                    </button>
-                </form>
+            <div class="portfolio-filter">
+                <button class="filter-btn active" data-filter="all"><i class="fas fa-th"></i><span>All Projects</span></button>
+                <button class="filter-btn" data-filter="digital"><i class="fas fa-laptop-code"></i><span>Web Design</span></button>
+                <button class="filter-btn" data-filter="branding"><i class="fas fa-palette"></i><span>Branding</span></button>
+                <button class="filter-btn" data-filter="video"><i class="fas fa-video"></i><span>Video</span></button>
             </div>
             
-            <!-- Comments Display -->
-            <div class="comments-display">
-                <div class="comments-header">
-                    <h3>Client Reviews</h3>
-                    <div class="rating-summary">
-                        <div class="average-rating">
-                            <span class="rating-number">4.8</span>
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="digital">
+                    <div class="portfolio-image">
+                        <div class="image-placeholder"><i class="fas fa-mobile-alt"></i><span class="placeholder-text">TechStart</span></div>
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <span class="project-category">Digital Marketing</span>
+                                <h3>TechStart Campaign</h3>
+                                <p>Complete digital transformation with responsive website, SEO optimization, and social media integration</p>
+                                <div class="project-stats">
+                                    <div class="stat"><i class="fas fa-chart-line"></i><span>+300% Traffic</span></div>
+                                    <div class="stat"><i class="fas fa-users"></i><span>10K+ Users</span></div>
+                                </div>
+                                <a href="#" class="portfolio-link"><span>View Case Study</span><i class="fas fa-arrow-right"></i></a>
                             </div>
-                            <span class="total-reviews">Based on <span id="totalReviews">0</span> reviews</span>
                         </div>
                     </div>
                 </div>
                 
-                <div class="comments-list" id="commentsList"></div>
+                <div class="portfolio-item" data-category="branding">
+                    <div class="portfolio-image">
+                        <div class="image-placeholder branding-gradient"><i class="fas fa-palette"></i><span class="placeholder-text">EcoFresh</span></div>
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <span class="project-category">Brand Identity</span>
+                                <h3>EcoFresh Rebrand</h3>
+                                <p>Full brand identity overhaul including logo design, brand guidelines, and marketing collateral</p>
+                                <div class="project-stats">
+                                    <div class="stat"><i class="fas fa-star"></i><span>Market Leader</span></div>
+                                    <div class="stat"><i class="fas fa-trophy"></i><span>Award Winner</span></div>
+                                </div>
+                                <a href="#" class="portfolio-link"><span>View Case Study</span><i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 
-                <div class="empty-comments" id="emptyComments">
-                    <i class="fas fa-comments"></i>
-                    <p>Be the first to leave a review!</p>
+                <div class="portfolio-item" data-category="video">
+                    <div class="portfolio-image">
+                        <div class="image-placeholder video-gradient"><i class="fas fa-play"></i><span class="placeholder-text">SportZone</span></div>
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <span class="project-category">Video Production</span>
+                                <h3>SportZone Commercial</h3>
+                                <p>High-impact promotional video campaign with professional editing and motion graphics</p>
+                                <div class="project-stats">
+                                    <div class="stat"><i class="fas fa-eye"></i><span>2M+ Views</span></div>
+                                    <div class="stat"><i class="fas fa-heart"></i><span>50K Likes</span></div>
+                                </div>
+                                <a href="#" class="portfolio-link"><span>View Case Study</span><i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="digital">
+                    <div class="portfolio-image">
+                        <div class="image-placeholder seo-gradient"><i class="fas fa-chart-line"></i><span class="placeholder-text">FinanceFlow</span></div>
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <span class="project-category">SEO Strategy</span>
+                                <h3>FinanceFlow SEO</h3>
+                                <p>Strategic SEO campaign with keyword research, content optimization, and link building</p>
+                                <div class="project-stats">
+                                    <div class="stat"><i class="fas fa-search"></i><span>#1 Rankings</span></div>
+                                    <div class="stat"><i class="fas fa-rocket"></i><span>500% ROI</span></div>
+                                </div>
+                                <a href="#" class="portfolio-link"><span>View Case Study</span><i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="branding">
+                    <div class="portfolio-image">
+                        <div class="image-placeholder startup-gradient"><i class="fas fa-rocket"></i><span class="placeholder-text">LaunchPad</span></div>
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <span class="project-category">Brand Strategy</span>
+                                <h3>LaunchPad Startup</h3>
+                                <p>Complete startup branding package with market positioning and go-to-market strategy</p>
+                                <div class="project-stats">
+                                    <div class="stat"><i class="fas fa-bullseye"></i><span>Perfect Launch</span></div>
+                                    <div class="stat"><i class="fas fa-dollar-sign"></i><span>$1M Funded</span></div>
+                                </div>
+                                <a href="#" class="portfolio-link"><span>View Case Study</span><i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="video">
+                    <div class="portfolio-image">
+                        <div class="image-placeholder social-gradient"><i class="fas fa-share-alt"></i><span class="placeholder-text">SocialBoost</span></div>
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <span class="project-category">Social Media</span>
+                                <h3>SocialBoost Campaign</h3>
+                                <p>Viral social media campaign with short-form video content across multiple platforms</p>
+                                <div class="project-stats">
+                                    <div class="stat"><i class="fas fa-fire"></i><span>Viral Hit</span></div>
+                                    <div class="stat"><i class="fas fa-users"></i><span>100K Followers</span></div>
+                                </div>
+                                <a href="#" class="portfolio-link"><span>View Case Study</span><i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-cta">
+                <div class="cta-content">
+                    <h3>Ready to see your project here?</h3>
+                    <p>Join our growing list of successful clients and transform your digital presence</p>
+                    <a href="pricing.html" class="btn btn-primary btn-lg"><span>Start Your Project</span><i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA -->
+    <!-- CTA Section -->
     <section class="cta-section" style="padding: 8rem 0; background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%); color: white; position: relative; overflow: hidden;">
         <!-- Animated Background Elements -->
         <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.08;">
