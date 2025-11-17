@@ -30,7 +30,6 @@
                 <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
                 <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
-                <li class="nav-item"><a href="testimonials.html" class="nav-link active">Testimonials</a></li>
                 <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
             </ul>
             <div class="nav-actions">
@@ -42,6 +41,7 @@
                     <i class="fas fa-calendar-check"></i>
                     <span class="nav-btn-text">Book Call</span>
                 </a>
+                <!-- Show for non-logged-in users -->
                 <a href="login.html" class="nav-btn nav-btn-outline" id="nav-login">
                     <i class="fas fa-sign-in-alt"></i>
                     <span class="nav-btn-text">Login</span>
@@ -50,8 +50,11 @@
                     <i class="fas fa-rocket"></i>
                     <span class="nav-btn-text">Get Started</span>
                 </a>
+                <!-- Show for logged-in users (initially hidden) -->
                 <button class="user-profile-btn" id="user-profile" style="display: none;">
-                    <div class="user-avatar"><i class="fas fa-user"></i></div>
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
                     <span class="user-name" id="user-display-name"></span>
                     <i class="fas fa-chevron-down"></i>
                 </button>

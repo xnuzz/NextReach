@@ -550,13 +550,21 @@
     }
 }
 
+/* TEMPORARY: Show hamburger on desktop for testing */
+.hamburger {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
 /* Hide hamburger on desktop */
 @media (min-width: 768px) {
     .hamburger {
         display: none !important;
     }
     
-    .mobile-menu-overlay {
+    /* TEMPORARY: Allow mobile overlay on desktop for testing */
+    /* .mobile-menu-overlay {
         display: none !important;
-    }
+    } */
 }

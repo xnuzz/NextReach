@@ -5,14 +5,31 @@
 
 class FuturisticMobileMenu {
     constructor() {
+        // Prevent multiple instances (singleton pattern)
+        if (window.futuristicMobileMenuInstance) {
+            console.log('FuturisticMobileMenu instance already exists, returning existing instance');
+            return window.futuristicMobileMenuInstance;
+        }
+        
+        window.futuristicMobileMenuInstance = this;
         this.init();
     }
 
     init() {
-        this.createMobileMenuHTML();
-        this.bindEvents();
-        this.updateUserState();
-        this.handleActiveStates();
+        console.log('Initializing FuturisticMobileMenu...');
+        try {
+            console.log('Step 1: Creating mobile menu HTML...');
+            this.createMobileMenuHTML();
+            console.log('Step 2: Binding events...');
+            this.bindEvents();
+            console.log('Step 3: Updating user state...');
+            this.updateUserState();
+            console.log('Step 4: Handling active states...');
+            this.handleActiveStates();
+            console.log('FuturisticMobileMenu initialized successfully');
+        } catch (error) {
+            console.error('Error in init step:', error);
+        }
     }
 
     createMobileMenuHTML() {
@@ -125,14 +142,33 @@ class FuturisticMobileMenu {
         const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
         const body = document.body;
 
-        if (!hamburger || !mobileMenuOverlay) return;
+        if (!hamburger) {
+            console.warn('Hamburger button not found, retrying in 100ms...');
+            setTimeout(() => this.bindEvents(), 100);
+            return;
+        }
+        
+        if (!mobileMenuOverlay) {
+            console.warn('Mobile menu overlay not found');
+            return;
+        }
 
+        // Check if hamburger already has our event listener
+        if (hamburger.dataset.listenerAttached === 'true') {
+            console.log('Event listener already attached, skipping');
+            return;
+        }
+        
         // Hamburger click event
         hamburger.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
+            console.log('Hamburger clicked - calling toggleMenu');
             this.toggleMenu();
         });
+        
+        // Mark that we've attached the listener
+        hamburger.dataset.listenerAttached = 'true';
 
         // Click outside to close
         mobileMenuOverlay.addEventListener('click', (e) => {
@@ -207,7 +243,7 @@ class FuturisticMobileMenu {
         if (!hamburger || !mobileMenuOverlay) return;
 
         const isActive = mobileMenuOverlay.classList.contains('active');
-        
+        console.log('Toggling menu, currently active:', isActive);
         if (isActive) {
             this.closeMenu();
         } else {
@@ -330,20 +366,23 @@ class FuturisticMobileMenu {
     }
 }
 
-// Initialize the futuristic mobile menu when DOM is loaded
+// Initialize the futuristic mobile menu when DOM is loaded (singleton pattern)
 document.addEventListener('DOMContentLoaded', function() {
+    // Prevent multiple instances
+    if (window.futuristicMobileMenu) {
+        console.log('FuturisticMobileMenu already exists, skipping initialization');
+        return;
+    }
+    
     // Wait a bit to ensure other scripts have loaded
     setTimeout(() => {
+        console.log('Creating single FuturisticMobileMenu instance');
         window.futuristicMobileMenu = new FuturisticMobileMenu();
     }, 100);
 });
 
-// Also initialize on window load as a fallback
-window.addEventListener('load', function() {
-    if (!window.futuristicMobileMenu) {
-        window.futuristicMobileMenu = new FuturisticMobileMenu();
-    }
-});
+// Remove the window load fallback to prevent double initialization
+// The DOMContentLoaded event is sufficient
 
 // Export for use in other scripts
 if (typeof module !== 'undefined' && module.exports) {
