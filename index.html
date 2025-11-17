@@ -161,6 +161,8 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="new-sections.css">
     <link rel="stylesheet" href="responsive-enhancements.css">
+    <link rel="stylesheet" href="responsive-breakpoints.css">
+    <link rel="stylesheet" href="cross-browser-navbar.css">
     <link rel="stylesheet" href="booking-clean.css?v=3.0">
     <link rel="stylesheet" href="enhanced-ui.css">
     <link rel="stylesheet" href="navbar-professional.css">
@@ -177,7 +179,7 @@
                     <img src="NextReach.svg" alt="NextReach" class="logo-nav">
                 </a>
             </div>
-            <ul class="nav-menu">
+            <ul class="nav-menu" id="nav-menu" role="menubar">
                 <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
                 <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
                 <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
@@ -260,11 +262,15 @@
                     <span>Logout</span>
                 </a>
             </div>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
+            <button class="hamburger" 
+                    type="button" 
+                    aria-label="Toggle navigation menu"
+                    aria-expanded="false"
+                    aria-controls="nav-menu">
+                <span class="bar" aria-hidden="true"></span>
+                <span class="bar" aria-hidden="true"></span>
+                <span class="bar" aria-hidden="true"></span>
+            </button>
         </div>
     </nav>
 

@@ -5,11 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up - NextReach AI</title>
     <link rel="icon" type="image/svg+xml" href="NextReach.svg">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="navbar-professional.css">
     <link rel="stylesheet" href="auth.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="NextReach.svg" alt="NextReach" class="logo-nav">
+                </a>
+            </div>
+            <ul class="nav-menu" id="nav-menu" role="menubar">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+                <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="ai-claude.html" class="nav-btn nav-btn-ai">
+                    <i class="fas fa-robot"></i>
+                    <span class="nav-btn-text">AI Assistant</span>
+                </a>
+                <a href="booking.html" class="nav-btn nav-btn-book">
+                    <i class="fas fa-calendar-check"></i>
+                    <span class="nav-btn-text">Book Call</span>
+                </a>
+                <a href="login.html" class="nav-btn nav-btn-outline">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span class="nav-btn-text">Login</span>
+                </a>
+                <a href="pricing.html" class="nav-btn nav-btn-primary">
+                    <i class="fas fa-rocket"></i>
+                    <span class="nav-btn-text">Get Started</span>
+                </a>
+            </div>
+            <button class="hamburger" 
+                    type="button" 
+                    aria-label="Toggle navigation menu"
+                    aria-expanded="false"
+                    aria-controls="nav-menu">
+                <span class="bar" aria-hidden="true"></span>
+                <span class="bar" aria-hidden="true"></span>
+                <span class="bar" aria-hidden="true"></span>
+            </button>
+        </div>
+    </nav>
     <div class="auth-container">
         <!-- Left Side - Branding -->
         <div class="auth-brand">
@@ -245,5 +290,23 @@
     </div>
 
     <script src="auth.js"></script>
+    <script>
+        // Mobile Navigation Toggle for auth pages
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        const navActions = document.querySelector('.nav-actions');
+        
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+                const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+                hamburger.setAttribute('aria-expanded', !isExpanded);
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                if (navActions) {
+                    navActions.classList.toggle('active');
+                }
+            });
+        }
+    </script>
 </body>
 </html>

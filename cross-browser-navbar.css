@@ -1,0 +1,442 @@
+/* ===============================================
+   NEXTREACH CROSS-BROWSER COMPATIBILITY
+   Ensures perfect navbar functionality across all browsers
+   =============================================== */
+
+/* ===============================================
+   VENDOR PREFIXES FOR ANIMATIONS & TRANSFORMS
+   =============================================== */
+
+.hamburger .bar {
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+}
+
+.nav-menu,
+.nav-actions {
+    transition: left 0.3s ease;
+    -webkit-transition: left 0.3s ease;
+    -moz-transition: left 0.3s ease;
+    -o-transition: left 0.3s ease;
+    -ms-transition: left 0.3s ease;
+}
+
+.nav-btn {
+    transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    -ms-transition: all 0.2s ease;
+}
+
+/* ===============================================
+   FLEXBOX BROWSER COMPATIBILITY
+   =============================================== */
+
+.navbar,
+.nav-container,
+.nav-menu,
+.nav-actions {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.nav-container {
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -moz-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.nav-menu {
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.nav-actions {
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.hamburger {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+/* ===============================================
+   SAFARI & WEBKIT SPECIFIC FIXES
+   =============================================== */
+
+/* Fix webkit tap highlight on iOS */
+.nav-link,
+.nav-btn,
+.hamburger {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+}
+
+/* Fix webkit appearance for buttons */
+.hamburger,
+.nav-btn {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* Fix webkit font smoothing */
+.navbar {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===============================================
+   INTERNET EXPLORER COMPATIBILITY
+   =============================================== */
+
+/* IE11 flexbox fixes */
+.nav-menu {
+    -ms-flex: none;
+    flex: none;
+}
+
+.nav-actions {
+    -ms-flex: none;
+    flex: none;
+}
+
+/* IE11 min-height fix */
+.navbar {
+    min-height: 70px; /* Fallback for IE */
+}
+
+/* IE10-11 flexbox gap workaround */
+.nav-menu > .nav-item:not(:last-child) {
+    margin-right: 2rem; /* Fallback for gap */
+}
+
+.nav-actions > *:not(:last-child) {
+    margin-right: 1rem; /* Fallback for gap */
+}
+
+/* ===============================================
+   FIREFOX SPECIFIC FIXES
+   =============================================== */
+
+/* Firefox button fixes */
+.hamburger::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+/* Firefox outline fixes */
+.hamburger:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+/* ===============================================
+   CHROME/EDGE SPECIFIC FIXES
+   =============================================== */
+
+/* Chrome/Edge button appearance */
+.hamburger {
+    border: none;
+    background: transparent;
+}
+
+/* Chrome scrollbar for mobile menu */
+.nav-menu::-webkit-scrollbar {
+    width: 4px;
+}
+
+.nav-menu::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+.nav-menu::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 2px;
+}
+
+/* ===============================================
+   MOBILE BROWSER SPECIFIC FIXES
+   =============================================== */
+
+/* iOS Safari viewport height fix */
+@supports (-webkit-touch-callout: none) {
+    .nav-menu {
+        height: calc(100vh - 70px);
+        height: calc(100dvh - 70px); /* Dynamic viewport height */
+    }
+}
+
+/* Android Chrome address bar fix */
+@media screen and (max-width: 767px) {
+    .nav-menu {
+        max-height: calc(100vh - 70px);
+        overflow-y: auto;
+    }
+}
+
+/* Samsung Internet browser fixes */
+.hamburger {
+    touch-action: manipulation;
+}
+
+/* ===============================================
+   TOUCH DEVICE OPTIMIZATIONS
+   =============================================== */
+
+/* Prevent 300ms tap delay on mobile */
+.nav-link,
+.nav-btn,
+.hamburger {
+    touch-action: manipulation;
+}
+
+/* Ensure proper touch targets */
+@media (hover: none) and (pointer: coarse) {
+    .nav-link,
+    .nav-btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    .hamburger {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 8px;
+    }
+}
+
+/* ===============================================
+   HIGH DPI DISPLAY SUPPORT
+   =============================================== */
+
+@media (-webkit-min-device-pixel-ratio: 2),
+       (min-resolution: 192dpi) {
+    .hamburger .bar {
+        height: 2px; /* Thinner lines on high DPI */
+    }
+}
+
+/* ===============================================
+   ACCESSIBILITY ENHANCEMENTS
+   =============================================== */
+
+/* Focus visible polyfill support */
+.hamburger:focus-visible {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+/* Remove focus outline when not using keyboard */
+.hamburger:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .nav-link,
+    .nav-btn {
+        border: 1px solid currentColor;
+    }
+    
+    .hamburger .bar {
+        border: 1px solid currentColor;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .hamburger .bar,
+    .nav-menu,
+    .nav-actions,
+    .nav-btn {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* ===============================================
+   PRINT STYLES
+   =============================================== */
+
+@media print {
+    .navbar {
+        background: white !important;
+        color: black !important;
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact;
+    }
+    
+    .hamburger,
+    .nav-actions {
+        display: none !important;
+    }
+    
+    .nav-menu {
+        position: static !important;
+        display: block !important;
+        background: none !important;
+        box-shadow: none !important;
+    }
+    
+    .nav-link {
+        color: black !important;
+        text-decoration: underline;
+    }
+}
+
+/* ===============================================
+   LEGACY BROWSER FALLBACKS
+   =============================================== */
+
+/* CSS Grid fallback for older browsers */
+@supports not (display: grid) {
+    .nav-container {
+        width: 100%;
+        display: table;
+    }
+    
+    .nav-logo,
+    .nav-menu,
+    .nav-actions {
+        display: table-cell;
+        vertical-align: middle;
+    }
+}
+
+/* Flexbox fallback for very old browsers */
+@supports not (display: flex) {
+    .nav-container {
+        display: block;
+        overflow: hidden;
+    }
+    
+    .nav-logo {
+        float: left;
+    }
+    
+    .nav-actions {
+        float: right;
+    }
+    
+    .nav-menu {
+        float: left;
+        margin-left: 2rem;
+    }
+}
+
+/* ===============================================
+   PERFORMANCE OPTIMIZATIONS
+   =============================================== */
+
+/* GPU acceleration for smooth animations */
+.nav-menu,
+.nav-actions {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    will-change: transform;
+}
+
+/* Optimize repaints */
+.hamburger .bar {
+    will-change: transform, background-color;
+}
+
+/* Contain layout shifts */
+.navbar {
+    contain: layout style;
+}
+
+/* ===============================================
+   DARK MODE SUPPORT
+   =============================================== */
+
+@media (prefers-color-scheme: dark) {
+    .navbar {
+        background: #1f2937;
+        color: #f9fafb;
+    }
+    
+    .nav-menu,
+    .nav-actions {
+        background: #1f2937;
+        border-color: #374151;
+    }
+    
+    .hamburger .bar {
+        background: #f9fafb;
+    }
+}
+
+/* ===============================================
+   COMPONENT STATE MANAGEMENT
+   =============================================== */
+
+/* Ensure proper z-index stacking */
+.navbar {
+    z-index: 1000;
+}
+
+.nav-menu.active,
+.nav-actions.active {
+    z-index: 1001;
+}
+
+/* Prevent body scroll when mobile menu is open */
+body.nav-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+}
+
+/* ===============================================
+   BROWSER-SPECIFIC HAMBURGER ANIMATIONS
+   =============================================== */
+
+/* Standard hamburger to X animation */
+.hamburger.active .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+    -webkit-transform: rotate(45deg) translate(5px, 5px);
+    -moz-transform: rotate(45deg) translate(5px, 5px);
+    -o-transform: rotate(45deg) translate(5px, 5px);
+    -ms-transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+    -webkit-transform: rotate(-45deg) translate(7px, -6px);
+    -moz-transform: rotate(-45deg) translate(7px, -6px);
+    -o-transform: rotate(-45deg) translate(7px, -6px);
+    -ms-transform: rotate(-45deg) translate(7px, -6px);
+}

@@ -1110,6 +1110,10 @@ body.user-logged-in .auth-only-logged-out {
     display: none;
     flex-direction: column;
     cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
 }
 
 .bar {
