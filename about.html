@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="enhanced-ui.css">
     <link rel="stylesheet" href="navbar-professional.css">
     <link rel="stylesheet" href="premium-polish.css">
+    <link rel="stylesheet" href="futuristic-mobile-menu.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -24,18 +25,18 @@
                     <img src="NextReach.svg" alt="NextReach" class="logo-nav">
                 </a>
             </div>
-            <ul class="nav-menu">
+            <ul class="nav-menu" id="nav-menu" role="menubar">
                 <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
                 <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
                 <li class="nav-item"><a href="about.html" class="nav-link active">About</a></li>
             </ul>
             <div class="nav-actions">
-                <a href="ai-claude.html" class="nav-btn nav-btn-ai">
+                <a href="ai-claude.html" class="nav-btn nav-btn-ai" title="AI Assistant">
                     <i class="fas fa-robot"></i>
                     <span class="nav-btn-text">AI Assistant</span>
                 </a>
-                <a href="booking.html" class="nav-btn nav-btn-book">
+                <a href="booking.html" class="nav-btn nav-btn-book" title="Book a Call">
                     <i class="fas fa-calendar-check"></i>
                     <span class="nav-btn-text">Book Call</span>
                 </a>
@@ -43,7 +44,7 @@
                     <i class="fas fa-sign-in-alt"></i>
                     <span class="nav-btn-text">Login</span>
                 </a>
-                <a href="pricing.html" class="nav-btn nav-btn-primary" id="nav-get-started">
+                <a href="pricing.html" class="nav-btn nav-btn-primary" title="Get Started" id="nav-get-started">
                     <i class="fas fa-rocket"></i>
                     <span class="nav-btn-text">Get Started</span>
                 </a>
@@ -102,11 +103,15 @@
                     <span>Logout</span>
                 </a>
             </div>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
+            <button class="hamburger" 
+                    type="button" 
+                    aria-label="Toggle navigation menu"
+                    aria-expanded="false"
+                    aria-controls="nav-menu">
+                <span class="bar" aria-hidden="true"></span>
+                <span class="bar" aria-hidden="true"></span>
+                <span class="bar" aria-hidden="true"></span>
+            </button>
         </div>
     </nav>
 
@@ -508,5 +513,6 @@
             }
         }
     </script>
+    <script src="futuristic-mobile-menu.js"></script>
 </body>
 </html>

@@ -6392,46 +6392,18 @@ input:checked + .slider:before {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .hamburger {
-        display: flex;
+        display: flex !important;
     }
     
+    /* Hide old mobile menu - using futuristic version instead */
     .nav-menu {
-        position: fixed;
-        left: -100%;
-        top: 70px;
-        flex-direction: column;
-        background: var(--white);
-        width: 100%;
-        text-align: center;
-        transition: var(--transition);
-        box-shadow: var(--shadow);
-        padding: 2rem 0;
-        z-index: 998;
-    }
-    
-    .nav-menu.active {
-        left: 0;
+        display: none !important;
     }
     
     .nav-actions {
-        position: fixed;
-        left: -100%;
-        bottom: 0;
-        flex-direction: column;
-        background: var(--white);
-        width: 100%;
-        padding: 1rem;
-        gap: 0.75rem;
-        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
-        border-top: 2px solid #e5e7eb;
-        transition: left 0.3s ease;
-        z-index: 999;
-    }
-    
-    .nav-actions.active {
-        left: 0;
+        display: none !important;
     }
     
     .nav-btn {
