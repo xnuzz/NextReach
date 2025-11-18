@@ -1,4 +1,36 @@
 /* Enhanced Mobile Responsive Design */
+
+/* Utility classes for responsive text */
+.text-responsive {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+}
+
+.title-responsive {
+    font-size: clamp(1.75rem, 5vw, 3rem);
+}
+
+.subtitle-responsive {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+}
+
+/* Container max-width with proper padding */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 0.75rem;
+    }
+}
 @media (max-width: 992px) {
     .hero-container {
         grid-template-columns: 1fr;
@@ -140,5 +172,189 @@
     
     .stat-label {
         font-size: 0.8rem;
+    }
+}
+
+/* ============================================
+   ABOUT PAGE RESPONSIVE STYLES
+   ============================================ */
+
+/* Tablet and below */
+@media (max-width: 768px) {
+    /* Page header adjustments */
+    section[style*="padding: 8rem 0 4rem"] {
+        padding: 4rem 0 2rem !important;
+    }
+    
+    section[style*="padding: 6rem 0"] {
+        padding: 3rem 0 !important;
+    }
+    
+    section[style*="padding: 8rem 0"] {
+        padding: 4rem 0 !important;
+    }
+    
+    /* Header title scaling */
+    h1[style*="font-size: 4rem"] {
+        font-size: 2.5rem !important;
+        line-height: 1.2 !important;
+    }
+    
+    h2[style*="font-size: 3rem"] {
+        font-size: 2rem !important;
+        line-height: 1.3 !important;
+    }
+    
+    h2[style*="font-size: 3.5rem"] {
+        font-size: 2.2rem !important;
+        line-height: 1.2 !important;
+    }
+    
+    /* Subtitle adjustments */
+    p[style*="font-size: 1.3rem"] {
+        font-size: 1.1rem !important;
+    }
+    
+    p[style*="font-size: 1.2rem"] {
+        font-size: 1rem !important;
+    }
+    
+    p[style*="font-size: 1.15rem"] {
+        font-size: 1rem !important;
+    }
+    
+    /* Grid layouts - convert to single column */
+    div[style*="grid-template-columns: 1fr 1fr"] {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+    
+    div[style*="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))"] {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+    
+    /* Trust indicators - stack vertically */
+    div[style*="display: flex; gap: 3rem; justify-content: center"] {
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+        align-items: center !important;
+    }
+    
+    /* CTA buttons - stack on mobile */
+    div[style*="display: flex; gap: 1.25rem; justify-content: center; flex-wrap: wrap"] {
+        flex-direction: column !important;
+        gap: 1rem !important;
+        align-items: center !important;
+    }
+    
+    div[style*="display: flex; gap: 1rem; margin-top: 2rem"] {
+        flex-direction: column !important;
+        gap: 1rem !important;
+        align-items: stretch !important;
+    }
+    
+    /* Button text scaling */
+    .btn[style*="font-size: 1.15rem"] {
+        font-size: 1rem !important;
+        padding: 1rem 2rem !important;
+    }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+    /* Even smaller text scaling */
+    h1[style*="font-size: 4rem"] {
+        font-size: 2rem !important;
+    }
+    
+    h2[style*="font-size: 3rem"] {
+        font-size: 1.75rem !important;
+    }
+    
+    h2[style*="font-size: 3.5rem"] {
+        font-size: 2rem !important;
+    }
+    
+    /* Smaller padding for sections */
+    section[style*="padding: 4rem 0 2rem"] {
+        padding: 2rem 0 1rem !important;
+    }
+    
+    section[style*="padding: 3rem 0"] {
+        padding: 2rem 0 !important;
+    }
+    
+    section[style*="padding: 4rem 0"] {
+        padding: 2rem 0 !important;
+    }
+    
+    /* Container padding */
+    .container {
+        padding: 0 1rem !important;
+    }
+    
+    /* Card padding adjustments */
+    div[style*="padding: 2.5rem"] {
+        padding: 1.5rem !important;
+    }
+    
+    div[style*="padding: 3rem"] {
+        padding: 2rem !important;
+    }
+    
+    /* Icon sizes */
+    div[style*="width: 70px; height: 70px"] {
+        width: 50px !important;
+        height: 50px !important;
+    }
+    
+    div[style*="width: 60px; height: 60px"] {
+        width: 45px !important;
+        height: 45px !important;
+    }
+    
+    div[style*="width: 80px; height: 80px"] {
+        width: 60px !important;
+        height: 60px !important;
+    }
+    
+    /* Icon font sizes */
+    i[style*="font-size: 2rem"] {
+        font-size: 1.5rem !important;
+    }
+    
+    i[style*="font-size: 2.5rem"] {
+        font-size: 2rem !important;
+    }
+    
+    i[style*="font-size: 1.5rem"] {
+        font-size: 1.2rem !important;
+    }
+    
+    /* Feature titles */
+    h3[style*="font-size: 1.5rem"] {
+        font-size: 1.2rem !important;
+    }
+    
+    h3[style*="font-size: 1.3rem"] {
+        font-size: 1.1rem !important;
+    }
+    
+    /* Trust indicator text */
+    div[style*="font-size: 1.1rem"] {
+        font-size: 0.95rem !important;
+    }
+    
+    /* Stats grid adjustments */
+    div[style*="grid-template-columns: 1fr 1fr; gap: 1.5rem"] {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+        text-align: center !important;
+    }
+    
+    /* Stats font sizes */
+    div[style*="font-size: 2.5rem"] {
+        font-size: 2rem !important;
     }
 }

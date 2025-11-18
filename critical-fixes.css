@@ -1,0 +1,109 @@
+/* ===============================================
+   CRITICAL FIXES FOR BLUE AREA & SCROLLBAR ISSUES
+   This file forces white background and default scrollbars
+   =============================================== */
+
+/* FORCE WHITE BACKGROUND EVERYWHERE */
+html {
+    background: white !important;
+    background-color: white !important;
+    background-image: none !important;
+    background-attachment: initial !important;
+    background-clip: initial !important;
+    background-origin: initial !important;
+    background-position: initial !important;
+    background-repeat: initial !important;
+    background-size: initial !important;
+}
+
+body {
+    background: white !important;
+    background-color: white !important;
+    background-image: none !important;
+    background-attachment: initial !important;
+    background-clip: initial !important;
+    background-origin: initial !important;
+    background-position: initial !important;
+    background-repeat: initial !important;
+    background-size: initial !important;
+}
+
+/* FORCE DEFAULT SCROLLBARS EVERYWHERE */
+* {
+    scrollbar-color: initial !important;
+    scrollbar-width: initial !important;
+}
+
+*::-webkit-scrollbar {
+    all: initial !important;
+    width: initial !important;
+    height: initial !important;
+    background: initial !important;
+    background-color: initial !important;
+}
+
+*::-webkit-scrollbar-track {
+    all: initial !important;
+    background: initial !important;
+    background-color: initial !important;
+}
+
+*::-webkit-scrollbar-thumb {
+    all: initial !important;
+    background: initial !important;
+    background-color: initial !important;
+    border-radius: initial !important;
+    border: initial !important;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    all: initial !important;
+    background: initial !important;
+    background-color: initial !important;
+}
+
+*::-webkit-scrollbar-corner {
+    all: initial !important;
+    background: initial !important;
+}
+
+/* REMOVE ANY BLUE BACKGROUNDS */
+.hero,
+.hero-section,
+section[style*="background"],
+div[style*="background: linear-gradient"] {
+    background-color: white !important;
+}
+
+/* FIX VIEWPORT ISSUES */
+html, body {
+    width: 100% !important;
+    min-height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* PREVENT HORIZONTAL SCROLL ISSUES */
+* {
+    box-sizing: border-box !important;
+}
+
+body {
+    overflow-x: hidden !important;
+}
+
+/* MOBILE MENU SPECIFIC FIXES */
+.mobile-menu-overlay {
+    background: rgba(30, 58, 138, 0.98) !important;
+    backdrop-filter: blur(20px) !important;
+}
+
+/* ENSURE PROPER SCROLLBAR SPACE */
+html {
+    scrollbar-gutter: stable !important;
+}
+
+body {
+    scrollbar-gutter: stable !important;
+}

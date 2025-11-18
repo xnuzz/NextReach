@@ -1287,30 +1287,8 @@ body {
 }
 
 /* ==================
-   SCROLLBAR STYLING
+   SCROLLBAR STYLING - REMOVED
+   Default browser scrollbars now used
    ================== */
 
-.chat-history::-webkit-scrollbar,
-.messages-area::-webkit-scrollbar,
-.panel-content::-webkit-scrollbar {
-    width: 8px;
-}
-
-.chat-history::-webkit-scrollbar-track,
-.messages-area::-webkit-scrollbar-track,
-.panel-content::-webkit-scrollbar-track {
-    background: var(--gray-100);
-}
-
-.chat-history::-webkit-scrollbar-thumb,
-.messages-area::-webkit-scrollbar-thumb,
-.panel-content::-webkit-scrollbar-thumb {
-    background: var(--gray-300);
-    border-radius: 4px;
-}
-
-.chat-history::-webkit-scrollbar-thumb:hover,
-.messages-area::-webkit-scrollbar-thumb:hover,
-.panel-content::-webkit-scrollbar-thumb:hover {
-    background: var(--gray-400);
-}
+/* Custom scrollbar styles commented out to use browser defaults */

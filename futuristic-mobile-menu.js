@@ -46,7 +46,8 @@ class FuturisticMobileMenu {
                     <!-- Header -->
                     <div class="mobile-menu-header">
                         <div class="mobile-menu-logo">
-                            <img src="NextReach.svg" alt="NextReach">
+                            <img src="NextReach.svg" alt="NextReach" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="logo-fallback" style="display: none; font-size: 1.2rem; font-weight: 800; color: white; align-items: center; justify-content: center;">NR</div>
                         </div>
                         <h2 class="mobile-menu-title">NextReach</h2>
                         <p class="mobile-menu-subtitle">Your Complete Digital Partner</p>
@@ -255,11 +256,17 @@ class FuturisticMobileMenu {
         const hamburger = document.querySelector('.hamburger');
         const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
         const body = document.body;
+        const html = document.documentElement;
 
         hamburger.classList.add('active');
         hamburger.setAttribute('aria-expanded', 'true');
         mobileMenuOverlay.classList.add('active');
-        body.classList.add('nav-open');
+        body.classList.add('nav-open', 'mobile-menu-active');
+        html.classList.add('mobile-menu-active');
+        
+        // Prevent all scrolling
+        body.style.overflow = 'hidden';
+        html.style.overflow = 'hidden';
 
         // Focus management for accessibility
         setTimeout(() => {
@@ -275,11 +282,17 @@ class FuturisticMobileMenu {
         const hamburger = document.querySelector('.hamburger');
         const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
         const body = document.body;
+        const html = document.documentElement;
 
         hamburger.classList.remove('active');
         hamburger.setAttribute('aria-expanded', 'false');
         mobileMenuOverlay.classList.remove('active');
-        body.classList.remove('nav-open');
+        body.classList.remove('nav-open', 'mobile-menu-active');
+        html.classList.remove('mobile-menu-active');
+        
+        // Restore scrolling
+        body.style.overflow = '';
+        html.style.overflow = '';
     }
 
     updateUserState() {

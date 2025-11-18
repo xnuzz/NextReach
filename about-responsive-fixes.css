@@ -1,0 +1,146 @@
+/* ============================================
+   ABOUT PAGE SPECIFIC RESPONSIVE FIXES
+   Critical fixes for text overflow issues
+   ============================================ */
+
+/* Force responsive behavior for inline styled elements */
+@media (max-width: 768px) {
+    /* Override all inline font-size styles on mobile */
+    section h1,
+    section h2,
+    section h3 {
+        font-size: clamp(1.5rem, 4vw, 2.5rem) !important;
+        line-height: 1.2 !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+    
+    section p {
+        font-size: clamp(0.9rem, 2.5vw, 1.1rem) !important;
+        line-height: 1.6 !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+    
+    /* Force single column layout for all grids */
+    [style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+    
+    /* Force flex column for flex containers */
+    [style*="display: flex"][style*="gap: 3rem"] {
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+        align-items: center !important;
+    }
+    
+    /* Ensure all sections have proper mobile padding */
+    section {
+        padding: 2rem 0 !important;
+    }
+    
+    section:first-of-type {
+        padding: 4rem 0 2rem !important;
+    }
+    
+    /* Force container width and padding */
+    .container,
+    [class*="container"] {
+        max-width: 100% !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        overflow-x: hidden !important;
+    }
+    
+    /* Fix CTA section buttons */
+    .cta-section .btn,
+    [href*="pricing.html"],
+    [href*="booking.html"] {
+        width: 100% !important;
+        max-width: 300px !important;
+        font-size: 1rem !important;
+        padding: 1rem 1.5rem !important;
+        text-align: center !important;
+        box-sizing: border-box !important;
+    }
+    
+    /* Trust indicators responsive */
+    [style*="display: flex; align-items: center; gap: 0.75rem"] {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 0.5rem !important;
+    }
+    
+    /* Icon containers responsive */
+    [style*="width: 48px; height: 48px"],
+    [style*="width: 60px; height: 60px"],
+    [style*="width: 70px; height: 70px"] {
+        width: 40px !important;
+        height: 40px !important;
+        flex-shrink: 0 !important;
+    }
+    
+    /* Stats grid fixes */
+    [style*="grid-template-columns: 1fr 1fr"] {
+        grid-template-columns: 1fr !important;
+        text-align: center !important;
+        gap: 1rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Even more aggressive mobile fixes */
+    section h1 {
+        font-size: clamp(1.5rem, 6vw, 2rem) !important;
+    }
+    
+    section h2 {
+        font-size: clamp(1.3rem, 5vw, 1.8rem) !important;
+    }
+    
+    section h3 {
+        font-size: clamp(1.1rem, 4vw, 1.4rem) !important;
+    }
+    
+    section p {
+        font-size: clamp(0.85rem, 3vw, 1rem) !important;
+    }
+    
+    /* Ultra mobile container */
+    .container,
+    [class*="container"] {
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+    }
+    
+    /* Card padding fixes */
+    [style*="padding: 2.5rem"],
+    [style*="padding: 3rem"] {
+        padding: 1rem !important;
+    }
+    
+    /* Button stack for mobile */
+    [style*="display: flex; gap: 1.25rem; justify-content: center"] {
+        flex-direction: column !important;
+        gap: 0.75rem !important;
+        align-items: stretch !important;
+    }
+}
+
+/* Global text overflow prevention */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Prevent horizontal scroll */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
