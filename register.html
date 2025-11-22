@@ -9,8 +9,10 @@
     <link rel="stylesheet" href="navbar-professional.css">
     <link rel="stylesheet" href="futuristic-mobile-menu.css">
     <link rel="stylesheet" href="auth.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Sign-In -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -65,7 +67,7 @@
                     <h1>NextReach AI</h1>
                 </a>
                 <h2>Create Your Account</h2>
-                <p>Join thousands of users experiencing personalized AI conversations with advanced features.</p>
+                <p style="color:white">Join thousands of users experiencing personalized AI conversations with advanced features.</p>
                 
                 <div class="features-list">
                     <div class="feature-item">
@@ -92,10 +94,10 @@
 
                 <div class="testimonial">
                     <i class="fas fa-quote-left"></i>
-                    <p>"NextReach AI understands my business needs better than any other platform. The personalized responses are incredible!"</p>
+                    <p style="color:white">"NextReach AI understands my business needs better than any other platform. The personalized responses are incredible!"</p>
                     <div class="testimonial-author">
-                        <strong>Sarah Johnson</strong>
-                        <span>Marketing Director</span>
+                        <strong style="color:white">Sarah Johnson</strong>
+                        <span style="color:white">Marketing Director</span>
                     </div>
                 </div>
             </div>
@@ -247,16 +249,9 @@
                     <div class="form-group checkbox-group">
                         <label class="checkbox-label">
                             <input type="checkbox" id="termsAgree" name="terms" required>
-                            <span>I agree to the <a href="#" class="link-primary">Terms of Service</a> and <a href="#" class="link-primary">Privacy Policy</a></span>
+                            <span>I agree to the <a href="terms-of-service.html" class="link-primary" target="_blank">Terms of Service</a> and <a href="privacy-policy.html" class="link-primary" target="_blank">Privacy Policy</a></span>
                         </label>
                         <span class="error-message" id="termsError"></span>
-                    </div>
-
-                    <div class="form-group checkbox-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="marketingEmails" name="marketing">
-                            <span>Send me tips, trends, and promotional emails from NextReach</span>
-                        </label>
                     </div>
 
                     <button type="submit" class="auth-btn primary" id="registerBtn">
@@ -272,7 +267,7 @@
                     </div>
 
                     <div class="social-login">
-                        <button type="button" class="social-btn google">
+                        <button type="button" class="social-btn google" id="googleSignUpBtn">
                             <i class="fab fa-google"></i>
                             <span>Google</span>
                         </button>
@@ -309,6 +304,69 @@
                 }
             });
         }
+
+        // Google Sign-Up Implementation
+        let googleClientId = '460485871625-9f6jpaqpq0r3bk61vfsbpqqupg5l13a1.apps.googleusercontent.com';
+
+        function handleGoogleSignUp(response) {
+            try {
+                // Decode JWT token
+                const userObject = parseJwt(response.credential);
+                console.log('Google Sign-Up successful:', userObject);
+                
+                // Create user data object
+                const userData = {
+                    email: userObject.email,
+                    firstName: userObject.given_name || userObject.name.split(' ')[0],
+                    lastName: userObject.family_name || userObject.name.split(' ').slice(1).join(' '),
+                    picture: userObject.picture,
+                    googleId: userObject.sub,
+                    loginMethod: 'google',
+                    businessType: 'general',
+                    companySize: '',
+                    registeredAt: new Date().toISOString()
+                };
+                
+                // Save to localStorage
+                localStorage.setItem('currentUser', JSON.stringify(userData));
+                localStorage.setItem('isLoggedIn', 'true');
+                
+                // Redirect to AI Assistant
+                window.location.href = 'ai-claude.html';
+            } catch (error) {
+                console.error('Google Sign-Up error:', error);
+                alert('Sign-up failed. Please try again.');
+            }
+        }
+
+        function parseJwt(token) {
+            const base64Url = token.split('.')[1];
+            const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+            const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+            }).join(''));
+            return JSON.parse(jsonPayload);
+        }
+
+        // Initialize Google Sign-In
+        window.addEventListener('load', function() {
+            if (typeof google !== 'undefined' && google.accounts) {
+                google.accounts.id.initialize({
+                    client_id: googleClientId,
+                    callback: handleGoogleSignUp,
+                    auto_select: false
+                });
+
+                // Handle Google button click
+                const googleBtn = document.getElementById('googleSignUpBtn');
+                if (googleBtn) {
+                    googleBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        google.accounts.id.prompt();
+                    });
+                }
+            }
+        });
     </script>
 </body>
 </html>
