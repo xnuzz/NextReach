@@ -155,7 +155,6 @@ class AuthSystem {
         const businessType = document.getElementById('businessType').value;
         const companySize = document.getElementById('companySize').value;
         const termsAgree = document.getElementById('termsAgree').checked;
-        const marketingEmails = document.getElementById('marketingEmails').checked;
         
         // Clear previous errors
         this.clearErrors();
@@ -224,8 +223,7 @@ class AuthSystem {
                 password, // In production, this should be hashed
                 preferences: {
                     businessType,
-                    companySize,
-                    marketingEmails
+                    companySize
                 },
                 createdAt: new Date().toISOString(),
                 chats: []
