@@ -3,21 +3,352 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pricing & Packages - From $58/Month | Flexible Payment Plans | NextReach</title>
-    <meta name="description" content="Transparent pricing for complete digital solutions. Choose from Starter ($58/mo), Professional ($125/mo), or Premium ($167/mo) packages. 0% interest payment plans. No hidden fees.">
+    <title data-i18n="pricing_page_title">Pricing & Packages - NextReach</title>
     <link rel="icon" type="image/svg+xml" href="NextReach.svg">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="new-sections.css">
-    <link rel="stylesheet" href="responsive-enhancements.css">
-    <link rel="stylesheet" href="responsive-breakpoints.css">
-    <link rel="stylesheet" href="cross-browser-navbar.css">
-    <link rel="stylesheet" href="futuristic-mobile-menu.css">
-    <link rel="stylesheet" href="enhanced-ui.css">
     <link rel="stylesheet" href="navbar-professional.css">
-    <link rel="stylesheet" href="professional-icons.css">
-    <link rel="stylesheet" href="premium-polish.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="futuristic-mobile-menu.css">
+    <link rel="stylesheet" href="pricing-enhanced.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #3b82f6;
+            --accent: #60a5fa;
+            --success: #10b981;
+            --warning: #f59e0b;
+        }
+
+        body {
+            background: #f8fafc;
+            padding-top: 80px;
+        }
+
+        /* Hero Section */
+        .pricing-hero {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
+            padding: 6rem 2rem 4rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: rotate 40s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .pricing-hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pricing-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .pricing-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .pricing-hero p {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Main Container */
+        .pricing-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Section Header */
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.125rem;
+            color: #64748b;
+        }
+
+        /* Pricing Grid */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 5rem;
+        }
+
+        /* Pricing Card */
+        .pricing-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            border: 2px solid transparent;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(59, 130, 246, 0.15);
+            border-color: var(--secondary);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--warning);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured::before {
+            content: 'Най-избиран';
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--warning), #ef4444);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.875rem;
+        }
+
+        .pricing-card-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .pricing-card-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-card-subtitle {
+            color: #64748b;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-amount {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .pricing-amount .currency {
+            font-size: 1.5rem;
+            vertical-align: super;
+        }
+
+        .pricing-amount .period {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #64748b;
+        }
+
+        .pricing-euro {
+            font-size: 1rem;
+            color: #64748b;
+            margin-top: 0.5rem;
+        }
+
+        /* Features List */
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+
+        .pricing-features li {
+            padding: 0.75rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            color: #334155;
+            font-size: 1rem;
+        }
+
+        .pricing-features li i {
+            color: var(--success);
+            font-size: 1.25rem;
+            margin-top: 0.125rem;
+            flex-shrink: 0;
+        }
+
+        /* CTA Button */
+        .pricing-cta {
+            width: 100%;
+            padding: 1.25rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.125rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+
+        .pricing-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Additional Services */
+        .addons-section {
+            background: white;
+            border-radius: 24px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .addons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .addon-card {
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            padding: 1.5rem;
+            border-radius: 16px;
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .addon-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.2);
+        }
+
+        .addon-icon {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .addon-info h4 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .addon-info p {
+            color: #64748b;
+            font-weight: 600;
+        }
+
+        /* Discount Banner */
+        .discount-banner {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border: 2px solid #fbbf24;
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .discount-banner h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #92400e;
+            margin-bottom: 0.5rem;
+        }
+
+        .discount-banner p {
+            color: #78350f;
+            font-size: 1.125rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .pricing-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -29,554 +360,289 @@
                 </a>
             </div>
             <ul class="nav-menu" id="nav-menu" role="menubar">
-                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-                <li class="nav-item"><a href="pricing.html" class="nav-link active">Pricing</a></li>
-                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="index.html" class="nav-link" data-i18n="nav_home">Home</a></li>
+                <li class="nav-item"><a href="services.html" class="nav-link" data-i18n="nav_services">Services</a></li>
+                <li class="nav-item"><a href="pricing-new.html" class="nav-link active" data-i18n="nav_pricing">Pricing</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link" data-i18n="nav_about">About</a></li>
             </ul>
             <div class="nav-actions">
-                <a href="ai-claude.html" class="nav-btn nav-btn-ai" title="AI Assistant">
+                <a href="ai-claude.html" class="nav-btn nav-btn-ai">
                     <i class="fas fa-robot"></i>
-                    <span class="nav-btn-text">AI Assistant</span>
+                    <span class="nav-btn-text" data-i18n="nav_ai_assistant">AI Assistant</span>
                 </a>
-                <a href="booking.html" class="nav-btn nav-btn-book" title="Book a Call">
+                <a href="booking.html" class="nav-btn nav-btn-book">
                     <i class="fas fa-calendar-check"></i>
-                    <span class="nav-btn-text">Book Call</span>
+                    <span class="nav-btn-text" data-i18n="nav_book_call">Book Call</span>
                 </a>
-                <!-- Show for non-logged-in users -->
-                <a href="login.html" class="nav-btn nav-btn-outline" id="nav-login">
+                <a href="login.html" class="nav-btn nav-btn-outline">
                     <i class="fas fa-sign-in-alt"></i>
-                    <span class="nav-btn-text">Login</span>
+                    <span class="nav-btn-text" data-i18n="nav_login">Login</span>
                 </a>
-                <a href="pricing.html" class="nav-btn nav-btn-primary" title="Get Started" id="nav-get-started">
+                <a href="pricing-new.html" class="nav-btn nav-btn-primary">
                     <i class="fas fa-rocket"></i>
-                    <span class="nav-btn-text">Get Started</span>
-                </a>
-                <!-- Show for logged-in users (initially hidden) -->
-                <button class="user-profile-btn" id="user-profile" style="display: none;">
-                    <div class="user-avatar">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <span class="user-name" id="user-display-name"></span>
-                    <i class="fas fa-chevron-down"></i>
-                </button>
-            </div>
-            <!-- User Profile Dropdown -->
-            <div class="user-dropdown" id="user-dropdown" style="display: none;">
-                <div class="user-dropdown-header">
-                    <div class="user-avatar-large">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="user-info">
-                        <div class="user-full-name" id="dropdown-user-name"></div>
-                        <div class="user-email" id="dropdown-user-email"></div>
-                        <div class="user-stats" style="display: flex; gap: 1rem; margin-top: 0.5rem; font-size: 0.75rem; color: #64748b;">
-                            <span id="user-member-since"><i class="fas fa-calendar"></i> Member since <span id="member-date"></span></span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Quick Actions -->
-                <div class="dropdown-section">
-                    <a href="ai-claude.html" class="dropdown-item">
-                        <i class="fas fa-robot"></i>
-                        <span>AI Assistant</span>
-                        <span class="item-badge" style="background: #10b981;">HOT</span>
-                    </a>
-                    <a href="booking.html" class="dropdown-item">
-                        <i class="fas fa-calendar-check"></i>
-                        <span>Book a Call</span>
-                    </a>
-                    <a href="pricing.html" class="dropdown-item">
-                        <i class="fas fa-tag"></i>
-                        <span>View Pricing</span>
-                    </a>
-                </div>
-                
-                <!-- Account -->
-                <div class="dropdown-section">
-                    <a href="#" class="dropdown-item" id="edit-profile">
-                        <i class="fas fa-user-edit"></i>
-                        <span>Edit Profile</span>
-                    </a>
-                    <a href="mailto:nextreach374@gmail.com" class="dropdown-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>Contact Support</span>
-                    </a>
-                </div>
-                
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item dropdown-item-danger" id="logout-btn">
-                    <i class="fas fa-sign-out-alt"></i>
-                    <span>Logout</span>
+                    <span class="nav-btn-text" data-i18n="nav_get_started">Get Started</span>
                 </a>
             </div>
-            <button class="hamburger" 
-                    type="button" 
-                    aria-label="Toggle navigation menu"
-                    aria-expanded="false"
-                    aria-controls="nav-menu">
-                <span class="bar" aria-hidden="true"></span>
-                <span class="bar" aria-hidden="true"></span>
-                <span class="bar" aria-hidden="true"></span>
+            <button class="hamburger" type="button" aria-label="Toggle navigation menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </button>
         </div>
     </nav>
 
-    <!-- Page Hero -->
-    <section class="page-hero" style="padding-top: 140px; padding-bottom: 4rem; background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);">
-        <div class="container">
-            <div style="text-align: center; max-width: 900px; margin: 0 auto;">
-                <span class="section-badge" style="display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); color: var(--primary-color); padding: 0.6rem 1.5rem; border-radius: 50px; font-size: 0.95rem; font-weight: 600; margin-bottom: 1.5rem;">
-                    <i class="fas fa-box-open"></i>
-                    Transparent Pricing
-                </span>
-                <h1 style="font-size: 3.5rem; font-weight: 800; margin-bottom: 1.5rem; background: var(--logo-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
-                    Choose Your Perfect Growth Package
-                </h1>
-                <p style="font-size: 1.25rem; color: var(--text-light); line-height: 1.7; margin-bottom: 2rem;">
-                    Professional digital presence solutions designed for businesses at every stage. All packages include 0% interest payment plans and our risk-share guarantee.
-                </p>
-                
-                <div class="hero-stats" style="display: flex; gap: 3rem; justify-content: center; margin-top: 2.5rem;">
-                    <div class="stat-item">
-                        <span class="stat-number" style="font-size: 2.5rem; font-weight: 700; color: var(--primary-color); display: block;">15+</span>
-                        <span class="stat-label" style="color: var(--text-light);">Projects Done</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number" style="font-size: 2.5rem; font-weight: 700; color: var(--primary-color); display: block;">100%</span>
-                        <span class="stat-label" style="color: var(--text-light);">Satisfaction Rate</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number" style="font-size: 2.5rem; font-weight: 700; color: var(--primary-color); display: block;">2-6</span>
-                        <span class="stat-label" style="color: var(--text-light);">Week Delivery</span>
-                    </div>
-                </div>
+    <!-- Hero Section -->
+    <section class="pricing-hero">
+        <div class="pricing-hero-content">
+            <div class="pricing-badge">
+                <i class="fas fa-tag"></i>
+                <span data-i18n="pricing_badge">Packages & Services</span>
             </div>
+            <h1 data-i18n="pricing_hero_title">Website Development & Marketing Services</h1>
+            <p data-i18n="pricing_hero_subtitle">Professional digital solutions tailored to your business needs and goals.</p>
         </div>
     </section>
 
-    <!-- Packages Section -->
-    <section id="packages" class="services">
-        <div class="container">
-            <!-- Simplified Pricing Intro -->
-            <div style="text-align: center; margin-bottom: 3rem;">
-                <p style="font-size: 1.15rem; color: var(--text-light); margin-bottom: 1rem;">
-                    <i class="fas fa-check-circle" style="color: #10b981;"></i> Flexible payment plans available • 0% interest • No credit card required to start
-                </p>
-                <button onclick="document.getElementById('payment-options-details').style.display='block'; this.style.display='none';" class="btn btn-secondary" style="font-size: 0.95rem; padding: 0.75rem 1.5rem;">
-                    <i class="fas fa-calculator"></i> View All Payment Options
-                </button>
+    <!-- Main Pricing Container -->
+    <div class="pricing-container">
+        <!-- Website Development Section -->
+        <div class="section-header">
+            <h2 data-i18n="website_title">Website Development</h2>
+            <p data-i18n="website_subtitle">We create modern, fast and responsive websites tailored to the needs and goals of your business.</p>
+        </div>
+
+        <div class="pricing-grid">
+            <!-- Starter Package -->
+            <div class="pricing-card animate-on-scroll">
+                <div class="pricing-card-header">
+                    <div class="pricing-card-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 data-i18n="starter_package">Starter Package</h3>
+                    <div class="pricing-amount">
+                        <span class="currency">лв</span>390
+                    </div>
+                    <div class="pricing-euro" data-i18n="starter_price_euro">~€199</div>
+                </div>
+                <ul class="pricing-features" data-i18n-list="starter_features">
+                    <li><i class="fas fa-check-circle"></i> <span>1 страница "Landing Page"</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>Мобилна версия</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>Модерен, изчистен дизайн</span></li>
+                </ul>
+                <a href="booking.html" class="pricing-cta" data-i18n="cta_button">Get Started</a>
             </div>
 
-            <!-- Payment Plan Selector (Initially Hidden) -->
-            <div class="payment-selector" id="payment-options-details" style="display: none;">
-                <p class="selector-label">
-                    <i class="fas fa-credit-card"></i>
-                    Select Your Payment Option:
-                </p>
-                <div class="payment-buttons">
-                    <button class="payment-option-btn" data-plan="full">
+            <!-- Basic Website -->
+            <div class="pricing-card animate-on-scroll">
+                <div class="pricing-card-header">
+                    <div class="pricing-card-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 data-i18n="basic_package">Basic Website</h3>
+                    <p class="pricing-card-subtitle" data-i18n="basic_subtitle">Suitable for small businesses</p>
+                    <div class="pricing-amount">
+                        <span class="currency">лв</span>690
+                    </div>
+                    <div class="pricing-euro" data-i18n="basic_price_euro">~€350</div>
+                </div>
+                <ul class="pricing-features" data-i18n-list="basic_features">
+                    <li><i class="fas fa-check-circle"></i> <span>До 3 страници</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>Мобилна версия</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>Модерен, изчистен дизайн</span></li>
+                </ul>
+                <a href="booking.html" class="pricing-cta" data-i18n="cta_button">Get Started</a>
+            </div>
+
+            <!-- Business Website -->
+            <div class="pricing-card animate-on-scroll">
+                <div class="pricing-card-header">
+                    <div class="pricing-card-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 data-i18n="business_package">Business Website</h3>
+                    <p class="pricing-card-subtitle" data-i18n="business_subtitle">For growing brands and companies</p>
+                    <div class="pricing-amount">
+                        <span class="currency">лв</span>1350
+                    </div>
+                    <div class="pricing-euro" data-i18n="business_price_euro">~€690</div>
+                </div>
+                <ul class="pricing-features" data-i18n-list="business_features">
+                    <li><i class="fas fa-check-circle"></i> <span>До 5 страници</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>SEO оптимизация</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>Интеграция със социални мрежи</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>Контактна форма</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>Допълнителна функционалност – по договаряне</span></li>
+                </ul>
+                <a href="booking.html" class="pricing-cta" data-i18n="cta_button">Get Started</a>
+            </div>
+
+            <!-- Premium Website -->
+            <div class="pricing-card animate-on-scroll">
+                <div class="pricing-card-header">
+                    <div class="pricing-card-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3 data-i18n="premium_package">Premium Website + Support</h3>
+                    <p class="pricing-card-subtitle" data-i18n="premium_subtitle">For established businesses</p>
+                    <div class="pricing-amount">
+                        <span class="currency">лв</span>1700
+                    </div>
+                    <div class="pricing-euro" data-i18n="premium_price_euro">~€870</div>
+                </div>
+                <ul class="pricing-features" data-i18n-list="premium_features">
+                    <li><i class="fas fa-check-circle"></i> <span>До 7 страници</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>SEO оптимизация</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>1 месец поддръжка</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>Анализ и оптимизация на съдържанието</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>Персонализирана функционалност – по договаряне</span></li>
+                </ul>
+                <a href="booking.html" class="pricing-cta" data-i18n="cta_button">Get Started</a>
+                <p style="text-align: center; margin-top: 1rem; color: #64748b; font-size: 0.875rem;" data-i18n="premium_note">+ additional services by agreement</p>
+            </div>
+        </div>
+
+        <!-- Social Media Marketing Section -->
+        <div class="section-header" style="margin-top: 6rem;">
+            <h2 data-i18n="marketing_title">Organic Marketing (Social Media)</h2>
+            <p data-i18n="marketing_subtitle">We create effective content that attracts customers and builds trust in your brand.</p>
+        </div>
+
+        <div class="pricing-grid">
+            <!-- Budget Plan -->
+            <div class="pricing-card animate-on-scroll">
+                <div class="pricing-card-header">
+                    <div class="pricing-card-icon">
                         <i class="fas fa-bolt"></i>
-                        <strong>Pay in Full</strong>
-                        <span class="btn-badge">Save 10%</span>
-                    </button>
-                    <button class="payment-option-btn" data-plan="3months">
-                        <i class="fas fa-calendar"></i>
-                        <strong>3-Month Plan</strong>
-                        <span class="btn-subtitle">50% down + 3 payments</span>
-                    </button>
-                    <button class="payment-option-btn active" data-plan="6months">
-                        <i class="fas fa-calendar-check"></i>
-                        <strong>6-Month Plan</strong>
-                        <span class="btn-badge popular">Most Popular</span>
-                    </button>
+                    </div>
+                    <h3 data-i18n="budget_plan">Budget Package</h3>
+                    <div class="pricing-amount">
+                        <span class="currency">лв</span>450
+                        <span class="period">/month</span>
+                    </div>
+                    <div class="pricing-euro" data-i18n="budget_price_euro">~€230/month</div>
                 </div>
+                <ul class="pricing-features" data-i18n-list="budget_features">
+                    <li><i class="fas fa-check-circle"></i> <span>2 видео седмично</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>2 поста седмично</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>Видео обработка</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>Публикуване във всички социални мрежи</span></li>
+                </ul>
+                <a href="booking.html" class="pricing-cta" data-i18n="cta_button">Get Started</a>
             </div>
 
-            <div class="services-grid">
-                <!-- STARTER PACKAGE -->
-                <div class="service-card package-card">
-                    <div class="package-header">
-                        <div class="package-icon-modern"><i class="fas fa-rocket"></i></div>
-                        <h3>Starter</h3>
-                        <p class="package-tagline">Perfect to Get Online Fast</p>
+            <!-- Standard Plan -->
+            <div class="pricing-card featured">
+                <div class="pricing-card-header">
+                    <div class="pricing-card-icon">
+                        <i class="fas fa-fire"></i>
                     </div>
-                    
-                    <div class="package-price-wrapper">
-                        <div class="package-price-simple" style="text-align: center; margin-bottom: 1rem;">
-                            <div style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 0.5rem;">Starting at</div>
-                            <div style="font-size: 3.5rem; font-weight: 800; color: var(--primary-color); line-height: 1;">
-                                <span style="font-size: 1.5rem; vertical-align: super;">$</span>58<span style="font-size: 1.5rem; font-weight: 500; color: var(--text-light);">/mo</span>
-                            </div>
-                            <div style="font-size: 0.95rem; color: var(--text-light); margin-top: 0.5rem;">Total: $697 • 6-month plan</div>
-                        </div>
-                        <div class="package-price" data-monthly6="$58" data-monthly3="$116" data-onetime="$697" data-deposit="$349" data-fulldiscount="$627" style="display: none;">
-                            <span class="currency">$</span>
-                            <span class="amount">349</span>
-                            <span class="period"> down + $58/mo</span>
-                        </div>
-                        <p class="price-subtitle" style="display: none;">Total: $697 ($349 deposit + $58/mo × 6)</p>
-                        <p class="payment-note" style="font-size: 0.85rem; text-align: center;"><i class="fas fa-tag"></i> Or pay $627 in full & save 10%</p>
+                    <h3 data-i18n="standard_plan">Standard Package</h3>
+                    <p class="pricing-card-subtitle" data-i18n="standard_subtitle">Most Popular</p>
+                    <div class="pricing-amount">
+                        <span class="currency">лв</span>650
+                        <span class="period">/month</span>
                     </div>
-
-                    <ul class="package-features">
-                        <li><i class="fas fa-check"></i> <strong>Modern 3-Page Website</strong></li>
-                        <li><i class="fas fa-check"></i> Mobile-responsive design</li>
-                        <li><i class="fas fa-check"></i> Basic SEO optimization</li>
-                        <li><i class="fas fa-check"></i> Contact form integration</li>
-                        <li><i class="fas fa-check"></i> Google Business Profile setup</li>
-                        <li><i class="fas fa-check"></i> 2 Social media profiles</li>
-                        <li><i class="fas fa-check"></i> SSL certificate & hosting included</li>
-                        <li><i class="fas fa-check"></i> 30-day support included</li>
-                    </ul>
-
-                    <div class="package-cta">
-                        <a href="booking.html" class="btn btn-outline">Get Started</a>
-                        <p class="delivery-time"><i class="fas fa-clock"></i> Ready in 7-10 days</p>
-                    </div>
+                    <div class="pricing-euro" data-i18n="standard_price_euro">~€332/month</div>
                 </div>
-
-                <!-- PROFESSIONAL PACKAGE (MOST POPULAR) -->
-                <div class="service-card package-card featured">
-                    <div class="popular-badge"><i class="fas fa-star"></i> MOST POPULAR</div>
-                    <div class="package-header">
-                        <div class="package-icon-modern" style="background: linear-gradient(135deg, #f59e0b, #ef4444);"><i class="fas fa-fire"></i></div>
-                        <h3>Professional</h3>
-                        <p class="package-tagline">Complete Digital Presence</p>
-                    </div>
-                    
-                    <div class="package-price-wrapper">
-                        <div class="package-price-simple" style="text-align: center; margin-bottom: 1rem;">
-                            <div style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 0.5rem;">Starting at</div>
-                            <div style="font-size: 3.5rem; font-weight: 800; color: var(--primary-color); line-height: 1;">
-                                <span style="font-size: 1.5rem; vertical-align: super;">$</span>125<span style="font-size: 1.5rem; font-weight: 500; color: var(--text-light);">/mo</span>
-                            </div>
-                            <div style="font-size: 0.95rem; color: var(--text-light); margin-top: 0.5rem;">Total: $1,497 • 6-month plan</div>
-                        </div>
-                        <div class="package-price" data-monthly6="$125" data-monthly3="$250" data-onetime="$1,497" data-deposit="$748" data-fulldiscount="$1,347" style="display: none;">
-                            <span class="currency">$</span>
-                            <span class="amount">748</span>
-                            <span class="period"> down + $125/mo</span>
-                        </div>
-                        <p class="price-subtitle" style="display: none;">Total: $1,497 ($748 deposit + $125/mo × 6)</p>
-                        <p class="payment-note" style="font-size: 0.85rem; text-align: center;"><i class="fas fa-tag"></i> Or pay $1,347 in full & save 10%</p>
-                    </div>
-
-                    <ul class="package-features">
-                        <li><i class="fas fa-check"></i> <strong>Custom 7-Page Website</strong></li>
-                        <li><i class="fas fa-check"></i> Advanced SEO & analytics</li>
-                        <li><i class="fas fa-check"></i> Blog setup with 3 articles</li>
-                        <li><i class="fas fa-check"></i> Email marketing integration</li>
-                        <li><i class="fas fa-check"></i> <strong>AI Chatbot assistant</strong></li>
-                        <li><i class="fas fa-check"></i> 4 Social media profiles fully branded</li>
-                        <li><i class="fas fa-check"></i> 1 Professional promo video (30s)</li>
-                        <li><i class="fas fa-check"></i> Lead capture & CRM setup</li>
-                        <li><i class="fas fa-check"></i> Google Ads & Meta Pixel setup</li>
-                        <li><i class="fas fa-check"></i> 90-day priority support</li>
-                    </ul>
-
-                    <div class="package-cta">
-                        <a href="booking.html" class="btn btn-primary">Get Started</a>
-                        <p class="delivery-time"><i class="fas fa-clock"></i> Ready in 14-21 days</p>
-                    </div>
-                </div>
-
-                <!-- PREMIUM PACKAGE -->
-                <div class="service-card package-card">
-                    <div class="package-header">
-                        <div class="package-icon-modern" style="background: linear-gradient(135deg, #fbbf24, #f59e0b);"><i class="fas fa-crown"></i></div>
-                        <h3>Premium</h3>
-                        <p class="package-tagline">Enterprise-Level Marketing</p>
-                    </div>
-                    
-                    <div class="package-price-wrapper">
-                        <div class="package-price-simple" style="text-align: center; margin-bottom: 1rem;">
-                            <div style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 0.5rem;">Starting at</div>
-                            <div style="font-size: 3.5rem; font-weight: 800; color: var(--primary-color); line-height: 1;">
-                                <span style="font-size: 1.5rem; vertical-align: super;">$</span>167<span style="font-size: 1.5rem; font-weight: 500; color: var(--text-light);">/mo</span>
-                            </div>
-                            <div style="font-size: 0.95rem; color: var(--text-light); margin-top: 0.5rem;">Total: $2,000 • 6-month plan</div>
-                        </div>
-                        <div class="package-price" data-monthly6="$167" data-monthly3="$333" data-onetime="$2,000" data-deposit="$1,000" data-fulldiscount="$1,797" style="display: none;">
-                            <span class="currency">$</span>
-                            <span class="amount">998</span>
-                            <span class="period"> down + $167/mo</span>
-                        </div>
-                        <p class="price-subtitle" style="display: none;">Total: $2,000 ($998 deposit + $167/mo × 6)</p>
-                        <p class="payment-note" style="font-size: 0.85rem; text-align: center;"><i class="fas fa-tag"></i> Or pay $1,797 in full & save 10%</p>
-                    </div>
-
-                    <ul class="package-features">
-                        <li><i class="fas fa-check"></i> <strong>Unlimited Pages Website</strong></li>
-                        <li><i class="fas fa-check"></i> Full SEO strategy & implementation</li>
-                        <li><i class="fas fa-check"></i> E-commerce ready (up to 50 products)</li>
-                        <li><i class="fas fa-check"></i> Custom animations & interactions</li>
-                        <li><i class="fas fa-check"></i> <strong>Advanced AI features</strong></li>
-                        <li><i class="fas fa-check"></i> All social platforms + LinkedIn</li>
-                        <li><i class="fas fa-check"></i> 3 Professional videos (up to 60s each)</li>
-                        <li><i class="fas fa-check"></i> Complete brand identity package</li>
-                        <li><i class="fas fa-check"></i> Marketing automation setup</li>
-                        <li><i class="fas fa-check"></i> Monthly strategy consultations</li>
-                        <li><i class="fas fa-check"></i> 6-month premium support</li>
-                    </ul>
-
-                    <div class="package-cta">
-                        <a href="booking.html" class="btn btn-outline">Get Started</a>
-                        <p class="delivery-time"><i class="fas fa-clock"></i> Ready in 21-30 days</p>
-                    </div>
-                </div>
+                <ul class="pricing-features" data-i18n-list="standard_features">
+                    <li><i class="fas fa-check-circle"></i> <span>3 видеа седмично</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>3 поста седмично</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>Видео обработка</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>Публикуване във всички социални мрежи</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>Копирайтинг</span></li>
+                </ul>
+                <a href="booking.html" class="pricing-cta" data-i18n="cta_button">Get Started</a>
             </div>
 
-            <!-- Value Proposition Banner -->
-            <div class="value-banner">
-                <div class="value-item">
-                    <i class="fas fa-shield-alt"></i>
-                    <div>
-                        <h4>Money-Back Guarantee</h4>
-                        <p>Not satisfied? Get 100% refund within 30 days</p>
+            <!-- Premium Plan -->
+            <div class="pricing-card animate-on-scroll">
+                <div class="pricing-card-header">
+                    <div class="pricing-card-icon">
+                        <i class="fas fa-gem"></i>
                     </div>
-                </div>
-                <div class="value-item">
-                    <i class="fas fa-sync"></i>
-                    <div>
-                        <h4>Unlimited Revisions</h4>
-                        <p>We work until you're completely happy</p>
+                    <h3 data-i18n="premium_plan">Premium Package</h3>
+                    <div class="pricing-amount">
+                        <span class="currency">лв</span>1050
+                        <span class="period">/month</span>
                     </div>
+                    <div class="pricing-euro" data-i18n="premium_plan_price_euro">~€536/month</div>
                 </div>
-                <div class="value-item">
-                    <i class="fas fa-headset"></i>
-                    <div>
-                        <h4>Dedicated Support</h4>
-                        <p>Direct line to your project manager</p>
-                    </div>
-                </div>
+                <ul class="pricing-features" data-i18n-list="premium_plan_features">
+                    <li><i class="fas fa-check-circle"></i> <span>4 видеа седмично</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>4 поста седмично</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>Видео обработка</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>Публикуване във всички социални мрежи</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>Персонализирана стратегия</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span>Месечен отчет и оптимизация</span></li>
+                </ul>
+                <a href="booking.html" class="pricing-cta" data-i18n="cta_button">Get Started</a>
             </div>
+        </div>
 
-            <!-- Add-Ons Section -->
-            <div class="addons-section">
-                <h3 class="addons-title"><i class="fas fa-palette" style="margin-right: 0.5rem; color: #667eea;"></i>Add-On Services</h3>
-                <p class="addons-subtitle">Enhance your package with these powerful extras</p>
-                <div class="addons-grid">
-                    <div class="addon-item">
-                        <i class="fas fa-video"></i>
-                        <div>
-                            <h5>Extra Video Content</h5>
-                            <p>$197/video</p>
-                        </div>
+        <!-- Discount Banner -->
+        <div class="discount-banner">
+            <h3><i class="fas fa-gift"></i> <span data-i18n="discount_title">Special Offer!</span></h3>
+            <p data-i18n="prepay_discount">При предплащане за 3 месеца: 10% отстъпка</p>
+        </div>
+
+        <!-- Additional Services -->
+        <div class="addons-section">
+            <div class="section-header" style="margin-bottom: 2rem;">
+                <h2 data-i18n="addons_title">Additional Services</h2>
+            </div>
+            <div class="addons-grid">
+                <div class="addon-card animate-on-scroll">
+                    <div class="addon-icon">
+                        <i class="fab fa-facebook"></i>
                     </div>
-                    <div class="addon-item">
+                    <div class="addon-info">
+                        <h4 data-i18n="addon_fb_ads">Facebook Ads</h4>
+                        <p data-i18n="addon_fb_ads_price">250–450лв / ~€128–230/month</p>
+                    </div>
+                </div>
+
+                <div class="addon-card animate-on-scroll">
+                    <div class="addon-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <div class="addon-info">
+                        <h4 data-i18n="addon_ai_videos">AI Video Generation</h4>
+                        <p data-i18n="addon_ai_videos_price">100лв / ~€51</p>
+                    </div>
+                </div>
+
+                <div class="addon-card animate-on-scroll">
+                    <div class="addon-icon">
                         <i class="fas fa-chart-line"></i>
-                        <div>
-                            <h5>Social Media Management</h5>
-                            <p>$297/month</p>
-                        </div>
                     </div>
-                    <div class="addon-item">
-                        <i class="fas fa-ad"></i>
-                        <div>
-                            <h5>Google Ads Management</h5>
-                            <p>$247/month + ad spend</p>
-                        </div>
+                    <div class="addon-info">
+                        <h4 data-i18n="addon_report">Detailed Report & Growth Strategy</h4>
+                        <p data-i18n="addon_report_price">60лв / ~€31</p>
                     </div>
-                    <div class="addon-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h5>Email Marketing Campaigns</h5>
-                            <p>$197/month</p>
-                        </div>
+                </div>
+
+                <div class="addon-card">
+                    <div class="addon-icon">
+                        <i class="fas fa-closed-captioning"></i>
                     </div>
-                    <div class="addon-item">
-                        <i class="fas fa-pen-fancy"></i>
-                        <div>
-                            <h5>Content Writing</h5>
-                            <p>$67/article</p>
-                        </div>
-                    </div>
-                    <div class="addon-item">
-                        <i class="fas fa-tools"></i>
-                        <div>
-                            <h5>Website Maintenance</h5>
-                            <p>$97/month</p>
-                        </div>
+                    <div class="addon-info">
+                        <h4 data-i18n="addon_reels">Reels with Subtitles</h4>
+                        <p data-i18n="addon_reels_price">12лв / ~€6/video</p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Payment Options Explainer Section -->
-    <section id="payment-info" class="payment-explainer">
-        <div class="container">
-            <div class="payment-hero">
-                <span class="payment-badge"><i class="fas fa-credit-card"></i> Flexible Financing</span>
-                <h2>Invest in Your Growth with Smart Payment Options</h2>
-                <p class="lead">We believe budget shouldn't limit your business potential. That's why we offer flexible payment plans designed for growing businesses.</p>
-            </div>
-
-            <div class="payment-options-grid">
-                <!-- Option 1: Pay in Full -->
-                <div class="payment-option-card featured">
-                    <div class="option-badge best-value"><i class="fas fa-gem"></i> Best Value</div>
-                    <div class="option-icon-wrapper">
-                        <div class="option-icon">
-                            <i class="fas fa-bolt"></i>
-                        </div>
-                    </div>
-                    <h3>Pay in Full</h3>
-                    <p class="option-price">Save 10%</p>
-                    <ul class="option-features">
-                        <li><i class="fas fa-check-circle"></i> <span>10% instant discount</span></li>
-                        <li><i class="fas fa-check-circle"></i> <span>One-time payment</span></li>
-                        <li><i class="fas fa-check-circle"></i> <span>Project starts immediately</span></li>
-                        <li><i class="fas fa-check-circle"></i> <span>Lowest total cost</span></li>
-                    </ul>
-                    <div class="option-example">
-                        <div class="example-label">Example:</div>
-                        <div class="example-price">Professional Package</div>
-                        <div class="example-math">$1,347 <span class="original-price">$1,497</span></div>
-                        <div class="example-savings">Save $150 instantly!</div>
-                    </div>
-                </div>
-
-                <!-- Option 2: 3-Month Plan -->
-                <div class="payment-option-card">
-                    <div class="option-icon-wrapper">
-                        <div class="option-icon">
-                            <i class="fas fa-rocket"></i>
-                        </div>
-                    </div>
-                    <h3>3-Month Plan</h3>
-                    <p class="option-price">Fast Payoff</p>
-                    <ul class="option-features">
-                        <li><i class="fas fa-check-circle"></i> <span>50% down payment</span></li>
-                        <li><i class="fas fa-check-circle"></i> <span>Pay off in 3 months</span></li>
-                        <li><i class="fas fa-check-circle"></i> <span>0% interest, no fees</span></li>
-                        <li><i class="fas fa-check-circle"></i> <span>Done faster</span></li>
-                    </ul>
-                    <div class="option-example">
-                        <div class="example-label">Example:</div>
-                        <div class="example-price">Professional Package</div>
-                        <div class="example-math">$748 down + $250/mo × 3</div>
-                        <div class="example-total">Total: $1,498</div>
-                    </div>
-                </div>
-
-                <!-- Option 3: 6-Month Plan -->
-                <div class="payment-option-card popular">
-                    <div class="option-badge popular-badge"><i class="fas fa-star"></i> Most Popular</div>
-                    <div class="option-icon-wrapper">
-                        <div class="option-icon">
-                            <i class="fas fa-calendar-alt"></i>
-                        </div>
-                    </div>
-                    <h3>6-Month Plan</h3>
-                    <p class="option-price">Easiest Payments</p>
-                    <ul class="option-features">
-                        <li><i class="fas fa-check-circle"></i> <span>50% down payment</span></li>
-                        <li><i class="fas fa-check-circle"></i> <span>Lowest monthly payments</span></li>
-                        <li><i class="fas fa-check-circle"></i> <span>0% interest, no fees</span></li>
-                        <li><i class="fas fa-check-circle"></i> <span>Maximum flexibility</span></li>
-                    </ul>
-                    <div class="option-example">
-                        <div class="example-label">Example:</div>
-                        <div class="example-price">Professional Package</div>
-                        <div class="example-math">$748 down + $125/mo × 6</div>
-                        <div class="example-total">Total: $1,498</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Custom Plan - Centered Below -->
-            <div class="custom-plan-wrapper">
-                <div class="payment-option-card custom-card">
-                    <div class="option-icon-wrapper">
-                        <div class="option-icon">
-                            <i class="fas fa-handshake"></i>
-                        </div>
-                    </div>
-                    <h3>Need a Custom Plan?</h3>
-                    <p class="option-price">We're Flexible!</p>
-                    <p class="custom-description">Every business is unique. If you need special payment arrangements, longer terms, or have a larger project, let's talk. We'll create a solution that works for you.</p>
-                    <ul class="custom-features">
-                        <li><i class="fas fa-star"></i> Enterprise projects ($5K+)</li>
-                        <li><i class="fas fa-star"></i> Extended payment terms</li>
-                        <li><i class="fas fa-star"></i> Non-profit discounts</li>
-                        <li><i class="fas fa-star"></i> Milestone-based payments</li>
-                    </ul>
-                    <a href="index.html#booking" class="custom-cta-btn">
-                        <i class="fas fa-comments"></i>
-                        Let's Discuss Your Needs
-                    </a>
-                </div>
-            </div>
-
-            <!-- How Payment Plans Work -->
-            <div class="payment-how-it-works">
-                <h3>📋 How Our Payment Plans Work</h3>
-                <div class="steps-grid">
-                    <div class="step-card">
-                        <div class="step-number">1</div>
-                        <h4>Choose Your Package</h4>
-                        <p>Select the package that fits your business goals</p>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-number">2</div>
-                        <h4>Pay 50% Deposit</h4>
-                        <p>Secure your spot with a 50% down payment</p>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-number">3</div>
-                        <h4>We Start Your Project</h4>
-                        <p>Work begins immediately after deposit is received</p>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-number">4</div>
-                        <h4>Easy Monthly Payments</h4>
-                        <p>Split remaining 50% over 3 or 6 months (your choice!)</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Payment FAQs -->
-            <div class="payment-faqs">
-                <h3>💬 Common Questions</h3>
-                <div class="faq-grid">
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <i class="fas fa-question-circle"></i>
-                            <strong>Why 50% deposit?</strong>
-                        </div>
-                        <p>The deposit ensures mutual commitment and allows us to allocate resources to your project. It's standard practice for professional services.</p>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <i class="fas fa-question-circle"></i>
-                            <strong>Can I pay it off early?</strong>
-                        </div>
-                        <p>Absolutely! Pay off your remaining balance anytime with no penalties. Early payment shows up as $0 future installments.</p>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <i class="fas fa-question-circle"></i>
-                            <strong>What payment methods?</strong>
-                        </div>
-                        <p>We accept all major credit cards, debit cards, bank transfers, PayPal, and Stripe. Auto-billing available for payment plans.</p>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            <i class="fas fa-question-circle"></i>
-                            <strong>What if I miss a payment?</strong>
-                        </div>
-                        <p>We offer a 5-day grace period. After that, a $25 late fee applies. We'll work with you to keep your account current.</p>
-                    </div>
-                </div>
-            </div>
+        <!-- CTA Section -->
+        <div style="text-align: center; padding: 4rem 0;">
+            <h2 style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 1.5rem;" data-i18n="cta_ready_title">Ready to Get Started?</h2>
+            <p style="font-size: 1.25rem; color: #64748b; margin-bottom: 2rem;" data-i18n="cta_ready_subtitle">Book a free consultation and let's discuss your project!</p>
+            <a href="booking.html" class="pricing-cta" style="max-width: 400px; margin: 0 auto;" data-i18n="cta_book">Book Free Consultation</a>
         </div>
-    </section>
+    </div>
 
-    <!-- CTA Section -->
-    <section class="cta-section" style="padding: 8rem 0; background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%); color: white; position: relative; overflow: hidden;">
+    <!-- Blue CTA Section -->
+    <section class="cta-section" style="padding: 8rem 0 0 0; background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%); color: white; position: relative; overflow: hidden;">
         <!-- Animated Background Elements -->
         <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.08;">
             <div style="position: absolute; width: 600px; height: 600px; background: white; border-radius: 50%; top: -250px; right: -200px; animation: float 20s ease-in-out infinite;"></div>
@@ -587,22 +653,22 @@
         <!-- Grid Pattern Overlay -->
         <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 50px 50px; opacity: 0.5;"></div>
         
-        <div class="container" style="position: relative; z-index: 1;">
+        <div class="container" style="position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
             <div style="text-align: center; max-width: 900px; margin: 0 auto;">
                 <!-- Badge -->
                 <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px); padding: 0.75rem 1.75rem; border-radius: 50px; margin-bottom: 2rem; border: 1px solid rgba(255, 255, 255, 0.3); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);">
                     <i class="fas fa-rocket" style="font-size: 1.1rem; animation: bounce 2s ease-in-out infinite;"></i>
-                    <span style="font-weight: 600; font-size: 0.95rem; letter-spacing: 0.5px; color: white;">LIMITED TIME OFFER</span>
+                    <span style="font-weight: 600; font-size: 0.95rem; letter-spacing: 0.5px;" data-i18n="cta_badge">LIMITED TIME OFFER</span>
                 </div>
                 
                 <!-- Heading -->
-                <h2 style="font-size: 3.5rem; font-weight: 900; margin-bottom: 1.5rem; color: white; text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); line-height: 1.2;">
+                <h2 style="font-size: 3.5rem; font-weight: 900; margin-bottom: 1.5rem; color: white; text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); line-height: 1.2;" data-i18n="cta_title">
                     Ready to Transform Your Business?
                 </h2>
                 
                 <!-- Subheading -->
-                <p style="font-size: 1.3rem; margin-bottom: 3rem; color: white; line-height: 1.7; font-weight: 400; max-width: 700px; margin-left: auto; margin-right: auto;">
-                    Join <strong style="font-weight: 700; color: white;">15+ successful businesses</strong> that have launched their complete digital presence with NextReach. Get started in 2-6 weeks with 0% interest payment plans.
+                <p style="font-size: 1.3rem; margin-bottom: 3rem; color: white; line-height: 1.7; font-weight: 400; max-width: 700px; margin-left: auto; margin-right: auto;" data-i18n="cta_subtitle">
+                    Join <strong style="font-weight: 700; color: white;">50+ successful businesses</strong> that have launched their complete digital presence with NextReach. Get started in 2-6 weeks with 0% interest payment plans.
                 </p>
                 
                 <!-- Trust Indicators -->
@@ -612,8 +678,8 @@
                             <i class="fas fa-check-circle" style="font-size: 1.5rem; color: #10b981;"></i>
                         </div>
                         <div style="text-align: left;">
-                            <div style="font-weight: 700; font-size: 1.1rem; color: white;">100% Satisfaction</div>
-                            <div style="color: white; font-size: 0.9rem;">Money-Back Guarantee</div>
+                            <div style="font-weight: 700; font-size: 1.1rem; color: white;" data-i18n="cta_satisfaction">100% Satisfaction</div>
+                            <div style="color: white; font-size: 0.9rem;" data-i18n="cta_satisfaction_sub">Money-Back Guarantee</div>
                         </div>
                     </div>
                     <div style="display: flex; align-items: center; gap: 0.75rem;">
@@ -621,8 +687,8 @@
                             <i class="fas fa-clock" style="font-size: 1.5rem; color: #fbbf24;"></i>
                         </div>
                         <div style="text-align: left;">
-                            <div style="font-weight: 700; font-size: 1.1rem; color: white;">2-6 Week Delivery</div>
-                            <div style="color: white; font-size: 0.9rem;">Launch Fast</div>
+                            <div style="font-weight: 700; font-size: 1.1rem; color: white;" data-i18n="cta_delivery">2-6 Week Delivery</div>
+                            <div style="color: white; font-size: 0.9rem;" data-i18n="cta_delivery_sub">Launch Fast</div>
                         </div>
                     </div>
                     <div style="display: flex; align-items: center; gap: 0.75rem;">
@@ -630,27 +696,27 @@
                             <i class="fas fa-credit-card" style="font-size: 1.5rem; color: #60a5fa;"></i>
                         </div>
                         <div style="text-align: left;">
-                            <div style="font-weight: 700; font-size: 1.1rem; color: white;">0% Interest</div>
-                            <div style="color: white; font-size: 0.9rem;">Payment Plans</div>
+                            <div style="font-weight: 700; font-size: 1.1rem; color: white;" data-i18n="cta_interest">0% Interest</div>
+                            <div style="color: white; font-size: 0.9rem;" data-i18n="cta_interest_sub">Payment Plans</div>
                         </div>
                     </div>
                 </div>
                 
                 <!-- CTA Buttons -->
                 <div style="display: flex; gap: 1.25rem; justify-content: center; flex-wrap: wrap;">
-                    <a href="pricing.html" class="btn" style="background: white; color: #1e3a8a; padding: 1.25rem 3rem; font-size: 1.15rem; font-weight: 700; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); border-radius: 12px; transition: all 0.3s ease; border: none; display: inline-flex; align-items: center; gap: 0.75rem; text-decoration: none;">
+                    <a href="index.html" class="btn" style="background: white; color: #1e3a8a; padding: 1.25rem 3rem; font-size: 1.15rem; font-weight: 700; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); border-radius: 12px; transition: all 0.3s ease; border: none; display: inline-flex; align-items: center; gap: 0.75rem; text-decoration: none;">
                         <i class="fas fa-rocket"></i>
-                        <span>View Pricing & Get Started</span>
+                        <span data-i18n="cta_pricing">View Pricing & Get Started</span>
                         <i class="fas fa-arrow-right" style="font-size: 0.9rem;"></i>
                     </a>
                     <a href="booking.html" class="btn" style="background: rgba(255, 255, 255, 0.15); color: white; border: 2px solid rgba(255, 255, 255, 0.8); padding: 1.25rem 3rem; font-size: 1.15rem; font-weight: 700; backdrop-filter: blur(10px); border-radius: 12px; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 0.75rem; text-decoration: none;">
                         <i class="fas fa-calendar-check"></i>
-                        <span>Book Free Strategy Call</span>
+                        <span data-i18n="cta_strategy">Book Free Strategy Call</span>
                     </a>
                 </div>
                 
                 <!-- Small print -->
-                <p style="margin-top: 2rem; font-size: 0.9rem; color: white;">
+                <p style="margin-top: 2rem; font-size: 0.9rem; color: white;" data-i18n="cta_disclaimer">
                     <i class="fas fa-shield-alt"></i> No credit card required • Cancel anytime • Risk-free guarantee
                 </p>
             </div>
@@ -658,8 +724,8 @@
         
         <style>
             @keyframes float {
-                0%, 100% { transform: translateY(0px) rotate(0deg); }
-                50% { transform: translateY(-30px) rotate(5deg); }
+                0%, 100% { transform: translate(0, 0); }
+                50% { transform: translate(30px, -30px); }
             }
             @keyframes pulse {
                 0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
@@ -670,92 +736,67 @@
                 50% { transform: translateY(-5px); }
             }
             .cta-section .btn:hover {
-                transform: translateY(-3px);
+                transform: translateY(-2px);
                 box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
             }
         </style>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
+    <footer class="footer" style="background: #0f172a; color: white; padding: 4rem 2rem 2rem;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto;">
+            <div class="footer-content" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
                 <div class="footer-section">
                     <img src="NextReach.svg" alt="NextReach" class="footer-logo" style="height: 60px; margin-bottom: 1rem;">
-                    <p>Empowering businesses with complete digital solutions.</p>
-                    <div class="social-links">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    </div>
+                    <p style="color: #94a3b8; line-height: 1.6;" data-i18n="footer_description">Empowering businesses with complete digital solutions.</p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: #94a3b8;">
+                        <i class="fas fa-envelope" style="margin-right: 0.5rem;"></i>
+                        <a href="mailto:nextreach374@gmail.com" style="color: inherit; text-decoration: none;">nextreach374@gmail.com</a>
+                    </p>
+                    <p style="font-size: 0.9rem; color: #94a3b8;">
+                        <i class="fas fa-phone" style="margin-right: 0.5rem;"></i>
+                        <a href="tel:+359879040107" style="color: inherit; text-decoration: none;">+359 879 040 107</a>
+                    </p>
                 </div>
                 
                 <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="pricing.html">Pricing</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="testimonials.html">Testimonials</a></li>
+                    <h4 style="color: white; margin-bottom: 1.5rem; font-size: 1.1rem; font-weight: 600;" data-i18n="footer_quick_links">Quick Links</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.75rem;"><a href="services.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" data-i18n="footer_services">Services</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="pricing.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" data-i18n="footer_pricing">Pricing</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="about.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" data-i18n="footer_about">About Us</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-section">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="index.html#about">About Us</a></li>
-                        <li><a href="index.html#contact">Contact</a></li>
-                        <li><a href="index.html#booking">Book a Call</a></li>
+                    <h4 style="color: white; margin-bottom: 1.5rem; font-size: 1.1rem; font-weight: 600;" data-i18n="footer_company">Company</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.75rem;"><a href="about.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" data-i18n="footer_about">About Us</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="mailto:nextreach374@gmail.com" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" data-i18n="footer_contact">Contact</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="booking.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" data-i18n="footer_book_call">Book a Call</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="ai-claude.html" style="color: #94a3b8; text-decoration: none; transition: color 0.3s;" data-i18n="nav_ai_assistant">AI Assistant</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-section">
-                    <h4>Contact</h4>
-                    <ul>
-                        <li><i class="fas fa-phone"></i> +359879040107</li>
-                        <li><i class="fas fa-envelope"></i> @nextreach.agency</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Marketing District</li>
+                    <h4 style="color: white; margin-bottom: 1.5rem; font-size: 1.1rem; font-weight: 600;" data-i18n="footer_contact">Contact</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.75rem; color: #94a3b8;"><i class="fas fa-phone" style="margin-right: 0.5rem;"></i> <a href="tel:+359879040107" style="color: inherit; text-decoration: none;">+359 87 904 0107</a></li>
+                        <li style="margin-bottom: 0.75rem; color: #94a3b8;"><i class="fas fa-phone" style="margin-right: 0.5rem;"></i> <a href="tel:+359877870672" style="color: inherit; text-decoration: none;">+359 87 787 0672</a></li>
+                        <li style="margin-bottom: 0.75rem; color: #94a3b8;"><i class="fas fa-envelope" style="margin-right: 0.5rem;"></i> <a href="mailto:nextreach374@gmail.com" style="color: inherit; text-decoration: none;">nextreach374@gmail.com</a></li>
+                        <li style="margin-bottom: 0.75rem; color: #94a3b8;"><i class="fas fa-calendar-check" style="margin-right: 0.5rem;"></i> <a href="https://calendly.com/nextreach374" target="_blank" style="color: inherit; text-decoration: none;" data-i18n="footer_book_call">Book a Call</a></li>
                     </ul>
                 </div>
             </div>
             
-            <div class="footer-bottom">
-                <p>&copy; 2025 NextReach. All rights reserved.</p>
+            <div class="footer-bottom" style="border-top: 1px solid rgba(148, 163, 184, 0.2); padding-top: 2rem; text-align: center;">
+                <p style="color: #94a3b8;">&copy; 2025 NextReach. <span data-i18n="footer_rights">All rights reserved.</span></p>
             </div>
         </div>
     </footer>
 
-    <script src="database.js"></script>
-    <script src="achievement-system.js"></script>
-    <script src="session-manager-enhanced.js"></script>
-    <script src="script.js"></script>
     <script src="futuristic-mobile-menu.js"></script>
-    <script>
-        if (typeof sessionManager !== 'undefined') {
-            sessionManager.init();
-            const profileBtn = document.getElementById('user-profile');
-            const dropdown = document.getElementById('user-dropdown');
-            if (profileBtn && dropdown) {
-                profileBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
-                });
-                document.addEventListener('click', (e) => {
-                    if (!profileBtn.contains(e.target) && !dropdown.contains(e.target)) {
-                        dropdown.style.display = 'none';
-                    }
-                });
-            }
-            const logoutBtn = document.getElementById('logout-btn');
-            if (logoutBtn) {
-                logoutBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    sessionManager.logout();
-                    window.location.reload();
-                });
-            }
-        }
-    </script>
+    <script src="lang-toggle.js"></script>
+    <script src="pricing-animations.js"></script>
 </body>
 </html>

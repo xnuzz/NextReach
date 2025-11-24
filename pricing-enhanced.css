@@ -1,0 +1,429 @@
+/* ENHANCED PRICING PAGE - 10X BETTER DESIGN */
+
+:root {
+    --primary: #1e3a8a;
+    --secondary: #3b82f6;
+    --accent: #60a5fa;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --purple: #8b5cf6;
+    --pink: #ec4899;
+}
+
+/* Particle Background */
+.pricing-hero {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #3b82f6 100%);
+    padding: 8rem 2rem 6rem;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.pricing-hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.3) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.3) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.2) 0%, transparent 50%);
+    animation: floatParticles 30s ease-in-out infinite;
+}
+
+@keyframes floatParticles {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    33% { transform: translate(30px, -50px) rotate(120deg); }
+    66% { transform: translate(-20px, 20px) rotate(240deg); }
+}
+
+/* Glassmorphism Badge */
+.pricing-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.875rem 2rem;
+    border-radius: 50px;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    animation: badgeFloat 3s ease-in-out infinite;
+}
+
+@keyframes badgeFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Hero Title with Gradient */
+.pricing-hero h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #ffffff 0%, #dbeafe 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    animation: titleShine 4s ease-in-out infinite;
+}
+
+@keyframes titleShine {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.2); }
+}
+
+/* 3D Card Effect */
+.pricing-card {
+    background: white;
+    border-radius: 24px;
+    padding: 2.5rem;
+    box-shadow: 
+        0 10px 40px rgba(0, 0, 0, 0.08),
+        0 0 0 1px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.pricing-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--primary), var(--accent), var(--purple));
+    background-size: 200% 100%;
+    animation: gradientMove 3s ease infinite;
+}
+
+@keyframes gradientMove {
+    0%, 100% { background-position: 0% 0%; }
+    50% { background-position: 100% 0%; }
+}
+
+.pricing-card::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.6s ease;
+    z-index: 0;
+}
+
+.pricing-card:hover::after {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.pricing-card:hover {
+    transform: translateY(-15px) rotateX(5deg);
+    box-shadow: 
+        0 30px 70px rgba(0, 0, 0, 0.15),
+        0 0 0 1px rgba(59, 130, 246, 0.2);
+}
+
+/* Featured Card Glow */
+.pricing-card.featured {
+    border: 2px solid var(--warning);
+    background: linear-gradient(135deg, #ffffff 0%, #fefce8 100%);
+    transform: scale(1.05);
+    box-shadow: 
+        0 20px 60px rgba(245, 158, 11, 0.3),
+        0 0 40px rgba(245, 158, 11, 0.1);
+}
+
+.pricing-card.featured::before {
+    height: 8px;
+    background: linear-gradient(90deg, var(--warning), var(--danger), var(--pink));
+}
+
+.pricing-card.featured:hover {
+    transform: translateY(-15px) scale(1.08) rotateX(5deg);
+    box-shadow: 
+        0 40px 90px rgba(245, 158, 11, 0.4),
+        0 0 60px rgba(245, 158, 11, 0.2);
+}
+
+/* Animated Price */
+.pricing-card .price {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--primary);
+    margin: 1.5rem 0;
+    position: relative;
+    display: inline-block;
+}
+
+.pricing-card .price::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    border-radius: 2px;
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.pricing-card:hover .price::after {
+    transform: scaleX(1);
+}
+
+/* Fancy Button */
+.pricing-card .cta-button {
+    width: 100%;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.125rem;
+    font-weight: 700;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+}
+
+.pricing-card .cta-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.pricing-card .cta-button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.pricing-card .cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(59, 130, 246, 0.5);
+}
+
+.pricing-card .cta-button span {
+    position: relative;
+    z-index: 1;
+}
+
+/* Featured Card Button */
+.pricing-card.featured .cta-button {
+    background: linear-gradient(135deg, var(--warning), var(--danger));
+    box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4);
+}
+
+.pricing-card.featured .cta-button:hover {
+    box-shadow: 0 8px 30px rgba(245, 158, 11, 0.6);
+}
+
+/* Features List Animation */
+.pricing-card ul li {
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.pricing-card ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.pricing-card ul li:hover {
+    padding-left: 1rem;
+    background: rgba(59, 130, 246, 0.03);
+}
+
+.pricing-card ul li:hover::before {
+    transform: scaleX(1);
+}
+
+.pricing-card ul li i {
+    color: var(--success);
+    font-size: 1.25rem;
+    transition: all 0.3s ease;
+}
+
+.pricing-card ul li:hover i {
+    transform: scale(1.3) rotate(360deg);
+}
+
+/* Discount Banner */
+.discount-banner {
+    background: linear-gradient(135deg, var(--warning), var(--danger));
+    color: white;
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+    margin: 3rem 0;
+    box-shadow: 0 10px 40px rgba(245, 158, 11, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.discount-banner::before {
+    content: '🎉';
+    position: absolute;
+    font-size: 8rem;
+    opacity: 0.1;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%) rotate(-15deg);
+    animation: celebration 4s ease-in-out infinite;
+}
+
+.discount-banner::after {
+    content: '✨';
+    position: absolute;
+    font-size: 6rem;
+    opacity: 0.1;
+    top: 50%;
+    right: 10%;
+    transform: translateY(-50%) rotate(15deg);
+    animation: celebration 4s ease-in-out infinite reverse;
+}
+
+@keyframes celebration {
+    0%, 100% { transform: translateY(-50%) rotate(-15deg) scale(1); }
+    50% { transform: translateY(-50%) rotate(-15deg) scale(1.2); }
+}
+
+.discount-banner h3 {
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Additional Services Cards */
+.addon-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.addon-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.addon-card:hover::before {
+    left: 100%;
+}
+
+.addon-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+.addon-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 1.5rem;
+    transition: all 0.4s ease;
+}
+
+.addon-card:hover .addon-icon {
+    transform: rotate(360deg) scale(1.1);
+    box-shadow: 0 8px 30px rgba(59, 130, 246, 0.4);
+}
+
+/* Section Dividers */
+.section-divider {
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--primary), var(--accent), var(--primary), transparent);
+    margin: 4rem 0;
+    border-radius: 2px;
+    animation: dividerPulse 3s ease-in-out infinite;
+}
+
+@keyframes dividerPulse {
+    0%, 100% { opacity: 0.5; transform: scaleX(0.9); }
+    50% { opacity: 1; transform: scaleX(1); }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .pricing-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .pricing-card {
+        padding: 2rem;
+    }
+
+    .pricing-card .price {
+        font-size: 2.5rem;
+    }
+}
+
+/* Scroll Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-on-scroll {
+    animation: fadeInUp 0.8s ease forwards;
+    opacity: 0;
+}
+
+.animate-on-scroll:nth-child(1) { animation-delay: 0.1s; }
+.animate-on-scroll:nth-child(2) { animation-delay: 0.2s; }
+.animate-on-scroll:nth-child(3) { animation-delay: 0.3s; }
+.animate-on-scroll:nth-child(4) { animation-delay: 0.4s; }

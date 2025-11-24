@@ -424,8 +424,8 @@
     <!-- Hero Section -->
     <section class="support-hero">
         <div class="support-hero-content">
-            <h1>How Can We Help You?</h1>
-            <p>Get in touch with our team. We're here to answer your questions and provide the support you need.</p>
+            <h1 data-i18n="support_page_title">How Can We Help You?</h1>
+            <p data-i18n="support_page_subtitle">Get in touch with our team. We're here to answer your questions and provide the support you need.</p>
         </div>
     </section>
 
@@ -434,8 +434,8 @@
         <div class="support-grid">
             <!-- Contact Form -->
             <div class="contact-form-section">
-                <h2>Send Us a Message</h2>
-                <p>Fill out the form below and we'll get back to you within 24 hours.</p>
+                <h2 data-i18n="support_contact_title">Send Us a Message</h2>
+                <p data-i18n="support_contact_subtitle">Fill out the form below and we'll get back to you within 24 hours.</p>
                 
                 <div class="success-message" id="successMessage">
                     <i class="fas fa-check-circle"></i>
@@ -444,41 +444,41 @@
 
                 <form id="supportForm">
                     <div class="form-group">
-                        <label for="name">Full Name *</label>
+                        <label for="name" data-i18n="form_name">Full Name *</label>
                         <input type="text" id="name" name="name" required placeholder="John Doe">
                     </div>
 
                     <div class="form-group">
-                        <label for="email">Email Address *</label>
+                        <label for="email" data-i18n="form_email">Email Address *</label>
                         <input type="email" id="email" name="email" required placeholder="you@example.com">
                     </div>
 
                     <div class="form-group">
-                        <label for="phone">Phone Number</label>
+                        <label for="phone" data-i18n="form_phone">Phone Number</label>
                         <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567">
                     </div>
 
                     <div class="form-group">
-                        <label for="subject">Subject *</label>
+                        <label for="subject" data-i18n="form_subject">Subject *</label>
                         <select id="subject" name="subject" required>
-                            <option value="">Select a subject...</option>
-                            <option value="general">General Inquiry</option>
-                            <option value="technical">Technical Support</option>
-                            <option value="billing">Billing Question</option>
-                            <option value="feature">Feature Request</option>
-                            <option value="partnership">Partnership Opportunity</option>
-                            <option value="other">Other</option>
+                            <option value="" data-i18n="form_select_subject">Select a subject...</option>
+                            <option value="general" data-i18n="support_subject_general">General Inquiry</option>
+                            <option value="technical" data-i18n="support_subject_technical">Technical Support</option>
+                            <option value="billing" data-i18n="support_subject_billing">Billing Question</option>
+                            <option value="feature" data-i18n="support_subject_feature">Feature Request</option>
+                            <option value="partnership" data-i18n="support_subject_partnership">Partnership Opportunity</option>
+                            <option value="other" data-i18n="support_subject_other">Other</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="message">Message *</label>
+                        <label for="message" data-i18n="form_message">Message *</label>
                         <textarea id="message" name="message" required placeholder="Tell us how we can help you..."></textarea>
                     </div>
 
                     <button type="submit" class="submit-btn">
                         <i class="fas fa-paper-plane"></i>
-                        Send Message
+                        <span data-i18n="form_send">Send Message</span>
                     </button>
                 </form>
             </div>
@@ -489,8 +489,8 @@
                     <div class="contact-card-icon">
                         <i class="fas fa-envelope"></i>
                     </div>
-                    <h3>Email Us</h3>
-                    <p>Send us an email anytime and we'll respond within 24 hours.</p>
+                    <h3 data-i18n="support_email_title">Email Us</h3>
+                    <p data-i18n="support_email">Send us an email anytime and we'll respond within 24 hours.</p>
                     <a href="mailto:support@nextreach.com">
                         support@nextreach.com
                         <i class="fas fa-arrow-right"></i>
@@ -501,8 +501,8 @@
                     <div class="contact-card-icon">
                         <i class="fas fa-phone"></i>
                     </div>
-                    <h3>Call Us</h3>
-                    <p>Available Monday - Friday, 9 AM - 6 PM EST</p>
+                    <h3 data-i18n="support_phone_title">Call Us</h3>
+                    <p data-i18n="support_response">Available Monday - Friday, 9 AM - 6 PM EST</p>
                     <a href="tel:+15551234567">
                         +1 (555) 123-4567
                         <i class="fas fa-arrow-right"></i>
@@ -537,7 +537,7 @@
 
         <!-- FAQ Section -->
         <div class="faq-section">
-            <h2>Frequently Asked Questions</h2>
+            <h2 data-i18n="support_faq_title">Frequently Asked Questions</h2>
             
             <div class="faq-item">
                 <div class="faq-question">
@@ -592,8 +592,8 @@
 
         <!-- Social Media Support -->
         <div class="social-support">
-            <h2>Follow Us on Social Media</h2>
-            <p>Stay connected and get support through our social channels</p>
+            <h2 data-i18n="support_social_title">Follow Us on Social Media</h2>
+            <p data-i18n="support_social_subtitle">Stay connected and get support through our social channels</p>
             <div class="social-links">
                 <a href="#" class="social-link" title="Facebook">
                     <i class="fab fa-facebook-f"></i>
@@ -657,5 +657,6 @@
             alert('Live chat feature coming soon! Please use email or phone for immediate assistance.');
         });
     </script>
+    <script src="lang-toggle.js"></script>
 </body>
 </html>

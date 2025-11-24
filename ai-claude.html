@@ -31,8 +31,8 @@
             </button>
             <button class="new-chat-btn" id="newChatBtn">
                 <i class="fas fa-plus"></i>
-                <span>New chat</span>
-                <span class="new-chat-badge">HOT</span>
+                <span data-i18n="ai_new_chat">New chat</span>
+                <span class="new-chat-badge" data-i18n="ai_hot">HOT</span>
             </button>
         </div>
     </header>
@@ -41,7 +41,7 @@
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-content">
             <div class="sidebar-header">
-                <h3>Chat History</h3>
+                <h3 data-i18n="ai_chat_history">Chat History</h3>
                 <button class="close-sidebar" id="closeSidebar">
                     <i class="fas fa-times"></i>
                 </button>
@@ -60,11 +60,11 @@
                         </div>
                     </div>
                     <div class="context-details-section">
-                        <div style="margin-bottom: 0.625rem; font-weight: 600;"><i class="fas fa-brain"></i> AI knows about you:</div>
+                        <div style="margin-bottom: 0.625rem; font-weight: 600;"><i class="fas fa-brain"></i> <span data-i18n="ai_knows">AI knows about you:</span></div>
                         <div id="contextDetails" style="font-size: 0.8125rem; line-height: 1.6;"></div>
                     </div>
                     <button onclick="claudeAI.showUserPreferencesModal()" class="edit-profile-btn">
-                        <i class="fas fa-edit"></i> Edit Profile
+                        <i class="fas fa-edit"></i> <span data-i18n="ai_edit_profile">Edit Profile</span>
                     </button>
                 </div>
             </div>
@@ -72,14 +72,14 @@
             <div class="chat-history" id="chatHistory">
                 <div class="empty-history">
                     <i class="fas fa-comments"></i>
-                    <p>No chat history yet</p>
-                    <p style="font-size: 0.8125rem; margin-top: 0.5rem;">Start a conversation to see it here</p>
+                    <p data-i18n="ai_no_history">No chat history yet</p>
+                    <p style="font-size: 0.8125rem; margin-top: 0.5rem;" data-i18n="ai_start_conversation">Start a conversation to see it here</p>
                 </div>
             </div>
             <div class="sidebar-footer">
                 <button class="sidebar-new-chat" id="sidebarNewChat">
                     <i class="fas fa-plus"></i>
-                    <span>New Chat</span>
+                    <span data-i18n="ai_new_chat">New Chat</span>
                 </button>
             </div>
         </div>
@@ -94,7 +94,7 @@
             <!-- Welcome Screen -->
             <div class="welcome-screen" id="welcomeScreen">
                 <div class="welcome-wrapper">
-                    <h1 class="welcome-title" id="welcomeTitle">How can I help you today?</h1>
+                    <h1 class="welcome-title" id="welcomeTitle" data-i18n="ai_page_title">How can I help you today?</h1>
                     
                     <!-- Suggested Prompts Grid (2x2) -->
                     <div class="suggestions-grid">
@@ -103,8 +103,8 @@
                                 <i class="fas fa-rocket"></i>
                             </div>
                             <div class="suggestion-text">
-                                <h3>About NextReach</h3>
-                                <p>Learn what makes us unique</p>
+                                <h3 data-i18n="ai_suggestion_1_title">About NextReach</h3>
+                                <p data-i18n="ai_suggestion_1_desc">Learn what makes us unique</p>
                             </div>
                         </button>
                         
@@ -113,8 +113,8 @@
                                 <i class="fas fa-brain"></i>
                             </div>
                             <div class="suggestion-text">
-                                <h3>AI for Business</h3>
-                                <p>Discover AI-powered solutions</p>
+                                <h3 data-i18n="ai_suggestion_2_title">AI for Business</h3>
+                                <p data-i18n="ai_suggestion_2_desc">Discover AI-powered solutions</p>
                             </div>
                         </button>
                         
@@ -123,8 +123,8 @@
                                 <i class="fas fa-chart-line"></i>
                             </div>
                             <div class="suggestion-text">
-                                <h3>Marketing Strategy</h3>
-                                <p>Get expert marketing advice</p>
+                                <h3 data-i18n="ai_suggestion_3_title">Marketing Strategy</h3>
+                                <p data-i18n="ai_suggestion_3_desc">Get expert marketing advice</p>
                             </div>
                         </button>
                         
@@ -133,8 +133,8 @@
                                 <i class="fas fa-lightbulb"></i>
                             </div>
                             <div class="suggestion-text">
-                                <h3>Industry Trends</h3>
-                                <p>Stay ahead of the curve</p>
+                                <h3 data-i18n="ai_suggestion_4_title">Industry Trends</h3>
+                                <p data-i18n="ai_suggestion_4_desc">Stay ahead of the curve</p>
                             </div>
                         </button>
                     </div>
@@ -163,7 +163,7 @@
                 </button>
             </div>
             <div class="input-footer">
-                <p>NextReach AI can make mistakes. Please verify important information.</p>
+                <p data-i18n="ai_disclaimer">NextReach AI can make mistakes. Please verify important information.</p>
             </div>
         </div>
     </div>
@@ -175,5 +175,6 @@
     <script src="achievement-system.js"></script>
     <script src="session-manager-enhanced.js"></script>
     <script src="ai-claude.js"></script>
+    <script src="lang-toggle.js"></script>
 </body>
 </html>
