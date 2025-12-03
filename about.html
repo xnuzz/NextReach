@@ -26,28 +26,28 @@
                 </a>
             </div>
             <ul class="nav-menu" id="nav-menu" role="menubar">
-                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-                <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
-                <li class="nav-item"><a href="about.html" class="nav-link active">About</a></li>
+                <li class="nav-item"><a href="index.html" class="nav-link" data-i18n="nav_home">Home</a></li>
+                <li class="nav-item"><a href="services.html" class="nav-link" data-i18n="nav_services">Services</a></li>
+                <li class="nav-item"><a href="pricing.html" class="nav-link" data-i18n="nav_pricing">Pricing</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link active" data-i18n="nav_about">About</a></li>
             </ul>
             <div class="nav-actions">
                 <a href="ai-claude.html" class="nav-btn nav-btn-ai" title="AI Assistant">
                     <i class="fas fa-robot"></i>
-                    <span class="nav-btn-text">AI Assistant</span>
+                    <span class="nav-btn-text" data-i18n="nav_ai_assistant">AI Assistant</span>
                 </a>
                 <a href="booking.html" class="nav-btn nav-btn-book" title="Book a Call">
                     <i class="fas fa-calendar-check"></i>
-                    <span class="nav-btn-text">Book Call</span>
+                    <span class="nav-btn-text" data-i18n="nav_book_call">Book Call</span>
                 </a>
                 <!-- Show for non-logged-in users -->
                 <a href="login.html" class="nav-btn nav-btn-outline" id="nav-login">
                     <i class="fas fa-sign-in-alt"></i>
-                    <span class="nav-btn-text">Login</span>
+                    <span class="nav-btn-text" data-i18n="nav_login">Login</span>
                 </a>
                 <a href="pricing.html" class="nav-btn nav-btn-primary" title="Get Started" id="nav-get-started">
                     <i class="fas fa-rocket"></i>
-                    <span class="nav-btn-text">Get Started</span>
+                    <span class="nav-btn-text" data-i18n="nav_get_started">Get Started</span>
                 </a>
                 <!-- Show for logged-in users (initially hidden) -->
                 <button class="user-profile-btn" id="user-profile" style="display: none;">
@@ -59,7 +59,7 @@
                 </button>
             </div>
             <!-- User Profile Dropdown -->
-            <div class="user-dropdown" id="user-dropdown" style="display: none;">
+            <div class="user-dropdown" id="user-dropdown">
                 <div class="user-dropdown-header">
                     <div class="user-avatar-large">
                         <i class="fas fa-user"></i>
@@ -77,16 +77,16 @@
                 <div class="dropdown-section">
                     <a href="ai-claude.html" class="dropdown-item">
                         <i class="fas fa-robot"></i>
-                        <span>AI Assistant</span>
+                        <span data-i18n="nav_ai_assistant">AI Assistant</span>
                         <span class="item-badge" style="background: #10b981;">HOT</span>
                     </a>
                     <a href="booking.html" class="dropdown-item">
                         <i class="fas fa-calendar-check"></i>
-                        <span>Book a Call</span>
+                        <span data-i18n="nav_book_call">Book a Call</span>
                     </a>
                     <a href="pricing.html" class="dropdown-item">
                         <i class="fas fa-tag"></i>
-                        <span>View Pricing</span>
+                        <span data-i18n="nav_pricing">View Pricing</span>
                     </a>
                 </div>
                 
@@ -94,18 +94,18 @@
                 <div class="dropdown-section">
                     <a href="#" class="dropdown-item" id="edit-profile">
                         <i class="fas fa-user-edit"></i>
-                        <span>Edit Profile</span>
+                        <span data-i18n="nav_profile">Edit Profile</span>
                     </a>
                     <a href="mailto:nextreach374@gmail.com" class="dropdown-item">
                         <i class="fas fa-envelope"></i>
-                        <span>Contact Support</span>
+                        <span data-i18n="footer_contact">Contact Support</span>
                     </a>
                 </div>
                 
                 <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item dropdown-item-danger" id="logout-btn">
                     <i class="fas fa-sign-out-alt"></i>
-                    <span>Logout</span>
+                    <span data-i18n="nav_logout">Logout</span>
                 </a>
             </div>
             <button class="hamburger" 
@@ -121,19 +121,40 @@
     </nav>
 
     <!-- Page Header -->
-    <section style="padding: 8rem 0 4rem; background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%); color: white; position: relative; overflow: hidden;">
-        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.1;">
-            <div style="position: absolute; width: 400px; height: 400px; background: white; border-radius: 50%; top: -100px; right: -100px;"></div>
-            <div style="position: absolute; width: 300px; height: 300px; background: white; border-radius: 50%; bottom: -100px; left: -100px;"></div>
-        </div>
+    <section style="padding: 8rem 2rem 5rem; background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%); color: white; position: relative; overflow: hidden;">
+        <!-- Animated Background -->
+        <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%); animation: rotate 40s linear infinite; pointer-events: none;"></div>
+        
+        <!-- Gradient Fade to White -->
+        <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 150px; background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 40%, rgba(248, 250, 252, 1) 100%); pointer-events: none;"></div>
+        
         <div class="container" style="position: relative; z-index: 1; text-align: center;">
-            <span class="section-badge" style="background: rgba(255,255,255,0.2); color: white; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.5rem; border-radius: 50px; font-size: 0.95rem; font-weight: 600; margin-bottom: 1.5rem; backdrop-filter: blur(10px);">
+            <span class="section-badge" style="background: rgba(255,255,255,0.2); color: white; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; border-radius: 50px; font-size: 0.95rem; font-weight: 600; margin-bottom: 1.5rem; backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3);">
                 <i class="fas fa-users"></i>
                 <span data-i18n="about_page_badge">About NextReach</span>
             </span>
-            <h1 style="font-size: 4rem; font-weight: 900; margin-bottom: 1.5rem;" data-i18n="about_page_title">Your Digital Transformation Partner</h1>
-            <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto; opacity: 0.95;" data-i18n="about_page_subtitle">We're on a mission to empower every business with a complete, professional digital presence—without the complexity or high costs.</p>
+            <h1 style="font-size: 4rem; font-weight: 900; margin-bottom: 1.5rem; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); line-height: 1.15;" data-i18n="about_page_title">Your Digital Transformation Partner</h1>
+            <p style="font-size: 1.3rem; max-width: 800px; margin: 0 auto; opacity: 0.95; line-height: 1.6;" data-i18n="about_page_subtitle">We're on a mission to empower every business with a complete, professional digital presence—without the complexity or high costs.</p>
         </div>
+        
+        <style>
+            @keyframes rotate {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+            }
+            
+            @media (max-width: 768px) {
+                section[style*="padding: 8rem"] {
+                    padding: 6rem 1.5rem 4rem !important;
+                }
+                section h1 {
+                    font-size: 2.75rem !important;
+                }
+                section p[style*="font-size: 1.3rem"] {
+                    font-size: 1.1rem !important;
+                }
+            }
+        </style>
     </section>
 
     <!-- Our Story -->
@@ -500,11 +521,11 @@
             if (profileBtn && dropdown) {
                 profileBtn.addEventListener('click', (e) => {
                     e.stopPropagation();
-                    dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+                    dropdown.classList.toggle('show');
                 });
                 document.addEventListener('click', (e) => {
                     if (!profileBtn.contains(e.target) && !dropdown.contains(e.target)) {
-                        dropdown.style.display = 'none';
+                        dropdown.classList.remove('show');
                     }
                 });
             }

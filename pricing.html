@@ -22,13 +22,12 @@
 
         body {
             background: #f8fafc;
-            padding-top: 80px;
         }
 
         /* Hero Section */
         .pricing-hero {
             background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
-            padding: 6rem 2rem 4rem;
+            padding: 8rem 2rem 5rem;
             color: white;
             position: relative;
             overflow: hidden;
@@ -43,6 +42,17 @@
             height: 200%;
             background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
             animation: rotate 40s linear infinite;
+        }
+        
+        .pricing-hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 40%, rgba(248, 250, 252, 1) 100%);
+            pointer-events: none;
         }
 
         @keyframes rotate {
@@ -374,13 +384,72 @@
                     <i class="fas fa-calendar-check"></i>
                     <span class="nav-btn-text" data-i18n="nav_book_call">Book Call</span>
                 </a>
-                <a href="login.html" class="nav-btn nav-btn-outline">
+                <!-- Show for non-logged-in users -->
+                <a href="login.html" class="nav-btn nav-btn-outline" id="nav-login">
                     <i class="fas fa-sign-in-alt"></i>
                     <span class="nav-btn-text" data-i18n="nav_login">Login</span>
                 </a>
-                <a href="pricing-new.html" class="nav-btn nav-btn-primary">
+                <a href="pricing.html" class="nav-btn nav-btn-primary" id="nav-get-started">
                     <i class="fas fa-rocket"></i>
                     <span class="nav-btn-text" data-i18n="nav_get_started">Get Started</span>
+                </a>
+                <!-- Show for logged-in users (initially hidden) -->
+                <button class="user-profile-btn" id="user-profile" style="display: none;">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <span class="user-name" id="user-display-name"></span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+            <!-- User Profile Dropdown -->
+            <div class="user-dropdown" id="user-dropdown">
+                <div class="user-dropdown-header">
+                    <div class="user-avatar-large">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-info">
+                        <div class="user-full-name" id="dropdown-user-name"></div>
+                        <div class="user-email" id="dropdown-user-email"></div>
+                        <div class="user-stats" style="display: flex; gap: 1rem; margin-top: 0.5rem; font-size: 0.75rem; color: #64748b;">
+                            <span id="user-member-since"><i class="fas fa-calendar"></i> Member since <span id="member-date"></span></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Actions -->
+                <div class="dropdown-section">
+                    <a href="ai-claude.html" class="dropdown-item">
+                        <i class="fas fa-robot"></i>
+                        <span data-i18n="nav_ai_assistant">AI Assistant</span>
+                        <span class="item-badge" style="background: #10b981;">HOT</span>
+                    </a>
+                    <a href="booking.html" class="dropdown-item">
+                        <i class="fas fa-calendar-check"></i>
+                        <span data-i18n="nav_book_call">Book a Call</span>
+                    </a>
+                    <a href="pricing.html" class="dropdown-item">
+                        <i class="fas fa-tag"></i>
+                        <span data-i18n="nav_pricing">View Pricing</span>
+                    </a>
+                </div>
+                
+                <!-- Account -->
+                <div class="dropdown-section">
+                    <a href="#" class="dropdown-item" id="edit-profile">
+                        <i class="fas fa-user-edit"></i>
+                        <span data-i18n="nav_profile">Edit Profile</span>
+                    </a>
+                    <a href="mailto:nextreach374@gmail.com" class="dropdown-item">
+                        <i class="fas fa-envelope"></i>
+                        <span data-i18n="footer_contact">Contact Support</span>
+                    </a>
+                </div>
+                
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item dropdown-item-danger" id="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span data-i18n="nav_logout">Logout</span>
                 </a>
             </div>
             <button class="hamburger" type="button" aria-label="Toggle navigation menu">
@@ -795,8 +864,57 @@
         </div>
     </footer>
 
+    <script src="database.js"></script>
+    <script src="session-manager-enhanced.js"></script>
     <script src="futuristic-mobile-menu.js"></script>
     <script src="lang-toggle.js"></script>
     <script src="pricing-animations.js"></script>
+    
+    <script>
+        // Initialize session manager
+        if (typeof sessionManager !== 'undefined') {
+            sessionManager.init();
+            
+            // User profile dropdown
+            const profileBtn = document.getElementById('user-profile');
+            const dropdown = document.getElementById('user-dropdown');
+            if (profileBtn && dropdown) {
+                profileBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    dropdown.classList.toggle('show');
+                });
+                
+                document.addEventListener('click', (e) => {
+                    if (!profileBtn.contains(e.target) && !dropdown.contains(e.target)) {
+                        dropdown.classList.remove('show');
+                    }
+                });
+            }
+            
+            // Logout button
+            const logoutBtn = document.getElementById('logout-btn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    sessionManager.logout();
+                    window.location.href = 'index.html';
+                });
+            }
+        }
+    </script>
+    
+    <style>
+        @media (max-width: 768px) {
+            .pricing-hero {
+                padding: 6rem 1.5rem 4rem !important;
+            }
+            .pricing-hero h1 {
+                font-size: 2.5rem !important;
+            }
+            .pricing-hero p {
+                font-size: 1.1rem !important;
+            }
+        }
+    </style>
 </body>
 </html>

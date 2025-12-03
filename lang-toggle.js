@@ -297,10 +297,25 @@ const translations = {
         support_faq_subtitle: "Quick answers to common questions.",
         
         // AI Assistant Page
-        ai_page_title: "Your AI-Powered Business Assistant",
+        ai_page_title: "How can I help you today?",
         ai_page_subtitle: "Get instant answers to your questions about our services, pricing, and how we can help your business grow.",
         ai_chat_title: "Chat with Our AI Assistant",
         ai_chat_subtitle: "Ask anything about our services, pricing, or process. Get instant, accurate answers 24/7.",
+        ai_new_chat: "New chat",
+        ai_hot: "HOT",
+        ai_chat_history: "Chat History",
+        ai_knows: "AI knows about you:",
+        ai_edit_profile: "Edit Profile",
+        ai_no_history: "No chat history yet",
+        ai_start_conversation: "Start a conversation to see it here",
+        ai_suggestion_1_title: "About NextReach",
+        ai_suggestion_1_desc: "Learn what makes us unique",
+        ai_suggestion_2_title: "AI for Business",
+        ai_suggestion_2_desc: "Discover AI-powered solutions",
+        ai_suggestion_3_title: "Marketing Strategy",
+        ai_suggestion_3_desc: "Get expert marketing advice",
+        ai_suggestion_4_title: "Industry Trends",
+        ai_suggestion_4_desc: "Stay ahead of the curve",
         
         // Homepage Features
         features_title: "Why Choose NextReach?",
@@ -660,10 +675,25 @@ const translations = {
         support_faq_subtitle: "Бързи отговори на чести въпроси.",
         
         // AI Assistant Page
-        ai_page_title: "Вашият AI-захранван бизнес асистент",
+        ai_page_title: "Как мога да ви помогна днес?",
         ai_page_subtitle: "Получете незабавни отговори на вашите въпроси за нашите услуги, цени и как можем да помогнем на вашия бизнес да расте.",
         ai_chat_title: "Чат с нашия AI асистент",
         ai_chat_subtitle: "Попитайте каквото и да е за нашите услуги, цени или процес. Получете незабавни, точни отговори 24/7.",
+        ai_new_chat: "Нов чат",
+        ai_hot: "ГОРЕЩО",
+        ai_chat_history: "История на чата",
+        ai_knows: "AI знае за вас:",
+        ai_edit_profile: "Редактирай профил",
+        ai_no_history: "Все още няма история на чата",
+        ai_start_conversation: "Започнете разговор, за да го видите тук",
+        ai_suggestion_1_title: "За NextReach",
+        ai_suggestion_1_desc: "Научете какво ни прави уникални",
+        ai_suggestion_2_title: "AI за бизнес",
+        ai_suggestion_2_desc: "Открийте решения, базирани на AI",
+        ai_suggestion_3_title: "Маркетингова стратегия",
+        ai_suggestion_3_desc: "Получете експертни маркетингови съвети",
+        ai_suggestion_4_title: "Индустриални тенденции",
+        ai_suggestion_4_desc: "Бъдете пред кривата",
         
         // Homepage Features
         features_title: "Защо да изберете NextReach?",
@@ -1573,10 +1603,7 @@ class LanguageTranslator {
         this.currentLang = localStorage.getItem('nextreach_language') || 'bg';
         this.availableLanguages = {
             'en': { name: 'English', flag: '🇬🇧' },
-            'bg': { name: 'Български', flag: '🇧🇬' },
-            'es': { name: 'Español', flag: '🇪🇸' },
-            'de': { name: 'Deutsch', flag: '🇩🇪' },
-            'fr': { name: 'Français', flag: '🇫🇷' }
+            'bg': { name: 'Български', flag: '🇧🇬' }
         };
         this.init();
     }
@@ -1820,7 +1847,7 @@ class LanguageTranslator {
         // Add translating class to body for animation
         document.body.classList.add('translating');
 
-        // Update all elements with data-i18n attribute
+        // Update all elements with data-i18n attribute (including hidden ones)
         document.querySelectorAll('[data-i18n]').forEach(element => {
             const key = element.getAttribute('data-i18n');
             if (t[key]) {
