@@ -127,57 +127,74 @@
 
         /* Pricing Card */
         .pricing-card {
-            background: white;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 1));
             border-radius: 24px;
             padding: 2.5rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
-            border: 2px solid transparent;
+            border: 2px solid rgba(226, 232, 240, 0.8);
+            backdrop-filter: blur(10px);
         }
 
         .pricing-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(59, 130, 246, 0.15);
-            border-color: var(--secondary);
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 70px rgba(59, 130, 246, 0.15), 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-color: rgba(59, 130, 246, 0.4);
         }
 
         .pricing-card.featured {
-            border-color: var(--warning);
+            border-color: var(--secondary);
             transform: scale(1.05);
+            background: linear-gradient(135deg, rgba(239, 246, 255, 0.95), rgba(255, 255, 255, 1));
+            box-shadow: 0 20px 60px rgba(59, 130, 246, 0.25), 0 0 0 1px rgba(59, 130, 246, 0.1);
         }
 
         .pricing-card.featured::before {
-            content: 'Най-избиран';
+            content: '✨ Най-избиран';
             position: absolute;
             top: -15px;
             right: 20px;
-            background: linear-gradient(135deg, var(--warning), #ef4444);
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
             color: white;
-            padding: 0.5rem 1.5rem;
+            padding: 0.6rem 1.75rem;
             border-radius: 50px;
             font-weight: 700;
             font-size: 0.875rem;
+            box-shadow: 0 4px 20px rgba(239, 68, 68, 0.4);
+            animation: pulse-badge 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-badge {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
         .pricing-card-header {
             text-align: center;
             margin-bottom: 2rem;
             padding-bottom: 2rem;
-            border-bottom: 2px solid #e2e8f0;
+            border-bottom: 2px solid rgba(226, 232, 240, 0.6);
         }
 
         .pricing-card-icon {
-            width: 70px;
-            height: 70px;
+            width: 80px;
+            height: 80px;
             background: linear-gradient(135deg, var(--secondary), var(--accent));
-            border-radius: 20px;
+            border-radius: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 1.5rem;
-            font-size: 2rem;
+            font-size: 2.25rem;
             color: white;
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover .pricing-card-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 12px 35px rgba(59, 130, 246, 0.4);
         }
 
         .pricing-card h3 {
@@ -243,23 +260,49 @@
         /* CTA Button */
         .pricing-cta {
             width: 100%;
-            padding: 1.25rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 1.25rem 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            background-size: 200% 200%;
             color: white;
             border: none;
-            border-radius: 12px;
+            border-radius: 14px;
             font-size: 1.125rem;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
             display: block;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+            z-index: 10;
+        }
+
+        .pricing-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
         }
 
         .pricing-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(59, 130, 246, 0.5);
+            background-position: 100% 0;
+        }
+
+        .pricing-cta:hover::before {
+            left: 100%;
+        }
+
+        .pricing-cta:active {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
         }
 
         /* Additional Services */
@@ -338,6 +381,25 @@
         .discount-banner p {
             color: #78350f;
             font-size: 1.125rem;
+        }
+
+        /* Animation */
+        .animate-on-scroll {
+            opacity: 1;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .animate-on-scroll:nth-child(1) { animation-delay: 0.1s; }
+        .animate-on-scroll:nth-child(2) { animation-delay: 0.2s; }
+        .animate-on-scroll:nth-child(3) { animation-delay: 0.3s; }
+        .animate-on-scroll:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Responsive */
@@ -468,7 +530,7 @@
                 <span data-i18n="pricing_badge">Packages & Services</span>
             </div>
             <h1 data-i18n="pricing_hero_title">Website Development & Marketing Services</h1>
-            <p data-i18n="pricing_hero_subtitle">Professional digital solutions tailored to your business needs and goals.</p>
+            <p data-i18n="pricing_hero_subtitle" style="color: white;">Professional digital solutions tailored to your business needs and goals.</p>
         </div>
     </section>
 
