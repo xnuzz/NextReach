@@ -59,25 +59,25 @@ class FuturisticMobileMenu {
                             <li class="mobile-nav-item">
                                 <a href="index.html" class="mobile-nav-link" data-page="home">
                                     <i class="fas fa-home"></i>
-                                    <span>Home</span>
+                                    <span data-i18n="nav_home">Home</span>
                                 </a>
                             </li>
                             <li class="mobile-nav-item">
                                 <a href="services.html" class="mobile-nav-link" data-page="services">
                                     <i class="fas fa-cogs"></i>
-                                    <span>Services</span>
+                                    <span data-i18n="nav_services">Services</span>
                                 </a>
                             </li>
                             <li class="mobile-nav-item">
                                 <a href="pricing.html" class="mobile-nav-link" data-page="pricing">
                                     <i class="fas fa-tag"></i>
-                                    <span>Pricing</span>
+                                    <span data-i18n="nav_pricing">Pricing</span>
                                 </a>
                             </li>
                             <li class="mobile-nav-item">
                                 <a href="about.html" class="mobile-nav-link" data-page="about">
                                     <i class="fas fa-info-circle"></i>
-                                    <span>About</span>
+                                    <span data-i18n="nav_about">About</span>
                                 </a>
                             </li>
                         </ul>
@@ -88,19 +88,19 @@ class FuturisticMobileMenu {
                         <div class="mobile-nav-section-title">Quick Actions</div>
                         <a href="ai-claude.html" class="mobile-action-btn ai">
                             <i class="fas fa-robot"></i>
-                            <span>AI Assistant</span>
+                            <span data-i18n="nav_ai_assistant">AI Assistant</span>
                         </a>
                         <a href="booking.html" class="mobile-action-btn book">
                             <i class="fas fa-calendar-check"></i>
-                            <span>Book Call</span>
+                            <span data-i18n="nav_book_call">Book Call</span>
                         </a>
                         <a href="login.html" class="mobile-action-btn login" id="mobile-login-btn">
                             <i class="fas fa-sign-in-alt"></i>
-                            <span>Login</span>
+                            <span data-i18n="nav_login">Login</span>
                         </a>
                         <a href="pricing.html" class="mobile-action-btn primary" id="mobile-get-started-btn">
                             <i class="fas fa-rocket"></i>
-                            <span>Get Started</span>
+                            <span data-i18n="nav_get_started">Get Started</span>
                         </a>
                     </div>
 
@@ -117,10 +117,10 @@ class FuturisticMobileMenu {
                         </div>
                         <div class="mobile-user-actions">
                             <a href="#" class="mobile-user-action" id="mobile-edit-profile">
-                                <i class="fas fa-edit"></i> Profile
+                                <i class="fas fa-edit"></i> <span data-i18n="nav_profile">Profile</span>
                             </a>
                             <a href="#" class="mobile-user-action" id="mobile-logout">
-                                <i class="fas fa-sign-out-alt"></i> Logout
+                                <i class="fas fa-sign-out-alt"></i> <span data-i18n="nav_logout">Logout</span>
                             </a>
                         </div>
                     </div>
@@ -135,6 +135,11 @@ class FuturisticMobileMenu {
 
         // Insert the mobile menu into the DOM
         document.body.insertAdjacentHTML('beforeend', mobileMenuHTML);
+        
+        // Apply language translations to the newly created menu
+        if (window.languageTranslator) {
+            window.languageTranslator.applyLanguage();
+        }
     }
 
     bindEvents() {

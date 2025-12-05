@@ -170,6 +170,389 @@
     <link rel="stylesheet" href="premium-polish.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Responsive Fixes for All Text Elements and Sections -->
+    <style>
+        /* Hero Section Responsive */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.75rem !important;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                padding-top: 100px !important;
+            }
+            
+            .hero-title {
+                font-size: 2rem !important;
+                line-height: 1.2 !important;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem !important;
+                line-height: 1.6 !important;
+            }
+            
+            .hero-badge {
+                font-size: 0.85rem !important;
+                padding: 0.6rem 1.2rem !important;
+            }
+            
+            .hero-features-quick {
+                gap: 1rem !important;
+            }
+            
+            .quick-feature {
+                font-size: 0.9rem !important;
+            }
+            
+            .hero-buttons {
+                flex-direction: column !important;
+                gap: 1rem !important;
+            }
+            
+            .btn-hero-main,
+            .btn-hero-secondary {
+                width: 100% !important;
+                justify-content: center !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.75rem !important;
+            }
+            
+            .hero-subtitle {
+                font-size: 0.95rem !important;
+            }
+            
+            .hero-features-quick {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+            }
+        }
+        
+        /* Container responsive padding */
+        @media (max-width: 768px) {
+            .container {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+        
+        /* Tablet and below */
+        @media (max-width: 992px) {
+            /* Stats Section */
+            .stats-section {
+                padding: 3.5rem 0 !important;
+            }
+            
+            .stats-section .about-stats-grid {
+                gap: 2rem !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+            
+            .stats-section .about-stat-number {
+                font-size: 2.5rem !important;
+            }
+            
+            .stats-section .about-stat-label {
+                font-size: 1rem !important;
+            }
+            
+            /* Services Preview */
+            .services-preview {
+                padding: 4.5rem 0 !important;
+            }
+            
+            .services-preview .section-title,
+            .testimonials-preview .section-title {
+                font-size: 2.5rem !important;
+            }
+            
+            .services-preview .section-subtitle,
+            .testimonials-preview .section-subtitle {
+                font-size: 1.1rem !important;
+            }
+            
+            /* Service Cards */
+            .service-preview-card h3 {
+                font-size: 1.4rem !important;
+            }
+            
+            .service-preview-card p {
+                font-size: 1rem !important;
+            }
+        }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            /* Stats Section */
+            .stats-section {
+                padding: 3rem 0 !important;
+            }
+            
+            .stats-section .container {
+                padding-left: 1.5rem !important;
+                padding-right: 1.5rem !important;
+            }
+            
+            .stats-section .about-stats-grid {
+                gap: 1.5rem !important;
+                grid-template-columns: 1fr 1fr !important;
+            }
+            
+            .stats-section .about-stat-number {
+                font-size: 2.2rem !important;
+            }
+            
+            .stats-section .about-stat-label {
+                font-size: 0.85rem !important;
+                line-height: 1.3 !important;
+            }
+            
+            /* Services Preview */
+            .services-preview {
+                padding: 3.5rem 0 !important;
+            }
+            
+            .services-preview .container > div:first-child {
+                margin-bottom: 2.5rem !important;
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+            
+            .services-preview .section-title {
+                font-size: 1.85rem !important;
+                line-height: 1.2 !important;
+                margin-bottom: 0.75rem !important;
+            }
+            
+            .services-preview .section-subtitle {
+                font-size: 0.95rem !important;
+                line-height: 1.5 !important;
+            }
+            
+            .services-preview > .container > div[style*="display: grid"] {
+                gap: 1.5rem !important;
+            }
+            
+            .service-preview-card {
+                padding: 2rem !important;
+            }
+            
+            .service-preview-card h3 {
+                font-size: 1.25rem !important;
+                margin-bottom: 0.75rem !important;
+            }
+            
+            .service-preview-card p {
+                font-size: 0.9rem !important;
+                line-height: 1.6 !important;
+                margin-bottom: 1.25rem !important;
+            }
+            
+            .service-preview-card > div[style*="position: absolute"] {
+                font-size: 0.75rem !important;
+                padding: 0.35rem 0.75rem !important;
+            }
+            
+            .service-preview-card > div[style*="width: 70px"] {
+                width: 60px !important;
+                height: 60px !important;
+                margin-bottom: 1.25rem !important;
+            }
+            
+            .service-preview-card > div[style*="width: 70px"] i {
+                font-size: 1.75rem !important;
+            }
+            
+            /* Testimonials Preview */
+            .testimonials-preview {
+                padding: 3.5rem 0 !important;
+            }
+            
+            .testimonials-preview .container > div:first-child {
+                margin-bottom: 2.5rem !important;
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+            
+            .testimonials-preview .section-title {
+                font-size: 1.85rem !important;
+                line-height: 1.2 !important;
+                margin-bottom: 0.75rem !important;
+            }
+            
+            .testimonials-preview .section-subtitle {
+                font-size: 0.95rem !important;
+                line-height: 1.5 !important;
+            }
+            
+            .testimonials-preview > .container > div[style*="display: grid"] {
+                gap: 1.5rem !important;
+            }
+            
+            .testimonials-preview p {
+                font-size: 0.95rem !important;
+                line-height: 1.6 !important;
+            }
+            
+            .testimonials-preview img[style*="width: 48px"] {
+                width: 40px !important;
+                height: 40px !important;
+            }
+        }
+        
+        /* Small Mobile */
+        @media (max-width: 480px) {
+            /* Stats Section - Stack to single column */
+            .stats-section {
+                padding: 2.5rem 0 !important;
+            }
+            
+            .stats-section .about-stats-grid {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+            }
+            
+            .stats-section .about-stat-item {
+                padding: 1.5rem !important;
+                background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%) !important;
+                border-radius: 16px !important;
+            }
+            
+            .stats-section .about-stat-number {
+                font-size: 2.75rem !important;
+            }
+            
+            .stats-section .about-stat-label {
+                font-size: 0.95rem !important;
+            }
+            
+            /* Section Titles */
+            .services-preview .section-title,
+            .testimonials-preview .section-title {
+                font-size: 1.65rem !important;
+                line-height: 1.15 !important;
+            }
+            
+            .services-preview .section-subtitle,
+            .testimonials-preview .section-subtitle {
+                font-size: 0.9rem !important;
+            }
+            
+            .services-preview,
+            .testimonials-preview {
+                padding: 3rem 0 !important;
+            }
+        }
+        
+        /* CTA Section Responsive */
+        @media (max-width: 992px) {
+            .cta-section {
+                padding: 6rem 0 0 0 !important;
+            }
+            
+            .cta-section h2 {
+                font-size: 2.75rem !important;
+            }
+            
+            .cta-section p[style*="font-size: 1.3rem"] {
+                font-size: 1.1rem !important;
+            }
+            
+            .cta-section div[style*="font-size: 1.1rem"] {
+                font-size: 1rem !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .cta-section {
+                padding: 4rem 0 0 0 !important;
+            }
+            
+            .cta-section .container {
+                padding-left: 1.5rem !important;
+                padding-right: 1.5rem !important;
+            }
+            
+            .cta-section h2 {
+                font-size: 2rem !important;
+                line-height: 1.2 !important;
+                margin-bottom: 1rem !important;
+            }
+            
+            .cta-section p[style*="font-size: 1.3rem"] {
+                font-size: 1rem !important;
+                line-height: 1.6 !important;
+                margin-bottom: 2rem !important;
+            }
+            
+            .cta-section > div:first-child > div > div[style*="display: flex"][style*="gap: 3rem"] {
+                gap: 1.5rem !important;
+                flex-direction: column !important;
+                align-items: center !important;
+            }
+            
+            .cta-section div[style*="width: 48px"] {
+                width: 40px !important;
+                height: 40px !important;
+            }
+            
+            .cta-section div[style*="font-size: 1.1rem"] {
+                font-size: 0.95rem !important;
+            }
+            
+            .cta-section div[style*="font-size: 0.9rem"] {
+                font-size: 0.85rem !important;
+            }
+            
+            .cta-section div[style*="display: flex"][style*="gap: 1.25rem"] {
+                flex-direction: column !important;
+                gap: 1rem !important;
+            }
+            
+            .cta-section .btn {
+                width: 100% !important;
+                padding: 1rem 2rem !important;
+                font-size: 1rem !important;
+                justify-content: center !important;
+            }
+            
+            .cta-section div[style*="font-size: 0.95rem"] {
+                padding: 0.75rem 1.25rem !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .cta-section h2 {
+                font-size: 1.75rem !important;
+            }
+            
+            .cta-section p[style*="font-size: 1.3rem"] {
+                font-size: 0.95rem !important;
+            }
+            
+            .cta-section {
+                padding: 3rem 0 0 0 !important;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -198,11 +581,11 @@
                 <!-- Show for non-logged-in users -->
                 <a href="login.html" class="nav-btn nav-btn-outline" id="nav-login">
                     <i class="fas fa-sign-in-alt"></i>
-                    <span class="nav-btn-text">Login</span>
+                    <span class="nav-btn-text" data-i18n="nav_login">Login</span>
                 </a>
                 <a href="pricing.html" class="nav-btn nav-btn-primary" title="Get Started" id="nav-get-started">
                     <i class="fas fa-rocket"></i>
-                    <span class="nav-btn-text">Get Started</span>
+                    <span class="nav-btn-text" data-i18n="nav_get_started">Get Started</span>
                 </a>
                 <!-- Show for logged-in users (initially hidden) -->
                 <button class="user-profile-btn" id="user-profile" style="display: none;">
@@ -214,7 +597,7 @@
                 </button>
             </div>
             <!-- User Profile Dropdown -->
-            <div class="user-dropdown" id="user-dropdown" style="display: none;">
+            <div class="user-dropdown" id="user-dropdown">
                 <div class="user-dropdown-header">
                     <div class="user-avatar-large">
                         <i class="fas fa-user"></i>
@@ -232,16 +615,16 @@
                 <div class="dropdown-section">
                     <a href="ai-claude.html" class="dropdown-item">
                         <i class="fas fa-robot"></i>
-                        <span>AI Assistant</span>
+                        <span data-i18n="nav_ai_assistant">AI Assistant</span>
                         <span class="item-badge" style="background: #10b981;">HOT</span>
                     </a>
                     <a href="booking.html" class="dropdown-item">
                         <i class="fas fa-calendar-check"></i>
-                        <span>Book a Call</span>
+                        <span data-i18n="nav_book_call">Book a Call</span>
                     </a>
                     <a href="pricing.html" class="dropdown-item">
                         <i class="fas fa-tag"></i>
-                        <span>View Pricing</span>
+                        <span data-i18n="nav_pricing">View Pricing</span>
                     </a>
                 </div>
                 

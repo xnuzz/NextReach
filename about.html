@@ -15,6 +15,203 @@
     <link rel="stylesheet" href="futuristic-mobile-menu.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Comprehensive Responsive Fixes -->
+    <style>
+        /* Hero Section Responsive */
+        @media (max-width: 992px) {
+            section[style*="padding: 8rem"] h1 {
+                font-size: 3rem !important;
+            }
+            
+            section[style*="padding: 8rem"] p {
+                font-size: 1.15rem !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            /* Hero */
+            section[style*="padding: 8rem"] {
+                padding: 6rem 1.5rem 4rem !important;
+            }
+            
+            section[style*="padding: 8rem"] h1 {
+                font-size: 2.5rem !important;
+            }
+            
+            section[style*="padding: 8rem"] p {
+                font-size: 1rem !important;
+            }
+            
+            .container {
+                padding-left: 1.5rem !important;
+                padding-right: 1.5rem !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            section[style*="padding: 8rem"] h1 {
+                font-size: 2rem !important;
+            }
+            
+            section[style*="padding: 8rem"] p {
+                font-size: 0.95rem !important;
+            }
+        }
+        
+        /* Our Story Section Responsive */
+        @media (max-width: 992px) {
+            section[style*="padding: 6rem 0"] h2 {
+                font-size: 2.5rem !important;
+            }
+            
+            section[style*="padding: 6rem 0"] p[style*="font-size: 1.15rem"],
+            section[style*="padding: 6rem 0"] p[style*="font-size: 1.2rem"] {
+                font-size: 1rem !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            section[style*="padding: 6rem 0"] {
+                padding: 4rem 0 !important;
+            }
+            
+            section[style*="padding: 6rem 0"] h2 {
+                font-size: 2rem !important;
+                line-height: 1.2 !important;
+            }
+            
+            section[style*="padding: 6rem 0"] h3[style*="font-size: 1.3rem"] {
+                font-size: 1.1rem !important;
+            }
+            
+            section[style*="padding: 6rem 0"] p[style*="font-size: 1.15rem"],
+            section[style*="padding: 6rem 0"] p[style*="font-size: 1.2rem"],
+            section[style*="padding: 6rem 0"] p[style*="font-size: 1.1rem"] {
+                font-size: 0.95rem !important;
+                line-height: 1.6 !important;
+            }
+            
+            /* Grid layouts */
+            section div[style*="display: grid"][style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+            }
+            
+            section div[style*="display: grid"][style*="grid-template-columns: repeat(auto-fit"] {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            section[style*="padding: 6rem 0"] {
+                padding: 3rem 0 !important;
+            }
+            
+            section[style*="padding: 6rem 0"] h2 {
+                font-size: 1.75rem !important;
+            }
+            
+            section[style*="padding: 6rem 0"] h3 {
+                font-size: 1.15rem !important;
+            }
+        }
+        
+        /* Fast-Growing Team Section */
+        @media (max-width: 768px) {
+            div[style*="background: linear-gradient(135deg, #667eea"] {
+                padding: 2rem !important;
+            }
+            
+            div[style*="background: linear-gradient(135deg, #667eea"] h3 {
+                font-size: 1.5rem !important;
+            }
+            
+            div[style*="background: linear-gradient(135deg, #667eea"] p {
+                font-size: 1rem !important;
+            }
+            
+            div[style*="background: linear-gradient(135deg, #667eea"] > div[style*="display: grid"] {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+            }
+            
+            div[style*="background: linear-gradient(135deg, #667eea"] div[style*="font-size: 2.5rem"] {
+                font-size: 2rem !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            div[style*="background: linear-gradient(135deg, #667eea"] h3 {
+                font-size: 1.35rem !important;
+            }
+            
+            div[style*="background: linear-gradient(135deg, #667eea"] div[style*="font-size: 2.5rem"] {
+                font-size: 1.75rem !important;
+            }
+        }
+        
+        /* The NextReach Advantage Section */
+        @media (max-width: 992px) {
+            section:has(h2[data-i18n="about_why_title"]) h2 {
+                font-size: 2.5rem !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            section:has(h2[data-i18n="about_why_title"]) h2 {
+                font-size: 2rem !important;
+            }
+            
+            section:has(h2[data-i18n="about_why_title"]) h3 {
+                font-size: 1.1rem !important;
+            }
+            
+            section:has(h2[data-i18n="about_why_title"]) p {
+                font-size: 0.9rem !important;
+            }
+            
+            section:has(h2[data-i18n="about_why_title"]) div[style*="width: 60px"] {
+                width: 50px !important;
+                height: 50px !important;
+            }
+            
+            section:has(h2[data-i18n="about_why_title"]) div[style*="width: 60px"] i {
+                font-size: 1.25rem !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            section:has(h2[data-i18n="about_why_title"]) h2 {
+                font-size: 1.75rem !important;
+            }
+            
+            section:has(h2[data-i18n="about_why_title"]) h3 {
+                font-size: 1.05rem !important;
+            }
+        }
+        
+        /* Section Badges */
+        @media (max-width: 768px) {
+            .section-badge {
+                font-size: 0.85rem !important;
+                padding: 0.5rem 1.2rem !important;
+            }
+        }
+        
+        /* Icon boxes */
+        @media (max-width: 768px) {
+            div[style*="width: 80px"][style*="height: 80px"] {
+                width: 65px !important;
+                height: 65px !important;
+            }
+            
+            div[style*="width: 80px"] i {
+                font-size: 2rem !important;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
