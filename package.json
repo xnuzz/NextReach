@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
+    "proxy": "node deepseek-proxy.js",
     "build": "echo 'No build step required'",
     "test": "echo 'Tests not configured yet'"
   },
@@ -26,6 +27,7 @@
     "express": "^4.18.2",
     "express-rate-limit": "^7.1.5",
     "helmet": "^7.1.0",
+    "node-fetch": "^2.7.0",
     "nodemailer": "^7.0.10",
     "stripe": "^14.25.0"
   },

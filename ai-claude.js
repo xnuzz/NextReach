@@ -771,11 +771,10 @@ Be conversational, clear, and helpful. Format responses with proper markdown. Al
 
         try {
             console.log('📤 Sending request to DeepSeek API...');
-            const response = await fetch('https://api.deepseek.com/chat/completions', {
+            const response = await fetch('http://localhost:3001/api/chat', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer sk-6cf8ec9791054fbbbe627532301d154b'
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(requestBody),
                 signal: AbortSignal.timeout(this.timeout)

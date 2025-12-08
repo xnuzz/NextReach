@@ -6335,7 +6335,7 @@ input:checked + .slider:before {
 }
 
 .footer-section p {
-    color: #9ca3af;
+    color: var(--white);
     line-height: 1.6;
 }
 
@@ -6345,16 +6345,18 @@ input:checked + .slider:before {
 
 .footer-section ul li {
     margin-bottom: 0.5rem;
+    color: var(--white);
 }
 
 .footer-section ul li a {
-    color: #9ca3af;
+    color: var(--white);
     text-decoration: none;
     transition: var(--transition);
 }
 
 .footer-section ul li a:hover {
     color: var(--white);
+    opacity: 0.8;
 }
 
 .social-links {
@@ -6387,7 +6389,7 @@ input:checked + .slider:before {
 }
 
 .footer-bottom p {
-    color: #9ca3af;
+    color: var(--white);
     margin: 0;
 }
 
